@@ -10,7 +10,8 @@ body{
   display: inline-block;
 }
 .hide{
-  display: none;
+  display: none !important;
+
 }
 
 /* Alignments */
@@ -24,9 +25,12 @@ margin: 5%;
 .widebutton{
   padding: 10%;
   display:inline-block;
+  
 }
 .locationchoose{
-  
+  transition: 0.5s all ease-in-out;
+  height: 100%;
+  width: 100%;
 }
 
 
