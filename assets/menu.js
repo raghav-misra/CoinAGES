@@ -2,69 +2,68 @@
 
 //VARS===========================
 //  pannels
-var inventorypannel = document.getElementById('inventorypannel')
+var title = document.getElementById("logo");
+var marketingpannel = document.getElementById('marketingpannel')
 var shoppannel = document.getElementById('shoppannel')
-var battlepannel = document.getElementById('battlepannel')
+var comppannel = document.getElementById('comppannel')
 var locationchoose = document.getElementById('locationchoose')
 //  buttons
-var battlebtn = document.getElementById('battlebtn')
-var inventorybtn = document.getElementById('inventorybtn')
+var compbtn = document.getElementById('compbtn')
+var marketingbtn = document.getElementById('marketingbtn')
 var shopbtn = document.getElementById('shopbtn')
 var backbtn = document.getElementById('back')
 
 
 //EVENT EARS=========================
 backbtn.addEventListener('click', back)
-battlebtn.addEventListener('click', openbattle)
+compbtn.addEventListener('click', opencomp)
 shopbtn.addEventListener('click', openshop)
-inventorybtn.addEventListener('click', openinventory)
+marketingbtn.addEventListener('click', openmarketing)
 
 
 
 // MENU WINDOW MANGEMENT=========================
-function openbattle(){
+function opencomp(){
+	title.innerText = "Manage Company Revenue";
   locationchoose.style.height = "0%"
   locationchoose.style.width = "0%"
-  battlepannel.classList.remove('hide')
-  battlebtn.classList.add('hide')
+  comppannel.classList.remove('hide')
+  compbtn.classList.add('hide')
   shopbtn.classList.add('hide')
-inventorybtn.classList.add('hide')
-backbtn.classList.remove('hide')
-
+	marketingbtn.classList.add('hide')
+	backbtn.classList.remove('hide')
 }
 function openshop(){
+	title.innerText = "Business Marketplace";
   locationchoose.style.height = "0%"
   locationchoose.style.width = "0%"
   shoppannel.classList.remove('hide')
   shopbtn.classList.add('hide')
-  battlebtn.classList.add('hide')
-  inventorybtn.classList.add('hide')
+  compbtn.classList.add('hide')
+  marketingbtn.classList.add('hide')
   backbtn.classList.remove('hide')
-
-
-
 }
-function openinventory(){
+function openmarketing(){
+	title.innerText = "Marketing";
   locationchoose.style.height = "0%"
   locationchoose.style.width = "0%"
-  inventorypannel.classList.remove('hide')
-inventorybtn.classList.add('hide')
-shopbtn.classList.add('hide')
-battlebtn.classList.add('hide')
-backbtn.classList.remove('hide')
-
-
+  marketingpannel.classList.remove('hide')
+	marketingbtn.classList.add('hide')
+	shopbtn.classList.add('hide')
+	compbtn.classList.add('hide')
+	backbtn.classList.remove('hide')
 }
 function back(){
-
-  inventorypannel.classList.add('hide')
-  battlepannel.classList.add('hide')
+	title.innerText = "CEO Dashboard";
+  marketingpannel.classList.add('hide')
+  comppannel.classList.add('hide')
   shoppannel.classList.add('hide')
- locationchoose.style.height = "100%"
+ 	locationchoose.style.height = "100%"
   locationchoose.style.width = "100%"
   shopbtn.classList.remove('hide')
-  inventorybtn.classList.remove('hide')
-  battlebtn.classList.remove('hide')
+  marketingbtn.classList.remove('hide')
+  compbtn.classList.remove('hide')
   backbtn.classList.add('hide')
-
+  deg = 0
+  coin.style.transform = "rotateX(0deg)"
 }

@@ -1,42 +1,157 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:300');
 
 /*Classless HTML BODY*/
-body{
-  text-align: center;
+body, html{
+  text-align: center; 
+  padding: 0;
+  margin: 0;
+  background-color: rgb(119, 170, 97);
+}
+
+hr{
+  margin: 3.75%;
+  background: none;
+  border: white 2px solid;
+  border-radius: 100%;
+}
+
+a, button{
+	cursor: pointer;
 }
 
 *{
   font-family: 'Raleway', sans-serif;
+  outline: none;
+  text-decoration: none;
 }
+
 /*Generic*/
 .inline{
   display: inline-block;
 }
+
 .hide{
   display: none !important;
-
 }
 
 /* Alignments */
 .center{
   text-align: center;
 }
+
 /*  Special  */
 .logo{
-margin: 5%;
+  margin: 5%;
+  color: white;
 }
-.widebutton{
-  padding: 10%;
+
+.widebutton, .widebutton:disabled{
+  margin: 10px;
   display:inline-block;
-  
+  padding: 2.5%;
+  width: 90%;
+	color: white;
+	border-radius: 20px;
+	background-color: transparent;
+	border: white 2px solid;
+	font-size: 25px;
+	transition: all 0.5s ease-in-out;
 }
+
+.widebutton:disabled{
+	background: rgb(231, 80, 80);
+	color: white;
+}
+
+.widebutton:hover{
+	background: white;
+	color: #003366;
+}
+
+.widebutton:disabled:hover{
+	background: rgb(231, 80, 80);
+	color: white;
+	animation: skew-no 1s;
+}
+
+@keyframes skew-no{
+	0%{transform: none;}
+	33.3%{transform: skew(-10deg);}
+	66.6%{transform: skew(10deg);}
+	100%{transform: none;}
+}
+
+.widebutton:disabled{
+	cursor: not-allowed;
+}
+
 .locationchoose{
   transition: 0.5s all ease-in-out;
   height: 100%;
   width: 100%;
 }
 
-
-{
-  
+.return-btn{
+  background:none;
+  border: none;
+  padding: 5px;
+  text-align: left;
+  position: absolute;
+  margin: 5px;
+  font-size: 17.5px;
+  border-left: white 2px solid;
+  color: white;
+	transition: all 1s ease;
 }
+
+.subtitle{
+  margin: 0;
+  display: block;
+  margin-top: 75px;
+  padding: 10px;
+  background: white;
+  color: #003366;
+}
+
+.return-btn:hover{
+  color: #003366;
+  background: white;
+	padding-right: 10px;
+	border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px;
+}
+.coin{
+  animation-duration: 1s;
+width: 15%;
+height: 15%;
+transition: all 1s ease-in-out;
+}
+.card{
+  background-color: white;
+  padding: 5%;
+  border-radius: 5px;
+  width: 80%;
+  margin: 5% auto;
+  text-align: left;
+}
+.card p{
+  display: inline-block;
+}
+.bar{
+  display: inline-block;
+  background-color: blue;
+  height: 5px;
+  width: 0%;
+  transition: width 0.9s ease-in-out;
+}
+/* Animations*/
+
+@keyframes flip{
+  from{
+    transform: rotateX(0deg)
+  } 
+  to{
+    transform: rotateX(180deg)
+  } 
+}
+
