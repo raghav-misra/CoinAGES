@@ -9,7 +9,9 @@ var nheader = document.getElementById('nheader')//header for notificaion
 
 
 //Bars for objects
-var robotbar = document.getElementById('robotbar')//
+var robotbar = document.getElementById('robotbar')
+var personbar = document.getElementById('personbar')
+
 
 
 //Non elements
@@ -35,14 +37,15 @@ function update(){
 }
 // Open notificaion
 function notify(header,description){
-  noti.style.left = '100%'
+  noti.style.left = 'calc(100% + 200px)'
+
   nheader.innerText = header
   ndescription.innerText = description
-  noti.style.left = '80%'
+  noti.style.left = 'calc(100% - 200px)'
 setTimeout(closenotify,3000)
 }
 function closenotify(){
-  noti.style.left = '100%'
+  noti.style.left = 'calc(100% + 200px)'
 }
 //Player click handler
 function addmoney(){
@@ -63,19 +66,43 @@ function reset(){
 function buy(obj){
   var price = eval( 'parseInt(' +obj + '.price)')
   var value = eval( obj + '.value')
+  var name = eval( obj + '.name')
   var wakeup = eval( obj + '.wakeup')
-  var max = eval( obj + '.max')
+  var max = eval(  'parseInt(' +obj + '.max)')
+  var amount = eval(  'parseInt(' +obj + '.amount)') 
+  var code = eval( obj + '.code')
+  if( player.money >= price * 100){
   
-  if( player.money >= price){
-  
-    
-    //Add ammount, check if ammount over max
-    eval(wakeup + "()")
-    player.money -= price
+
+    if(amount == max){
+      notify('Cannot Buy','You have reached the limit')
+      document.getElementById("buy-bot").style.display = "none !important";
+    }else{
+      document.getElementById("buy-bot").style.display = "inline-block !important";
+    eval(wakeup + "()") 
+    player.money = player.money - price * 100
+    eval( obj + '.amount += 1') 
+    if(amount == 0){
+      
+      eval(' document.getElementById("' + obj + 'info").innerHTML = ""')
+      eval(' document.getElementById("' + obj + 'info").innerHTML =  document.getElementById("' + obj + 'info").innerHTML + ' +"'" + code + "' + '</div>' ")
+
+    } else{
+      eval(' document.getElementById("' + obj + 'info").innerHTML =  document.getElementById("' + obj + 'info").innerHTML + ' +"'" + code + "' + '</div>' ")
+
+
+    }
+
+
+
+
+
+    }
 
   }else{
     notify('Cannot Buy','You do not have enough money.')
   }
+
 }
 
 //ONJECT WAKE UPS ======
@@ -90,4 +117,16 @@ function managerobot2(){
    robotbar.style.transition = "none"
   robotbar.style.width = "0%"
   setTimeout(managerobot,100)
+}
+function manageperson(){
+   personbar.style.transition = "width 0.9s ease-in-out"
+  personbar.style.display = "inline-block"
+  personbar.style.width = "90%"
+  setTimeout(manageperson2,900)
+}
+function manageperson2(){
+  player.money += Math.round(parseFloat(0.03) * 100);
+   personbar.style.transition = "none"
+  personbar.style.width = "0%"
+  setTimeout(manageperson,100)
 }

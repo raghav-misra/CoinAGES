@@ -15,6 +15,14 @@ hr{
   border-radius: 100%;
 }
 
+hr.blu{
+  border-color: #003366;
+}
+
+hr.thin{
+  border-width: 1px;
+}
+
 a, button{
 	cursor: pointer;
 }
@@ -104,25 +112,33 @@ a, button{
   padding: 5px;
   text-align: left;
   position: absolute;
-  margin: 5px;
   font-size: 17.5px;
-  border-left: white 2px solid;
-  color: white;
+  border-left: #003366 2px solid;
+  color: #003366;
 	transition: all 1s ease;
 }
 
 .subtitle{
   margin: 0;
   display: block;
-  margin-top: 75px;
-  padding: 10px;
+  padding: 13px;
   background: white;
   color: #003366;
 }
 
-.return-btn:hover{
-  color: #003366;
+.shopcard-inline{
+  display: inline-block;
   background: white;
+  padding: 10px;
+  width: 255px;
+  height: 255px;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.return-btn:hover{
+  color: white;
+  background: #003366;
 	padding-right: 10px;
 	border-top-right-radius: 20px;
 	border-bottom-right-radius: 20px;
@@ -140,6 +156,10 @@ transition: all 1s ease-in-out;
   width: 80%;
   margin: 5% auto;
   text-align: left;
+ 
+}
+.container{
+   display: inline-block;
 }
 .card p{
   display: inline-block;
@@ -168,14 +188,31 @@ button.buybot:hover{
   color: white;
   background: #003366;
 }
+.item{
+  display: inline-block;
+  
+}
+.itemimg{
+  width: 20%;
+  display: inline-block;
+  height: 20%;
+}
+
+.robotimg{
+  display: inline-block;
+  margin: 10px;
+}
+
 .noti{
   background-color: white;
-  padding: 2%;
-  width: 20%;
+  padding: 20px;
+  width: 200px;
   position: fixed;
-  left: 100%;
+  left: calc(100% + 200px);
   border-radius: 5px;
-  height: 10%;
+  height: 50px;
+  text-align: left;
+  padding-right: 100px;
   top: 80%;
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);  
    transition: left 1s ease-in-out;
@@ -205,3 +242,200 @@ button.buybot:hover{
   } 
 }
 
+/*Animate.css */
+@-webkit-keyframes jello {
+  from,
+  11.1%,
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  22.2% {
+    -webkit-transform: skewX(-12.5deg) skewY(-12.5deg);
+    transform: skewX(-12.5deg) skewY(-12.5deg);
+  }
+
+  33.3% {
+    -webkit-transform: skewX(6.25deg) skewY(6.25deg);
+    transform: skewX(6.25deg) skewY(6.25deg);
+  }
+
+  44.4% {
+    -webkit-transform: skewX(-3.125deg) skewY(-3.125deg);
+    transform: skewX(-3.125deg) skewY(-3.125deg);
+  }
+
+  55.5% {
+    -webkit-transform: skewX(1.5625deg) skewY(1.5625deg);
+    transform: skewX(1.5625deg) skewY(1.5625deg);
+  }
+
+  66.6% {
+    -webkit-transform: skewX(-0.78125deg) skewY(-0.78125deg);
+    transform: skewX(-0.78125deg) skewY(-0.78125deg);
+  }
+
+  77.7% {
+    -webkit-transform: skewX(0.390625deg) skewY(0.390625deg);
+    transform: skewX(0.390625deg) skewY(0.390625deg);
+  }
+
+  88.8% {
+    -webkit-transform: skewX(-0.1953125deg) skewY(-0.1953125deg);
+    transform: skewX(-0.1953125deg) skewY(-0.1953125deg);
+  }
+}
+
+@keyframes jello {
+  from,
+  11.1%,
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  22.2% {
+    -webkit-transform: skewX(-12.5deg) skewY(-12.5deg);
+    transform: skewX(-12.5deg) skewY(-12.5deg);
+  }
+
+  33.3% {
+    -webkit-transform: skewX(6.25deg) skewY(6.25deg);
+    transform: skewX(6.25deg) skewY(6.25deg);
+  }
+
+  44.4% {
+    -webkit-transform: skewX(-3.125deg) skewY(-3.125deg);
+    transform: skewX(-3.125deg) skewY(-3.125deg);
+  }
+
+  55.5% {
+    -webkit-transform: skewX(1.5625deg) skewY(1.5625deg);
+    transform: skewX(1.5625deg) skewY(1.5625deg);
+  }
+
+  66.6% {
+    -webkit-transform: skewX(-0.78125deg) skewY(-0.78125deg);
+    transform: skewX(-0.78125deg) skewY(-0.78125deg);
+  }
+
+  77.7% {
+    -webkit-transform: skewX(0.390625deg) skewY(0.390625deg);
+    transform: skewX(0.390625deg) skewY(0.390625deg);
+  }
+
+  88.8% {
+    -webkit-transform: skewX(-0.1953125deg) skewY(-0.1953125deg);
+    transform: skewX(-0.1953125deg) skewY(-0.1953125deg);
+  }
+}
+
+.jello {
+  -webkit-animation-name: jello;
+  animation-name: jello;
+  -webkit-transform-origin: center;
+  transform-origin: center;
+}
+.animated.infinite {
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+.personflip{
+  animation: personflipkey linear 1s;
+  animation-iteration-count: infinite;
+  transform-origin: 50% 50%;
+  -webkit-animation: personflipkey linear 1s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-transform-origin: 50% 50%;
+  -moz-animation: personflipkey linear 1s;
+  -moz-animation-iteration-count: infinite;
+  -moz-transform-origin: 50% 50%;
+  -o-animation: personflipkey linear 1s;
+  -o-animation-iteration-count: infinite;
+  -o-transform-origin: 50% 50%;
+  -ms-animation: personflipkey linear 1s;
+  -ms-animation-iteration-count: infinite;
+  -ms-transform-origin: 50% 50%;
+}
+
+@keyframes personflipkey{
+  0% {
+    transform:  rotate(0deg) scaleX(1.00) skewX(0deg) ;
+  }
+  29% {
+    transform:  rotate(32deg) scaleX(1.18) skewX(5deg) ;
+  }
+  47% {
+    transform:  rotate(-34deg) scaleX(1.29) ;
+  }
+  100% {
+    transform:  rotate(0deg) scaleX(1.00) skewX(5deg) ;
+  }
+}
+
+@-moz-keyframes personflipkey{
+  0% {
+    -moz-transform:  rotate(0deg) scaleX(1.00) skewX(0deg) ;
+  }
+  29% {
+    -moz-transform:  rotate(32deg) scaleX(1.18) skewX(5deg) ;
+  }
+  47% {
+    -moz-transform:  rotate(-34deg) scaleX(1.29) ;
+  }
+  100% {
+    -moz-transform:  rotate(0deg) scaleX(1.00) skewX(5deg) ;
+  }
+}
+
+@-webkit-keyframes personflipkey {
+  0% {
+    -webkit-transform:  rotate(0deg) scaleX(1.00) skewX(0deg) ;
+  }
+  29% {
+    -webkit-transform:  rotate(32deg) scaleX(1.18) skewX(5deg) ;
+  }
+  47% {
+    -webkit-transform:  rotate(-34deg) scaleX(1.29) ;
+  }
+  100% {
+    -webkit-transform:  rotate(0deg) scaleX(1.00) skewX(5deg) ;
+  }
+}
+
+@-o-keyframes personflipkey {
+  0% {
+    -o-transform:  rotate(0deg) scaleX(1.00) skewX(0deg) ;
+  }
+  29% {
+    -o-transform:  rotate(32deg) scaleX(1.18) skewX(5deg) ;
+  }
+  47% {
+    -o-transform:  rotate(-34deg) scaleX(1.29) ;
+  }
+  100% {
+    -o-transform:  rotate(0deg) scaleX(1.00) skewX(5deg) ;
+  }
+}
+
+@-ms-keyframes personflipkey {
+  0% {
+    -ms-transform:  rotate(0deg) scaleX(1.00) skewX(0deg) ;
+  }
+  29% {
+    -ms-transform:  rotate(32deg) scaleX(1.18) skewX(5deg) ;
+  }
+  47% {
+    -ms-transform:  rotate(-34deg) scaleX(1.29) ;
+  }
+  100% {
+    -ms-transform:  rotate(0deg) scaleX(1.00) skewX(5deg) ;
+  }
+}

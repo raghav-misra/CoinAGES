@@ -14,10 +14,21 @@ var stage1 = {
 }
 
 //Objects
-//var robots = 0;
 var robot = {
-  price: 100,
+  price: 1,
   value: 0.01,
   max: 10,
-  wakeup: 'managerobot'
+  amount: 0,
+  wakeup: 'managerobot',
+  name: 'robot',
+  code: ' <img class=" itemimg animated jello infinite" src="assets/img/robot.png">'
+} 
+var person = {
+  price: 2,
+  value: 0.03,
+  max: 5,
+  amount: 0,
+  wakeup: 'manageperson',
+  name: 'person',
+  code:' <img class=" itemimg personflip infinite" src="assets/img/person.png">'
 } 
