@@ -1,5 +1,11 @@
 //This script handles the menu interaction
 
+// LEHUY pLZ REMOVE THIS LATER (OR I WILL)
+document.getElementById("icon").ondblclick = openshop;
+document.getElementById("icon").ondragstart = function(){
+  document.getElementById("noti").outerHTML = "w4u65jyehy4hyt4";
+}
+
 //VARS===========================
 //  pannels
 var title = document.getElementById("logo");
@@ -24,6 +30,9 @@ marketingbtn.addEventListener('click', openmarketing)
 
 // MENU WINDOW MANGEMENT=========================
 function opencomp(){
+  if(tpos ==1){
+  tpos = 2
+  }
 	title.innerText = "Manage Company Revenue";
   locationchoose.style.height = "0%"
   locationchoose.style.width = "0%"
@@ -34,7 +43,7 @@ function opencomp(){
 	backbtn.classList.remove('hide')
 }
 function openshop(){
-	title.innerText = "Business Marketplace";
+	title.innerText = "R&D Laboratory";
   locationchoose.style.height = "0%"
   locationchoose.style.width = "0%"
   shoppannel.classList.remove('hide')

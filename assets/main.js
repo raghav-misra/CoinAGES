@@ -18,10 +18,54 @@ var personbar = document.getElementById('personbar')
 var deg = 0 //stores amount of\ roation coin flips
 
 
-//INIT
+//Tutorial
+var tpos = 0
+var rev_tut = true;
 
- 
- coin.style.animationPlayState = "paused"
+var tdesc =['Welcome to the CEO Dashboard', 'To begin, click on Revenue Management', 'To flip a coin, click on it.', 'Keep flipping coins until you reach $1.', 'Now that you have $1 buy a robot to flip coins for you! ' ]
+
+notify('Tutorial', tdesc[tpos],true)
+setTimeout(movetut,4000)
+
+function movetut(){
+if(tpos == 1){
+  notify('Tutorial', tdesc[tpos],false)
+  compbtn.disabled = false
+  compbtn.classList.remove('disabled')
+  setTimeout(movetut,4000)
+  
+}
+else if(tpos == 2){
+  closenotify()
+  setTimeout(function(){
+     notify('Tutorial', tdesc[tpos],true)
+     tpos +=1
+     setTimeout(movetut,4000)
+  },2000)
+  
+  
+  
+}
+else if(tpos == 3){
+notify('Tutorial', tdesc[tpos],false)
+  if(player.money >= 100){
+    tpos += 1
+    closenotify()
+    setTimeout(movetut,2000)
+  }
+setTimeout(movetut,2000)
+} 
+else{
+     tpos += 1
+    notify('Tutorial', tdesc[tpos])
+  setTimeout(movetut,4000)
+  }
+  
+}
+
+
+
+
 //EVENTEARS====
 coin.addEventListener('click', addmoney)
 
@@ -32,20 +76,22 @@ coin.addEventListener('click', addmoney)
 window.setInterval(update,30)
 function update(){
   moneydisplay.innerText = player.money / 100;
-  
+  console.log(tpos)
  
 }
 // Open notificaion
-function notify(header,description){
-  noti.style.left = 'calc(100% + 200px)'
+function notify(header,description,flip){
+  noti.style.right = 'calc(100% + 300px)'
 
   nheader.innerText = header
   ndescription.innerText = description
-  noti.style.left = 'calc(100% - 200px)'
+  noti.style.left = 'calc(100% - 300px)'
+  if(flip == true){
 setTimeout(closenotify,3000)
+  }
 }
 function closenotify(){
-  noti.style.left = 'calc(100% + 200px)'
+  noti.style.left = 'calc(100% + 300px)'
 }
 //Player click handler
 function addmoney(){
@@ -75,7 +121,7 @@ function buy(obj){
   
 
     if(amount == max){
-      notify('Cannot Buy','You have reached the limit')
+      notify('Cannot Buy','You have reached the limit', true)
       document.getElementById("buy-bot").style.display = "none !important";
     }else{
       document.getElementById("buy-bot").style.display = "inline-block !important";
