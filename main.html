@@ -9,42 +9,43 @@
     <link href="assets/obui.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-     
-     <!-- Go to Inventory, BATTLE, Shop -->
-     <div id='locationchoose'class='locationchoose'> 
-<h1 class='logo'>CoinAGES CEO Dashboard</h1>
-<hr>
-<button id='back'type="button" class="widebutton hide">Go Back</button>
-
-    <button id='inventorybtn'type="button" class="disabled widebutton" disabled>Marketing</button>
-
-    <button id='battlebtn' type="button" class=" btn widebutton">Company Management</button>
-
-   
-
-    <button id='shopbtn' type="button" class="btn widebutton">Zamazon</button>
+    <img src="assets/img/coinageslogo.png" id="icon" onerror="alert('feere');">
+    <h1 id="logo" class='logo'>CEO Dashboard</h1>
+    <hr>
+    <div id='locationchoose'class='locationchoose'> 
+      <button id='back'type="button" class="return-btn hide">Go Back</button>
+      <button id='marketingbtn'type="button" class="disabled widebutton" disabled>Marketing<br>Campaigns</button>
+      <button id='compbtn' type="button" class=" btn widebutton">Company<br>Management</button>
+      <button id='shopbtn' type="button" class="btn widebutton">Business<br>Marketplace <br></button>
     </div>
-    
 
     <!-- INVENTORY SCREEN -->
-    <div class='hide' id='inventorypannel'>
-      <h1>Inventory</h1>
+    <div class='hide' id='marketingpannel'>
+      <h3 class="subtitle">Promote your coin flipping application with ease!</h3>  
       <img src='https://picsum.photos/200/300/?random'>
     </div>
 
     <!-- BATTLE SCREEN -->
-    <div  class='hide' id='battlepannel'>
-      <h1>Company Management</h1>
-      <img src='assets/img/1.png'>
+    <div class='hide' id='comppannel'>
+      <h3 class="subtitle">Control your income and cost, all from this dashboard!</h3>
+      <h2 id='money'>0.00</h2>
+      <img id='coin' class='coin'src='assets/img/1.png'>
+      <div class='card'>
+       <p> Robots</p> <div class='bar' id='robotbar'></div>
+      
+
+
+      </div>
     </div>
 
-     <!-- SHOP SCREEN -->
-    <div  class='hide' id='shoppannel'>
-      <h1>Shop</h1>
-       <img src='https://picsum.photos/200/300/?random'>
+    
+    <div class='hide' id='shoppannel'>
+      <h3 class="subtitle">Welcome to Marketplace! Take a look at our custom offers for you!</h3>
     </div>
   </body>
   <script src="./assets/script.js"></script>
   <script src="./assets/menu.js"></script>
-</html> <script src="./assets/menu.js"></script>
+  <script src="./assets/main.js"></script>
+  <script src="./assets/settings.js"></script>
+</html> 
 </html>
