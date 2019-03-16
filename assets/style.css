@@ -1,9 +1,12 @@
-@import url(https://unpkg.com/nes.css@2.1.0/css/nes.min.css);
-@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+@import url('https://fonts.googleapis.com/css?family=Raleway:300');
 
 /*Classless HTML BODY*/
 body{
   text-align: center;
+}
+
+*{
+  font-family: 'Raleway', sans-serif;
 }
 /*Generic*/
 .inline{
@@ -34,4 +37,6 @@ margin: 5%;
 }
 
 
-
+{
+  
+}
