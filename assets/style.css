@@ -175,7 +175,7 @@ transition: all 1s ease-in-out;
   animation: ease-width-fs 1s infinite;
 }
 
-button.buy-bot{
+button.buy-bot, button.buy-now{
   color: #003366;
   padding: 7.5px;
   font-size: 17.5px;
@@ -184,7 +184,7 @@ button.buy-bot{
   transition: all ease-in-out 0.5s;
 }
 
-button.buybot:hover{
+button.buy-bot:hover, button.buy-now:hover{
   color: white;
   background: #003366;
 }
