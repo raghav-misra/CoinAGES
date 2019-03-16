@@ -19,6 +19,13 @@ a, button{
 	cursor: pointer;
 }
 
+#icon{
+  display: inline-block;
+  width: 20%;
+  margin-top: 7.5px;
+  margin-bottom: -20PX;
+}
+
 *{
   font-family: 'Raleway', sans-serif;
   outline: none;
@@ -138,13 +145,56 @@ transition: all 1s ease-in-out;
   display: inline-block;
 }
 .bar{
-  display: inline-block;
-  background-color: blue;
+  display: none;
+  background-color: #003366;
+  border-radius: 10px;
   height: 5px;
+  margin-left: 5px;
+  margin-bottom: 2.5px;
   width: 0%;
-  transition: width 0.9s ease-in-out;
+  animation: ease-width-fs 1s infinite;
+}
+
+button.buy-bot{
+  color: #003366;
+  padding: 7.5px;
+  font-size: 17.5px;
+  border: #003366 solid 2px;
+  background: white;
+  transition: all ease-in-out 0.5s;
+}
+
+button.buybot:hover{
+  color: white;
+  background: #003366;
+}
+.noti{
+  background-color: white;
+  padding: 2%;
+  width: 20%;
+  position: fixed;
+  left: 100%;
+  border-radius: 5px;
+  height: 10%;
+  top: 80%;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);  
+   transition: left 1s ease-in-out;
+}
+.noti h1{
+  font-size: 100%; 
+  font-weight: bolder; 
+}
+.noti p{
+  font-size: 70%;  
 }
 /* Animations*/
+@keyframes ease-width-fs{
+  0%{width: 0;}
+  100%{
+    width: 70%;
+  }
+}
+
 
 @keyframes flip{
   from{

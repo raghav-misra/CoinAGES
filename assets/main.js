@@ -3,7 +3,14 @@
 //VARS====
 var coin = document.getElementById('coin')//The only game play in tis project 
 var moneydisplay = document.getElementById('money')// Displays the player's current cash
-var robotbar = document.getElementById('robotbar')
+var noti = document.getElementById('noti')// notificaion
+var ndescription = document.getElementById('ndescription')// description for notificaion
+var nheader = document.getElementById('nheader')//header for notificaion
+
+
+//Bars for objects
+var robotbar = document.getElementById('robotbar')//
+
 
 //Non elements
 var deg = 0 //stores amount of\ roation coin flips
@@ -11,7 +18,7 @@ var deg = 0 //stores amount of\ roation coin flips
 
 //INIT
 
-  managerobot()//DEBUG
+ 
  coin.style.animationPlayState = "paused"
 //EVENTEARS====
 coin.addEventListener('click', addmoney)
@@ -26,7 +33,17 @@ function update(){
   
  
 }
-
+// Open notificaion
+function notify(header,description){
+  noti.style.left = '100%'
+  nheader.innerText = header
+  ndescription.innerText = description
+  noti.style.left = '80%'
+setTimeout(closenotify,3000)
+}
+function closenotify(){
+  noti.style.left = '100%'
+}
 //Player click handler
 function addmoney(){
   player.money = Math.round(parseFloat(player.money) + parseFloat(player.clickvalue) * 100);
@@ -42,7 +59,26 @@ function reset(){
    
 }
 
-//DEBUG
+//Buy function
+function buy(obj){
+  var price = eval( 'parseInt(' +obj + '.price)')
+  var value = eval( obj + '.value')
+  var wakeup = eval( obj + '.wakeup')
+  var max = eval( obj + '.max')
+  
+  if( player.money >= price){
+  
+    
+    //Add ammount, check if ammount over max
+    eval(wakeup + "()")
+    player.money -= price
+
+  }else{
+    notify('Cannot Buy','You do not have enough money.')
+  }
+}
+
+//ONJECT WAKE UPS ======
 function managerobot(){
    robotbar.style.transition = "width 0.9s ease-in-out"
   robotbar.style.display = "inline-block"
