@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width">
     <title>CoinAGES</title>
     <link href="assets/style.css" rel="stylesheet" type="text/css" />
-    <link href="assets/obui.css" rel="stylesheet" type="text/css" />
+
   </head>
   <body>
     <img src="assets/img/coinageslogo.png" id="icon" onerror="alert('feere');">
@@ -22,7 +22,7 @@
     </div>
     <!-- Main Menu -->
     <div id='locationchoose'class='locationchoose'> 
-      <button id='back'type="button" class="return-btn hide">Go Back</button>
+      <button id='back'type="button" class="return-btn hide">Go<br>Back</button>
       <button id='marketingbtn'type="button" class="disabled widebutton" disabled>Marketing<br>Campaigns</button>
       <button id='compbtn' type="button" class=" btn widebutton">Company<br>Management</button>
       <button id='shopbtn' type="button" class="btn widebutton">Business<br>Marketplace <br></button>
@@ -33,28 +33,55 @@
       <h3 class="subtitle">Promote your coin flipping application with ease!</h3>  
       <img src='https://picsum.photos/200/300/?random'>
     </div>
-
+        <!-- SHOP SCREEN -->
+<div class='hide' id='shoppannel'>
+  <h3 class="subtitle">Welcome to the Marketplace!</h3>
+  <br>
+  <div class="shopcard-inline">
+    <h4 class="ttl">HoverFlip™ by Zamazon</h4>
+    <hr class="blu thin">
+    <p class="desc">Using the latest in flipping-tech,<br> 
+    </div>
+  <div class="shopcard-inline"></div>
+  <div class="shopcard-inline"></div>
+  <div class="shopcard-inline"></div>
+  <div class="shopcard-inline"></div>
+  <div class="shopcard-inline"></div>
+  <br><br>
+  <h3 class="subtitle">© Zamazon LLC. ~ 2069</h3>
+</div>
     <!-- BATTLE SCREEN -->
     <div class='hide' id='comppannel'>
-      <h3 class="subtitle">Control your income and cost, all from this dashboard!</h3>
+      <h3 class="subtitle">Control your company's income and cost.</h3>
       <h2 id='money'>0.00</h2>
       <img id='coin' class='coin'src='assets/img/1.png'>
      
       <div class='card'>
-       <p> Robots</p> <div class='bar' id='robotbar'></div>
-      <br>
-      <button id='buy-bot' onclick="buy('robot')" class="buy-bot">Purchase a Robot</button>
-
-      </div>
-    
+        <p> Robots</p> 
+        <div class='bar' id='robotbar'></div>
+        <hr class="blu thin">
+        <div class='container' id='robotinfo'>
+          <p>Use the power of automation to flip your coins!<br> Price: $1.00<br>Flip Time: 1 Second<br> Money Per Flip: $0.01</p>
+          </div>
+          <br>
+          <button id='buy-bot' onclick="buy('robot')" class="buy-bot">Purchase a Robot</button>
+        
+    </div>
+    <div class='card'>
+        <p> People</p> 
+        <div class='bar' id='personbar'></div>
+        <hr class="blu thin">
+        <div class='container' id='personinfo'>
+          <p>Hire people to flip coins for you<br> Price: $2.00<br>Flip Time: 1 Second<br> Money Per Flip: $0.03</p>
+          </div>
+          <br>
+          <button id='buy-person' onclick="buy('person')" class="buy-bot">Hire someone</button>
+        
     </div>
 
     
-    <div class='hide' id='shoppannel'>
-      <h3 class="subtitle">Welcome to Marketplace! Take a look at our custom offers for you!</h3>
-    </div>
+    
   </body>
-  <script src="./assets/script.js"></script>
   <script src="./assets/menu.js"></script>
   <script src="./assets/main.js"></script>
   <script src="./assets/settings.js"></script>
