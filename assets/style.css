@@ -199,13 +199,8 @@ button.buy-bot:hover, button.buy-now:hover{
   height: 20%;
 }
 
-.robotimg{
-  display: inline-block;
-  margin: 10px;
-}
-
 .noti{
-  background-color: rgba(255, 255, 255, 0.651);
+  background-color: rgb(255, 255, 255);
   padding: 20px;
   width: 200px;
   position: fixed;
