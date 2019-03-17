@@ -3,8 +3,7 @@ var stage = 1
 
 var player = {
   money: 0.00,
-  clickvalue: 0.01,
-	icon: "./assets/img/1.png"
+  clickvalue: 0.01
   }
 
 
@@ -32,5 +31,4 @@ var person = {
   wakeup: 'manageperson',
   name: 'person',
   code:' <img class=" itemimg personflip infinite" src="assets/img/person.png">'
-}
-
+} 

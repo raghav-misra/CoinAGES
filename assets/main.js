@@ -19,35 +19,55 @@ var deg = 0 //stores amount of\ roation coin flips
 
 
 //Tutorial
+var tpos = 0
 var rev_tut = true;
-var rev_tut2 = true;
-var rev_tut3 = true;
-var rev_tut4 = true;
-var rev_tut5 = true;
-var rev_tut6 = true;
+
+var tdesc =['Welcome to the CEO Dashboard', 'To begin, click on Revenue Management', 'To flip a coin, click on it.', 'Keep flipping coins until you reach $1.', 'Now that you have $1 buy a robot to flip coins for you! ' ]
+
+notify('Tutorial', tdesc[tpos],true)
+setTimeout(movetut,4000)
+
+function movetut(){
+if(tpos == 1){
+  notify('Tutorial', tdesc[tpos],false)
+  compbtn.disabled = false
+  compbtn.classList.remove('disabled')
+  setTimeout(movetut,4000)
+  
+}
+else if(tpos == 2){
+  closenotify()
+  setTimeout(function(){
+     notify('Tutorial', tdesc[tpos],true)
+     tpos +=1
+     setTimeout(movetut,4000)
+  },2000)
+  
+  
+  
+}
+else if(tpos == 3){
+notify('Tutorial', tdesc[tpos],false)
+  if(player.money >= 100){
+    tpos += 1
+    closenotify()
+    setTimeout(movetut,2000)
+  }
+setTimeout(movetut,2000)
+} 
+else{
+     tpos += 1
+    notify('Tutorial', tdesc[tpos])
+  setTimeout(movetut,4000)
+  }
+  
+}
+
 
 
 
 //EVENTEARS====
-coin.addEventListener('click', function(){
-	if(rev_tut2){
-		rev_tut2 = false;
-		setTimeout(function(){
-			notify('Tutorial', 'Keep flipping coins until you reach $1.')
-		}, 2000)
-	}
-	addmoney();
-})
-
-coin.addEventListener('contextmenu', function(){
-	if(rev_tut2){
-		rev_tut2 = false;
-		setTimeout(function(){
-			notify('Tutorial', 'Keep flipping coins until you reach $1.')
-		}, 2000)
-	}
-	addmoney();
-})
+coin.addEventListener('click', addmoney)
 
 //FUNCTIONS====
 
@@ -56,39 +76,11 @@ coin.addEventListener('contextmenu', function(){
 window.setInterval(update,30)
 function update(){
   moneydisplay.innerText = player.money / 100;
-	if(player.money > 99 && rev_tut3 == true){
-		rev_tut3 = false;
-		setTimeout(function(){
-			notify('Tutorial', 'Now, buy a robot to flip for you!')
-		}, 1000)
-	}
-	if(player.money > 199 && rev_tut5 == true && rev_tut3){
-		rev_tut5 = false;
-		setTimeout(function(){
-			notify('Tutorial', 'Now, hire a person!')
-			setTimeout(function(){
-				notify('Tutorial', 'People cost more but are better.')
-			}, 1000)
-		}, 1000)
-		
-	}
-	if(person.amount > 0 && robot.amount > 0  && rev_tut6){
-		rev_tut6 = false;
-		setTimeout(function(){
-			notify('Tutorial', 'Great! 5 humans is the max.')
-			setTimeout(function(){
-				notify('Tutorial', 'You\'ve unlocked the R&D Center!')
-				setTimeout(function(){
-					notify('Tutorial', 'Press \'Go Back\' to view it!')
-					shopbtn.disabled = false
-  				shopbtn.classList.remove('disabled')
-				}, 2000)
-			}, 2000)
-		}, 1000)
-	}
+  console.log(tpos)
+ 
 }
 // Open notificaion
-function notify(header,description,flip = true){
+function notify(header,description,flip){
   noti.style.right = 'calc(100% + 300px)'
 
   nheader.innerText = header
@@ -104,15 +96,15 @@ function closenotify(){
 //Player click handler
 function addmoney(){
   player.money = Math.round(parseFloat(player.money) + parseFloat(player.clickvalue) * 100);
-	deg += 360
-	coin.style.transform = "rotateX(" + deg + "deg)"
+deg += 360
+coin.style.transform = "rotateX(" + deg + "deg)"
+ 
   setTimeout(reset,2000)
-	return false;
 }
  
 //Reset Coin Styleing
 function reset(){ 
-   coin.src = player.icon;
+   coin.src = "./assets/img/1.png"
    
 }
 
@@ -126,41 +118,37 @@ function buy(obj){
   var amount = eval(  'parseInt(' +obj + '.amount)') 
   var code = eval( obj + '.code')
   if( player.money >= price * 100){
+  
+
     if(amount == max){
       notify('Cannot Buy','You have reached the limit', true)
       document.getElementById("buy-bot").style.display = "none !important";
+    }else{
+      document.getElementById("buy-bot").style.display = "inline-block !important";
+    eval(wakeup + "()") 
+    player.money = player.money - price * 100
+    eval( obj + '.amount += 1') 
+    if(amount == 0){
+      
+      eval(' document.getElementById("' + obj + 'info").innerHTML = ""')
+      eval(' document.getElementById("' + obj + 'info").innerHTML =  document.getElementById("' + obj + 'info").innerHTML + ' +"'" + code + "' + '</div>' ")
+
+    } else{
+      eval(' document.getElementById("' + obj + 'info").innerHTML =  document.getElementById("' + obj + 'info").innerHTML + ' +"'" + code + "' + '</div>' ")
+
+
     }
-		else{
-				document.getElementById("buy-bot").style.display = "inline-block !important";
-			eval(wakeup + "()") 
-			player.money = player.money - price * 100
-			eval( obj + '.amount += 1') 
-			if(amount == 0){
-				
-				eval(' document.getElementById("' + obj + 'info").innerHTML = ""')
-				eval(' document.getElementById("' + obj + 'info").innerHTML =  document.getElementById("' + obj + 'info").innerHTML + ' +"'" + code + "' + '</div>' ")
-
-			} 
-			else{
-				eval(' document.getElementById("' + obj + 'info").innerHTML =  document.getElementById("' + obj + 'info").innerHTML + ' +"'" + code + "' + '</div>' ")
 
 
-			}
+
+
+
     }
-  }
-	else{
+
+  }else{
     notify('Cannot Buy','You do not have enough money.')
-		return;
   }
-	if(rev_tut4){
-		rev_tut4 = false;
-		setTimeout(function(){
-			notify('Tutorial', 'Great! 10 robots is the max.')
-			setTimeout(function(){
-				notify('Tutorial', 'Now, flip until you are at $2.')
-			}, 1000)
-		}, 1000)
-	}
+
 }
 
 //ONJECT WAKE UPS ======
@@ -188,10 +176,3 @@ function manageperson2(){
   personbar.style.width = "0%"
   setTimeout(manageperson,100)
 }
-
-notify('Tutorial', 'Welcome to the CEO Dashboard', true)
-setTimeout(function(){
-	compbtn.disabled = false
-  compbtn.classList.remove('disabled')
-	notify('Tutorial', 'First, click on Revenue Management')
-}, 4000)

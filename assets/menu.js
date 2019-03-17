@@ -1,10 +1,14 @@
 //This script handles the menu interaction
 
+// LEHUY pLZ REMOVE THIS LATER (OR I WILL)
+document.getElementById("icon").ondblclick = openshop;
+document.getElementById("icon").ondragstart = function(){
+  document.getElementById("noti").outerHTML = "w4u65jyehy4hyt4";
+}
 
 //VARS===========================
 //  pannels
 var title = document.getElementById("logo");
-var logo = document.getElementById("icon");
 var marketingpannel = document.getElementById('marketingpannel')
 var shoppannel = document.getElementById('shoppannel')
 var comppannel = document.getElementById('comppannel')
@@ -15,10 +19,6 @@ var marketingbtn = document.getElementById('marketingbtn')
 var shopbtn = document.getElementById('shopbtn')
 var backbtn = document.getElementById('back')
 
-// LEHUY PLZ DELELELELELELTE
-
-logo.ondblclick = openshop;
-
 
 //EVENT EARS=========================
 backbtn.addEventListener('click', back)
@@ -28,15 +28,11 @@ marketingbtn.addEventListener('click', openmarketing)
 
 
 
-
 // MENU WINDOW MANGEMENT=========================
 function opencomp(){
-  if(rev_tut){
-		rev_tut = false;
-		setTimeout(function(){
-			notify('Tutorial', 'To flip a coin, click on it.')
-		}, 2000)
-	}
+  if(tpos ==1){
+  tpos = 2
+  }
 	title.innerText = "Manage Company Revenue";
   locationchoose.style.height = "0%"
   locationchoose.style.width = "0%"
