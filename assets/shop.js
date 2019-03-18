@@ -60,14 +60,14 @@ function createShopItem(name, title, desc1, desc2, desc3, desc4, price){
 	var num4 = price.toString() + shopCode.nineth + price.toString() + shopCode.tenth;
 	var div = num1 + num2 + num3 + num4;
 	container.innerHTML = container.innerHTML + div;
-	fadeIn(document.getElementById("id"));
+	fadeIn(document.getElementById(name));
 }
 
 function deleteShopItem(id){
 	fadeOut(document.getElementById(id), true);
 }
 
-function buyShopItem(id, price){	
+function buyShopItem(id, price){	//Not enough money
 	id = id.trim();
 	priceHund = price * 100
 	if(player.money < priceHund){
@@ -75,33 +75,39 @@ function buyShopItem(id, price){
 		return
 	}
 	player.money = player.money - priceHund;
-	if(id == "hover-flip" && itemLimits["hover-flip"] == 0){
+	if(id == "hover-flip" && itemLimits["hover-flip"] == 0){ // Buy HoverFlip
 		deleteShopItem("hover-flip")
 		coin.onmouseover = function(){ coin.click() }
 		itemLimits["hover-flip"]++
 		notify("R&D Labs", "The item has been purchased!")
 		return
 	}
-	if(id == "tutorial-gift" && itemLimits["tutorial-gift"] == 0){
+	if(id == "tutorial-gift" && itemLimits["tutorial-gift"] == 0){//Free tutorial gift
 		deleteShopItem("tutorial-gift")
 		player.money = player.money + 100
-		itemLimits["hover-flip"]++
+		itemLimits["tutorial-gift"]++
 		notify("R&D Labs", "You received $1.00!")
 		return
 	}
-	if(id == "robot-max-increase" && itemLimits["robot-max-increase"] < 5){
+	if(id == "robot-max-increase" && itemLimits["robot-max-increase"] < 5){//Buy new robot slot
 		itemLimits["robot-max-increase"]++
-		if(itemLimits["robot-max-increase"] == 5)
+		if(itemLimits["robot-max-increase"] == 5){
 			deleteShopItem("robot-max-increase");
+    }
 		robot.max++
+    updateusage(robot.name,robot.amount,robot.max)
+    fadeIn("robot-max-increase")
 		notify("R&D Labs", "The item has been purchased!")
 		return
 	}
-	if(id == "human-max-increase" && itemLimits["human-max-increase"] < 5){
+	if(id == "human-max-increase" && itemLimits["human-max-increase"] < 5){//Buy new person slot
 		itemLimits["human-max-increase"]++
-		if(itemLimits["human-max-increase"] == 5)
+		if(itemLimits["human-max-increase"] == 5){
 			deleteShopItem("human-max-increase");
+    }
 		person.max++
+    updateusage(person.name,person.amount,person.max)
+    fadeIn("robot-max-increase")
 		notify("R&D Labs", "The item has been purchased!")
 		return
 	}
