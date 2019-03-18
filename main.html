@@ -10,6 +10,7 @@
   <body>
     <img src="assets/img/coinageslogo.png" id="icon" onerror="alert('feere');">
     <h1 id="logo" class='logo'>CEO Dashboard</h1>
+    	<button id="skip-tut" class="standard" onclick="skipTutorial()">Skip Tutorial</button>
     <hr>
     <!-- Bottom Notifcaion -->
     <div id='noti' class='noti'>
@@ -25,10 +26,10 @@
       <button disabled id='compbtn' type="button" class=" btn widebutton diabled">Revenue<br>Management</button>
       <button disabled id='shopbtn' type="button" class="btn disabled widebutton">Research &<br>Development<br></button>
       <button id='marketingbtn'type="button" class="disabled widebutton" disabled>Marketing<br>Campaigns</button>
-			<button id="skip-tut" class="standard" onclick="skipTutorial()">Skip Tutorial</button>
+		
     </div>
 
-    <!-- INVENTORY SCREEN -->
+    <!-- MARKETING SCREEN -->
     <div class='hide' id='marketingpannel'>
       <h3 class="subtitle">Promote your coin flipping application with ease!</h3>  
       <img src='https://picsum.photos/200/300/?random'>
@@ -37,10 +38,11 @@
 <div class='hide' id='shoppannel'>
   <h3 class="subtitle">Welcome to the Laboratory!</h3>
   <br>
+  <h2 id='moneyshop'>0.00</h2>
   <div id="shop-item-container">
   </div>
 </div>
-    <!-- BATTLE SCREEN -->
+    <!-- GAME SCREEN -->
     <div class='hide' id='comppannel'>
       <h3 class="subtitle">Control your company's income and cost.</h3>
       <h2 id='money'>0.00</h2>
@@ -51,10 +53,11 @@
         <div class='bar' id='robotbar'></div>
         <hr class="blu thin">
         <div class='container' id='robotinfo'>
-          <p>Use the power of automation to flip your coins!<br> Price: $1.00<br>Flip Time: 1 Second<br> Money Per Flip: $0.01</p>
+          <p>Use the power of automation to flip your coins!<br>Flip Time: 1 Second<br> Money Per Flip: $0.01</p>
           </div>
           <br>
-          <button id='buy-bot' onclick="buy('robot')" class="buy-bot">Purchase a Robot</button>
+          <button id='buy-bot' onclick="buy('robot')" class="buy-bot">Purchase a Robot for $1.00</button>
+           <p id='robot-displaymax'>You are using 0/10</p>
         
     </div>
     <div class='card'>
@@ -62,10 +65,11 @@
         <div class='bar' id='personbar'></div>
         <hr class="blu thin">
         <div class='container' id='personinfo'>
-          <p>Hire people to flip coins for you.<br> Price: $2.00<br>Flip Time: 1 Second<br> Money Per Flip: $0.03</p>
+          <p>Hire people to flip coins for you.<br>Flip Time: 1 Second<br> Money Per Flip: $0.03</p>
           </div>
           <br>
-          <button id='buy-person' onclick="buy('person')" class="buy-bot">Hire someone</button>
+          <button id='buy-person' onclick="buy('person')" class="buy-bot">Hire someone for $2.00</button>
+           <p id='person-displaymax'>You are using 0/5</p>
         
     </div>
 	<script src="./assets/menu.js"></script>
