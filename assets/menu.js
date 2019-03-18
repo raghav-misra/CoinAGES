@@ -14,10 +14,10 @@ var compbtn = document.getElementById('compbtn')
 var marketingbtn = document.getElementById('marketingbtn')
 var shopbtn = document.getElementById('shopbtn')
 var backbtn = document.getElementById('back')
-
-// LEHUY PLZ DELELELELELELTE
-
-logo.ondblclick = openshop;
+//  Item usage displays
+var itemsbought = [] //Stores these elements and flags them for update
+var robotdisplay = document.getElementById('robot-displaymax')
+var persondisplay = document.getElementById('person-displaymax')
 
 
 //EVENT EARS=========================
@@ -27,7 +27,11 @@ shopbtn.addEventListener('click', openshop)
 marketingbtn.addEventListener('click', openmarketing)
 
 
-
+// Update Item Usage display
+function updateusage(name,amount,max){
+  eval(name +'display.innerText = "You are using ' + amount + '/' + max +'"')
+  
+}
 
 // MENU WINDOW MANGEMENT=========================
 function opencomp(){
@@ -37,7 +41,7 @@ function opencomp(){
 			notify('Tutorial', 'To flip a coin, click on it.')
 		}, 2000)
 	}
-	document.getElementById("skip-tut").style.display = "none";
+	
 	title.innerText = "Manage Company Revenue";
   locationchoose.style.height = "0%"
   locationchoose.style.width = "0%"
@@ -56,7 +60,7 @@ function openshop(){
 			setTimeout(createFreeGift, 1000)
 		}, 4000)
 	}
-	document.getElementById("skip-tut").style.display = "none";
+	
 	title.innerText = "R&D Laboratory";
   locationchoose.style.height = "0%"
   locationchoose.style.width = "0%"
@@ -67,7 +71,7 @@ function openshop(){
   backbtn.classList.remove('hide')
 }
 function openmarketing(){
-	document.getElementById("skip-tut").style.display = "none";
+	
 	title.innerText = "Marketing";
   locationchoose.style.height = "0%"
   locationchoose.style.width = "0%"
@@ -78,7 +82,7 @@ function openmarketing(){
 	backbtn.classList.remove('hide')
 }
 function back(){
-	document.getElementById("skip-tut").style.display = "inline-block";
+	
 	title.innerText = "CEO Dashboard";
   marketingpannel.classList.add('hide')
   comppannel.classList.add('hide')
