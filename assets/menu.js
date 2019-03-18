@@ -1,14 +1,10 @@
 //This script handles the menu interaction
 
-// LEHUY pLZ REMOVE THIS LATER (OR I WILL)
-document.getElementById("icon").ondblclick = openshop;
-document.getElementById("icon").ondragstart = function(){
-  document.getElementById("noti").outerHTML = "w4u65jyehy4hyt4";
-}
 
 //VARS===========================
 //  pannels
 var title = document.getElementById("logo");
+var logo = document.getElementById("icon");
 var marketingpannel = document.getElementById('marketingpannel')
 var shoppannel = document.getElementById('shoppannel')
 var comppannel = document.getElementById('comppannel')
@@ -19,6 +15,10 @@ var marketingbtn = document.getElementById('marketingbtn')
 var shopbtn = document.getElementById('shopbtn')
 var backbtn = document.getElementById('back')
 
+// LEHUY PLZ DELELELELELELTE
+
+logo.ondblclick = openshop;
+
 
 //EVENT EARS=========================
 backbtn.addEventListener('click', back)
@@ -28,11 +28,16 @@ marketingbtn.addEventListener('click', openmarketing)
 
 
 
+
 // MENU WINDOW MANGEMENT=========================
 function opencomp(){
-  if(tpos ==1){
-  tpos = 2
-  }
+  if(rev_tut){
+		rev_tut = false;
+		setTimeout(function(){
+			notify('Tutorial', 'To flip a coin, click on it.')
+		}, 2000)
+	}
+	document.getElementById("skip-tut").style.display = "none";
 	title.innerText = "Manage Company Revenue";
   locationchoose.style.height = "0%"
   locationchoose.style.width = "0%"
@@ -43,6 +48,15 @@ function opencomp(){
 	backbtn.classList.remove('hide')
 }
 function openshop(){
+	if(rev_tut7){
+		rev_tut7 = false;
+		notify("Tutorial", "You've completed the tutorial!")
+		setTimeout(function(){
+			notify("Tutorial", "Your free gift is waiting!")
+			setTimeout(createFreeGift, 1000)
+		}, 4000)
+	}
+	document.getElementById("skip-tut").style.display = "none";
 	title.innerText = "R&D Laboratory";
   locationchoose.style.height = "0%"
   locationchoose.style.width = "0%"
@@ -53,6 +67,7 @@ function openshop(){
   backbtn.classList.remove('hide')
 }
 function openmarketing(){
+	document.getElementById("skip-tut").style.display = "none";
 	title.innerText = "Marketing";
   locationchoose.style.height = "0%"
   locationchoose.style.width = "0%"
@@ -63,6 +78,7 @@ function openmarketing(){
 	backbtn.classList.remove('hide')
 }
 function back(){
+	document.getElementById("skip-tut").style.display = "inline-block";
 	title.innerText = "CEO Dashboard";
   marketingpannel.classList.add('hide')
   comppannel.classList.add('hide')
