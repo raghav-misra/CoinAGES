@@ -3,6 +3,7 @@
 //VARS====
 var coin = document.getElementById('coin')//The only game play in tis project 
 var moneydisplay = document.getElementById('money')// Displays the player's current cash
+var moneydisplayshop = document.getElementById('moneyshop')// Displays the player's current cash in the RDC
 var noti = document.getElementById('noti')// notificaion
 var ndescription = document.getElementById('ndescription')// description for notificaion
 var nheader = document.getElementById('nheader')//header for notificaion
@@ -73,36 +74,37 @@ coin.addEventListener('contextmenu', function(){
 //Update Function
 window.setInterval(update,30)
 function update(){
-  moneydisplay.innerText = player.money / 100;
+  moneydisplay.innerText = '$' + player.money / 100;
+  moneydisplayshop.innerText = '$' + player.money / 100;
 	if(player.money > 99 && rev_tut3 == true){
 		rev_tut3 = false;
 		setTimeout(function(){
 			notify('Tutorial', 'Now, buy a robot to flip for you!')
 		}, 1000)
 	}
-	if(player.money > 199 && rev_tut5 == true && rev_tut3){
+	if(player.money > 199 && rev_tut5 == true){
 		rev_tut5 = false;
 		setTimeout(function(){
 			notify('Tutorial', 'Now, hire a person!')
 			setTimeout(function(){
 				notify('Tutorial', 'People cost more but are better.')
-			}, 1000)
+			}, 4000)
 		}, 1000)
 		
 	}
 	if(person.amount > 0 && robot.amount > 0  && rev_tut6){
 		rev_tut6 = false;
 		setTimeout(function(){
-			notify('Tutorial', 'Great! 5 humans is the max.')
+			notify('Tutorial', 'Great! You can hire up to 5 workers.')
 			setTimeout(function(){
 				notify('Tutorial', 'You\'ve unlocked the R&D Center!')
 				setTimeout(function(){
 					notify('Tutorial', 'Press \'Go Back\' to view it!')
 					shopbtn.disabled = false
   				shopbtn.classList.remove('disabled')
-				}, 2000)
-			}, 2000)
-		}, 1000)
+				}, 3000)
+			}, 5000)
+		}, 3000)
 	}
 }
 // Open notificaion
@@ -144,12 +146,12 @@ function buy(obj){
   var amount = eval(  'parseInt(' +obj + '.amount)') 
   var code = eval( obj + '.code')
   if( player.money >= price * 100){
-    if(amount == max){
+    if(amount == max){//Reached Limit
       notify('Cannot Buy','You have reached the limit', true)
       document.getElementById("buy-bot").style.display = "none !important";
     }
 		else{
-				document.getElementById("buy-bot").style.display = "inline-block !important";
+				document.getElementById("buy-bot").style.display = "inline-block !important"; //Purchase successful
 			eval(wakeup + "()") 
 			player.money = player.money - price * 100
 			eval( obj + '.amount += 1') 
@@ -157,16 +159,20 @@ function buy(obj){
 				
 				eval(' document.getElementById("' + obj + 'info").innerHTML = ""')
 				eval(' document.getElementById("' + obj + 'info").innerHTML =  document.getElementById("' + obj + 'info").innerHTML + ' +"'" + code + "' + '</div>' ")
+        var updatedamount = eval(  'parseInt(' +obj + '.amount)') 
+        updateusage(name,updatedamount,max)
 
 			} 
 			else{
 				eval(' document.getElementById("' + obj + 'info").innerHTML =  document.getElementById("' + obj + 'info").innerHTML + ' +"'" + code + "' + '</div>' ")
+        var updatedamount = eval(  'parseInt(' +obj + '.amount)') 
+        updateusage(name,updatedamount,max)
 
 
 			}
     }
   }
-	else{
+	else{//Not enough money
     notify('Cannot Buy','You do not have enough money.')
 		return;
   }
