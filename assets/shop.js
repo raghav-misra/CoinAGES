@@ -28,7 +28,8 @@ var itemLimits = {
 	"robot-max-increase": 0, // 5 Maximum
 	"human-max-increase": 0, // 5 Maximum
 	"hover-flip": 0, // 1 Maximum
-	"tutorial-gift": 0 // 1 Maximum
+	"tutorial-gift": 0, // 1 Maximum
+	"robo-mk2": 0 // 1 Maximum
 }
 
 var shopCode = {
@@ -72,54 +73,75 @@ function buyShopItem(id, price){	//Not enough money
 	priceHund = price * 100
 	if(player.money < priceHund){
 		notify("R&D Labs", "You can't afford that.")
+		idx = document.getElementById(id);
+		idx.style.animation = "skew-no-shop 1s";
+		setTimeout(function(){
+		idx.style.animation = "none";
+		}, 1000)
 		return
 	}
 	player.money = player.money - priceHund;
-	if(id == "hover-flip" && itemLimits["hover-flip"] == 0){ // Buy HoverFlip
-		deleteShopItem("hover-flip")
-		coin.onmouseover = function(){ coin.click() }
-		itemLimits["hover-flip"]++
-		notify("R&D Labs", "The item has been purchased!")
-		return
-	}
-	if(id == "tutorial-gift" && itemLimits["tutorial-gift"] == 0){//Free tutorial gift
-		deleteShopItem("tutorial-gift")
-		player.money = player.money + 100
-		itemLimits["tutorial-gift"]++
-		notify("R&D Labs", "You received $1.00!")
-		return
-	}
-	if(id == "robot-max-increase" && itemLimits["robot-max-increase"] < 5){//Buy new robot slot
-		itemLimits["robot-max-increase"]++
-		if(itemLimits["robot-max-increase"] == 5){
-			deleteShopItem("robot-max-increase");
-    }
-		robot.max++
-    updateusage(robot.name,robot.amount,robot.max)
-    fadeIn("robot-max-increase")
-		notify("R&D Labs", "The item has been purchased!")
-		return
-	}
-	if(id == "human-max-increase" && itemLimits["human-max-increase"] < 5){//Buy new person slot
-		itemLimits["human-max-increase"]++
-		if(itemLimits["human-max-increase"] == 5){
-			deleteShopItem("human-max-increase");
-    }
-		person.max++
-    updateusage(person.name,person.amount,person.max)
-    fadeIn("robot-max-increase")
-		notify("R&D Labs", "The item has been purchased!")
-		return
+
+	switch(id){
+		case "hover-flip":
+			deleteShopItem("hover-flip")
+			coin.onmouseover = function(){ coin.click() }
+			itemLimits["hover-flip"]++
+			notify("R&D Labs", "The item has been purchased!")
+			return
+		case "tutorial-gift":
+			deleteShopItem("tutorial-gift")
+			player.money = player.money + 100
+			itemLimits["tutorial-gift"]++
+			notify("R&D Labs", "You received $1.00!")
+			return
+		case "robot-max-increase":
+			itemLimits["robot-max-increase"]++
+			if(itemLimits["robot-max-increase"] == 5){
+				deleteShopItem("robot-max-increase");
+			}
+			robot.max++
+			updateusage(robot.name,robot.amount,robot.max)
+			fadeIn(document.getElementById("robot-max-increase"))
+			notify("R&D Labs", "The item has been purchased!")
+			return
+		case "human-max-increase":
+			itemLimits["robot-max-increase"]++
+			if(itemLimits["robot-max-increase"] == 5){
+				deleteShopItem("robot-max-increase");
+			}
+			robot.max++
+			updateusage(robot.name,robot.amount,robot.max)
+			fadeIn(document.getElementById("robot-max-increase"))
+			notify("R&D Labs", "The item has been purchased!")
+			return
+		case "robo-mk2":
+			itemLimits["robo-mk2"]++
+			if(itemLimits["robo-mk2"] == 1){
+				deleteShopItem("robo-mk2");
+			}
+			robot.value = 0.03;
+			fadeIn(document.getElementById("robo-mk2"))
+			notify("R&D Labs", "The item has been purchased!")
+			return
 	}
 }
 
 function createFreeGift(){
-	createShopItem("tutorial-gift", "Your Free Gift", "Great job on finishing", "the tutorial.", "One dollar is",  "just a click away!", 0)
+	createShopItem("tutorial-gift", "Your Free Gift", "Great job on finishing", "the tutorial.", "One dollar is",  "just a click away!", 0);
 }
 
-createShopItem("robot-max-increase", "Raise Robot Quota", "The upgrade lets you", "increase the maximum", "amount of robo-flippers", "that you can purchase by 1.", 2)
+function createRobotMk2(){
+	createShopItem("robo-mk2", "Robots: Mark II", "Sicromoft C.E.O Gill Bates", "has developed a way", "for robots to flip", "3¢ every second.", 10);
+}
 
-createShopItem("human-max-increase", "More Workers", "This upgrade allows", "you to hire an", "extra human worker", "to flip coins for you.", 2)
+createShopItem("robot-max-increase", "Raise Robot Quota", "The upgrade lets you", "increase the maximum", "amount of robo-flippers", "that you can purchase by 1.", 2);
 
-createShopItem("hover-flip", "HoverFlip™ by Zamazon", "Using the latest in flipping-tech,", "Jeph Besoz has created a way", "to not click, but hover over", "coins to flip them.", 0.5)
+createShopItem("human-max-increase", "More Workers", "This upgrade allows", "you to hire an", "extra human worker", "to flip coins for you.", 3.5);
+
+createShopItem("hover-flip", "HoverFlip™ by Zamazon", "Using the latest in flipping-tech,", "Jeph Besoz has created a way", "to not click, but hover over", "coins to flip them.", 0.5);
+
+
+
+
 

@@ -6,7 +6,9 @@ var moneydisplay = document.getElementById('money')// Displays the player's curr
 var moneydisplayshop = document.getElementById('moneyshop')// Displays the player's current cash in the RDC
 var noti = document.getElementById('noti')// notificaion
 var ndescription = document.getElementById('ndescription')// description for notificaion
-var nheader = document.getElementById('nheader')//header for notificaion
+var nheader = document.getElementById('nheader')
+var itemdivs = document.getElementById('itemdivs')//Rev management items
+//header for notificaion
 
 
 //Bars for objects
@@ -19,7 +21,10 @@ var personbar = document.getElementById('personbar')
 var deg = 0 //stores amount of\ roation coin flips
 
 
-//Tutorial
+// Other VARS
+var buy_mk2 = true;
+
+//Tutorial============
 var rev_tut_0 = true;
 var rev_tut = true;
 var rev_tut2 = true;
@@ -44,7 +49,8 @@ function skipTutorial(){
 	compbtn.classList.remove('disabled')
 	marketingbtn.disabled = false
 	document.getElementById("skip-tut").style.display = "none";
-  marketingbtn.classList.remove('disabled')
+	fadeIn(document.getElementById('robotcard'))
+	fadeIn(document.getElementById('personcard'))
 }
 
 //EVENTEARS====
@@ -70,7 +76,21 @@ coin.addEventListener('contextmenu', function(){
 
 //FUNCTIONS====
 
+// Next Stage Function
+function nextstage(){
+	stage += 1
+	items.forEach(function(item){
+		if(item.unlock == stage){
+			itemdivs.innerHTML = itemdivs.innerHTML + item.cardcode
+		player.icon = "./assets/img/" + stage + ".png"
+		reset()
 
+		}
+		
+	
+	}
+	
+	)}
 //Update Function
 window.setInterval(update,30)
 function update(){
@@ -80,18 +100,26 @@ function update(){
 		rev_tut3 = false;
 		setTimeout(function(){
 			notify('Tutorial', 'Now, buy a robot to flip for you!')
+			fadeIn(document.getElementById('robotcard'))
 		}, 1000)
 	}
 	if(player.money > 199 && rev_tut5 == true){
 		rev_tut5 = false;
 		setTimeout(function(){
 			notify('Tutorial', 'Now, hire a person!')
+			fadeIn(document.getElementById('personcard'))
 			setTimeout(function(){
 				notify('Tutorial', 'People cost more but are better.')
 			}, 4000)
 		}, 1000)
 		
 	}
+
+	if(robot.amount > 0 && buy_mk2){
+		buy_mk2 = false;
+		createRobotMk2()
+	}
+
 	if(person.amount > 0 && robot.amount > 0  && rev_tut6){
 		rev_tut6 = false;
 		setTimeout(function(){
@@ -100,6 +128,7 @@ function update(){
 				notify('Tutorial', 'You\'ve unlocked the R&D Center!')
 				setTimeout(function(){
 					notify('Tutorial', 'Press \'Go Back\' to view it!')
+						document.getElementById("skip-tut").style.display = "none";
 					shopbtn.disabled = false
   				shopbtn.classList.remove('disabled')
 				}, 3000)
@@ -132,7 +161,7 @@ function addmoney(){
  
 //Reset Coin Styleing
 function reset(){ 
-   coin.src = player.icon;
+document.getElementById('coin').src = player.icon;
    
 }
 
@@ -195,7 +224,7 @@ function managerobot(){
   setTimeout(managerobot2,900)
 }
 function managerobot2(){
-  player.money += Math.round(parseFloat(0.01) * 100);
+  player.money += Math.round(parseFloat(robot.value) * 100);
    robotbar.style.transition = "none"
   robotbar.style.width = "0%"
   setTimeout(managerobot,100)
@@ -207,7 +236,7 @@ function manageperson(){
   setTimeout(manageperson2,900)
 }
 function manageperson2(){
-  player.money += Math.round(parseFloat(0.03) * 100);
+  player.money += Math.round(parseFloat(person.value) * 100);
    personbar.style.transition = "none"
   personbar.style.width = "0%"
   setTimeout(manageperson,100)
