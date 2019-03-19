@@ -15,6 +15,10 @@ hr{
   border-radius: 100%;
 }
 
+#hover-flip{
+	opacity: 1 !important;
+}
+
 hr.blu{
   border-color: #003366;
 }

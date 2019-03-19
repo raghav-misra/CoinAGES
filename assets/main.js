@@ -23,6 +23,7 @@ var deg = 0 //stores amount of\ roation coin flips
 
 // Other VARS
 var buy_mk2 = true;
+var buy_workers_mk2 = true;
 
 //Tutorial============
 var rev_tut_0 = true;
@@ -47,10 +48,10 @@ function skipTutorial(){
 	shopbtn.classList.remove('disabled')
 	compbtn.disabled = false
 	compbtn.classList.remove('disabled')
-	marketingbtn.disabled = false
 	document.getElementById("skip-tut").style.display = "none";
 	fadeIn(document.getElementById('robotcard'))
 	fadeIn(document.getElementById('personcard'))
+	closenotify()
 }
 
 //EVENTEARS====
@@ -118,6 +119,11 @@ function update(){
 	if(robot.amount > 0 && buy_mk2){
 		buy_mk2 = false;
 		createRobotMk2()
+	}
+
+	if(person.amount > 0 && buy_workers_mk2){
+		buy_workers_mk2 = false;
+		createShopItem("one-man-army", "Efficient Workers", "Better salaries lead", "to better workers.", "Workers can flip", "5¢ every second.", 12);
 	}
 
 	if(person.amount > 0 && robot.amount > 0  && rev_tut6){

@@ -29,7 +29,8 @@ var itemLimits = {
 	"human-max-increase": 0, // 5 Maximum
 	"hover-flip": 0, // 1 Maximum
 	"tutorial-gift": 0, // 1 Maximum
-	"robo-mk2": 0 // 1 Maximum
+	"robo-mk2": 0, // 1 Maximum
+	"one-man-army": 0 // 1 Maximum
 }
 
 var shopCode = {
@@ -87,12 +88,14 @@ function buyShopItem(id, price){	//Not enough money
 			deleteShopItem("hover-flip")
 			coin.onmouseover = function(){ coin.click() }
 			itemLimits["hover-flip"]++
+			fadeIn(document.getElementById("hover-flip"))
 			notify("R&D Labs", "The item has been purchased!")
 			return
 		case "tutorial-gift":
 			deleteShopItem("tutorial-gift")
 			player.money = player.money + 100
 			itemLimits["tutorial-gift"]++
+			fadeIn(document.getElementById("tutorial-gift"))
 			notify("R&D Labs", "You received $1.00!")
 			return
 		case "robot-max-increase":
@@ -112,16 +115,21 @@ function buyShopItem(id, price){	//Not enough money
 			}
 			robot.max++
 			updateusage(robot.name,robot.amount,robot.max)
-			fadeIn(document.getElementById("robot-max-increase"))
+			fadeIn(document.getElementById("human-max-increase"))
 			notify("R&D Labs", "The item has been purchased!")
 			return
 		case "robo-mk2":
 			itemLimits["robo-mk2"]++
-			if(itemLimits["robo-mk2"] == 1){
-				deleteShopItem("robo-mk2");
-			}
+			deleteShopItem("robo-mk2");
 			robot.value = 0.03;
 			fadeIn(document.getElementById("robo-mk2"))
+			notify("R&D Labs", "The item has been purchased!")
+			return
+		case "one-man-army":
+			itemLimits["one-man-army"]++
+			deleteShopItem("one-man-army");
+			person.value = 0.05;
+			fadeIn(document.getElementById("one-man-army"))
 			notify("R&D Labs", "The item has been purchased!")
 			return
 	}
@@ -134,6 +142,8 @@ function createFreeGift(){
 function createRobotMk2(){
 	createShopItem("robo-mk2", "Robots: Mark II", "Sicromoft C.E.O Gill Bates", "has developed a way", "for robots to flip", "3¢ every second.", 10);
 }
+
+
 
 createShopItem("robot-max-increase", "Raise Robot Quota", "The upgrade lets you", "increase the maximum", "amount of robo-flippers", "that you can purchase by 1.", 2);
 
