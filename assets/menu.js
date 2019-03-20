@@ -16,8 +16,9 @@ var shopbtn = document.getElementById('shopbtn')
 var backbtn = document.getElementById('back')
 //  Item usage displays
 var itemsbought = [] //Stores these elements and flags them for update
-var robotdisplay = document.getElementById('robot-displaymax')
-var persondisplay = document.getElementById('person-displaymax')
+//var robotdisplay = document.getElementById('robot-displaymax')
+//var persondisplay = document.getElementById('person-displaymax')
+
 
 
 //EVENT EARS=========================
@@ -29,7 +30,8 @@ marketingbtn.addEventListener('click', openmarketing)
 
 // Update Item Usage display
 function updateusage(name,amount,max){
-  eval(name +'display.innerText = "You are using ' + amount + '/' + max +'"')
+  
+  eval(name +'.innerText = "You are using ' + amount + '/' + max +'"')
   
 }
 
