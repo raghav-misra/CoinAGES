@@ -30,7 +30,8 @@ var itemLimits = {
 	"hover-flip": 0, // 1 Maximum
 	"tutorial-gift": 0, // 1 Maximum
 	"robo-mk2": 0, // 1 Maximum
-	"one-man-army": 0 // 1 Maximum
+	"one-man-army": 0, // 1 Maximum
+	"nickel-upgrade": 0 // 1 Maximum
 }
 
 var shopCode = {
@@ -104,17 +105,17 @@ function buyShopItem(id, price){	//Not enough money
 				deleteShopItem("robot-max-increase");
 			}
 			robot.max++
-			updateusage(robot.name,robot.amount,robot.max)
+      updateusage("document.getElementById('" +robot.name +"-displaymax')",robot.amount,robot.max)
 			fadeIn(document.getElementById("robot-max-increase"))
 			notify("R&D Labs", "The item has been purchased!")
 			return
 		case "human-max-increase":
-			itemLimits["robot-max-increase"]++
-			if(itemLimits["robot-max-increase"] == 5){
-				deleteShopItem("robot-max-increase");
+			itemLimits["human-max-increase"]++
+			if(itemLimits["human-max-increase"] == 5){
+				deleteShopItem("human-max-increase");
 			}
-			robot.max++
-			updateusage(robot.name,robot.amount,robot.max)
+			person.max++
+		updateusage("document.getElementById('" +person.name +"-displaymax')",person.amount,person.max)
 			fadeIn(document.getElementById("human-max-increase"))
 			notify("R&D Labs", "The item has been purchased!")
 			return
@@ -132,8 +133,16 @@ function buyShopItem(id, price){	//Not enough money
 			fadeIn(document.getElementById("one-man-army"))
 			notify("R&D Labs", "The item has been purchased!")
 			return
+		case "nickel-upgrade":
+			deleteShopItem("nickel-upgrade");
+			nextstage(0.05);
+			fadeIn(document.getElementById("nickel-upgrade"));
+			notify("R&D Labs", "The item has been purchased!");
+			return
 	}
 }
+
+// Creating Shop Items
 
 function createFreeGift(){
 	createShopItem("tutorial-gift", "Your Free Gift", "Great job on finishing", "the tutorial.", "One dollar is",  "just a click away!", 0);
@@ -143,7 +152,9 @@ function createRobotMk2(){
 	createShopItem("robo-mk2", "Robots: Mark II", "Sicromoft C.E.O Gill Bates", "has developed a way", "for robots to flip", "3¢ every second.", 10);
 }
 
-
+function nickelUpgrade(){
+	createShopItem("nickel-upgrade", "Nickel Research Program", "Research the next generation", "of coin-flipping technology.", "Upgrade your coherence", "and cost-effectiveness.", 50)
+}
 
 createShopItem("robot-max-increase", "Raise Robot Quota", "The upgrade lets you", "increase the maximum", "amount of robo-flippers", "that you can purchase by 1.", 2);
 
@@ -151,7 +162,6 @@ createShopItem("human-max-increase", "More Workers", "This upgrade allows", "you
 
 createShopItem("hover-flip", "HoverFlip™ by Zamazon", "Using the latest in flipping-tech,", "Jeph Besoz has created a way", "to not click, but hover over", "coins to flip them.", 0.5);
 
-
-
+nickelUpgrade()
 
 
