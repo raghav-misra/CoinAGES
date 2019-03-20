@@ -10,10 +10,10 @@ var nheader = document.getElementById('nheader')
 var itemdivs = document.getElementById('itemdivs')//Rev management items
 //header for notificaion
 
-
-//Bars for objects
-var robotbar = document.getElementById('robotbar')
-var personbar = document.getElementById('personbar')
+function m(){
+	player.money = 6666666666666666;
+	return 'no u'
+}
 
 
 
@@ -78,17 +78,16 @@ coin.addEventListener('contextmenu', function(){
 //FUNCTIONS====
 
 // Next Stage Function
-function nextstage(){
+function nextstage(newMoney){
 	stage += 1
+	player.clickvalue = newMoney;
 	items.forEach(function(item){
 		if(item.unlock == stage){
 			itemdivs.innerHTML = itemdivs.innerHTML + item.cardcode
 		player.icon = "./assets/img/" + stage + ".png"
 		reset()
-
-		}
-		
 	
+		}
 	}
 	
 	)}
@@ -113,7 +112,6 @@ function update(){
 				notify('Tutorial', 'People cost more but are better.')
 			}, 4000)
 		}, 1000)
-		
 	}
 
 	if(robot.amount > 0 && buy_mk2){
@@ -141,6 +139,8 @@ function update(){
 			}, 5000)
 		}, 3000)
 	}
+
+	noti.style.zIndex = "100 !important";
 }
 // Open notificaion
 function notify(header,description,flip = true){
@@ -195,14 +195,13 @@ function buy(obj){
 				eval(' document.getElementById("' + obj + 'info").innerHTML = ""')
 				eval(' document.getElementById("' + obj + 'info").innerHTML =  document.getElementById("' + obj + 'info").innerHTML + ' +"'" + code + "' + '</div>' ")
         var updatedamount = eval(  'parseInt(' +obj + '.amount)') 
-        updateusage(name,updatedamount,max)
+        updateusage("document.getElementById('" +name +"-displaymax')",updatedamount,max)
 
 			} 
 			else{
 				eval(' document.getElementById("' + obj + 'info").innerHTML =  document.getElementById("' + obj + 'info").innerHTML + ' +"'" + code + "' + '</div>' ")
         var updatedamount = eval(  'parseInt(' +obj + '.amount)') 
-        updateusage(name,updatedamount,max)
-
+        updateusage("document.getElementById('" +name +"-displaymax')",updatedamount,max)
 
 			}
     }
@@ -224,27 +223,44 @@ function buy(obj){
 
 //ONJECT WAKE UPS ======
 function managerobot(){
-   robotbar.style.transition = "width 0.9s ease-in-out"
-  robotbar.style.display = "inline-block"
-  robotbar.style.width = "90%"
+	
+   document.getElementById('robotbar').style.transition = "width 0.9s ease-in-out"
+  document.getElementById('robotbar').style.display = "inline-block"
+  document.getElementById('robotbar').style.width = "90%"
   setTimeout(managerobot2,900)
 }
+
+function manageecoflipper(){
+	document.getElementById("ecobar").style.transition = "width 0.9s ease-in-out"
+  document.getElementById("ecobar").style.display = "inline-block"
+  document.getElementById("ecobar").style.width = "90%"
+  setTimeout(manageecoflipper2,900)
+	
+}
+function manageecoflipper2(){
+	player.money += Math.round(parseFloat(ecoflipper.value) * 100);
+  document.getElementById("ecobar").style.transition = "width 0.9s ease-in-out"
+  document.getElementById("ecobar").style.display = "inline-block"
+  document.getElementById("ecobar").style.width = "90%"
+  setTimeout(manageecoflipper,900)
+}
+
 function managerobot2(){
   player.money += Math.round(parseFloat(robot.value) * 100);
-   robotbar.style.transition = "none"
-  robotbar.style.width = "0%"
+   document.getElementById('robotbar').style.transition = "none"
+  document.getElementById('robotbar').style.width = "0%"
   setTimeout(managerobot,100)
 }
 function manageperson(){
-   personbar.style.transition = "width 0.9s ease-in-out"
-  personbar.style.display = "inline-block"
-  personbar.style.width = "90%"
+   document.getElementById('personbar').style.transition = "width 0.9s ease-in-out"
+  document.getElementById('personbar').style.display = "inline-block"
+  document.getElementById('personbar').style.width = "90%"
   setTimeout(manageperson2,900)
 }
 function manageperson2(){
   player.money += Math.round(parseFloat(person.value) * 100);
-   personbar.style.transition = "none"
-  personbar.style.width = "0%"
+   document.getElementById('personbar').style.transition = "none"
+  document.getElementById('personbar').style.width = "0%"
   setTimeout(manageperson,100)
 }
 
