@@ -122,14 +122,17 @@ a, button{
 }
 
 .return-btn{
-  background:none;
-  border: none;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+  background:white;
   padding: 5px;
+	padding-left: 7.5px;
+	padding-right: 7.5px;
+	z-index: 100 !important;
   text-align: left;
   position: absolute;
   font-size: 17.5px;
-  border-left: #003366 2px solid;
-  border-right: #003366 2px solid;
+  border: #003366 2px solid;
   color: #003366;
 	transition: all 1s ease;
 }
@@ -150,11 +153,10 @@ button.standard:hover{
 	color: #003366;
 }
 
-
 .subtitle{
   margin: 0;
   display: block;
-  padding: 13px;
+  padding: 16px;
   background: white;
   color: #003366;
 }
@@ -242,6 +244,7 @@ button.buy-bot:hover, button.buy-now:hover{
   left: calc(100% + 200px);
   border-radius: 5px;
   height: 50px;
+	z-index: 100 !important;
   text-align: left;
   padding-right: 100px;
   top: 80%;
@@ -470,7 +473,7 @@ button.buy-bot:hover, button.buy-now:hover{
     -ms-transform:  rotate(0deg) scaleX(1.00) skewX(5deg) ;
   }
 }
-.ecoflip{
+.spin{
   animation: ecoflipf linear 2s;
   animation-iteration-count: infinite;
   transform-origin: 50% 50%;

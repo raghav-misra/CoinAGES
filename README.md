@@ -1,2 +1,2 @@
 # CoinAGES
-Game created for repl.it Game Jam
+Game created for the Repl.It Game Jam

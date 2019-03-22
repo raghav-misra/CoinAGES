@@ -3,11 +3,32 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>repl.it</title>
-    <link href="assets/style.css" rel="stylesheet" type="text/css" />
+    <title>CoinAGES</title>
+    <link href="assets/index.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    <button type="button" class="nes-btn is-primary">Primary</button>
-    <script src="script.js"></script>
+  <img src="assets/img/coinageslogo.png" id="icon">
+  <br>
+  <p> 
+    "What if I could pay money for someone to flip a coin for me?" Said everyone everwhere. <br>Build and grow the world's premier Coin Flipping company </p>
+  <br>
+  <a  href='#login' onclick='login()'class='standard'>Begin</a>
+  <div class='login'>
+    Securely logging you in
+<br>
+    <i id='login'>AdminDASH v2.24</i>
+    <hr id='hr'>
+
+
+
+  </div>
   </body>
+  <script>
+  function login(){
+    document.getElementById('hr').style.width = '100%'
+setTimeout(function(){
+window.location.href = "main.html"
+},5000)
+}
+  </script>
 </html>

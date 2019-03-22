@@ -20,10 +20,12 @@ function m(){
 //Non elements
 var deg = 0 //stores amount of\ roation coin flips
 
-
 // Other VARS
 var buy_mk2 = true;
+var hover_flip2 = false;
+var nickel_upgrade = false;
 var buy_workers_mk2 = true;
+var eco_mk2 = false;
 
 //Tutorial============
 var rev_tut_0 = true;
@@ -113,6 +115,10 @@ function update(){
 			}, 4000)
 		}, 1000)
 	}
+	if(ecoflipper.amount > 0 && eco_mk2){
+		eco_mk2 = false;
+		createShopItem("eco-mk-2", "Giant Fans", "Buy mega-fans to", "manipulate the wind", "so that eco-flippers", "flip more coins.", 50);
+	}
 
 	if(robot.amount > 0 && buy_mk2){
 		buy_mk2 = false;
@@ -122,6 +128,11 @@ function update(){
 	if(person.amount > 0 && buy_workers_mk2){
 		buy_workers_mk2 = false;
 		createShopItem("one-man-army", "Efficient Workers", "Better salaries lead", "to better workers.", "Workers can flip", "5¢ every second.", 12);
+	}
+
+	if(hover_flip2 && nickel_upgrade){
+		hover_flip2 = false;
+		createShopItem("hover-flip2", "HoverFlip 2™ by Zamazon", "An upgrade to", "the original HoverFlip", "Flips 1.25x when the", "coin is hovered over.", 100);
 	}
 
 	if(person.amount > 0 && robot.amount > 0  && rev_tut6){
@@ -162,7 +173,13 @@ function addmoney(){
 	deg += 360
 	coin.style.transform = "rotateX(" + deg + "deg)"
   setTimeout(reset,2000)
-	return false;
+}
+
+function addmoneyhoverflip2(){
+  player.money = Math.round(parseFloat(player.money) + parseFloat(player.clickvalue) * 125);
+	deg += 360
+	coin.style.transform = "rotateX(" + deg + "deg)"
+  setTimeout(reset,2000)
 }
  
 //Reset Coin Styleing

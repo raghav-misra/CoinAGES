@@ -35,7 +35,7 @@ var person = {
 }
 // Objects that are not default
 var ecoflipper = {
-	 price: 12,
+	 price: 20,
   value: 0.10,
   max: 5,
   amount: 0,
@@ -43,7 +43,7 @@ var ecoflipper = {
   wakeup: 'manageecoflipper',
   name: 'ecoflipper',
   code:' <img class=" itemimg spin infinite" src="assets/img/ecoflipper.png">',
-	cardcode: "<div style='opacity:1'class='card'> <p>Eco Flipper</p> <div class='bar' id='ecobar'></div> <hr class='blu thin'> <div class='container' id='ecoflipperinfo'> <p>Use the wind to flip coins, then charge more because it is environmentally friendly.<br>Flip Time: 1 Second<br> Money Per Flip: $0.10</p> </div> <br> <button id='buy-ecoflipper' onclick='buy(\"ecoflipper\")' class='martophack buy-bot'>Build one for $12.00</button> <p id='ecoflipper-displaymax'>You are using 0/5</p> </div>"
+	cardcode: "<div style='opacity:1'class='card'> <p>Eco Flipper</p> <div class='bar' id='ecobar'></div> <hr class='blu thin'> <div class='container' id='ecoflipperinfo'> <p>Use the wind to flip coins, then charge more because it is environmentally friendly.<br>Flip Time: 1 Second<br> Money Per Flip: $0.10</p> </div> <br> <button id='buy-ecoflipper' onclick='buy(\"ecoflipper\")' class='martophack buy-bot'>Build one for $20.00</button> <p id='ecoflipper-displaymax'>You are using 0/5</p> </div>"
 
 } 
 
