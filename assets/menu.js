@@ -37,6 +37,7 @@ function updateusage(name,amount,max){
 
 // MENU WINDOW MANGEMENT=========================
 function opencomp(){
+  menuSound.play()
   if(rev_tut){
 		rev_tut = false;
 		setTimeout(function(){
@@ -54,6 +55,7 @@ function opencomp(){
 	backbtn.classList.remove('hide')
 }
 function openshop(){
+  menuSound.play()
 	if(rev_tut7){
 		rev_tut7 = false;
 		notify("Tutorial", "You've completed the tutorial!")
@@ -73,7 +75,7 @@ function openshop(){
   backbtn.classList.remove('hide')
 }
 function openmarketing(){
-	
+	menuSound.play()
 	title.innerText = "Marketing";
   locationchoose.style.height = "0%"
   locationchoose.style.width = "0%"
@@ -84,7 +86,7 @@ function openmarketing(){
 	backbtn.classList.remove('hide')
 }
 function back(){
-	
+	menuSound.play()
 	title.innerText = "CEO Dashboard";
   marketingpannel.classList.add('hide')
   comppannel.classList.add('hide')

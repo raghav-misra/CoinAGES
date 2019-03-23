@@ -22,10 +22,19 @@ var robotBuySound = new Howl({
 var personBuySound = new Howl({
   src: ['assets/audio/people.mp3']
 });
-
+var bottleflipBuySound = new Howl({
+  src: ['assets/audio/bottleflip.mp3']
+});
+var ecoflipperBuySound = new Howl({
+  src: ['assets/audio/ecoflipper.mp3']
+});
 var upgradeBuySound = new Howl({
   src: ['assets/audio/purchased.wav']
 });
+var menuSound = new Howl({
+  src: ['assets/audio/slide.mp3']
+});
+
 
 
 
@@ -47,6 +56,7 @@ var buy_mk2 = true;
 var nickel_upgrade = false;
 var buy_workers_mk2 = true;
 var eco_mk2 = false;
+var bottle_mk2 = false;
 
 //Tutorial============
 var rev_tut_0 = true;
@@ -135,7 +145,10 @@ function update(){
 		eco_mk2 = false;
 		createShopItem("eco-mk-2", "Giant Fans", "Buy mega-fans to", "manipulate the wind", "so that eco-flippers", "flip more coins.", 50);
 	}
-
+  if(person.amount > 0 && bottle_mk2){
+		bottle_mk2 = false;
+		createShopItem("bottle-mk2", "Bigger Bottles", "Koka-Kola™ bottles are", "bigger, resulting in", "lots of free space", "to hold more coins.", 100)
+	}
 	if(robot.amount > 0 && buy_mk2){
 		buy_mk2 = false;
 		createRobotMk2()

@@ -9,22 +9,25 @@ function fadeIn(element) {
 	}, 10);
 }
 
-function fadeOut(element, del) {
-	
+function statusUpdate(obj){
+  updateusage("document.getElementById('" + obj.name + "-displaymax')", obj.amount, obj.max)
+  return "no u :)";
 }
 
 var container = document.getElementById("shop-item-container");
 
 var itemLimits = {
-	"robot-max-increase": 0, // 5 Maximum
-	"human-max-increase": 0, // 5 Maximum
-	"hover-flip": 0, // 1 Maximum
-	"tutorial-gift": 0, // 1 Maximum
-	"robo-mk2": 0, // 1 Maximum
-	"one-man-army": 0, // 1 Maximum
-	"nickel-upgrade": 0, // 1 Maximum
-	"human-max-increase": 0, // 5 Maximum
-	"eco-mk-2": 0, // 2 Maximum
+	"hover-flip": 0, // 1 Max
+	"tutorial-gift": 0, // 1 Max
+	"robot-max-increase": 0, // 5 Max
+	"robo-mk2": 0, // 1 Max
+	"human-max-increase": 0, // 5 Max
+	"one-man-army": 0, // 1 Max
+	"nickelupgrade": 0, // 1 Max
+	"eco-max-increase": 0, // 2 Max
+	"eco-mk-2": 0, // 1 Max
+	"bottle-max-increase": 0, // 2 Max
+  "bottle-mk2": 0 // 1 Max
 }
 
 var shopCode = {
@@ -62,11 +65,12 @@ function createShopItem(name, title, desc1, desc2, desc3, desc4, price) {
 function deleteShopItem(id)
 {
 	var element = document.getElementById(id);
+  console.log(element)
 	var op = 1;  // initial opacity
 	var timer = setInterval(function(){
 		if (op <= 0.1) {
 			clearInterval(timer);
-			document.body.outerHTML.replace(element.outerHTML.trim(), "");
+			element.parentNode.removeChild(element)
 		}
 		element.style.opacity = op;
 		op -= 0.1;
@@ -107,7 +111,7 @@ function buyShopItem(id, price) {	//Not enough money
 				deleteShopItem("robot-max-increase");
 			}
 			robot.max++
-			updateusage("document.getElementById('" + robot.name + "-displaymax')", robot.amount, robot.max)
+			statusUpdate(robot)
 			notify("R&D Labs", "The item has been purchased!", true, true);
 			return
 		case "human-max-increase":
@@ -116,7 +120,7 @@ function buyShopItem(id, price) {	//Not enough money
 				deleteShopItem("human-max-increase");
 			}
 			person.max++
-			updateusage("document.getElementById('" + person.name + "-displaymax')", person.amount, person.max)
+			statusUpdate(person)
 			notify("R&D Labs", "The item has been purchased!", true, true);
 			return
 		case "robo-mk2":
@@ -131,13 +135,13 @@ function buyShopItem(id, price) {	//Not enough money
 			person.value = 0.05;
 			notify("R&D Labs", "The item has been purchased!", true, true);
 			return
-		case "nickel-upgrade":
-			deleteShopItem("nickel-upgrade");
-			itemLimits["nickel-upgrade"]++
+		case "nickelupgrade":
+		  itemLimits["nickelupgrade"]++
 			nextstage(0.05);
 			createNickelShop();
 			nickel_upgrade = true;
 			notify("R&D Labs", "The item has been purchased!", true, true);
+       deleteShopItem("nickelupgrade")
 			return
 		case "eco-max-increase":
 			itemLimits["eco-max-increase"]++
@@ -145,7 +149,7 @@ function buyShopItem(id, price) {	//Not enough money
 				deleteShopItem("eco-max-increase");
 			}
 			ecoflipper.max++
-			updateusage("document.getElementById('" + ecoflipper.name + "-displaymax')", ecoflipper.amount, ecoflipper.max)
+			statusUpdate(ecoflipper)
 			notify("R&D Labs", "The item has been purchased!", true, true);
 			return
 		case "eco-mk-2":
@@ -154,6 +158,21 @@ function buyShopItem(id, price) {	//Not enough money
 			ecoflipper.value = 0.12;
 			notify("R&D Labs", "The item has been purchased!", true, true);
 			return
+    case "bottle-max-increase":
+      itemLimits["bottle-max-increase"]++
+			if (itemLimits["bottle-max-increase"] == 2) {
+				deleteShopItem("bottle-max-increase");
+			}
+			bottleflip.max++
+			statusUpdate(bottleflip)
+			notify("R&D Labs", "The item has been purchased!", true, true);
+			return
+    case "bottle-mk2":
+      itemLimits["bottle-mk2"]++
+			deleteShopItem("bottle-mk2");
+			ecoflipper.value = 0.22;
+			notify("R&D Labs", "The item has been purchased!", true, true);
+      return
 	}
 }
 
@@ -165,17 +184,19 @@ function createFreeGift() {
 
 function createNickelShop() {
 	createShopItem("eco-max-increase", "More Eco-Flippers", "The upgrade lets you", "increase the maximum", "amount of eco-flippers", "that you can purchase by 1.", 25);
+  createShopItem("bottle-max-increase", "Extra Bottles", "Koka-Kola™ has agreed", "to increase the", "limit on bottles", "you can purchase.", 100);
 	eco_mk2 = true;
+  bottle_mk2 = true;
 }
 
 function createRobotMk2() {
 	createShopItem("robo-mk2", "Robots: Mark II", "Sicromoft C.E.O Gill Bates", "has developed a way", "for robots to flip", "3¢ every second.", 10);
 }
+//default shop items
 
 createShopItem("robot-max-increase", "Raise Robot Quota", "The upgrade lets you", "increase the maximum", "amount of robo-flippers", "that you can purchase by 1.", 2);
-
 createShopItem("human-max-increase", "More Workers", "This upgrade allows", "you to hire an", "extra human worker", "to flip coins for you.", 3.5);
-createShopItem("nickel-upgrade", "Nickel Research Program", "Research the next generation", "of coin-flipping technology.", "Upgrade your coherence", "and cost-effectiveness.", 50)
+createShopItem("nickelupgrade", "Nickel Research Program", "Research the next generation", "of coin-flipping technology.", "Upgrade your coherence", "and cost-effectiveness.", 50)
 createShopItem("hover-flip", "HoverFlip™ by Zamazon", "Using the latest in flipping-tech,", "Jeph Besoz has created a way", "to not click, but hover over", "coins to flip them.", 0.5);
 
 

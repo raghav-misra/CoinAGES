@@ -47,15 +47,15 @@ var ecoflipper = {
 
 } 
 var bottleflip = {
-	 price: 20,
-  value: 20,
+	 price: 80,
+  value: 0.50,
   max: 2,
   amount: 0,
 	unlock: 2,
   wakeup: 'managebottleflip',
   name: 'bottleflip',
   code:' <img class=" itemimg bottleflip infinite" src="assets/img/waterbottle.png">',
-	cardcode: "<div style='opacity:1'class='card'> <p>Bottle Flipper</p> <div class='bar' id='bottleflipbar'></div> <hr class='blu thin'> <div class='container' id='bottleflipinfo'> <p>Flip waterbottles with mutiple coins in them for increased efficiency!<br>Flip Time: 1 Second<br> Money Per Flip: $0.20</p> </div> <br> <button  onclick='buy(\"bottleflip\")' class='martophack buy-bot'>Buy one for $100</button> <p id='bottleflip-displaymax'>You are using 0/5</p> </div>"
+	cardcode: "<div style='opacity:1'class='card'> <p>Bottle Flipper</p> <div class='bar' id='bottleflipbar'></div> <hr class='blu thin'> <div class='container' id='bottleflipinfo'> <p>Flip Koka-Kola™ Bottles filled with coins for high efficiency.<br>Flip Time: 1 Second<br> Money Per Flip: $0.40</p> </div> <br> <button  onclick='buy(\"bottleflip\")' class='martophack buy-bot'>Buy one for $80.00</button> <p id='bottleflip-displaymax'>You are using 0/2</p> </div>"
 
 } 
 

@@ -8,7 +8,7 @@ body, html{
 	width: 100%;
 	height: 100%;
 	min-height: 100%;
-  background-image: linear-gradient(to top, #a3bded 0%, #6991c7 100%);
+  background-color: #2773be;
 }
 
 hr{
@@ -23,7 +23,7 @@ hr{
 }
 
 hr.blu{
-  border-color: #003366;
+  border-color: #2773be;
 }
 
 hr.thin{
@@ -70,13 +70,15 @@ a, button{
   color: white;
 }
 
+#moneyshop, #money{color: white;}
+
 .widebutton, .widebutton:disabled{
   margin: 10px;
   display:inline-block;
   padding: 2.5%;
   width: 90%;
 	color: white;
-	border-radius: 20px;
+	border-radius: 10px;
 	background-color: transparent;
 	border: white 2px solid;
 	font-size: 25px;
@@ -90,7 +92,7 @@ a, button{
 
 .widebutton:hover{
 	background: white;
-	color: #003366;
+	color: #2773be;
 }
 
 .widebutton:disabled:hover{
@@ -134,8 +136,8 @@ a, button{
   text-align: left;
   position: absolute;
   font-size: 17.5px;
-  border: #003366 2px solid;
-  color: #003366;
+  border: #2773be 2px solid;
+  color: #2773be;
 	transition: all 1s ease;
 }
 
@@ -152,7 +154,7 @@ button.standard{
 
 button.standard:hover{
 	background: white;
-	color: #003366;
+	color: #2773be;
 }
 
 .subtitle{
@@ -160,7 +162,7 @@ button.standard:hover{
   display: block;
   padding: 16px;
   background: white;
-  color: #003366;
+  color: #2773be;
 }
 
 .shopcard-inline{
@@ -178,7 +180,7 @@ button.standard:hover{
 
 .return-btn:hover{
   color: white;
-  background: #003366;
+  background: #2773be;
 	padding-right: 10px;
 	border-top-right-radius: 20px;
 	border-bottom-right-radius: 20px;
@@ -206,7 +208,7 @@ transition: all 1s ease-in-out;
 }
 .bar{
   display: none;
-  background-color: #003366;
+  background-color: #2773be;
   border-radius: 10px;
   height: 5px;
   margin-left: 5px;
@@ -216,17 +218,17 @@ transition: all 1s ease-in-out;
 }
 
 button.buy-bot, button.buy-now{
-  color: #003366;
+  color: #2773be;
   padding: 7.5px;
   font-size: 17.5px;
-  border: #003366 solid 2px;
+  border: #2773be solid 2px;
   background: white;
   transition: all ease-in-out 0.5s;
 }
 
 button.buy-bot:hover, button.buy-now:hover{
   color: white;
-  background: #003366;
+  background: #2773be;
 }
 .item{
   display: inline-block;
