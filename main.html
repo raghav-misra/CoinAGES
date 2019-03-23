@@ -11,7 +11,6 @@
     <img src="assets/img/coinageslogo.png" id="icon">
     <h1 id="logo" class='logo'>CEO Dashboard</h1>
       <button id="skip-tut" class="standard" onclick="skipTutorial()">Skip Tutorial</button>
-      <button id="skip-tut" class="standard" onclick="m()">!!!!!!!!!!!!!!DEBUGTOOLS!!!!!!!!!</button>
     <hr>
     <!-- Bottom Notifcaion -->
     <div id='noti' onclick="closenotify()" class='noti'>
@@ -41,8 +40,7 @@
   <br>
  
   <div id='subtractWallet'class='moneydisplay'>
-     
-    <i id='shopIcon' class="fas fa-wallet"></i>
+    <p id='confirm'class='item'> PayBud Balance</p> <i id='shopIcon' class=" item fas fa-wallet"></i>
     <h2 id='moneyshop'>0.00</h2>
    
 </div>
@@ -54,10 +52,15 @@
     <div class='hide' id='comppannel'>
       <h3 class="subtitle">Control your company's income and cost.</h3>
       <div class='moneydisplay'>
+        PayBud Balance
         <i class="fas fa-wallet"></i>
       <h2 id='money'>0.00</h2>
-    
     </div>
+     <div style='background-image: linear-gradient(to top, #37ecba 0%, #72afd3 100%);'class='moneydisplay'>
+       Customers Served
+       <i class="fas fa-smile-beam"></i>
+      <h2 id='clicks'>0</h2>
+     </div>
     <br>
       <img oncontextmenu="return false;" id='coin' class='coin'src='assets/img/1.png'>
      <div id='itemdivs'>
@@ -90,6 +93,7 @@
   <script src="./assets/main.js"></script>
 	<script src="./assets/menu.js"></script>
   <script src="./assets/settings.js"></script>
+  <script src="./assets/del.js"></script>
 	<script src="./assets/shop.js"></script>
 	
   </body>
