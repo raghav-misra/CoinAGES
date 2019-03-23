@@ -46,5 +46,17 @@ var ecoflipper = {
 	cardcode: "<div style='opacity:1'class='card'> <p>Eco Flipper</p> <div class='bar' id='ecobar'></div> <hr class='blu thin'> <div class='container' id='ecoflipperinfo'> <p>Use the wind to flip coins, then charge more because it is environmentally friendly.<br>Flip Time: 1 Second<br> Money Per Flip: $0.10</p> </div> <br> <button id='buy-ecoflipper' onclick='buy(\"ecoflipper\")' class='martophack buy-bot'>Build one for $20.00</button> <p id='ecoflipper-displaymax'>You are using 0/5</p> </div>"
 
 } 
+var bottleflip = {
+	 price: 20,
+  value: 20,
+  max: 2,
+  amount: 0,
+	unlock: 2,
+  wakeup: 'managebottleflip',
+  name: 'bottleflip',
+  code:' <img class=" itemimg bottleflip infinite" src="assets/img/waterbottle.png">',
+	cardcode: "<div style='opacity:1'class='card'> <p>Bottle Flipper</p> <div class='bar' id='bottleflipbar'></div> <hr class='blu thin'> <div class='container' id='bottleflipinfo'> <p>Flip waterbottles with mutiple coins in them for increased efficiency!<br>Flip Time: 1 Second<br> Money Per Flip: $0.20</p> </div> <br> <button  onclick='buy(\"bottleflip\")' class='martophack buy-bot'>Buy one for $100</button> <p id='bottleflip-displaymax'>You are using 0/5</p> </div>"
 
-items.push(ecoflipper)
+} 
+
+items.push(ecoflipper,bottleflip)

@@ -25,7 +25,6 @@ var itemLimits = {
 	"nickel-upgrade": 0, // 1 Maximum
 	"human-max-increase": 0, // 5 Maximum
 	"eco-mk-2": 0, // 2 Maximum
-	"hover_flip2": 0 // 1 Maximum
 }
 
 var shopCode = {
@@ -62,13 +61,12 @@ function createShopItem(name, title, desc1, desc2, desc3, desc4, price) {
 
 function deleteShopItem(id)
 {
-	element = document.getElementById(id);
+	var element = document.getElementById(id);
 	var op = 1;  // initial opacity
 	var timer = setInterval(function(){
 		if (op <= 0.1) {
 			clearInterval(timer);
-			element.parentNode.removeChild(element);
-			element.opacity = '1';
+			document.body.outerHTML.replace(element.outerHTML.trim(), "");
 		}
 		element.style.opacity = op;
 		op -= 0.1;
@@ -95,13 +93,13 @@ function buyShopItem(id, price) {	//Not enough money
 			coin.onmouseover = function () { coin.click() }
 			itemLimits["hover-flip"]++
 			hover_flip2 = true;
-			notify("R&D Labs", "The item has been purchased!")
+			notify("R&D Labs", "The item has been purchased!", true, true);
 			return
 		case "tutorial-gift":
 			deleteShopItem("tutorial-gift")
 			player.money = player.money + 100
 			itemLimits["tutorial-gift"]++
-			notify("R&D Labs", "You received $1.00!")
+			notify("R&D Labs", "You received $1.00!", true, true)
 			return
 		case "robot-max-increase":
 			itemLimits["robot-max-increase"]++
@@ -110,7 +108,7 @@ function buyShopItem(id, price) {	//Not enough money
 			}
 			robot.max++
 			updateusage("document.getElementById('" + robot.name + "-displaymax')", robot.amount, robot.max)
-			notify("R&D Labs", "The item has been purchased!")
+			notify("R&D Labs", "The item has been purchased!", true, true);
 			return
 		case "human-max-increase":
 			itemLimits["human-max-increase"]++
@@ -119,19 +117,19 @@ function buyShopItem(id, price) {	//Not enough money
 			}
 			person.max++
 			updateusage("document.getElementById('" + person.name + "-displaymax')", person.amount, person.max)
-			notify("R&D Labs", "The item has been purchased!")
+			notify("R&D Labs", "The item has been purchased!", true, true);
 			return
 		case "robo-mk2":
 			itemLimits["robo-mk2"]++
 			deleteShopItem("robo-mk2");
 			robot.value = 0.03;
-			notify("R&D Labs", "The item has been purchased!")
+			notify("R&D Labs", "The item has been purchased!", true, true);
 			return
 		case "one-man-army":
 			itemLimits["one-man-army"]++
 			deleteShopItem("one-man-army");
 			person.value = 0.05;
-			notify("R&D Labs", "The item has been purchased!")
+			notify("R&D Labs", "The item has been purchased!", true, true);
 			return
 		case "nickel-upgrade":
 			deleteShopItem("nickel-upgrade");
@@ -139,7 +137,7 @@ function buyShopItem(id, price) {	//Not enough money
 			nextstage(0.05);
 			createNickelShop();
 			nickel_upgrade = true;
-			notify("R&D Labs", "The item has been purchased!");
+			notify("R&D Labs", "The item has been purchased!", true, true);
 			return
 		case "eco-max-increase":
 			itemLimits["eco-max-increase"]++
@@ -148,20 +146,13 @@ function buyShopItem(id, price) {	//Not enough money
 			}
 			ecoflipper.max++
 			updateusage("document.getElementById('" + ecoflipper.name + "-displaymax')", ecoflipper.amount, ecoflipper.max)
-			notify("R&D Labs", "The item has been purchased!")
+			notify("R&D Labs", "The item has been purchased!", true, true);
 			return
 		case "eco-mk-2":
 			itemLimits["eco-mk-2"]++
 			deleteShopItem("eco-mk-2");
 			ecoflipper.value = 0.12;
-			notify("R&D Labs", "The item has been purchased!")
-			return
-		case "hover-flip2":
-			deleteShopItem("hover-flip2")
-			coin.onmouseover = addmoneyhoverflip2;
-			itemLimits["hover-flip2"]++
-			hover_flip2 = true;
-			notify("R&D Labs", "The item has been purchased!")
+			notify("R&D Labs", "The item has been purchased!", true, true);
 			return
 	}
 }
@@ -184,9 +175,9 @@ function createRobotMk2() {
 createShopItem("robot-max-increase", "Raise Robot Quota", "The upgrade lets you", "increase the maximum", "amount of robo-flippers", "that you can purchase by 1.", 2);
 
 createShopItem("human-max-increase", "More Workers", "This upgrade allows", "you to hire an", "extra human worker", "to flip coins for you.", 3.5);
-
+createShopItem("nickel-upgrade", "Nickel Research Program", "Research the next generation", "of coin-flipping technology.", "Upgrade your coherence", "and cost-effectiveness.", 50)
 createShopItem("hover-flip", "HoverFlip™ by Zamazon", "Using the latest in flipping-tech,", "Jeph Besoz has created a way", "to not click, but hover over", "coins to flip them.", 0.5);
 
-createShopItem("nickel-upgrade", "Nickel Research Program", "Research the next generation", "of coin-flipping technology.", "Upgrade your coherence", "and cost-effectiveness.", 50)
+
 
 

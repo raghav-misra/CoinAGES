@@ -5,7 +5,10 @@ body, html{
   text-align: center; 
   padding: 0;
   margin: 0;
-  background-color: rgb(119, 170, 97);
+	width: 100%;
+	height: 100%;
+	min-height: 100%;
+  background-image: linear-gradient(to top, #a3bded 0%, #6991c7 100%);
 }
 
 hr{
@@ -72,7 +75,6 @@ a, button{
   display:inline-block;
   padding: 2.5%;
   width: 90%;
-	height: 1%;
 	color: white;
 	border-radius: 20px;
 	background-color: transparent;
@@ -533,5 +535,97 @@ button.buy-bot:hover, button.buy-now:hover{
   }
   99% {
     -ms-transform:  rotate(360deg) ;
+  }
+}
+.bottleflip{
+  animation: bottleflipf linear 1s;
+  animation-iteration-count: infinite;
+  transform-origin: 50% 50%;
+  -webkit-animation: bottleflipf linear 1s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-transform-origin: 50% 50%;
+  -moz-animation: bottleflipf linear 1s;
+  -moz-animation-iteration-count: infinite;
+  -moz-transform-origin: 50% 50%;
+  -o-animation: bottleflipf linear 1s;
+  -o-animation-iteration-count: infinite;
+  -o-transform-origin: 50% 50%;
+  -ms-animation: bottleflipf linear 1s;
+  -ms-animation-iteration-count: infinite;
+  -ms-transform-origin: 50% 50%;
+}
+
+@keyframes bottleflipf{
+  0% {
+    transform:  translate(-1px,1px)  rotate(0deg) ;
+  }
+  23% {
+    transform:  translate(4px,-52px)  rotate(90deg) ;
+  }
+  50% {
+    transform:  translate(10px,-71px)  rotate(180deg) ;
+  }
+  100% {
+    transform:  translate(0px,0px)  rotate(360deg) ;
+  }
+}
+
+@-moz-keyframes bottleflipf{
+  0% {
+    -moz-transform:  translate(-1px,1px)  rotate(0deg) ;
+  }
+  23% {
+    -moz-transform:  translate(4px,-52px)  rotate(90deg) ;
+  }
+  50% {
+    -moz-transform:  translate(10px,-71px)  rotate(180deg) ;
+  }
+  100% {
+    -moz-transform:  translate(0px,0px)  rotate(360deg) ;
+  }
+}
+
+@-webkit-keyframes bottleflipf {
+  0% {
+    -webkit-transform:  translate(-1px,1px)  rotate(0deg) ;
+  }
+  23% {
+    -webkit-transform:  translate(4px,-52px)  rotate(90deg) ;
+  }
+  50% {
+    -webkit-transform:  translate(10px,-71px)  rotate(180deg) ;
+  }
+  100% {
+    -webkit-transform:  translate(0px,0px)  rotate(360deg) ;
+  }
+}
+
+@-o-keyframes bottleflipf {
+  0% {
+    -o-transform:  translate(-1px,1px)  rotate(0deg) ;
+  }
+  23% {
+    -o-transform:  translate(4px,-52px)  rotate(90deg) ;
+  }
+  50% {
+    -o-transform:  translate(10px,-71px)  rotate(180deg) ;
+  }
+  100% {
+    -o-transform:  translate(0px,0px)  rotate(360deg) ;
+  }
+}
+
+@-ms-keyframes bottleflipf {
+  0% {
+    -ms-transform:  translate(-1px,1px)  rotate(0deg) ;
+  }
+  23% {
+    -ms-transform:  translate(4px,-52px)  rotate(90deg) ;
+  }
+  50% {
+    -ms-transform:  translate(10px,-71px)  rotate(180deg) ;
+  }
+  100% {
+    -ms-transform:  translate(0px,0px)  rotate(360deg) ;
   }
 }

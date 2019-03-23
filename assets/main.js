@@ -9,8 +9,30 @@ var ndescription = document.getElementById('ndescription')// description for not
 var nheader = document.getElementById('nheader')
 var itemdivs = document.getElementById('itemdivs')//Rev management items
 //header for notificaion
+//AUDIO VARS ========
+var notifSound = new Howl({
+  src: ['assets/audio/notif.wav']
+});
+var coinSound = new Howl({
+  src: ['assets/audio/coin.wav']
+});
+var robotBuySound = new Howl({
+  src: ['assets/audio/robot.wav']
+});
+var personBuySound = new Howl({
+  src: ['assets/audio/people.mp3']
+});
 
+var upgradeBuySound = new Howl({
+  src: ['assets/audio/purchased.wav']
+});
+
+
+
+
+//DEBUG
 function m(){
+	skipTutorial()
 	player.money = 6666666666666666;
 	return 'no u'
 }
@@ -22,7 +44,6 @@ var deg = 0 //stores amount of\ roation coin flips
 
 // Other VARS
 var buy_mk2 = true;
-var hover_flip2 = false;
 var nickel_upgrade = false;
 var buy_workers_mk2 = true;
 var eco_mk2 = false;
@@ -65,17 +86,12 @@ coin.addEventListener('click', function(){
 		}, 2000)
 	}
 	addmoney();
+	var temp = Math.floor(Math.random() * 4) + 1  
+	coinSound.rate(temp)
+	coinSound.play()
 })
 
-coin.addEventListener('contextmenu', function(){
-	if(rev_tut2){
-		rev_tut2 = false;
-		setTimeout(function(){
-			notify('Tutorial', 'Keep flipping coins until you reach $1.')
-		}, 2000)
-	}
-	addmoney();
-})
+coin.addEventListener('contextmenu', function(){ coin.click() })
 
 //FUNCTIONS====
 
@@ -94,7 +110,7 @@ function nextstage(newMoney){
 	
 	)}
 //Update Function
-window.setInterval(update,30)
+window.setInterval(update,200)
 function update(){
   moneydisplay.innerText = '$' + player.money / 100;
   moneydisplayshop.innerText = '$' + player.money / 100;
@@ -130,11 +146,6 @@ function update(){
 		createShopItem("one-man-army", "Efficient Workers", "Better salaries lead", "to better workers.", "Workers can flip", "5¢ every second.", 12);
 	}
 
-	if(hover_flip2 && nickel_upgrade){
-		hover_flip2 = false;
-		createShopItem("hover-flip2", "HoverFlip 2™ by Zamazon", "An upgrade to", "the original HoverFlip", "Flips 1.25x when the", "coin is hovered over.", 100);
-	}
-
 	if(person.amount > 0 && robot.amount > 0  && rev_tut6){
 		rev_tut6 = false;
 		setTimeout(function(){
@@ -154,14 +165,17 @@ function update(){
 	noti.style.zIndex = "100 !important";
 }
 // Open notificaion
-function notify(header,description,flip = true){
+function notify(header,description,flip = true, shop = false){
   noti.style.right = 'calc(100% + 300px)'
-
   nheader.innerText = header
   ndescription.innerText = description
   noti.style.left = 'calc(100% - 300px)'
+	setTimeout(function(){
+		if(shop){ upgradeBuySound.play(); }
+		else{ notifSound.play(); }
+	},1000)
   if(flip == true){
-setTimeout(closenotify,3000)
+setTimeout(closenotify,2000)
   }
 }
 function closenotify(){
@@ -207,24 +221,27 @@ function buy(obj){
 			eval(wakeup + "()") 
 			player.money = player.money - price * 100
 			eval( obj + '.amount += 1') 
+			//Init if they never bought it before
 			if(amount == 0){
 				
 				eval(' document.getElementById("' + obj + 'info").innerHTML = ""')
 				eval(' document.getElementById("' + obj + 'info").innerHTML =  document.getElementById("' + obj + 'info").innerHTML + ' +"'" + code + "' + '</div>' ")
         var updatedamount = eval(  'parseInt(' +obj + '.amount)') 
         updateusage("document.getElementById('" +name +"-displaymax')",updatedamount,max)
+				eval(name + 'BuySound.play()')
 
 			} 
 			else{
 				eval(' document.getElementById("' + obj + 'info").innerHTML =  document.getElementById("' + obj + 'info").innerHTML + ' +"'" + code + "' + '</div>' ")
         var updatedamount = eval(  'parseInt(' +obj + '.amount)') 
         updateusage("document.getElementById('" +name +"-displaymax')",updatedamount,max)
+				eval(name + 'BuySound.play()')
 
 			}
     }
   }
 	else{//Not enough money
-    notify('Cannot Buy','You do not have enough money.')
+    notify('Cannot Buy','You cannot afford that..')
 		return;
   }
 	if(rev_tut4){
@@ -246,7 +263,13 @@ function managerobot(){
   document.getElementById('robotbar').style.width = "90%"
   setTimeout(managerobot2,900)
 }
-
+function managerobot2(){
+  player.money += Math.round(parseFloat(robot.value) * 100);
+   document.getElementById('robotbar').style.transition = "none"
+  document.getElementById('robotbar').style.width = "0%"
+  setTimeout(managerobot,100)
+}
+//ECOFLIPPER
 function manageecoflipper(){
 	document.getElementById("ecobar").style.transition = "width 0.9s ease-in-out"
   document.getElementById("ecobar").style.display = "inline-block"
@@ -261,13 +284,7 @@ function manageecoflipper2(){
   document.getElementById("ecobar").style.width = "90%"
   setTimeout(manageecoflipper,900)
 }
-
-function managerobot2(){
-  player.money += Math.round(parseFloat(robot.value) * 100);
-   document.getElementById('robotbar').style.transition = "none"
-  document.getElementById('robotbar').style.width = "0%"
-  setTimeout(managerobot,100)
-}
+//PERSON
 function manageperson(){
    document.getElementById('personbar').style.transition = "width 0.9s ease-in-out"
   document.getElementById('personbar').style.display = "inline-block"
@@ -279,6 +296,19 @@ function manageperson2(){
    document.getElementById('personbar').style.transition = "none"
   document.getElementById('personbar').style.width = "0%"
   setTimeout(manageperson,100)
+}
+//Bottle
+function managebottleflip(){
+   document.getElementById('bottleflipbar').style.transition = "width 0.9s ease-in-out"
+  document.getElementById('bottleflipbar').style.display = "inline-block"
+  document.getElementById('bottleflipbar').style.width = "90%"
+  setTimeout(managebottleflip2,900)
+}
+function managebottleflip2(){
+  player.money += Math.round(parseFloat(bottleflip.value) * 100);
+   document.getElementById('bottleflipbar').style.transition = "none"
+  document.getElementById('bottleflipbar').style.width = "0%"
+  setTimeout(managebottleflip,100)
 }
 
 notify('Tutorial', 'Welcome to the CEO Dashboard', true)

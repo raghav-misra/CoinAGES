@@ -1,31 +1,66 @@
 @import url('https://fonts.googleapis.com/css?family=Oxygen');
-html{
- background: #fd746c;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #ff9068, #fd746c);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #ff9068, #fd746c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
+*{
+	font-family: Oxygen;
+	text-decoration: none;
+}
+
+html, body{
+	background: #fd746c;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #ff9068, #fd746c);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #ff9068, #fd746c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   text-align: center;
   overflow: hidden;
   color: white;
+	padding: 10px;
   scroll-behavior: smooth;
-  font-size: 200%;
 }
+
+html{font-size: 150%;}
+
 a.standard{
 	padding: 12.5px;
-	margin: 12.5px;
+	margin: 5px;
 	background: transparent;
 	font-size: 17.5px;
 	border: 2px white solid;
 	color: white;
 	border-radius: 15px;
- 
-  
+	width: 75px;
+	transition: 0.5s all ease-in-out;
 }
 
 a.standard:hover{
 	background: white;
 	color: #003366;
 }
+
+#c h3{
+	margin: -10px;
+	margin-top: 25px;
+	display: inline-block;
+}
+
+#c h4{
+	margin: -10px;
+	padding: 0;
+}
+
+#c hr{
+	margin: 3.75%;
+	height: 0;
+  background: none;
+  border: white 2px solid;
+  border-radius: 100px;
+}
+
+#c hr.thin{
+	margin: 3.75%;
+  background: none;
+  border: white 1.25px solid;
+  border-radius: 100px;
+}
+
 img{
 
   width: 40%;
@@ -37,18 +72,26 @@ img{
   padding: 2%;
   background-color: white;
   font-family: Oxygen;
-  width: 100%;
+  width: 95%;
   height: 100%;
 }
-i{
-  font-size: 60%;
-}
-hr{
-  border: #55efc4 30px solid;
-  text-align: left;
-
-  width: 0%;
-   transition-delay: 2s;
-	transition: all 4s;
+#hr{
+  border: #55efc4 20px solid;
+	border-radius: 50px;
+	background: #55efc4;
+	margin: 10px;
+	margin-top: 17.5px;
+	width: 0%;
+  text-align: center;
+	transition-delay: 2s;
+	transition: width 4s ease-in-out;
   
+}
+#c{
+	margin-top: 50%;
+	padding-top: 30px;
+	margin-bottom: 50%;
+}
+a{
+	font-size: 50%;
 }
