@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width">
     <title>CoinAGES</title>
     <link href="assets/style.css" rel="stylesheet" type="text/css" />
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   </head>
   <body>
     <img src="assets/img/coinageslogo.png" id="icon">
@@ -23,9 +23,9 @@
     <!-- Main Menu -->
     <div id='locationchoose'class='locationchoose'> 
       <button id='back'type="button" class="return-btn hide">Go<br>Back</button>
-      <button disabled id='compbtn' type="button" class=" btn widebutton diabled">Revenue<br>Management</button>
-      <button disabled id='shopbtn' type="button" class="btn disabled widebutton">Research &<br>Development<br></button>
-      <button title="Unlocked at Dime Development" id='marketingbtn'type="button" class="disabled widebutton" disabled>Marketing<br>Campaigns</button>
+      <button disabled id='compbtn' type="button" class=" btn widebutton diabled"> <i class="fas fa-money-bill-wave"></i><br>Revenue<br>Management</button>
+<button disabled id='shopbtn' type="button" class="btn disabled widebutton"><i class="fas fa-tools"></i><br>Research &<br>Development<br></button>
+      <button title="Unlocked at Dime Development" id='marketingbtn'type="button" class="disabled widebutton" disabled><i class="fas fa-bullhorn"></i><br>Marketing<br>Campaigns</button>
 		
     </div>
 
@@ -45,7 +45,9 @@
     <!-- GAME SCREEN -->
     <div class='hide' id='comppannel'>
       <h3 class="subtitle">Control your company's income and cost.</h3>
+      <div class='moneydisplay'>
       <h2 id='money'>0.00</h2>
+    </div>
       <img oncontextmenu="return false;" id='coin' class='coin'src='assets/img/1.png'>
      <div id='itemdivs'>
       <div id='robotcard' style='opacity:0'class='card'>
