@@ -8,6 +8,7 @@ var noti = document.getElementById('noti')// notificaion
 var ndescription = document.getElementById('ndescription')// description for notificaion
 var nheader = document.getElementById('nheader')
 var itemdivs = document.getElementById('itemdivs')//Rev management items
+var subtractWallet = document.getElementById('subtractWallet') // Shop message under wallet
 //header for notificaion
 //AUDIO VARS ========
 var notifSound = new Howl({
@@ -42,7 +43,7 @@ var menuSound = new Howl({
 //DEBUG
 function m(){
 	skipTutorial()
-	player.money = 6666666666666666;
+	player.money = 696969696;
 	return 'no u'
 }
 

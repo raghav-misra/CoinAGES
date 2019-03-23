@@ -9,6 +9,18 @@ function fadeIn(element) {
 	}, 10);
 }
 
+function fadeOut(element){
+	var op = 1.1;  // initial opacity
+	var timer = setInterval(function(){
+		if (op <= 0.1) {
+			clearInterval(timer);
+			element.classList.add('hide')
+		}
+		element.style.opacity = op;
+		op -= 0.1;
+	}, 50);
+}
+
 function statusUpdate(obj){
   updateusage("document.getElementById('" + obj.name + "-displaymax')", obj.amount, obj.max)
   return "no u :)";
@@ -89,7 +101,23 @@ function buyShopItem(id, price) {	//Not enough money
 		}, 1000)
 		return
 	}
+	
+	document.getElementById('shopIcon').classList.remove('fa-wallet')
+	document.getElementById('shopIcon').classList.add('fa-check')
+	document.getElementById('shopIcon').classList.add('fa-check')
+	document.getElementById('shopIcon').style.color = '#55efc4'
+	
+	
 	player.money = player.money - priceHund;
+	subtractWallet.style.background = "white"
+
+	setTimeout(function(){
+		document.getElementById('shopIcon').classList.add('fa-wallet')
+	document.getElementById('shopIcon').classList.remove('fa-check')
+	document.getElementById('shopIcon').style.color = 'white'
+	subtractWallet.style.background = "linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%)"
+
+	},2000)
 
 	switch (id) {
 		case "hover-flip":
@@ -140,8 +168,9 @@ function buyShopItem(id, price) {	//Not enough money
 			nextstage(0.05);
 			createNickelShop();
 			nickel_upgrade = true;
+			deleteShopItem("nickelupgrade")
 			notify("R&D Labs", "The item has been purchased!", true, true);
-       deleteShopItem("nickelupgrade")
+      		
 			return
 		case "eco-max-increase":
 			itemLimits["eco-max-increase"]++
