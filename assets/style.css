@@ -76,8 +76,9 @@ a, button{
   margin: 10px;
   display:inline-block;
   padding: 2.5%;
+  width: 90%;
 	color: white;
-	border-radius: 10px;
+	border-radius: 5px;
 	background-color: transparent;
 	border: white 2px solid;
 	font-size: 25px;
@@ -132,11 +133,11 @@ a, button{
 	padding-left: 7.5px;
 	padding-right: 7.5px;
 	z-index: 100 !important;
-  text-align: left;
-  position: absolute;
-  font-size: 17.5px;
-  border: #2773be 2px solid;
-  color: #2773be;
+  position: fixed;
+  bottom: 1px;
+  font-size: 20px;
+  border: #2B2E3D 2px solid;
+  color: #2B2E3D;
 	transition: all 1s ease;
 }
 
@@ -179,7 +180,7 @@ button.standard:hover{
 
 .return-btn:hover{
   color: white;
-  background: #2773be;
+  background: #2B2E3D;
 	padding-right: 10px;
 	border-top-right-radius: 20px;
 	border-bottom-right-radius: 20px;
@@ -217,16 +218,21 @@ transition: all 1s ease-in-out;
 }
 .moneydisplay{
   background: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
-  width: auto;
+  width: 20%;
   display: inline-block;
   margin: 0 auto;
   margin-top: 2%;
   margin-bottom: 2%;
- padding: 2%;
+  margin-right: 2%;
+  margin-left: 2%;
+ padding-top: 2.5%;
+ padding-bottom: 2.5%;
+ padding-left: 10%;
+ padding-right: 10%;
   border-radius: 3px;
 transition: all 1s ease-in-out;
 box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
-
+color: white;
 }
 
 

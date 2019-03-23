@@ -101,20 +101,22 @@ function buyShopItem(id, price) {	//Not enough money
 		}, 1000)
 		return
 	}
-	
+	// show confirm message
 	document.getElementById('shopIcon').classList.remove('fa-wallet')
 	document.getElementById('shopIcon').classList.add('fa-check')
 	document.getElementById('shopIcon').classList.add('fa-check')
 	document.getElementById('shopIcon').style.color = '#55efc4'
-	
-	
+  document.getElementById('confirm').style.color = "#55efc4"
+  document.getElementById('confirm').innerText = "Purchase Confirmed"
 	player.money = player.money - priceHund;
 	subtractWallet.style.background = "white"
 
-	setTimeout(function(){
+setTimeout(function(){
 		document.getElementById('shopIcon').classList.add('fa-wallet')
+    document.getElementById('confirm').style.color = "white"
 	document.getElementById('shopIcon').classList.remove('fa-check')
 	document.getElementById('shopIcon').style.color = 'white'
+  document.getElementById('confirm').innerText = "PayBud"
 	subtractWallet.style.background = "linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%)"
 
 	},2000)
@@ -125,13 +127,13 @@ function buyShopItem(id, price) {	//Not enough money
 			coin.onmouseover = function () { coin.click() }
 			itemLimits["hover-flip"]++
 			hover_flip2 = true;
-			notify("R&D Labs", "The item has been purchased!", true, true);
+			upgradeBuySound.play();
 			return
 		case "tutorial-gift":
 			deleteShopItem("tutorial-gift")
 			player.money = player.money + 100
 			itemLimits["tutorial-gift"]++
-			notify("R&D Labs", "You received $1.00!", true, true)
+			upgradeBuySound.play();
 			return
 		case "robot-max-increase":
 			itemLimits["robot-max-increase"]++
@@ -140,7 +142,7 @@ function buyShopItem(id, price) {	//Not enough money
 			}
 			robot.max++
 			statusUpdate(robot)
-			notify("R&D Labs", "The item has been purchased!", true, true);
+			upgradeBuySound.play();
 			return
 		case "human-max-increase":
 			itemLimits["human-max-increase"]++
@@ -149,19 +151,19 @@ function buyShopItem(id, price) {	//Not enough money
 			}
 			person.max++
 			statusUpdate(person)
-			notify("R&D Labs", "The item has been purchased!", true, true);
+			upgradeBuySound.play();
 			return
 		case "robo-mk2":
 			itemLimits["robo-mk2"]++
 			deleteShopItem("robo-mk2");
 			robot.value = 0.03;
-			notify("R&D Labs", "The item has been purchased!", true, true);
+			upgradeBuySound.play();
 			return
 		case "one-man-army":
 			itemLimits["one-man-army"]++
 			deleteShopItem("one-man-army");
 			person.value = 0.05;
-			notify("R&D Labs", "The item has been purchased!", true, true);
+			upgradeBuySound.play();
 			return
 		case "nickelupgrade":
 		  itemLimits["nickelupgrade"]++
@@ -169,7 +171,7 @@ function buyShopItem(id, price) {	//Not enough money
 			createNickelShop();
 			nickel_upgrade = true;
 			deleteShopItem("nickelupgrade")
-			notify("R&D Labs", "The item has been purchased!", true, true);
+			upgradeBuySound.play();
       		
 			return
 		case "eco-max-increase":
@@ -179,13 +181,13 @@ function buyShopItem(id, price) {	//Not enough money
 			}
 			ecoflipper.max++
 			statusUpdate(ecoflipper)
-			notify("R&D Labs", "The item has been purchased!", true, true);
+			upgradeBuySound.play();
 			return
 		case "eco-mk-2":
 			itemLimits["eco-mk-2"]++
 			deleteShopItem("eco-mk-2");
 			ecoflipper.value = 0.12;
-			notify("R&D Labs", "The item has been purchased!", true, true);
+			upgradeBuySound.play();
 			return
     case "bottle-max-increase":
       itemLimits["bottle-max-increase"]++
@@ -194,13 +196,13 @@ function buyShopItem(id, price) {	//Not enough money
 			}
 			bottleflip.max++
 			statusUpdate(bottleflip)
-			notify("R&D Labs", "The item has been purchased!", true, true);
+			upgradeBuySound.play();
 			return
     case "bottle-mk2":
       itemLimits["bottle-mk2"]++
 			deleteShopItem("bottle-mk2");
 			ecoflipper.value = 0.22;
-			notify("R&D Labs", "The item has been purchased!", true, true);
+			upgradeBuySound.play();
       return
 	}
 }

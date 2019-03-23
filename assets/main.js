@@ -9,6 +9,7 @@ var ndescription = document.getElementById('ndescription')// description for not
 var nheader = document.getElementById('nheader')
 var itemdivs = document.getElementById('itemdivs')//Rev management items
 var subtractWallet = document.getElementById('subtractWallet') // Shop message under wallet
+var clicks = document.getElementById('clicks') // Displays how many times you clicked/flips
 //header for notificaion
 //AUDIO VARS ========
 var notifSound = new Howl({
@@ -43,7 +44,7 @@ var menuSound = new Howl({
 //DEBUG
 function m(){
 	skipTutorial()
-	player.money = 696969696;
+	player.money = 999999;
 	return 'no u'
 }
 
@@ -51,6 +52,7 @@ function m(){
 
 //Non elements
 var deg = 0 //stores amount of\ roation coin flips
+var customers = 0 //Stores amount of clicks / customers
 
 // Other VARS
 var buy_mk2 = true;
@@ -125,6 +127,11 @@ window.setInterval(update,200)
 function update(){
   moneydisplay.innerText = '$' + player.money / 100;
   moneydisplayshop.innerText = '$' + player.money / 100;
+  clicks.innerText = customers
+
+
+
+  //TUTORIAL 
 	if(player.money > 99 && rev_tut3 == true){
 		rev_tut3 = false;
 		setTimeout(function(){
@@ -197,6 +204,7 @@ function closenotify(){
 }
 //Player click handler
 function addmoney(){
+  customers += 1
   player.money = Math.round(parseFloat(player.money) + parseFloat(player.clickvalue) * 100);
 	deg += 360
 	coin.style.transform = "rotateX(" + deg + "deg)"
@@ -204,6 +212,7 @@ function addmoney(){
 }
 
 function addmoneyhoverflip2(){
+   customers += 1
   player.money = Math.round(parseFloat(player.money) + parseFloat(player.clickvalue) * 125);
 	deg += 360
 	coin.style.transform = "rotateX(" + deg + "deg)"
@@ -278,6 +287,7 @@ function managerobot(){
   setTimeout(managerobot2,900)
 }
 function managerobot2(){
+  customers +=1
   player.money += Math.round(parseFloat(robot.value) * 100);
    document.getElementById('robotbar').style.transition = "none"
   document.getElementById('robotbar').style.width = "0%"
@@ -292,6 +302,7 @@ function manageecoflipper(){
 	
 }
 function manageecoflipper2(){
+    customers +=1
 	player.money += Math.round(parseFloat(ecoflipper.value) * 100);
   document.getElementById("ecobar").style.transition = "width 0.9s ease-in-out"
   document.getElementById("ecobar").style.display = "inline-block"
@@ -306,6 +317,7 @@ function manageperson(){
   setTimeout(manageperson2,900)
 }
 function manageperson2(){
+    customers +=1
   player.money += Math.round(parseFloat(person.value) * 100);
    document.getElementById('personbar').style.transition = "none"
   document.getElementById('personbar').style.width = "0%"
@@ -319,6 +331,7 @@ function managebottleflip(){
   setTimeout(managebottleflip2,900)
 }
 function managebottleflip2(){
+    customers +=1
   player.money += Math.round(parseFloat(bottleflip.value) * 100);
    document.getElementById('bottleflipbar').style.transition = "none"
   document.getElementById('bottleflipbar').style.width = "0%"
