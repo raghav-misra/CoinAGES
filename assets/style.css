@@ -346,7 +346,11 @@ color: white;
   color: black;
   
   }
+.marketing img{
+  width: 30%;
+  height: 30%;
 
+}
 .noti{
   background-color: rgb(255, 255, 255);
   padding: 20px;

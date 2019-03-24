@@ -44,7 +44,8 @@ var clicks = document.getElementById('clicks') // Displays how many times you cl
 //header for notificaion
 //AUDIO VARS ========
 var notifSound = new Howl({
-  src: ['assets/audio/notif.mp3']
+  src: ['assets/audio/notif.mp3'],
+  volume: 0.3
 });
 var coinSound = new Howl({
   src: ['assets/audio/coin.wav']
@@ -62,10 +63,14 @@ var ecoflipperBuySound = new Howl({
   src: ['assets/audio/ecoflipper.mp3']
 });
 var upgradeBuySound = new Howl({
-  src: ['assets/audio/purchased.wav']
+  src: ['assets/audio/purchased.wav'],
+    volume: 0.2
 });
 var menuSound = new Howl({
   src: ['assets/audio/slide.mp3']
+});
+var magnetFlipperBuySound = new Howl({
+  src: ['assets/audio/magnet.wav']
 });
 
 
