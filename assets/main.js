@@ -1,4 +1,35 @@
 //Main game handler
+function fadeIn(element) {
+	var op = 0.1;  // initial opacity
+	var timer = setInterval(function () {
+		if (op >= 1) {
+			clearInterval(timer);
+		}
+		element.style.opacity = op;
+		op += 0.1;
+	}, 10);
+}
+
+function fadeOut(element){
+	var op = 1.1;  // initial opacity
+	var timer = setInterval(function(){
+		if (op <= 0.1) {
+			clearInterval(timer);
+			element.classList.add('hide')
+		}
+		element.style.opacity = op;
+		op -= 0.1;
+	}, 50);
+}
+
+//DEBUG
+function m(){
+	skipTutorial()
+	player.money = 999999;
+	return 'no u'
+}
+
+
 
 //VARS====
 var coin = document.getElementById('coin')//The only game play in tis project 
@@ -13,7 +44,7 @@ var clicks = document.getElementById('clicks') // Displays how many times you cl
 //header for notificaion
 //AUDIO VARS ========
 var notifSound = new Howl({
-  src: ['assets/audio/notif.wav']
+  src: ['assets/audio/notif.mp3']
 });
 var coinSound = new Howl({
   src: ['assets/audio/coin.wav']
@@ -36,17 +67,6 @@ var upgradeBuySound = new Howl({
 var menuSound = new Howl({
   src: ['assets/audio/slide.mp3']
 });
-
-
-
-
-
-//DEBUG
-function m(){
-	skipTutorial()
-	player.money = 999999;
-	return 'no u'
-}
 
 
 
@@ -128,9 +148,6 @@ function update(){
   moneydisplay.innerText = '$' + player.money / 100;
   moneydisplayshop.innerText = '$' + player.money / 100;
   clicks.innerText = customers
-
-
-
   //TUTORIAL 
 	if(player.money > 99 && rev_tut3 == true){
 		rev_tut3 = false;
@@ -155,7 +172,7 @@ function update(){
 	}
   if(bottleflip.amount > 0 && bottle_mk2){
 		bottle_mk2 = false;
-		createShopItem("bottle-mk2", "Bigger Bottles", "Koka-Kola™ bottles are", "bigger, resulting in", "lots of free space", "to hold more coins.", 100)
+		createShopItem("bottle-mk2", "Bigger Bottles", "Koka-Kola™ bottles are", "bigger, resulting in", "lots of free space", "for +2 coins/second.", 100)
 	}
 	if(robot.amount > 0 && buy_mk2){
 		buy_mk2 = false;
@@ -337,6 +354,23 @@ function managebottleflip2(){
   document.getElementById('bottleflipbar').style.width = "0%"
   setTimeout(managebottleflip,100)
 }
+//Magnet
+function manageMagnetFlipper(){
+   document.getElementById('magnetFlipperbar').style.transition = "width 0.9s ease-in-out"
+  document.getElementById('magnetFlipperbar').style.display = "inline-block"
+  document.getElementById('magnetFlipperbar').style.width = "90%"
+  setTimeout(manageMagnetFlipper2,900)
+}
+function manageMagnetFlipper2(){
+    customers +=1
+  player.money += Math.round(parseFloat(magnetFlipper.value) * 100);
+   document.getElementById('magnetFlipperbar').style.transition = "none"
+  document.getElementById('magnetFlipperbar').style.width = "0%"
+  setTimeout(manageMagnetFlipper,100)
+}
+
+
+//Begin Tutorial
 
 notify('Tutorial', 'Welcome to the CEO Dashboard', true)
 setTimeout(function(){

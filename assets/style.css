@@ -126,20 +126,53 @@ a, button{
   width: 100%;
 }
 
+#btxt{
+	display: none;
+	opacity: 1;
+}
+
+@keyframes fade-in{
+	from{opacity: 0}
+	to{opacity: 1}
+}
+
+
 .return-btn{
 	border-top-right-radius: 5px;
 	border-bottom-right-radius: 5px;
-  background:white;
+  background:#2B2E3D;
   padding: 16px;
-	padding-left: 7.5px;
+	height: 75px;
+	padding-left:9.5px;
 	padding-right: 7.5px;
+	width: 35px;
 	z-index: 100 !important;
   position: fixed;
-  bottom: 1px;
+  bottom: calc(50% - 75px);
   font-size: 20px;
-  border: #2B2E3D 2px solid;
-  color: #2B2E3D;
-	transition: all 1s ease;
+  border: white 2px solid;
+	border-left: none;
+  color: white;
+	transition: all 1s ease-in-out;
+}
+
+.return-btn i{
+	position: relative;
+	right: 2px;
+}
+
+.return-btn i::after{
+	content: 'Back';
+	position: relative;
+	font-family: 'Raleway', sans-serif;
+	left: 10px;
+	opacity: 0;
+	animation: fade-out 1.5s ease-in-out;
+}
+
+.return-btn:hover i::after{
+	opacity: 1;
+	animation: fade-in 1.5s ease-in-out;
 }
 
 button.standard{
@@ -171,6 +204,7 @@ button.standard:hover{
 	color: white;
 	position: relative;
 	top: 2px;
+	box-shadow: 0 0 25px rgba(255, 255, 255, 0.301)
 }
 
 .shopcard-inline.big-upgrade .buy-now{
@@ -185,6 +219,7 @@ button.standard:hover{
 	border-color: white;
 	color: #2B2E3D;
 	background: white;
+	box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 }
 
 .shopcard-inline.big-upgrade .ttl{
@@ -210,12 +245,17 @@ button.standard:hover{
 }
 
 .return-btn:hover{
-  color: white;
-  background: #2B2E3D;
+  color: #2B2E3D;
+  background: white;
+	border-color: #2B2E3D;
 	padding-right: 10px;
+	width: 125px;
 	border-top-right-radius: 20px;
 	border-bottom-right-radius: 20px;
 }
+
+
+
 .coin{
   animation-duration: 1s;
 width: 15%;
@@ -306,6 +346,7 @@ button.buy-bot:hover, button.buy-now:hover{
   position: fixed;
   left: calc(100% + 200px);
   border-radius: 5px;
+	border: 2px #2B2E3D solid;
   height: 50px;
 	z-index: 100 !important;
   text-align: left;
@@ -688,5 +729,127 @@ button.buy-bot:hover, button.buy-now:hover{
   }
   100% {
     -ms-transform:  translate(0px,0px)  rotate(360deg) ;
+  }
+}
+.magnetflipper{
+  animation: magnetflipperf ease-in-out 4s;
+  animation-iteration-count: infinite;
+  transform-origin: 50% 50%;
+  -webkit-animation: magnetflipperf ease-in-out 4s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-transform-origin: 50% 50%;
+  -moz-animation: magnetflipperf ease-in-out 4s;
+  -moz-animation-iteration-count: infinite;
+  -moz-transform-origin: 50% 50%;
+  -o-animation: magnetflipperf ease-in-out 4s;
+  -o-animation-iteration-count: infinite;
+  -o-transform-origin: 50% 50%;
+  -ms-animation: magnetflipperf ease-in-out 4s;
+  -ms-animation-iteration-count: infinite;
+  -ms-transform-origin: 50% 50%;
+}
+
+@keyframes magnetflipperf{
+  0% {
+    transform:  translate(0px,0px)  rotate(0deg) scaleX(1.00) scaleY(1.00) ;
+  }
+  33% {
+    transform:  translate(35px,0px)  rotate(0deg) scaleX(2.07) scaleY(0.60) ;
+  }
+  63% {
+    transform:  translate(70px,0px)  rotate(0deg) scaleX(1.00) scaleY(1.00) ;
+  }
+  81% {
+    transform:  translate(70px,0px)  rotate(0deg) scaleX(2.00) scaleY(0.60) ;
+  }
+  81% {
+    transform:  translate(70px,0px)  rotate(180deg) scaleX(2.00) scaleY(0.60) ;
+  }
+  100% {
+    transform:  translate(0px,0px)  rotate(180deg) scaleX(1.00) scaleY(1.00) ;
+  }
+}
+
+@-moz-keyframes magnetflipperf{
+  0% {
+    -moz-transform:  translate(0px,0px)  rotate(0deg) scaleX(1.00) scaleY(1.00) ;
+  }
+  33% {
+    -moz-transform:  translate(35px,0px)  rotate(41deg) scaleX(2.07) scaleY(0.60) ;
+  }
+  63% {
+    -moz-transform:  translate(70px,0px)  rotate(129deg) scaleX(1.00) scaleY(1.00) ;
+  }
+  81% {
+    -moz-transform:  translate(70px,0px)  rotate(0deg) scaleX(2.00) scaleY(0.60) ;
+  }
+  81% {
+    -moz-transform:  translate(70px,0px)  rotate(167deg) scaleX(2.00) scaleY(0.60) ;
+  }
+  100% {
+    -moz-transform:  translate(0px,0px)  rotate(180deg) scaleX(1.00) scaleY(1.00) ;
+  }
+}
+
+@-webkit-keyframes magnetflipperf {
+  0% {
+    -webkit-transform:  translate(0px,0px)  rotate(0deg) scaleX(1.00) scaleY(1.00) ;
+  }
+  33% {
+    -webkit-transform:  translate(35px,0px)  rotate(41deg) scaleX(2.07) scaleY(0.60) ;
+  }
+  63% {
+    -webkit-transform:  translate(70px,0px)  rotate(129deg) scaleX(1.00) scaleY(1.00) ;
+  }
+  81% {
+    -webkit-transform:  translate(70px,0px)  rotate(0deg) scaleX(2.00) scaleY(0.60) ;
+  }
+  81% {
+    -webkit-transform:  translate(70px,0px)  rotate(167deg) scaleX(2.00) scaleY(0.60) ;
+  }
+  100% {
+    -webkit-transform:  translate(0px,0px)  rotate(180deg) scaleX(1.00) scaleY(1.00) ;
+  }
+}
+
+@-o-keyframes magnetflipperf {
+  0% {
+    -o-transform:  translate(0px,0px)  rotate(0deg) scaleX(1.00) scaleY(1.00) ;
+  }
+  33% {
+    -o-transform:  translate(35px,0px)  rotate(41deg) scaleX(2.07) scaleY(0.60) ;
+  }
+  63% {
+    -o-transform:  translate(70px,0px)  rotate(129deg) scaleX(1.00) scaleY(1.00) ;
+  }
+  81% {
+    -o-transform:  translate(70px,0px)  rotate(0deg) scaleX(2.00) scaleY(0.60) ;
+  }
+  81% {
+    -o-transform:  translate(70px,0px)  rotate(167deg) scaleX(2.00) scaleY(0.60) ;
+  }
+  100% {
+    -o-transform:  translate(0px,0px)  rotate(180deg) scaleX(1.00) scaleY(1.00) ;
+  }
+}
+
+@-ms-keyframes magnetflipperf {
+  0% {
+    -ms-transform:  translate(0px,0px)  rotate(0deg) scaleX(1.00) scaleY(1.00) ;
+  }
+  33% {
+    -ms-transform:  translate(35px,0px)  rotate(41deg) scaleX(2.07) scaleY(0.60) ;
+  }
+  63% {
+    -ms-transform:  translate(70px,0px)  rotate(129deg) scaleX(1.00) scaleY(1.00) ;
+  }
+  81% {
+    -ms-transform:  translate(70px,0px)  rotate(0deg) scaleX(2.00) scaleY(0.60) ;
+  }
+  81% {
+    -ms-transform:  translate(70px,0px)  rotate(167deg) scaleX(2.00) scaleY(0.60) ;
+  }
+  100% {
+    -ms-transform:  translate(0px,0px)  rotate(180deg) scaleX(1.00) scaleY(1.00) ;
   }
 }

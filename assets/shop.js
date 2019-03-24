@@ -1,26 +1,3 @@
-function fadeIn(element) {
-	var op = 0.1;  // initial opacity
-	var timer = setInterval(function () {
-		if (op >= 1) {
-			clearInterval(timer);
-		}
-		element.style.opacity = op;
-		op += 0.1;
-	}, 10);
-}
-
-function fadeOut(element){
-	var op = 1.1;  // initial opacity
-	var timer = setInterval(function(){
-		if (op <= 0.1) {
-			clearInterval(timer);
-			element.classList.add('hide')
-		}
-		element.style.opacity = op;
-		op -= 0.1;
-	}, 50);
-}
-
 function statusUpdate(obj){
   updateusage("document.getElementById('" + obj.name + "-displaymax')", obj.amount, obj.max)
   return "no u :)";
@@ -41,7 +18,8 @@ var itemLimits = {
 	"bottle-max-increase": 0, // 2 Max
   "bottle-mk2": 0, // 1 Max
 	"nickel-limit-increase": 0, // 1 Max
-	"dime-dev": 0 // 1 Max
+	"dime-dev": 0, // 1 Max
+	"dime-all-max-increase": 0 // Infinite
 }
 
 var bigUpgrades = ['nickelupgrade', 'dime-dev'];
@@ -125,24 +103,22 @@ setTimeout(function(){
     document.getElementById('confirm').style.color = "white"
 	document.getElementById('shopIcon').classList.remove('fa-check')
 	document.getElementById('shopIcon').style.color = 'white'
-  document.getElementById('confirm').innerText = "PayBud"
+  document.getElementById('confirm').innerText = "PayBud Balance"
 	subtractWallet.style.background = "linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%)"
 
-	},2000)
-
+	}, 2000)
+	upgradeBuySound.play();
 	switch (id) {
 		case "hover-flip":
 			deleteShopItem("hover-flip")
 			coin.onmouseover = function () { coin.click() }
 			itemLimits["hover-flip"]++
 			hover_flip2 = true;
-			upgradeBuySound.play();
 			return
 		case "tutorial-gift":
 			deleteShopItem("tutorial-gift")
 			player.money = player.money + 100
 			itemLimits["tutorial-gift"]++
-			upgradeBuySound.play();
 			return
 		case "robot-max-increase":
 			itemLimits["robot-max-increase"]++
@@ -151,7 +127,6 @@ setTimeout(function(){
 			}
 			robot.max++
 			statusUpdate(robot)
-			upgradeBuySound.play();
 			return
 		case "human-max-increase":
 			itemLimits["human-max-increase"]++
@@ -160,19 +135,16 @@ setTimeout(function(){
 			}
 			person.max++
 			statusUpdate(person)
-			upgradeBuySound.play();
 			return
 		case "robo-mk2":
 			itemLimits["robo-mk2"]++
 			deleteShopItem("robo-mk2");
 			robot.value = 0.03;
-			upgradeBuySound.play();
 			return
 		case "one-man-army":
 			itemLimits["one-man-army"]++
 			deleteShopItem("one-man-army");
 			person.value = 0.05;
-			upgradeBuySound.play();
 			return
 		case "nickelupgrade":
 		  itemLimits["nickelupgrade"]++
@@ -180,8 +152,6 @@ setTimeout(function(){
 			createNickelShop();
 			nickel_upgrade = true;
 			deleteShopItem("nickelupgrade")
-			upgradeBuySound.play();
-      		
 			return
 		case "eco-max-increase":
 			itemLimits["eco-max-increase"]++
@@ -190,13 +160,11 @@ setTimeout(function(){
 			}
 			ecoflipper.max++
 			statusUpdate(ecoflipper)
-			upgradeBuySound.play();
 			return
 		case "eco-mk-2":
 			itemLimits["eco-mk-2"]++
 			deleteShopItem("eco-mk-2");
 			ecoflipper.value = 0.12;
-			upgradeBuySound.play();
 			return
     case "bottle-max-increase":
       itemLimits["bottle-max-increase"]++
@@ -205,14 +173,30 @@ setTimeout(function(){
 			}
 			bottleflip.max++
 			statusUpdate(bottleflip)
-			upgradeBuySound.play();
 			return
     case "bottle-mk2":
       itemLimits["bottle-mk2"]++
 			deleteShopItem("bottle-mk2");
 			ecoflipper.value = 0.22;
-			upgradeBuySound.play();
       return
+		case "dime-dev":
+			itemLimits["dime-dev"]++
+			createDimeShop()
+			deleteShopItem("dime-dev")
+			return
+		case "dime-all-max-increase":
+			itemLimits["dime-all-max-increase"]++
+			bottleflip.max++
+			statusUpdate(bottleflip)
+			ecoflipper.max++
+			statusUpdate(ecoflipper)
+			person.max++
+			statusUpdate(person)
+			robot.max++
+			statusUpdate(robot)
+			magnetFlipper.max++
+			statusUpdate(magnetFlipper)
+			return;
 	}
 }
 
@@ -223,10 +207,21 @@ function createFreeGift() {
 }
 
 function createNickelShop() {
+	createShopItem("dime-dev", "Dime Development", "Invest your assets", "in improving efficiency", "and consumer outreach.", "<i>Unlocks Marketing Campaigns.</i>", 300, true)
 	createShopItem("eco-max-increase", "More Eco-Flippers", "The upgrade lets you", "increase the maximum", "amount of eco-flippers", "that you can purchase by 1.", 25);
   createShopItem("bottle-max-increase", "Extra Bottles", "Koka-Kola™ has agreed", "to increase the", "limit on bottles", "you can purchase.", 100);
 	eco_mk2 = true;
   bottle_mk2 = true;
+}
+
+function createDimeShop() {
+	nextstage(0.10);
+	createShopItem("dime-all-max-increase", "More of Everything!", "Increase the maximum", "limit of each", "type of purchasable", "auto-flipper by 1.", 650);
+	notify("New Unlock!", "Marketing Campaigns unlocked!")
+	marketingbtn.disabled = false;	
+	setTimeout(function(){
+		notify("New Unlock!", "Go back to see it!")
+	}, 3000)
 }
 
 function createRobotMk2() {
