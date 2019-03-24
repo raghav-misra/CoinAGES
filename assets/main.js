@@ -153,7 +153,7 @@ function update(){
 		eco_mk2 = false;
 		createShopItem("eco-mk-2", "Giant Fans", "Buy mega-fans to", "manipulate the wind", "so that eco-flippers", "flip more coins.", 50);
 	}
-  if(person.amount > 0 && bottle_mk2){
+  if(bottleflip.amount > 0 && bottle_mk2){
 		bottle_mk2 = false;
 		createShopItem("bottle-mk2", "Bigger Bottles", "Koka-Kola™ bottles are", "bigger, resulting in", "lots of free space", "to hold more coins.", 100)
 	}

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway:300|Roboto:300');
+@import url('https://fonts.googleapis.com/css?family=Raleway:300|Roboto+Slab:300');
 
 /*Classless HTML BODY*/
 body, html{
@@ -45,6 +45,7 @@ a, button{
 }
 
 *{
+	font-weight: 300;
   font-family: 'Raleway', sans-serif;
   outline: none;
   text-decoration: none;
@@ -163,6 +164,36 @@ button.standard:hover{
   padding: 16px;
   background: white;
   color: #2773be;
+}
+
+.shopcard-inline.big-upgrade{
+	background: #2B2E3D;
+	color: white;
+	position: relative;
+	top: 2px;
+}
+
+.shopcard-inline.big-upgrade .buy-now{
+	border-radius: 15px;
+	border-color: white;
+	color: white;
+	background: #2B2E3D;
+}
+
+.shopcard-inline.big-upgrade .buy-now:hover{
+	border-radius: 15px;
+	border-color: white;
+	color: #2B2E3D;
+	background: white;
+}
+
+.shopcard-inline.big-upgrade .ttl{
+	color: white;
+	font-family: 'Roboto Slab', sans-serif;
+}
+
+.shopcard-inline.big-upgrade hr.blu.thin{
+	border-color: white;
 }
 
 .shopcard-inline{

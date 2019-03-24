@@ -39,13 +39,18 @@ var itemLimits = {
 	"eco-max-increase": 0, // 2 Max
 	"eco-mk-2": 0, // 1 Max
 	"bottle-max-increase": 0, // 2 Max
-  "bottle-mk2": 0 // 1 Max
+  "bottle-mk2": 0, // 1 Max
+	"nickel-limit-increase": 0, // 1 Max
+	"dime-dev": 0 // 1 Max
 }
+
+var bigUpgrades = ['nickelupgrade', 'dime-dev'];
 
 var shopCode = {
 	first: "<div id='",
 	// Item Codename
 	second: "' class=\"shopcard-inline\"><h4 class=\"ttl\">",
+	secondAlt: "' class=\"shopcard-inline big-upgrade\"><h4 class=\"ttl\">",
 	// Item Title
 	third: "</h4><hr class=\"blu thin\"><p class=\"desc\">",
 	// Description Line 1
@@ -64,8 +69,11 @@ var shopCode = {
 	tenth: ")</button></div>"
 }
 
-function createShopItem(name, title, desc1, desc2, desc3, desc4, price) {
+function createShopItem(name, title, desc1, desc2, desc3, desc4, price, bigUpgrade = false) {
 	var num1 = shopCode.first + name + shopCode.second + title + shopCode.third;
+	if(bigUpgrade){
+		num1 = shopCode.first + name + shopCode.secondAlt + title + shopCode.third;
+	}
 	var num2 = desc1 + shopCode.fourth + desc2 + shopCode.fifth + desc3;
 	var num3 = shopCode.sixth + desc4 + shopCode.seventh + name + shopCode.eighth;
 	var num4 = price.toString() + shopCode.nineth + price.toString() + shopCode.tenth;
@@ -77,7 +85,8 @@ function createShopItem(name, title, desc1, desc2, desc3, desc4, price) {
 function deleteShopItem(id)
 {
 	var element = document.getElementById(id);
-  console.log(element)
+	element.getElementsByClassName("buy-now")[0].disabled = true;
+	var returnValue = element.outerHTML;
 	var op = 1;  // initial opacity
 	var timer = setInterval(function(){
 		if (op <= 0.1) {
@@ -227,7 +236,7 @@ function createRobotMk2() {
 
 createShopItem("robot-max-increase", "Raise Robot Quota", "The upgrade lets you", "increase the maximum", "amount of robo-flippers", "that you can purchase by 1.", 2);
 createShopItem("human-max-increase", "More Workers", "This upgrade allows", "you to hire an", "extra human worker", "to flip coins for you.", 3.5);
-createShopItem("nickelupgrade", "Nickel Research Program", "Research the next generation", "of coin-flipping technology.", "Upgrade your coherence", "and cost-effectiveness.", 50)
+createShopItem("nickelupgrade", "Nickel Research Program", "Research the next generation", "of coin-flipping technology.", "Upgrade your coherence", "and cost-effectiveness.", 50, true)
 createShopItem("hover-flip", "HoverFlip™ by Zamazon", "Using the latest in flipping-tech,", "Jeph Besoz has created a way", "to not click, but hover over", "coins to flip them.", 0.5);
 
 
