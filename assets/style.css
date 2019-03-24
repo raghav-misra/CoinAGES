@@ -338,6 +338,14 @@ button.buy-bot:hover, button.buy-now:hover{
   display: inline-block;
   height: 20%;
 }
+#marketingpannel{
+color: white;
+
+}
+#marketingpannel .shopcard-inline{
+  color: black;
+  
+  }
 
 .noti{
   background-color: rgb(255, 255, 255);
