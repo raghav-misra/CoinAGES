@@ -16,7 +16,8 @@ var campCode = {
 	// Desc 3
 	fifth: "</p><img src='",
 	// Image Location
-	sixth: "'><br><button class='buy-now' "
+	sixth: "'><br><button class='buy-now' onclick='buyCampaign(",
+	// 
 }
 
 function createMarketing(name, title, desc1, desc2, desc3, desc4, price, bigUpgrade = false) {

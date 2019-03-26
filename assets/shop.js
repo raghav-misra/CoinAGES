@@ -203,8 +203,22 @@ setTimeout(function(){
 			statusUpdate(magnetFlipper)
 			superComputer.max++
 			statusUpdate(superComputer)
+			var xd = dimeAllMaxIncreaseCost
+			dimeAllMaxIncreaseCost = Math.trunc(xd * 1.1);
+			if(xd > 1500 && xd < 2000){
+				dimeAllMaxIncreaseCost = xd * 1.07
+			}
+			else if(xd > 2000 && xd < 3000){
+				dimeAllMaxIncreaseCost = xd * 1.05
+			}
+			else if(xd > 3000){
+				dimeAllMaxIncreaseCost = xd * 1.015
+			}
+			else{
+				dimeAllMaxIncreaseCost = xd * 1.1;
+			}
+			dimeAllMaxIncreaseCost = Math.trunc(dimeAllMaxIncreaseCost);
 			document.getElementById(id).getElementsByClassName("buy-now")[0].onclick = function(){
-				dimeAllMaxIncreaseCost = dimeAllMaxIncreaseCost * 1.1;
 				buyShopItem(id, dimeAllMaxIncreaseCost);
 			}
 			document.getElementById(id).getElementsByClassName("buy-now")[0].innerText = "Buy Now! ($" + dimeAllMaxIncreaseCost.toString() + ")";
