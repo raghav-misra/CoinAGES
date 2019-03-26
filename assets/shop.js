@@ -3,6 +3,22 @@ function statusUpdate(obj){
   return "no u :)";
 }
 
+function createShopItem(name, title, desc1, desc2, desc3, desc4, price, bigUpgrade = false) {
+	var num1 = shopCode.first + name + shopCode.second + title + shopCode.third;
+	if(bigUpgrade){
+		num1 = shopCode.first + name + shopCode.secondAlt + title + shopCode.third;
+	}
+	var num2 = desc1 + shopCode.fourth + desc2 + shopCode.fifth + desc3;
+	var num3 = shopCode.sixth + desc4 + shopCode.seventh + name + shopCode.eighth;
+	var num4 = price.toString() + shopCode.nineth + price.toString() + shopCode.tenth;
+	var div = num1 + num2 + num3 + num4;
+	container.innerHTML = container.innerHTML + div;
+	fadeIn(document.getElementById(name));
+}
+
+//Random VARS
+var dimeAllMaxIncreaseCost = 650;
+
 var container = document.getElementById("shop-item-container");
 
 var itemLimits = {
@@ -47,18 +63,7 @@ var shopCode = {
 	tenth: ")</button></div>"
 }
 
-function createShopItem(name, title, desc1, desc2, desc3, desc4, price, bigUpgrade = false) {
-	var num1 = shopCode.first + name + shopCode.second + title + shopCode.third;
-	if(bigUpgrade){
-		num1 = shopCode.first + name + shopCode.secondAlt + title + shopCode.third;
-	}
-	var num2 = desc1 + shopCode.fourth + desc2 + shopCode.fifth + desc3;
-	var num3 = shopCode.sixth + desc4 + shopCode.seventh + name + shopCode.eighth;
-	var num4 = price.toString() + shopCode.nineth + price.toString() + shopCode.tenth;
-	var div = num1 + num2 + num3 + num4;
-	container.innerHTML = container.innerHTML + div;
-	fadeIn(document.getElementById(name));
-}
+
 
 function deleteShopItem(id)
 {
@@ -196,6 +201,13 @@ setTimeout(function(){
 			statusUpdate(robot)
 			magnetFlipper.max++
 			statusUpdate(magnetFlipper)
+			superComputer.max++
+			statusUpdate(superComputer)
+			document.getElementById(id).getElementsByClassName("buy-now")[0].onclick = function(){
+				dimeAllMaxIncreaseCost = dimeAllMaxIncreaseCost * 1.1;
+				buyShopItem(id, dimeAllMaxIncreaseCost);
+			}
+			document.getElementById(id).getElementsByClassName("buy-now")[0].innerText = "Buy Now! ($" + dimeAllMaxIncreaseCost.toString() + ")";
 			return;
 	}
 }
@@ -207,8 +219,7 @@ function createFreeGift() {
 }
 
 function createNickelShop() {
-	createShopItem("dime-dev", "Dime Development", "Invest your assets", "in improving efficiency", "and consumer outreach.", "<i>Unlocks Marketing Campaigns.</i>", 300, true)
-	createShopItem("eco-max-increase", "More Eco-Flippers", "The upgrade lets you", "increase the maximum", "amount of eco-flippers", "that you can purchase by 1.", 25);
+	createShopItem("dime-dev", "Dime Development", "Invest your assets", "in improving efficiency", "and consumer outreach.", "<i>Unlocks Marketing Campaigns.</i>", 300, true);
   createShopItem("bottle-max-increase", "Extra Bottles", "Koka-Kola™ has agreed", "to increase the", "limit on bottles", "you can purchase.", 100);
 	eco_mk2 = true;
   bottle_mk2 = true;
@@ -219,6 +230,7 @@ function createDimeShop() {
 	createShopItem("dime-all-max-increase", "More of Everything!", "Increase the maximum", "limit of each", "type of purchasable", "auto-flipper by 1.", 650);
 	notify("New Unlock!", "Marketing Campaigns unlocked!")
 	marketingbtn.disabled = false;	
+	loadCampaigns()
 	setTimeout(function(){
 		notify("New Unlock!", "Go back to see it!")
 	}, 3000)
