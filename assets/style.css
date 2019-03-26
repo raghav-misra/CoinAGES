@@ -904,3 +904,14 @@ color: white;
   90% { -webkit-transform: translate(1px, 2px) rotate(0deg); transform: translate(1px, 2px) rotate(0deg); }
   100% { -webkit-transform: translate(1px, -2px) rotate(-1deg); transform: translate(1px, -2px) rotate(-1deg); }
 }
+
+@-webkit-keyframes barframes{
+from {width: 0%;}
+to {width: 70%;}
+
+}
+@keyframes barframes{
+from {width: 0%;}
+to {width: 70%;}
+
+}
