@@ -306,9 +306,9 @@ function buy(obj){
 //ONJECT WAKE UPS ======
 function managerobot(){
 	
-   document.getElementById('robotbar').style.transition = "width 0.9s ease-in-out"
+   document.getElementById('robotbar').style.animation = "barframes 1s infinite"
   document.getElementById('robotbar').style.display = "inline-block"
-  document.getElementById('robotbar').style.width = "70%"
+  
   setTimeout(managerobot2,900)
 }
 function managerobot2(){
@@ -320,25 +320,24 @@ function managerobot2(){
 }
 //ECOFLIPPER
 function manageecoflipper(){
-	document.getElementById("ecobar").style.transition = "width 0.9s ease-in-out"
+	document.getElementById("ecobar").style.animation = "barframes 1s infinite"
   document.getElementById("ecobar").style.display = "inline-block"
-  document.getElementById("ecobar").style.width = "70%"
+  
   setTimeout(manageecoflipper2,900)
 	
 }
 function manageecoflipper2(){
     customers +=1
 	player.money += Math.round(parseFloat(ecoflipper.value) * 100);
-  document.getElementById("ecobar").style.transition = "width 0.9s ease-in-out"
   document.getElementById("ecobar").style.display = "inline-block"
-  document.getElementById("ecobar").style.width = "70%"
+  document.getElementById("ecobar").style.width = "0%"
   setTimeout(manageecoflipper,900)
 }
 //PERSON
 function manageperson(){
-   document.getElementById('personbar').style.transition = "width 0.9s ease-in-out"
+   document.getElementById('personbar').style.animation = "barframes 1s infinite"
   document.getElementById('personbar').style.display = "inline-block"
-  document.getElementById('personbar').style.width = "70%"
+  
   setTimeout(manageperson2,900)
 }
 function manageperson2(){
@@ -350,9 +349,8 @@ function manageperson2(){
 }
 //Bottle
 function managebottleflip(){
-   document.getElementById('bottleflipbar').style.transition = "width 0.9s ease-in-out"
+   document.getElementById('bottleflipbar').style.animation = "barframes 1s infinite"
   document.getElementById('bottleflipbar').style.display = "inline-block"
-  document.getElementById('bottleflipbar').style.width = "70%"
   setTimeout(managebottleflip2,900)
 }
 function managebottleflip2(){
@@ -364,9 +362,8 @@ function managebottleflip2(){
 }
 //Magnet
 function manageMagnetFlipper(){
-   document.getElementById('magnetFlipperbar').style.transition = "width 0.9s ease-in-out"
+   document.getElementById('magnetFlipperbar').style.animation = "barframes 1s infinite"
   document.getElementById('magnetFlipperbar').style.display = "inline-block"
-  document.getElementById('magnetFlipperbar').style.width = "70%"
   setTimeout(manageMagnetFlipper2,900)
 }
 function manageMagnetFlipper2(){
@@ -378,9 +375,8 @@ function manageMagnetFlipper2(){
 }
 //Super Computer
 function managesuperComputer(){
-   document.getElementById('superComputerbar').style.transition = "width 59.9s ease-in-out"
+   document.getElementById('superComputerbar').style.animation = "barframes 60s infinite"
   document.getElementById('superComputerbar').style.display = "inline-block"
-  document.getElementById('superComputerbar').style.width = "70%"
   setTimeout(managesuperComputer2,59000)
 }
 function managesuperComputer2(){
