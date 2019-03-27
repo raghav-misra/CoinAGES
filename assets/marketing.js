@@ -2,22 +2,19 @@ var normalContainer = document.getElementById("normalPromoContainer");
 var specialContainer = document.getElementById("specialPromoContainer");
 
 var contractLimits = {
+	// All can be bought infinitely.
+	"press-release": 0,
+	"ed-promo": 0,
+	"tv-promo": 0,
+	"local-support": 0
 }
 
+var specialContractLimits = {
+	
+}
 
 var campCode = {
-	first: "<div id='nfa' class='marketing-inline'><h3>",
-	// Campaign Title
-	second: "</h3><hr class='blu'></hr><p>",
-	// Desc 1
-	third: "<br>",
-	// Desc 2
-	fourth: "<br>",
-	// Desc 3
-	fifth: "</p><img src='",
-	// Image Location
-	sixth: "'><br><button class='buy-now' onclick='buyCampaign(",
-	// 
+
 }
 
 function createMarketing(name, title, desc1, desc2, desc3, desc4, price, bigUpgrade = false) {
@@ -29,6 +26,10 @@ function deleteCampaign(id){
 }
 
 function buyCampaign(id, price) {	//Not enough money
+	id = id.trim();
+}
+
+function buySpecialCampaign(id, price){
 	id = id.trim();
 }
 

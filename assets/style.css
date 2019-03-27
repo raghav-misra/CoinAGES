@@ -11,6 +11,33 @@ body, html{
   background-color: #2B2E3D;
 }
 
+.campaign-card{
+  display: inline-block;
+  background: white;
+	color: black;
+	width: 255px;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+	border: 2px white solid;
+	animation: skew-no-shop 1s;
+	animation-play-state: paused;
+}
+.campaign-card .desc{
+	font-family: 'Roboto Slab', serif;
+	font-size: 15px;
+	margin: 2.5px;
+	padding: 0;
+}
+
+.campaign-card.normal { height: 355px; }
+
+.campaign-card.normal img{
+	width: 84px;
+	height: 116px;
+	margin: 10px;
+}
+
 hr{
   margin: 3.75%;
   background: none;
@@ -933,6 +960,20 @@ to {width: 70%;}
 }
 
 .ufo{
- 
+  animation: ufoFlipperAnim 4.5s infinite ease-in-out;
 }
- 
+
+@keyframes ufoFlipperAnim{
+  0% { 
+		transform: none; 
+	}
+	45% {
+		transform: translateY(-40px) rotateY(720deg); 
+	}
+  90% {
+		transform: translateY(0) rotateY(0deg); 
+	}
+  100%{
+    transform: none;
+  }
+}
