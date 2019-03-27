@@ -915,3 +915,24 @@ from {width: 0%;}
 to {width: 70%;}
 
 }
+.antiGravity{
+  -webkit-animation: antiGravity 1.5s infinite alternate;
+        animation: antiGravity 1.5s infinite alternate;
+        -webkit-animation-timing-function: ease-in-out;
+        animation-timing-function: ease-in-out;
+        -webkit-animation-iteration-count: infinite;
+        animation-iteration-count: infinite;
+}
+@-webkit-keyframes antiGravity{
+0% { -webkit-transform: translateY(0); transform: translateY(0); }
+100% { -webkit-transform: translateY(-20px); transform: translateY(-20px); }
+}
+@keyframes antiGravity{
+0% { -webkit-transform: translateY(0); transform: translateY(0); }
+100% { -webkit-transform: translateY(-20px); transform: translateY(-20px); }
+}
+
+.ufo{
+ 
+}
+ 

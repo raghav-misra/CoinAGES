@@ -35,10 +35,9 @@ var itemLimits = {
   "bottle-mk2": 0, // 1 Max
 	"nickel-limit-increase": 0, // 1 Max
 	"dime-dev": 0, // 1 Max
-	"dime-all-max-increase": 0 // Infinite
+	"dime-all-max-increase": 0, // Infinite
+  "quarter-upgrade": 0
 }
-
-var bigUpgrades = ['nickelupgrade', 'dime-dev'];
 
 var shopCode = {
 	first: "<div id='",
@@ -115,20 +114,20 @@ setTimeout(function(){
 	upgradeBuySound.play();
 	switch (id) {
 		case "hover-flip":
-			deleteShopItem("hover-flip")
+			deleteShopItem(id)
 			coin.onmouseover = function () { coin.click() }
 			itemLimits["hover-flip"]++
 			hover_flip2 = true;
 			return
 		case "tutorial-gift":
-			deleteShopItem("tutorial-gift")
+			deleteShopItem(id)
 			player.money = player.money + 100
 			itemLimits["tutorial-gift"]++
 			return
 		case "robot-max-increase":
 			itemLimits["robot-max-increase"]++
 			if (itemLimits["robot-max-increase"] == 5) {
-				deleteShopItem("robot-max-increase");
+				deleteShopItem(id);
 			}
 			robot.max++
 			statusUpdate(robot)
@@ -136,19 +135,19 @@ setTimeout(function(){
 		case "human-max-increase":
 			itemLimits["human-max-increase"]++
 			if (itemLimits["human-max-increase"] == 5) {
-				deleteShopItem("human-max-increase");
+				deleteShopItem(id);
 			}
 			person.max++
 			statusUpdate(person)
 			return
 		case "robo-mk2":
 			itemLimits["robo-mk2"]++
-			deleteShopItem("robo-mk2");
+			deleteShopItem(id);
 			robot.value = 0.03;
 			return
 		case "one-man-army":
 			itemLimits["one-man-army"]++
-			deleteShopItem("one-man-army");
+			deleteShopItem(id);
 			person.value = 0.05;
 			return
 		case "nickelupgrade":
@@ -156,38 +155,38 @@ setTimeout(function(){
 			nextstage(0.05);
 			createNickelShop();
 			nickel_upgrade = true;
-			deleteShopItem("nickelupgrade")
+			deleteShopItem(id)
 			return
 		case "eco-max-increase":
 			itemLimits["eco-max-increase"]++
 			if (itemLimits["eco-max-increase"] == 2) {
-				deleteShopItem("eco-max-increase");
+				deleteShopItem(id);
 			}
 			ecoflipper.max++
 			statusUpdate(ecoflipper)
 			return
 		case "eco-mk-2":
 			itemLimits["eco-mk-2"]++
-			deleteShopItem("eco-mk-2");
+			deleteShopItem(id);
 			ecoflipper.value = 0.12;
 			return
     case "bottle-max-increase":
       itemLimits["bottle-max-increase"]++
 			if (itemLimits["bottle-max-increase"] == 2) {
-				deleteShopItem("bottle-max-increase");
+				deleteShopItem(id);
 			}
 			bottleflip.max++
 			statusUpdate(bottleflip)
 			return
     case "bottle-mk2":
       itemLimits["bottle-mk2"]++
-			deleteShopItem("bottle-mk2");
+			deleteShopItem(id);
 			ecoflipper.value = 0.22;
       return
 		case "dime-dev":
 			itemLimits["dime-dev"]++
 			createDimeShop()
-			deleteShopItem("dime-dev")
+			deleteShopItem(id)
 			return
 		case "dime-all-max-increase":
 			itemLimits["dime-all-max-increase"]++
@@ -223,6 +222,10 @@ setTimeout(function(){
 			}
 			document.getElementById(id).getElementsByClassName("buy-now")[0].innerText = "Buy Now! ($" + dimeAllMaxIncreaseCost.toString() + ")";
 			return;
+    case "quarter-upgrade":
+      deleteShopItem(id);
+      createQuarterShop();
+
 	}
 }
 
@@ -230,6 +233,10 @@ setTimeout(function(){
 
 function createFreeGift() {
 	createShopItem("tutorial-gift", "Your Free Gift", "Great job on finishing", "the tutorial.", "One dollar is", "just a click away!", 0);
+}
+
+function createQuarterShop() {
+	nextstage(0.25)
 }
 
 function createNickelShop() {
@@ -242,6 +249,7 @@ function createNickelShop() {
 function createDimeShop() {
 	nextstage(0.10);
 	createShopItem("dime-all-max-increase", "More of Everything!", "Increase the maximum", "limit of each", "type of purchasable", "auto-flipper by 1.", 650);
+  createShopItem("quarter-upgrade", "Quarter Advancement Initiative", "Use the endless power", "of the space indusry", "to help your business", "flip <b>more coins faster.</b>", 3000, true);
 	notify("New Unlock!", "Marketing Campaigns unlocked!")
 	marketingbtn.disabled = false;	
 	loadCampaigns()

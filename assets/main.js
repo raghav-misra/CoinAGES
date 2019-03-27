@@ -25,7 +25,7 @@ function fadeOut(element){
 //DEBUG
 function m(){
 	skipTutorial()
-	player.money = 999999;
+	player.money = 99999999;
 	return 'no u'
 }
 
@@ -74,6 +74,12 @@ var magnetFlipperBuySound = new Howl({
 });
 var superComputerBuySound = new Howl({
   src: ['assets/audio/superpc.mp3']
+});
+var ufoBuySound = new Howl({
+  src: ['assets/audio/ufo.wav']
+});
+var antiGravityBuySound = new Howl({
+  src: ['assets/audio/antigravity.wav']
 });
 
 
@@ -139,7 +145,7 @@ coin.addEventListener('contextmenu', function(){ coin.click() })
 // Next Stage Function
 function nextstage(newMoney){
 	stage += 1
-	player.clickvalue += newMoney;
+	player.clickvalue = newMoney;
 	items.forEach(function(item){
 		if(item.unlock == stage){
 			itemdivs.innerHTML = itemdivs.innerHTML + item.cardcode
@@ -385,6 +391,33 @@ function managesuperComputer2(){
    document.getElementById('superComputerbar').style.transition = "none"
   document.getElementById('superComputerbar').style.width = "0%"
   setTimeout(managesuperComputer,100)
+}
+//Ufo 
+function manageUfo(){
+   document.getElementById('ufobar').style.animation = "barframes 1s infinite"
+  document.getElementById('ufobar').style.display = "inline-block"
+  setTimeout(manageUfo2,900)
+}
+function manageUfo2(){
+    customers +=1
+  player.money += Math.round(parseFloat(ufo.value) * 100);
+   document.getElementById('ufobar').style.transition = "none"
+  document.getElementById('ufobar').style.width = "0%"
+  setTimeout(manageUfo,100)
+}
+
+//AntiGravity 
+function manageantiGravity(){
+   document.getElementById('antiGravitybar').style.animation = "barframes 60s infinite"
+  document.getElementById('antiGravitybar').style.display = "inline-block"
+  setTimeout(manageantiGravity2,59000)
+}
+function manageantiGravity2(){
+    customers +=1
+  player.money += Math.round(parseFloat(antiGravity.value) * 100);
+   document.getElementById('antiGravitybar').style.transition = "none"
+  document.getElementById('antiGravitybar').style.width = "0%"
+  setTimeout(manageantiGravity,100)
 }
 
 

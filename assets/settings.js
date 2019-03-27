@@ -3,6 +3,7 @@ var stage = 1
 var items = []
 var player = {
   money: 0.00,
+  clickboost: 0.00,
   clickvalue: 0.01,
 	icon: "./assets/img/1.png"
   }
@@ -73,14 +74,38 @@ var magnetFlipper = {
 var superComputer = {
 	 price: 700,
   value: 1,
-  max: 2,
+  max: 4,
   amount: 0,
 	unlock: 3,
   wakeup: 'managesuperComputer',
   name: 'superComputer',
   code:' <img class=" itemimg superComputer infinite" src="assets/img/superpc.png">',
-	cardcode: "<div style='opacity:1'class='card'> <p>Super Computer</p> <div class='bar slow' id='superComputerbar'></div> <hr class='blu thin'> <div class='container' id='superComputerinfo'> <p>Build a cluster of ultra-advanced computer cluster to do the digitally impossible and generate truly random coin flip results.<br>Flip Time: 60 Seconds<br> Money Per Flip: $1.00</p> </div> <br> <button  onclick='buy(\"superComputer\")' class='martophack buy-bot'>Buy one for $700.00</button> <p id='superComputer-displaymax'>You are using 0/2</p> </div>"
+	cardcode: "<div style='opacity:1'class='card'> <p>Super Computer</p> <div class='bar slow' id='superComputerbar'></div> <hr class='blu thin'> <div class='container' id='superComputerinfo'> <p>Build a cluster of ultra-advanced computer cluster to do the digitally impossible and generate truly random coin flip results.<br>Flip Time: 60 Seconds<br> Money Per Flip: $1.00</p> </div> <br> <button  onclick='buy(\"superComputer\")' class='martophack buy-bot'>Buy one for $700</button> <p id='superComputer-displaymax'>You are using 0/4</p> </div>"
+
+} 
+var ufo = {
+	 price: 2000,
+  value: 1,
+  max: 2,
+  amount: 0,
+	unlock: 4,
+  wakeup: 'manageUfo',
+  name: 'ufo',
+  code:' <img class=" itemimg ufo infinite" src="assets/img/ufoFlipper.png">',
+	cardcode: "<div style='opacity:1'class='card'> <p>Alien Technology</p> <div class='bar slow' id='ufobar'></div> <hr class='blu thin'> <div class='container' id='ufoinfo'> <p>Borrow the technology from an intergalactic civilization to flip coins.<br>Flip Time: 1 Second<br> Money Per Flip: $1.00</p> </div> <br> <button  onclick='buy(\"ufo\")' class='martophack buy-bot'>Buy one for $2000</button> <p id='ufo-displaymax'>You are using 0/2</p> </div>"
+
+} 
+var antiGravity = {
+	 price: 5000,
+  value: 10,
+  max: 1,
+  amount: 0,
+	unlock: 4,
+  wakeup: 'manageantiGravity',
+  name: 'antiGravity',
+  code:' <img class=" itemimg antiGravity infinite" src="assets/img/antiGravityFlipper.png">',
+	cardcode: "<div style='opacity:1'class='card'> <p>Anti-Gravity Flipper</p> <div class='bar slow' id='antiGravitybar'></div> <hr class='blu thin'> <div class='container' id='antiGravityinfo'> <p>Launch coins into space and let the nautral anti-gravity properties flip coins for you.<br>Flip Time: 60 Seconds<br> Money Per Flip: $10</p> </div> <br> <button  onclick='buy(\"antiGravity\")' class='martophack buy-bot'>Buy one for $5000</button> <p id='antiGravity-displaymax'>You are using 0/1</p> </div>"
 
 } 
 
-items.push(ecoflipper,bottleflip,magnetFlipper,superComputer)
+items.push(ecoflipper,bottleflip,magnetFlipper,superComputer,ufo,antiGravity)
