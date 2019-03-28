@@ -2,7 +2,7 @@
 var stage = 1
 var items = []
 var player = {
-  money: 0.00,
+  money: 0,
   clickboost: 0.00,
   clickvalue: 0.01,
 	icon: "./assets/img/1.png"
@@ -60,7 +60,7 @@ var bottleflip = {
 
 } 
 var magnetFlipper = {
-	 price: 200,
+	 price: 700,
   value: 0.60,
   max: 4,
   amount: 0,
@@ -68,19 +68,19 @@ var magnetFlipper = {
   wakeup: 'manageMagnetFlipper',
   name: 'magnetFlipper',
   code:' <img class=" itemimg magnetflipper infinite" src="assets/img/magnet.png">',
-	cardcode: "<div style='opacity:1'class='card'> <p>Magnet Flipper</p> <div class='bar' id='magnetFlipperbar'></div> <hr class='blu thin'> <div class='container' id='magnetFlipperinfo'> <p>Attach coins to magnets and use the Earth's magnetic field to flip coins.<br>Flip Time: 1 Second<br> Money Per Flip: $0.60</p> </div> <br> <button  onclick='buy(\"magnetFlipper\")' class='martophack buy-bot'>Buy one for $200.00</button> <p id='magnetFlipper-displaymax'>You are using 0/5</p> </div>"
+	cardcode: "<div style='opacity:1'class='card'> <p>Magnet Flipper</p> <div class='bar' id='magnetFlipperbar'></div> <hr class='blu thin'> <div class='container' id='magnetFlipperinfo'> <p>Attach coins to magnets and use the Earth's magnetic field to flip coins.<br>Flip Time: 1 Second<br> Money Per Flip: $0.60</p> </div> <br> <button  onclick='buy(\"magnetFlipper\")' class='martophack buy-bot'>Buy one for $700</button> <p id='magnetFlipper-displaymax'>You are using 0/5</p> </div>"
 
 } 
 var superComputer = {
-	 price: 700,
-  value: 1,
+	 price: 200,
+  value: 3,
   max: 4,
   amount: 0,
 	unlock: 3,
   wakeup: 'managesuperComputer',
   name: 'superComputer',
   code:' <img class=" itemimg superComputer infinite" src="assets/img/superpc.png">',
-	cardcode: "<div style='opacity:1'class='card'> <p>Super Computer</p> <div class='bar slow' id='superComputerbar'></div> <hr class='blu thin'> <div class='container' id='superComputerinfo'> <p>Build a cluster of ultra-advanced computer cluster to do the digitally impossible and generate truly random coin flip results.<br>Flip Time: 60 Seconds<br> Money Per Flip: $1.00</p> </div> <br> <button  onclick='buy(\"superComputer\")' class='martophack buy-bot'>Buy one for $700</button> <p id='superComputer-displaymax'>You are using 0/4</p> </div>"
+	cardcode: "<div style='opacity:1'class='card'> <p>Super Computer</p> <div class='bar slow' id='superComputerbar'></div> <hr class='blu thin'> <div class='container' id='superComputerinfo'> <p>Build a cluster of ultra-advanced computer cluster to do the digitally impossible and generate truly random coin flip results.<br>Flip Time: 60 Seconds<br> Money Per Flip: $3.00</p> </div> <br> <button  onclick='buy(\"superComputer\")' class='martophack buy-bot'>Buy one for $200</button> <p id='superComputer-displaymax'>You are using 0/4</p> </div>"
 
 } 
 var ufo = {
