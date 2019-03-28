@@ -301,9 +301,6 @@ transition: all 1s ease-in-out;
 .container{
    display: inline-block;
 }
-.card p{
-  display: inline-block;
-}
 .bar{
   display: none;
   background-color: #2773be;
@@ -975,5 +972,97 @@ to {width: 70%;}
 	}
   100%{
     transform: none;
+  }
+}
+.usMint{
+  animation: usMintf linear 2s;
+  animation-iteration-count: infinite;
+  transform-origin: 50% 50%;
+  -webkit-animation: usMintf linear 2s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-transform-origin: 50% 50%;
+  -moz-animation: usMintf linear 2s;
+  -moz-animation-iteration-count: infinite;
+  -moz-transform-origin: 50% 50%;
+  -o-animation: usMintf linear 2s;
+  -o-animation-iteration-count: infinite;
+  -o-transform-origin: 50% 50%;
+  -ms-animation: usMintf linear 2s;
+  -ms-animation-iteration-count: infinite;
+  -ms-transform-origin: 50% 50%;
+}
+
+@keyframes usMintf{
+  0% {
+    transform:  translate(0px,0px)  scaleX(0.00) ;
+  }
+  20% {
+    transform:  translate(51px,0px)  scaleX(1.00) ;
+  }
+  88% {
+    transform:  translate(206px,0px)  scaleX(1.00) ;
+  }
+  100% {
+    transform:  translate(227px,0px)  scaleX(0.00) ;
+  }
+}
+
+@-moz-keyframes usMintf{
+  0% {
+    -moz-transform:  translate(0px,0px)  scaleX(0.00) ;
+  }
+  20% {
+    -moz-transform:  translate(51px,0px)  scaleX(1.00) ;
+  }
+  88% {
+    -moz-transform:  translate(206px,0px)  scaleX(1.00) ;
+  }
+  100% {
+    -moz-transform:  translate(227px,0px)  scaleX(0.00) ;
+  }
+}
+
+@-webkit-keyframes usMintf {
+  0% {
+    -webkit-transform:  translate(0px,0px)  scaleX(0.00) ;
+  }
+  20% {
+    -webkit-transform:  translate(51px,0px)  scaleX(1.00) ;
+  }
+  88% {
+    -webkit-transform:  translate(206px,0px)  scaleX(1.00) ;
+  }
+  100% {
+    -webkit-transform:  translate(227px,0px)  scaleX(0.00) ;
+  }
+}
+
+@-o-keyframes usMintf {
+  0% {
+    -o-transform:  translate(0px,0px)  scaleX(0.00) ;
+  }
+  20% {
+    -o-transform:  translate(51px,0px)  scaleX(1.00) ;
+  }
+  88% {
+    -o-transform:  translate(206px,0px)  scaleX(1.00) ;
+  }
+  100% {
+    -o-transform:  translate(227px,0px)  scaleX(0.00) ;
+  }
+}
+
+@-ms-keyframes usMintf {
+  0% {
+    -ms-transform:  translate(0px,0px)  scaleX(0.00) ;
+  }
+  20% {
+    -ms-transform:  translate(51px,0px)  scaleX(1.00) ;
+  }
+  88% {
+    -ms-transform:  translate(206px,0px)  scaleX(1.00) ;
+  }
+  100% {
+    -ms-transform:  translate(227px,0px)  scaleX(0.00) ;
   }
 }
