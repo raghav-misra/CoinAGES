@@ -242,21 +242,15 @@ function closenotify(){
 //Player click handler
 function addmoney(){
   customers += 1
-  player.money = Math.round(parseFloat(player.money) + parseFloat(player.clickvalue) * 100);
-	deg += 360
-	coin.style.transform = "rotateX(" + deg + "deg)"
-  setTimeout(reset,2000)
-}
-
-function addmoneyhoverflip2(){
-   customers += 1
-  player.money = Math.round(parseFloat(player.money) + parseFloat(player.clickvalue) * 125);
+	var clickHund = player.clickvalue * 100
+	var boostHund = player.clickboost * 10
+  player.money = Math.round(parseFloat(player.money) + parseFloat(clickHund) + parseFloat(boostHund));
 	deg += 360
 	coin.style.transform = "rotateX(" + deg + "deg)"
   setTimeout(reset,2000)
 }
  
-//Reset Coin Styleing
+//Reset Coin Styling
 function reset(){ 
 document.getElementById('coin').src = player.icon;
    
