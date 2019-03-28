@@ -35,7 +35,8 @@ var itemLimits = {
 	"nickel-limit-increase": 0, // 1 Max
 	"dime-dev": 0, // 1 Max
 	"dime-all-max-increase": 0, // Infinite
-  "quarter-upgrade": 0
+  "quarter-upgrade": 0,
+	"halfDollar-upgrade": 0
 }
 
 var shopCode = {
@@ -191,6 +192,11 @@ setTimeout(function(){
 			createDimeShop()
 			deleteShopItem(id)
 			return
+		case "halfDollar-upgrade":
+			itemLimits["halfDollar-upgrade"]++
+			createHalfDollarShop()
+			deleteShopItem(id)
+			return
 		case "dime-all-max-increase":
 			itemLimits["dime-all-max-increase"]++
 			bottleflip.max++
@@ -226,8 +232,8 @@ setTimeout(function(){
 			document.getElementById(id).getElementsByClassName("buy-now")[0].innerText = "Buy Now! ($" + dimeAllMaxIncreaseCost.toString() + ")";
 			return
     case "quarter-upgrade":
-      deleteShopItem(id);
       createQuarterShop();
+			deleteShopItem(id);
 
 	}
 }
@@ -240,10 +246,14 @@ function createFreeGift() {
 
 function createQuarterShop() {
 	nextstage(0.25)
+	createShopItem("halfDollar-upgrade", "Half Dollar Exploration", "Expand the capabilities", "and influence of your", " company to quietly grow", "at a rapid pace", 10000, true);
+}
+function createHalfDollarShop() {
+	nextstage(0.50)
 }
 
 function createNickelShop() {
-	createShopItem("dime-dev", "Dime Development", "Invest your assets", "in improving efficiency", "and consumer outreach.", "<i>Unlocks Marketing Campaigns.</i>", 300, true);
+	createShopItem("dime-dev", "Dime Development", "Invest your assets", "in improving efficiency", "and consumer outreach.", "<i>Unlocks Marketing Campaigns.</i>", 250, true);
   createShopItem("bottle-max-increase", "Extra Bottles", "Koka-Kola™ has agreed", "to increase the", "limit on bottles", "you can purchase.", 100);
 	eco_mk2 = true;
   bottle_mk2 = true;
