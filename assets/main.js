@@ -51,7 +51,8 @@ var coinSound = new Howl({
   src: ['assets/audio/coin.wav']
 });
 var robotBuySound = new Howl({
-  src: ['assets/audio/robot.wav']
+  src: ['assets/audio/robot.wav'],
+  volume: 0.3
 });
 var personBuySound = new Howl({
   src: ['assets/audio/people.mp3']
@@ -80,6 +81,12 @@ var ufoBuySound = new Howl({
 });
 var antiGravityBuySound = new Howl({
   src: ['assets/audio/antigravity.wav']
+});
+var preFlippedBuySound = new Howl({
+  src: ['assets/audio/preFlipped.mp3']
+});
+var usMintBuySound = new Howl({
+  src: ['assets/audio/usMint.mp3']
 });
 
 
@@ -217,14 +224,13 @@ function update(){
 	noti.style.zIndex = "100 !important";
 }
 // Open notificaion
-function notify(header,description,flip = true, shop = false){
+function notify(header,description,flip = true){
   noti.style.right = 'calc(100% + 300px)'
   nheader.innerText = header
   ndescription.innerText = description
   noti.style.left = 'calc(100% - 300px)'
 	setTimeout(function(){
-		if(shop){ upgradeBuySound.play(); }
-		else{ notifSound.play(); }
+    notifSound.play();
 	},1000)
   if(flip == true){
 setTimeout(closenotify,2000)
@@ -281,14 +287,14 @@ function buy(obj){
 				eval(' document.getElementById("' + obj + 'info").innerHTML = ""')
 				eval(' document.getElementById("' + obj + 'info").innerHTML =  document.getElementById("' + obj + 'info").innerHTML + ' +"'" + code + "' + '</div>' ")
         var updatedamount = eval(  'parseInt(' +obj + '.amount)') 
-        updateusage("document.getElementById('" +name +"-displaymax')",updatedamount,max)
+        updateusage("document.getElementById('" +name +"-displaymax')",updatedamount,max,value)
 				eval(name + 'BuySound.play()')
 
 			} 
 			else{
 				eval(' document.getElementById("' + obj + 'info").innerHTML =  document.getElementById("' + obj + 'info").innerHTML + ' +"'" + code + "' + '</div>' ")
         var updatedamount = eval(  'parseInt(' +obj + '.amount)') 
-        updateusage("document.getElementById('" +name +"-displaymax')",updatedamount,max)
+        updateusage("document.getElementById('" +name +"-displaymax')",updatedamount,max,value)
 				eval(name + 'BuySound.play()')
 
 			}
@@ -418,6 +424,19 @@ function manageantiGravity2(){
    document.getElementById('antiGravitybar').style.transition = "none"
   document.getElementById('antiGravitybar').style.width = "0%"
   setTimeout(manageantiGravity,100)
+}
+//usMint 
+function manageusMint(){
+   document.getElementById('usMintbar').style.animation = "barframes 60s infinite"
+  document.getElementById('usMintbar').style.display = "inline-block"
+  setTimeout(manageusMint2,59000)
+}
+function manageusMint2(){
+    customers +=1
+  player.money += Math.round(parseFloat(usMint.value) * 100);
+   document.getElementById('usMintbar').style.transition = "none"
+  document.getElementById('usMintbar').style.width = "0%"
+  setTimeout(manageusMint,100)
 }
 
 

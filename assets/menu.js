@@ -29,10 +29,8 @@ marketingbtn.addEventListener('click', openmarketing)
 
 
 // Update Item Usage display
-function updateusage(name,amount,max){
-  
-  eval(name +'.innerText = "You are using ' + amount + '/' + max +'"')
-  
+function updateusage(name,amount,max,obj){ 
+  eval(name +'.innerHTML = "You are using ' + amount + '/' + max + '<br>' +'  Each one is making you $' + obj +'"')
 }
 
 // MENU WINDOW MANGEMENT=========================

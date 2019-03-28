@@ -1,4 +1,4 @@
-//Settings script
+  //Settings script
 var stage = 1
 var items = []
 var player = {
@@ -36,7 +36,7 @@ var person = {
 }
 // Objects that are not default
 var ecoflipper = {
-	 price: 20,
+  price: 20,
   value: 0.20,
   max: 5,
   amount: 0,
@@ -107,5 +107,29 @@ var antiGravity = {
 	cardcode: "<div style='opacity:1'class='card'> <p>Anti-Gravity Flipper</p> <div class='bar slow' id='antiGravitybar'></div> <hr class='blu thin'> <div class='container' id='antiGravityinfo'> <p>Launch coins into space and let the nautral anti-gravity properties flip coins for you.<br>Flip Time: 60 Seconds<br> Money Per Flip: $10</p> </div> <br> <button  onclick='buy(\"antiGravity\")' class='martophack buy-bot'>Buy one for $5000</button> <p id='antiGravity-displaymax'>You are using 0/1</p> </div>"
 
 } 
+var preFlipped = {
+	 price: 12000,
+  value: 5,
+  max: 2,
+  amount: 0,
+	unlock: 5,
+  wakeup: 'managepreFlipped',
+  name: 'preFlipped',
+  code:' <img class=" itemimg preFlipped infinite" src="assets/img/preFlipped.png">',
+	cardcode: "<div style='opacity:1'class='card'> <p>Pre Flipped Coins</p> <div class='bar slow' id='preFlippedbar'></div> <hr class='blu thin'> <div class='container' id='preFlippedinfo'> <p>Create and flip coins with only one side for max efficiency. It's not cheating if you don't get caught<br>Flip Time: 1 Second<br> Money Per Flip: $3</p> </div> <br> <button  onclick='buy(\"preFlipped\")' class='martophack buy-bot'>Buy one for $12000</button> <p id='preFlipped-displaymax'>You are using 0/2</p> </div>"
 
-items.push(ecoflipper,bottleflip,magnetFlipper,superComputer,ufo,antiGravity)
+}
+var usMint = {
+	 price: 25000,
+  value: 5,
+  max: 1,
+  amount: 0,
+	unlock: 5,
+  wakeup: 'manageusMint',
+  name: 'usMint',
+  code:' <img class=" itemimg usMint infinite" src="assets/img/usMint.png">',
+	cardcode: "<div style='opacity:1'class='card'> <p>United States Mint</p> <div class='bar slow' id='usMintbar'></div> <hr class='blu thin'> <div class='container' id='usMintinfo'> <p>Buy out the minting capacity of the United States and convert them into coin flipping facilities.<br>Flip Time: 120 Seconds<br> Money Per Flip: $3</p> </div> <br> <button  onclick='buy(\"usMint\")' class='martophack buy-bot'>Buy one for $25000</button> <p id='usMint-displaymax'>You are using 0/1</p> </div>"
+
+} 
+
+items.push(ecoflipper,bottleflip,magnetFlipper,superComputer,ufo,antiGravity,preFlipped,usMint)

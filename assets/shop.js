@@ -1,6 +1,5 @@
 function statusUpdate(obj){
-  updateusage("document.getElementById('" + obj.name + "-displaymax')", obj.amount, obj.max)
-  return "no u :)";
+  updateusage("document.getElementById('" + obj.name + "-displaymax')", obj.amount, obj.max,obj.value)
 }
 
 function createShopItem(name, title, desc1, desc2, desc3, desc4, price, bigUpgrade = false) {
@@ -144,11 +143,13 @@ setTimeout(function(){
 			itemLimits["robo-mk2"]++
 			deleteShopItem(id);
 			robot.value = 0.03;
+      statusUpdate(robot)
 			return
 		case "one-man-army":
 			itemLimits["one-man-army"]++
 			deleteShopItem(id);
 			person.value = 0.05;
+      statusUpdate(person)
 			return
 		case "nickelupgrade":
 		  itemLimits["nickelupgrade"]++
@@ -169,6 +170,7 @@ setTimeout(function(){
 			itemLimits["eco-mk-2"]++
 			deleteShopItem(id);
 			ecoflipper.value = 0.12;
+      statusUpdate(ecoflipper)
 			return
     case "bottle-max-increase":
       itemLimits["bottle-max-increase"]++
@@ -182,6 +184,7 @@ setTimeout(function(){
       itemLimits["bottle-mk2"]++
 			deleteShopItem(id);
 			ecoflipper.value = 0.22;
+      statusUpdate(bottleflip)
       return
 		case "dime-dev":
 			itemLimits["dime-dev"]++
@@ -221,7 +224,7 @@ setTimeout(function(){
 				buyShopItem(id, dimeAllMaxIncreaseCost);
 			}
 			document.getElementById(id).getElementsByClassName("buy-now")[0].innerText = "Buy Now! ($" + dimeAllMaxIncreaseCost.toString() + ")";
-			return;
+			return
     case "quarter-upgrade":
       deleteShopItem(id);
       createQuarterShop();
