@@ -22,6 +22,7 @@ body, html{
 	border: 2px white solid;
 	animation: skew-no-shop 1s;
 	animation-play-state: paused;
+	transition: background 1s ease-in-out;
 }
 .campaign-card .desc{
 	font-family: 'Roboto Slab', serif;
@@ -37,7 +38,18 @@ body, html{
 	height: 116px;
 	margin: 10px;
 }
+.boost{
+	border-radius: 30px;
+	color: white;
+	display: inline-block;
+	margin: 1% auto;
+	padding: 0.5%;
+	-webkit-animation: color-change-2x 1s linear infinite alternate both;
+	        animation: color-change-2x 1s linear infinite alternate both;
+	opacity: 0;
+	transition: opacity 1s ease-in-out;
 
+}
 hr{
   margin: 3.75%;
   background: none;
@@ -1064,5 +1076,21 @@ to {width: 70%;}
   }
   100% {
     -ms-transform:  translate(227px,0px)  scaleX(0.00) ;
+  }
+}
+@-webkit-keyframes color-change-2x {
+  0% {
+    background: #19dcea;
+  }
+  100% {
+    background: #b22cff;
+  }
+}
+@keyframes color-change-2x {
+  0% {
+    background: #19dcea;
+  }
+  100% {
+    background: #b22cff;
   }
 }
