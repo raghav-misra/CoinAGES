@@ -9,31 +9,44 @@ var contractLimits = {
 	"local-support": 0
 }
 
+function notifyMarketing(header, description, flip = true){
+  noti.style.right = 'calc(100% + 300px)'
+  nheader.innerText = header
+  ndescription.innerText = description
+  noti.style.left = 'calc(100% - 300px)'
+	setTimeout(function(){ upgradeBuySound.play(); }, 1000)
+  if(flip == true)
+    setTimeout(closenotify,2000)
+}
+
+function buyCampaign(id, price){
+  id = id.trim();
+  priceHund = price * 100
+	if (player.money < priceHund) {
+		notify("R&D Labs", "You can't afford that.")
+		idx = document.getElementById(id);
+		idx.style.animation = "skew-no-shop 1s";
+		setTimeout(function () {
+			idx.style.animation = "none";
+		}, 1000)
+		return
+	}
+  notifyMarketing("Success!", "The campaign has been launched.")
+  switch (id) {
+    case "press-release":
+      return
+    case "ed-promo":
+      return
+    case "tv-promo":
+      return
+    case "local-support":
+      return
+  }
+}
+
 var specialContractLimits = {
 	
 }
-
-var campCode = {
-
-}
-
-function createMarketing(name, title, desc1, desc2, desc3, desc4, price, bigUpgrade = false) {
-	// fadeIn(document.getElementById(name));
-}
-
-function deleteCampaign(id){ 
-	deleteShopItem(id); 
-}
-
-function buyCampaign(id, price) {	//Not enough money
-	id = id.trim();
-}
-
-function buySpecialCampaign(id, price){
-	id = id.trim();
-}
-
-
 
 // ↓↓↓ Call loadCampaigns() when marketing campaigns is unlocked. ↓↓↓
 
