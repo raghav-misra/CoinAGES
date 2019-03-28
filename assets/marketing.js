@@ -1,5 +1,7 @@
 var normalContainer = document.getElementById("normalPromoContainer");
 var specialContainer = document.getElementById("specialPromoContainer");
+var boostDisplay = document.getElementById('boostDisplay')
+var boostDisplayp = document.getElementById('boostDisplayp')
 
 var contractLimits = {
 	// All can be bought infinitely.
@@ -19,9 +21,10 @@ function notifyMarketing(header, description, flip = true){
     setTimeout(closenotify,2000)
 }
 
-function buyCampaign(id, price){
+function buyCampaign(id, price, boostValue,btn){
+	
   id = id.trim();
-  priceHund = price * 100
+  var priceHund = price * 100
 	if (player.money < priceHund) {
 		notify("R&D Labs", "You can't afford that.")
 		idx = document.getElementById(id);
@@ -31,17 +34,9 @@ function buyCampaign(id, price){
 		}, 1000)
 		return
 	}
+	player.money = player.money - priceHund;
   notifyMarketing("Success!", "The campaign has been launched.")
-  switch (id) {
-    case "press-release":
-      return
-    case "ed-promo":
-      return
-    case "tv-promo":
-      return
-    case "local-support":
-      return
-  }
+	clickBooster(boostValue, id,btn)
 }
 
 var specialContractLimits = {
@@ -52,6 +47,28 @@ var specialContractLimits = {
 
 function loadCampaigns(){
 	
+}
+
+function clickBooster(boost, cardId, btn, durationMS = 15000){
+	var id = cardId
+	var card = document.getElementById(cardId);
+	card.style.backgroundColor = "rgba(255,255,255,0.5)"
+	btn.disabled = true 
+	btn.style.opacity = 0 
+  player.clickboost = player.clickboost + boost;
+	boostDisplayp.innerText = 'Marketing Boost: + $' + player.clickboost / 10
+boostDisplay.style.opacity = 1
+	setTimeout(function(){
+		notify("Campaign Completed", "A marketing campaign has ended.");
+		card.style.backgroundColor = "rgba(255,255,255,1)"
+		btn.style.opacity = 1
+		btn.disabled = false 
+		player.clickboost = player.clickboost -	 boost;
+		boostDisplayp.innerText = 'Marketing Boost: + $' + player.clickboost / 10
+		if(player.clickboost <= 0){
+			boostDisplay.style.opacity = 0
+		}
+	}, durationMS);
 }
 
 
