@@ -36,7 +36,8 @@ var itemLimits = {
 	"dime-dev": 0, // 1 Max
 	"dime-all-max-increase": 0, // Infinite
   "quarter-upgrade": 0,
-	"halfDollar-upgrade": 0
+	"halfDollar-upgrade": 0,
+  "Dollar-upgrade" : 0
 }
 
 var shopCode = {
@@ -85,7 +86,7 @@ function buyShopItem(id, price) {	//Not enough money
 	priceHund = price * 100
 	if (player.money < priceHund) {
 		notify("R&D Labs", "You can't afford that.")
-		idx = document.getElementById(id);
+		var idx = document.getElementById(id);
 		idx.style.animation = "skew-no-shop 1s";
 		setTimeout(function () {
 			idx.style.animation = "none";
@@ -197,6 +198,11 @@ setTimeout(function(){
 			createHalfDollarShop()
 			deleteShopItem(id)
 			return
+    case "Dollar-upgrade":
+			itemLimits["Dollar-upgrade"]++
+			createDollarShop()
+			deleteShopItem(id)
+			return
 		case "dime-all-max-increase":
 			itemLimits["dime-all-max-increase"]++
 			bottleflip.max++
@@ -211,21 +217,7 @@ setTimeout(function(){
 			statusUpdate(magnetFlipper)
 			superComputer.max++
 			statusUpdate(superComputer)
-			var xd = dimeAllMaxIncreaseCost
-			dimeAllMaxIncreaseCost = Math.trunc(xd * 1.1);
-			if(xd > 1500 && xd < 2000){
-				dimeAllMaxIncreaseCost = xd * 1.07
-			}
-			else if(xd > 2000 && xd < 3000){
-				dimeAllMaxIncreaseCost = xd * 1.05
-			}
-			else if(xd > 3000){
-				dimeAllMaxIncreaseCost = xd * 1.015
-			}
-			else{
-				dimeAllMaxIncreaseCost = xd * 1.1;
-			}
-			dimeAllMaxIncreaseCost = Math.trunc(dimeAllMaxIncreaseCost);
+			var xd = dimeAllMaxIncreaseCost;
 			document.getElementById(id).getElementsByClassName("buy-now")[0].onclick = function(){
 				buyShopItem(id, dimeAllMaxIncreaseCost);
 			}
@@ -246,12 +238,16 @@ function createFreeGift() {
 
 function createQuarterShop() {
 	nextstage(0.25)
-	createShopItem("halfDollar-upgrade", "Half Dollar Exploration", "Expand the capabilities", "and influence of your", " company to quietly grow", "at a rapid pace", 10000, true);
+	createShopItem("halfDollar-upgrade", "Half Dollar Exploration", "Expand the capabilities", "and influence of your", " company to quietly grow", "at a rapid pace.", 10000, true);
+  deleteShopItem("dime-all-max-increase");
 }
 function createHalfDollarShop() {
 	nextstage(0.50)
+  createShopItem("Dollar-upgrade", "The Golden Age", "Assemble the top executives", "into a single think tank", "to research and develop", "the final innovation.", 100000, true);
 }
-
+function createDollarShop(){
+  nextstage(1)
+}
 function createNickelShop() {
 	createShopItem("dime-dev", "Dime Development", "Invest your assets", "in improving efficiency", "and consumer outreach.", "<i>Unlocks Marketing Campaigns.</i>", 250, true);
   createShopItem("bottle-max-increase", "Extra Bottles", "Koka-Kola™ has agreed", "to increase the", "limit on bottles", "you can purchase.", 100);

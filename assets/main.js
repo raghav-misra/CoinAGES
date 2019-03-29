@@ -243,7 +243,7 @@ function closenotify(){
 function addmoney(){
   customers += 1
 	var clickHund = player.clickvalue * 100
-	var boostHund = player.clickboost * 10
+	var boostHund = player.clickboost * 100
   player.money = Math.round(parseFloat(player.money) + parseFloat(clickHund) + parseFloat(boostHund));
 	deg += 360
 	coin.style.transform = "rotateX(" + deg + "deg)"
@@ -418,6 +418,19 @@ function manageantiGravity2(){
    document.getElementById('antiGravitybar').style.transition = "none"
   document.getElementById('antiGravitybar').style.width = "0%"
   setTimeout(manageantiGravity,100)
+}
+//usMint 
+function managepreFlipped(){
+   document.getElementById('preFlippedbar').style.animation = "barframes 1s infinite"
+  document.getElementById('preFlippedbar').style.display = "inline-block"
+  setTimeout(managepreFlipped2,59000)
+}
+function managepreFlipped(){
+    customers +=1
+  player.money += Math.round(parseFloat(preFlipped.value) * 100);
+   document.getElementById('preFlippedbar').style.transition = "none"
+  document.getElementById('preFlippedbar').style.width = "0%"
+  setTimeout(managepreFlipped ,100)
 }
 //usMint 
 function manageusMint(){
