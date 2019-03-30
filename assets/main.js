@@ -88,6 +88,12 @@ var preFlippedBuySound = new Howl({
 var usMintBuySound = new Howl({
   src: ['assets/audio/usMint.mp3']
 });
+var infinityBuySound = new Howl({
+  src: ['assets/audio/infinity.wav']
+});
+var blockchainBuySound = new Howl({
+  src: ['assets/audio/blockchain.wav']
+});
 
 
 
@@ -242,9 +248,9 @@ function closenotify(){
 //Player click handler
 function addmoney(){
   customers += 1
-	var clickHund = player.clickvalue * 100
-	var boostHund = player.clickboost * 100
-  player.money = Math.round(parseFloat(player.money) + parseFloat(clickHund) + parseFloat(boostHund));
+	var clickHund = Math.round(player.clickvalue * 100)
+	var boostHund = Math.round(player.clickboost)
+  player.money = parseFloat(player.money) + parseFloat(clickHund) + parseFloat(boostHund);
 	deg += 360
 	coin.style.transform = "rotateX(" + deg + "deg)"
   setTimeout(reset,2000)
@@ -419,13 +425,13 @@ function manageantiGravity2(){
   document.getElementById('antiGravitybar').style.width = "0%"
   setTimeout(manageantiGravity,100)
 }
-//usMint 
+//preFlipped 
 function managepreFlipped(){
    document.getElementById('preFlippedbar').style.animation = "barframes 1s infinite"
   document.getElementById('preFlippedbar').style.display = "inline-block"
-  setTimeout(managepreFlipped2,59000)
+  setTimeout(managepreFlipped2,900)
 }
-function managepreFlipped(){
+function managepreFlipped2(){
     customers +=1
   player.money += Math.round(parseFloat(preFlipped.value) * 100);
    document.getElementById('preFlippedbar').style.transition = "none"
@@ -445,9 +451,22 @@ function manageusMint2(){
   document.getElementById('usMintbar').style.width = "0%"
   setTimeout(manageusMint,100)
 }
+//infinity 
+function manageinfinity(){
+   document.getElementById('infinitybar').style.animation = "barframes 1s infinite"
+  document.getElementById('infinitybar').style.display = "inline-block"
+  setTimeout(manageinfinity2,900)
+}
+function manageinfinity2(){
+    customers +=1
+  player.money += Math.round(parseFloat(infinity.value) * 100);
+   document.getElementById('infinitybar').style.transition = "none"
+  document.getElementById('infinitybar').style.width = "0%"
+  setTimeout(manageinfinity,100)
+}
 
 
-//Begin Tutorial
+//Begin Tutorial and INIT
 
 notify('Tutorial', 'Welcome to the CEO Dashboard', true)
 setTimeout(function(){
@@ -457,3 +476,17 @@ setTimeout(function(){
 		notify('Tutorial', 'First, click on Revenue Management')
 	}
 }, 4000)
+/*
+function init(){ // Restore Save
+  var save = window.localStorage.getItem('m')
+  if (m == 0){
+    return
+  }else{
+    player.money = save
+  }
+setTimeout(autoSave, 10000)
+}
+init()
+function autoSave(){
+  window.localStorage.setItem('m', player.money)
+};*/
