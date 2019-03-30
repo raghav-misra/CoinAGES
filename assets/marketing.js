@@ -31,6 +31,7 @@ function clickBoosterPerma(cardId, boost){
   var card = document.getElementById(cardId);
   player.clickboost = player.clickboost + boost;
   boostDisplayp.innerText = 'Marketing Boost: +' + Math.round(player.clickboost)  + "¢";
+  boostDisplay.style.opacity = 1
   fadeOut(card);
 }
 
