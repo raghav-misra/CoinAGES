@@ -140,7 +140,7 @@ var infinity = {
   wakeup: 'manageinfinity',
   name: 'infinity',
   code:' <img class=" itemimg infinity infinite" src="assets/img/infinity.png">',
-	cardcode: "<div style='opacity:1'class='card'> <p>Infinium Flipper</p> <div class='bar slow' id='infinitybar'></div> <hr class='blu thin'> <div class='container' id='infinityinfo'> <p>Break the laws of life, time, and the universe and develop a coin that flips itself<br>Flip Time: 1 Second<br> Money Per Flip: $10</p> </div> <br> <button  onclick='buy(\"infinity\")' class='martophack buy-bot'>Buy one for $100000</button> <p id='infinity-displaymax'>You are using 0/1</p> </div>"
+	cardcode: "<div style='opacity:1'class='card'> <p>Infinium Flipper</p> <div class='bar slow' id='infinitybar'></div> <hr class='blu thin'> <div class='container' id='infinityinfo'> <p>Break the laws of life, time, and the universe and develop a coin that flips itself.<br>Flip Time: 1 Second<br> Money Per Flip: $10</p> </div> <br> <button  onclick='buy(\"infinity\")' class='martophack buy-bot'>Buy one for $100000</button> <p id='infinity-displaymax'>You are using 0/1</p> </div>"
 
 } 
 var blockchain = {

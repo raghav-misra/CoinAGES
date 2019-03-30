@@ -37,7 +37,7 @@ body, html{
 
 .campaign-card.normal { height: 355px; }
 
-.campaign-card.normal img{
+.campaign-card img{
 	width: 84px;
 	height: 116px;
 	margin: 10px;
@@ -1018,4 +1018,36 @@ to {width: 70%;}
 		-webkit-transform: translateX(150px) rotateY(180deg) rotateX(180deg) rotateZ(180deg);
 		        transform: translateX(150px) rotateY(180deg) rotateX(180deg) rotateZ(180deg);
 	}
+}
+
+@-webkit-keyframes infiniumF{
+	0%{
+		-webkit-transform: none;
+		        transform: none;	
+	}
+	50%{
+		-webkit-transform: scale(1.25) rotateY(360deg);
+		        transform: scale(1.25) rotateY(360deg);
+		-webkit-filter: invert(100%);
+		        filter: invert(100%);
+	}
+}
+
+@keyframes infiniumF{
+	0%{
+		-webkit-transform: none;
+		        transform: none;	
+	}
+	50%{
+		-webkit-transform: scale(1.25) rotateY(360deg);
+		        transform: scale(1.25) rotateY(360deg);
+		-webkit-filter: invert(100%);
+		        filter: invert(100%);
+	}
+}
+
+.infinity{
+	-webkit-animation: infiniumF 2s infinite;
+	        animation: infiniumF 2s infinite;
+	border-radius: 50%;
 }

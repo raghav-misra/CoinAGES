@@ -37,7 +37,8 @@ var itemLimits = {
 	"dime-all-max-increase": 0, // Infinite
   "quarter-upgrade": 0,
 	"halfDollar-upgrade": 0,
-  "Dollar-upgrade" : 0
+  "Dollar-upgrade" : 0,
+  "world-upgrade" : 0
 }
 
 var shopCode = {
@@ -203,6 +204,11 @@ setTimeout(function(){
 			createDollarShop()
 			deleteShopItem(id)
 			return
+    case "world-upgrade":
+			itemLimits["world-upgrade"]++
+			createWorldShop()
+			deleteShopItem(id)
+			return
 		case "dime-all-max-increase":
 			itemLimits["dime-all-max-increase"]++
 			bottleflip.max++
@@ -235,7 +241,9 @@ setTimeout(function(){
 function createFreeGift() {
 	createShopItem("tutorial-gift", "Your Free Gift", "Great job on finishing", "the tutorial.", "One dollar is", "just a click away!", 0);
 }
-
+function createWorldShop(){
+  nextstage(100)
+}
 function createQuarterShop() {
 	nextstage(0.25)
 	createShopItem("halfDollar-upgrade", "Half Dollar Exploration", "Expand the capabilities", "and influence of your", " company to quietly grow", "at a rapid pace.", 10000, true);
@@ -247,6 +255,7 @@ function createHalfDollarShop() {
 }
 function createDollarShop(){
   nextstage(1)
+  createShopItem("world-upgrade", "World Domination", "Use your mass resources", "and take down rival companies", "to seal your fate as the", "world's most powerful company.", 500000, true)
 }
 function createNickelShop() {
 	createShopItem("dime-dev", "Dime Development", "Invest your assets", "in improving efficiency", "and consumer outreach.", "<i>Unlocks Marketing Campaigns.</i>", 250, true);
@@ -268,7 +277,7 @@ function createDimeShop() {
 }
 
 function createRobotMk2() {
-	createShopItem("robo-mk2", "Robots: Mark II", "Sicromoft C.E.O Gill Bates", "has developed a way", "for robots to flip", "3¢ every second.", 10);
+	createShopItem("robo-mk2", "Robots: Mark II", "Sicromoft C.E.O Gill Bates", "has developed a way", " for robots to flip", "3¢ every second.", 10);
 }
 //default shop items
 
