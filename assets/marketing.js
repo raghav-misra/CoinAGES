@@ -130,7 +130,7 @@ String.prototype.replaceAll = function(search, replacement) {
     return target.replace(new RegExp(search, 'g'), replacement);
 };
 
-createCampaign("nfa-promo", "NFA Sponsorship", "Sponsor the National Football", "Association and run ads during", "games. The NFA will also utilize", "your coin-flipping app for games.", "+0.03 per manual flip", "/img/nfalogo.png", 50, 3);
+createCampaign("nfa-promo", "NFA Sponsorship", "Sponsor the National Football", "Association and run ads during", "games. The NFA will also utilize", "your coin-flipping app for games.", "Permanent: +0.03 per manual flip", "/img/nfalogo.png", 50, 3);
 
 
 
