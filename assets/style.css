@@ -1051,3 +1051,98 @@ to {width: 70%;}
 	        animation: infiniumF 2s infinite;
 	border-radius: 50%;
 }
+.blockchain{
+  animation: blockchainf ease-in-out 3s;
+  animation-iteration-count: infinite;
+  transform-origin: 50% 50%;
+  -webkit-animation: blockchainf ease-in-out 3s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-transform-origin: 50% 50%;
+  -moz-animation: blockchainf ease-in-out 3s;
+  -moz-animation-iteration-count: infinite;
+  -moz-transform-origin: 50% 50%;
+  -o-animation: blockchainf ease-in-out 3s;
+  -o-animation-iteration-count: infinite;
+  -o-transform-origin: 50% 50%;
+  -ms-animation: blockchainf ease-in-out 3s;
+  -ms-animation-iteration-count: infinite;
+  -ms-transform-origin: 50% 50%;
+}
+
+@keyframes blockchainf{
+  0% {
+    transform:  translate(0px,0px)  rotate(0deg) ;
+  }
+  47% {
+    transform:  translate(113px,0px)  rotate(360deg) ;
+  }
+  100% {
+    transform:  translate(0px,0px)  rotate(0deg) ;
+  }
+}
+
+@-moz-keyframes blockchainf{
+  0% {
+    -moz-transform:  translate(0px,0px)  rotate(0deg) ;
+  }
+  47% {
+    -moz-transform:  translate(113px,0px)  rotate(360deg) ;
+  }
+  100% {
+    -moz-transform:  translate(0px,0px)  rotate(0deg) ;
+  }
+}
+
+@-webkit-keyframes blockchainf {
+  0% {
+    -webkit-transform:  translate(0px,0px)  rotate(0deg) ;
+  }
+  47% {
+    -webkit-transform:  translate(113px,0px)  rotate(360deg) ;
+  }
+  100% {
+    -webkit-transform:  translate(0px,0px)  rotate(0deg) ;
+  }
+}
+
+@-o-keyframes blockchainf {
+  0% {
+    -o-transform:  translate(0px,0px)  rotate(0deg) ;
+  }
+  47% {
+    -o-transform:  translate(113px,0px)  rotate(360deg) ;
+  }
+  100% {
+    -o-transform:  translate(0px,0px)  rotate(0deg) ;
+  }
+}
+
+@-ms-keyframes blockchainf {
+  0% {
+    -ms-transform:  translate(0px,0px)  rotate(0deg) ;
+  }
+  47% {
+    -ms-transform:  translate(113px,0px)  rotate(360deg) ;
+  }
+  100% {
+    -ms-transform:  translate(0px,0px)  rotate(0deg) ;
+  }
+}
+.company{
+  -webkit-animation: companyf infinite 2s ease-in-out;
+          animation: companyf infinite 2s ease-in-out;
+}
+@-webkit-keyframes companyf{
+0%{-webkit-filter: brightness(100%);filter: brightness(100%)}
+50%{-webkit-filter: brightness(500%);filter: brightness(500%)}
+100%{-webkit-filter: brightness(100%);filter: brightness(100%)}
+
+
+}
+@keyframes companyf{
+0%{-webkit-filter: brightness(100%);filter: brightness(100%)}
+50%{-webkit-filter: brightness(500%);filter: brightness(500%)}
+100%{-webkit-filter: brightness(100%);filter: brightness(100%)}
+
+
+}

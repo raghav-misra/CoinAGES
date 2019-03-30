@@ -155,5 +155,28 @@ var blockchain = {
 	cardcode: "<div style='opacity:1'class='card'> <p>Blockchain Flipper</p> <div class='bar slow' id='blockchainbar'></div> <hr class='blu thin'> <div class='container' id='blockchaininfo'> <p>Create a blockchain system that allows people from around the world to submit and receive coinflips ... for a fee<br>Flip Time: 60 Seconds<br> Money Per Flip: $20</p> </div> <br> <button  onclick='buy(\"blockchain\")' class='martophack buy-bot'>Buy one for $60000</button> <p id='blockchain-displaymax'>You are using 0/4</p> </div>"
 
 } 
+var sicromoft = {
+  price: 200000,
+ value: 1000,
+ max: 1,
+ amount: 0,
+ unlock: 7,
+ wakeup: 'managesicromoft',
+ name: 'sicromoft',
+ code:' <img class=" itemimg company infinite" src="assets/img/sicromoft.png">',
+ cardcode: "<div style='opacity:1'class='card'> <p>Sicromoft</p> <div class='bar slow' id='sicromoftbar'></div> <hr class='blu thin'> <div class='container' id='sicromoftinfo'> <p>Buy the technology company, Sicromoft, and drastically expand your capabilities <br>Flip Time: 1 Second<br> Money Per Flip: $1000</p> </div> <br> <button  onclick='buy(\"sicromoft\")' class='martophack buy-bot'>Buy one for $200000</button> <p id='sicromoft-displaymax'>You are using 0/1</p> </div>"
 
-items.push(ecoflipper,bottleflip,magnetFlipper,superComputer,ufo,antiGravity,usMint,preFlipped,infinity,blockchain)
+}
+var zamazon = {
+  price: 200000,
+ value: 1000,
+ max: 1,
+ amount: 0,
+ unlock: 7,
+ wakeup: 'managezamazon',
+ name: 'zamazon',
+ code:' <img class=" itemimg company infinite" src="assets/img/zamazon.png">',
+ cardcode: "<div style='opacity:1'class='card'> <p>Zamazon</p> <div class='bar slow' id='zamazonbar'></div> <hr class='blu thin'> <div class='container' id='zamazoninfo'> <p>Buy the technology company, Zamazon, and drastically expand your capabilities <br>Flip Time: 1 Second<br> Money Per Flip: $1000</p> </div> <br> <button  onclick='buy(\"zamazon\")' class='martophack buy-bot'>Buy one for $200000</button> <p id='zamazon-displaymax'>You are using 0/1</p> </div>"
+
+}
+items.push(ecoflipper,bottleflip,magnetFlipper,superComputer,ufo,antiGravity,usMint,preFlipped,infinity,blockchain,sicromoft,zamazon)

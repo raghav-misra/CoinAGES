@@ -242,7 +242,9 @@ function createFreeGift() {
 	createShopItem("tutorial-gift", "Your Free Gift", "Great job on finishing", "the tutorial.", "One dollar is", "just a click away!", 0);
 }
 function createWorldShop(){
-  nextstage(100)
+	nextstage(100)
+	endGame()
+	
 }
 function createQuarterShop() {
 	nextstage(0.25)

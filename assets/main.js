@@ -94,6 +94,19 @@ var infinityBuySound = new Howl({
 var blockchainBuySound = new Howl({
   src: ['assets/audio/blockchain.wav']
 });
+var sicromoftBuySound = new Howl({
+  src: ['assets/audio/buycomp.wav']
+});
+var zamazonBuySound = new Howl({
+  src: ['assets/audio/buycomp.wav']
+});
+var investigationstart = new Howl({
+  src: ['assets/audio/investigationstart.mp3']
+});
+var investigationdone = new Howl({
+  src: ['assets/audio/investigationdone.mp3']
+});
+
 
 
 
@@ -162,13 +175,15 @@ function nextstage(newMoney){
 	items.forEach(function(item){
 		if(item.unlock == stage){
 			itemdivs.innerHTML = itemdivs.innerHTML + item.cardcode
-		player.icon = "./assets/img/" + stage + ".png"
-		reset()
+
 	
 		}
 	}
 	
-	)}
+  )
+	player.icon = "./assets/img/" + stage + ".png"
+		reset()
+}
 //Update Function
 window.setInterval(update,200)
 function update(){
@@ -230,13 +245,15 @@ function update(){
 	noti.style.zIndex = "100 !important";
 }
 // Open notificaion
-function notify(header,description,flip = true){
+function notify(header,description,flip = true, sound = true){
   noti.style.right = 'calc(100% + 300px)'
   nheader.innerText = header
   ndescription.innerText = description
   noti.style.left = 'calc(100% - 300px)'
 	setTimeout(function(){
+    if(sound){
     notifSound.play();
+    }
 	},1000)
   if(flip == true){
 setTimeout(closenotify,2000)
@@ -464,7 +481,54 @@ function manageinfinity2(){
   document.getElementById('infinitybar').style.width = "0%"
   setTimeout(manageinfinity,100)
 }
+//blockchain 
+function manageblockchain(){
+  document.getElementById('blockchainbar').style.animation = "barframes 60s infinite"
+ document.getElementById('blockchainbar').style.display = "inline-block"
+ setTimeout(manageblockchain2,59000)
+}
+function manageblockchain2(){
+   customers +=1
+ player.money += Math.round(parseFloat(blockchain.value) * 100);
+  document.getElementById('blockchainbar').style.transition = "none"
+ document.getElementById('blockchainbar').style.width = "0%"
+ setTimeout(manageblockchain,100)
+}
+//sicromoft
+function managesicromoft(){
+  document.getElementById('sicromoftbar').style.animation = "barframes 1s infinite"
+ document.getElementById('sicromoftbar').style.display = "inline-block"
+ setTimeout(managesicromoft2,900)
+}
+function managesicromoft2(){
+   customers +=1
+ player.money += Math.round(parseFloat(sicromoft.value) * 100);
+  document.getElementById('sicromoftbar').style.transition = "none"
+ document.getElementById('sicromoftbar').style.width = "0%"
+ setTimeout(managesicromoft,100)
+}
+//zamazon
+function managezamazon(){
+  document.getElementById('zamazonbar').style.animation = "barframes 1s infinite"
+ document.getElementById('zamazonbar').style.display = "inline-block"
+ setTimeout(managezamazon2,900)
+}
+function managezamazon2(){
+   customers +=1
+ player.money += Math.round(parseFloat(zamazon.value) * 100);
+  document.getElementById('zamazonbar').style.transition = "none"
+ document.getElementById('zamazonbar').style.width = "0%"
+ setTimeout(managezamazon,100)
+}
+//End game
+function endGame(){
+  notify('Investigation', 'The goverment has begun an investigation on your company', true, false)
+  setTimeout(function(){
 
+      investigationstart.play();
+    
+	},1000)
+}
 
 //Begin Tutorial and INIT
 
