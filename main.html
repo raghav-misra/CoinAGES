@@ -8,7 +8,17 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   </head>
   <body>
-
+   <!-- SAVE SCREEN =================================================-->
+   <div id='saveCard' style='opacity: 0;'class='save hide'>
+      <h1> Save detected!</h1>
+      <h2 id='lastMoney'></h2>
+    <button onclick="restore()">Restore Save</button>
+    <button onclick="resetSave()">Reset Save</button>
+    
+    
+    
+    
+    </div>
     <img src="assets/img/coinageslogo.png" id="icon">
     <h1 id="logo" class='logo'>CEO Dashboard</h1>
       <button id="skip-tut" class="standard" onclick="skipTutorial()">Skip Tutorial</button>
@@ -25,6 +35,7 @@
 
 
     </div>
+ 
     <!-- Main Menu -->
     <div id='locationchoose'class='locationchoose'> 
       <button id='back'type="button" class="return-btn hide">

@@ -34,6 +34,14 @@ body, html{
 	margin: 2.5px;
 	padding: 0;
 }
+.save{
+  position: fixed;
+  width: 100%;
+  padding: 10%;
+  height: 100%;
+  background-color: white;
+
+}
 
 .campaign-card.normal { height: 355px; }
 

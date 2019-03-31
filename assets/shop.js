@@ -119,15 +119,18 @@ setTimeout(function(){
 			deleteShopItem(id)
 			coin.onmouseover = function () { coin.click() }
 			itemLimits["hover-flip"]++
+			window.localStorage.setItem('l', JSON.stringify(itemLimits))
 			hover_flip2 = true;
 			return
 		case "tutorial-gift":
 			deleteShopItem(id)
 			player.money = player.money + 100
 			itemLimits["tutorial-gift"]++
+			window.localStorage.setItem('l', JSON.stringify(itemLimits))
 			return
 		case "robot-max-increase":
 			itemLimits["robot-max-increase"]++
+			window.localStorage.setItem('l', JSON.stringify(itemLimits))
 			if (itemLimits["robot-max-increase"] == 5) {
 				deleteShopItem(id);
 			}
@@ -136,6 +139,7 @@ setTimeout(function(){
 			return
 		case "human-max-increase":
 			itemLimits["human-max-increase"]++
+			window.localStorage.setItem('l', JSON.stringify(itemLimits))
 			if (itemLimits["human-max-increase"] == 5) {
 				deleteShopItem(id);
 			}
@@ -144,18 +148,21 @@ setTimeout(function(){
 			return
 		case "robo-mk2":
 			itemLimits["robo-mk2"]++
+			window.localStorage.setItem('l', JSON.stringify(itemLimits))
 			deleteShopItem(id);
 			robot.value = 0.03;
       statusUpdate(robot)
 			return
 		case "one-man-army":
 			itemLimits["one-man-army"]++
+			window.localStorage.setItem('l', JSON.stringify(itemLimits))
 			deleteShopItem(id);
 			person.value = 0.05;
       statusUpdate(person)
 			return
 		case "nickelupgrade":
-		  itemLimits["nickelupgrade"]++
+			itemLimits["nickelupgrade"]++
+			window.localStorage.setItem('l', JSON.stringify(itemLimits))
 			nextstage(0.05);
 			createNickelShop();
 			nickel_upgrade = true;
@@ -163,6 +170,7 @@ setTimeout(function(){
 			return
 		case "eco-max-increase":
 			itemLimits["eco-max-increase"]++
+			window.localStorage.setItem('l', JSON.stringify(itemLimits))
 			if (itemLimits["eco-max-increase"] == 2) {
 				deleteShopItem(id);
 			}
@@ -171,12 +179,14 @@ setTimeout(function(){
 			return
 		case "eco-mk-2":
 			itemLimits["eco-mk-2"]++
+			window.localStorage.setItem('l', JSON.stringify(itemLimits))
 			deleteShopItem(id);
 			ecoflipper.value = 0.12;
       statusUpdate(ecoflipper)
 			return
     case "bottle-max-increase":
-      itemLimits["bottle-max-increase"]++
+			itemLimits["bottle-max-increase"]++
+			window.localStorage.setItem('l', JSON.stringify(itemLimits))
 			if (itemLimits["bottle-max-increase"] == 2) {
 				deleteShopItem(id);
 			}
@@ -184,33 +194,39 @@ setTimeout(function(){
 			statusUpdate(bottleflip)
 			return
     case "bottle-mk2":
-      itemLimits["bottle-mk2"]++
+			itemLimits["bottle-mk2"]++
+			window.localStorage.setItem('l', JSON.stringify(itemLimits))
 			deleteShopItem(id);
 			ecoflipper.value = 0.22;
       statusUpdate(bottleflip)
       return
 		case "dime-dev":
 			itemLimits["dime-dev"]++
+			window.localStorage.setItem('l', JSON.stringify(itemLimits))
 			createDimeShop()
 			deleteShopItem(id)
 			return
 		case "halfDollar-upgrade":
 			itemLimits["halfDollar-upgrade"]++
+			window.localStorage.setItem('l', JSON.stringify(itemLimits))
 			createHalfDollarShop()
 			deleteShopItem(id)
 			return
     case "Dollar-upgrade":
 			itemLimits["Dollar-upgrade"]++
+			window.localStorage.setItem('l', JSON.stringify(itemLimits))
 			createDollarShop()
 			deleteShopItem(id)
 			return
     case "world-upgrade":
 			itemLimits["world-upgrade"]++
+			window.localStorage.setItem('l', JSON.stringify(itemLimits))
 			createWorldShop()
 			deleteShopItem(id)
 			return
 		case "dime-all-max-increase":
 			itemLimits["dime-all-max-increase"]++
+			window.localStorage.setItem('l', JSON.stringify(itemLimits))
 			bottleflip.max++
 			statusUpdate(bottleflip)
 			ecoflipper.max++

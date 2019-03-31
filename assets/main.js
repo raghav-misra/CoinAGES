@@ -170,7 +170,8 @@ coin.addEventListener('contextmenu', function(){ coin.click() })
 
 // Next Stage Function
 function nextstage(newMoney){
-	stage += 1
+  stage += 1
+  window.localStorage.setItem('s', stage)
 	player.clickvalue = newMoney;
 	items.forEach(function(item){
 		if(item.unlock == stage){
@@ -280,7 +281,7 @@ document.getElementById('coin').src = player.icon;
 }
 
 //Buy function
-function buy(obj){
+function buy(obj, headless = false){
   var price = eval( 'parseInt(' +obj + '.price)')
   var value = eval( obj + '.value')
   var name = eval( obj + '.name')
@@ -288,10 +289,18 @@ function buy(obj){
   var max = eval(  'parseInt(' +obj + '.max)')
   var amount = eval(  'parseInt(' +obj + '.amount)') 
   var code = eval( obj + '.code')
+  if(headless){
+    document.getElementById("buy-bot").style.display = "inline-block !important";
+    eval(wakeup + "()") 
+    eval(' document.getElementById("' + obj + 'info").innerHTML =  document.getElementById("' + obj + 'info").innerHTML + ' +"'" + code + "' + '</div>' ")
+        var updatedamount = eval(  'parseInt(' +obj + '.amount)') 
+        updateusage("document.getElementById('" +name +"-displaymax')",updatedamount,max,value)
+  }else{
   if( player.money >= price * 100){
     if(amount == max){//Reached Limit
       notify('Cannot Buy','You have reached the limit', true)
       document.getElementById("buy-bot").style.display = "none !important";
+      
     }
 		else{
 				document.getElementById("buy-bot").style.display = "inline-block !important"; //Purchase successful
@@ -329,7 +338,8 @@ function buy(obj){
 				notify('Tutorial', 'Now, flip until you are at $2.')
 			}, 1000)
 		}, 1000)
-	}
+  }
+}
 }
 
 //ONJECT WAKE UPS ======
@@ -540,17 +550,99 @@ setTimeout(function(){
 		notify('Tutorial', 'First, click on Revenue Management')
 	}
 }, 4000)
-/*
+
 function init(){ // Restore Save
-  var save = window.localStorage.getItem('m')
-  if (m == 0){
+  var save = JSON.parse(window.localStorage.getItem('p'))
+ 
+  if (save == 0 || save == null){
+    setTimeout(autoSave, 3000)
     return
   }else{
-    player.money = save
+    closenotify()
+    skipTutorial()
+    document.getElementById('lastMoney').innerText = "Money: $" + save.money / 100
+    saveCard.classList.remove('hide')
+    fadeIn(saveCard)
+
   }
-setTimeout(autoSave, 10000)
+  
 }
+
 init()
 function autoSave(){
-  window.localStorage.setItem('m', player.money)
-};*/
+  var temp = []
+  temp.push(robot,person,ecoflipper,bottleflip,magnetFlipper,superComputer,ufo,antiGravity,usMint,preFlipped,infinity,blockchain,sicromoft,zamazon)
+  window.localStorage.setItem('p', JSON.stringify(player))
+  window.localStorage.setItem('c', customers)
+  window.localStorage.setItem('i', JSON.stringify(temp))
+  
+
+  
+  setTimeout(autoSave, 3000)
+}
+function restore(){
+  
+  setTimeout(autoSave, 3000)
+  fadeOut(saveCard)
+  var tempStag = parseInt(window.localStorage.getItem('s')) // Restore stage
+stage = tempStag
+var stagei = 1
+if(stage >= 3){
+  marketingbtn.disabled = false;	
+}
+while(stagei < tempStag){
+  stagei ++
+items.forEach(function(item){
+		if(item.unlock == stagei){
+			itemdivs.innerHTML = itemdivs.innerHTML + item.cardcode
+
+	
+    }})
+    
+}
+
+
+  player = JSON.parse(window.localStorage.getItem('p')) //Restore Player Object
+  reset()
+  customers = parseInt(window.localStorage.getItem('c')) //Restore customers
+  
+  if(window.localStorage.getItem('i') == null){ //Restore Bought Items
+    return
+  }else{
+   
+   var itemsrestore = JSON.parse(window.localStorage.getItem('i'))
+  
+    itemsrestore.forEach(function(item){
+      if(item.amount >= 1){
+        var i = 0
+        eval(item.name + '=' + JSON.stringify((item)))
+        while(i < item.amount){
+          i++
+          if(i == 1){
+            eval(' document.getElementById("' + item.name + 'info").innerHTML = ""')
+          }
+          buy(item.name, true)
+          
+        } 
+      }
+
+
+
+
+    })
+  
+  
+  
+  
+  
+  
+  }
+
+
+
+}
+function resetSave(){
+ window.localStorage.clear()
+ window.location.href=''
+
+}

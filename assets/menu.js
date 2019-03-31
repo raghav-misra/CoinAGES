@@ -9,6 +9,7 @@ var marketingpannel = document.getElementById('marketingpannel')
 var shoppannel = document.getElementById('shoppannel')
 var comppannel = document.getElementById('comppannel')
 var locationchoose = document.getElementById('locationchoose')
+var saveCard = document.getElementById('saveCard')
 //  buttons
 var compbtn = document.getElementById('compbtn')
 var marketingbtn = document.getElementById('marketingbtn')
