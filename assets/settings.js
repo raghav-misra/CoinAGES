@@ -8,16 +8,10 @@ var player = {
 	icon: "./assets/img/1.png"
   }
 
-
-var stage1 = {
-  cost: 0,
-  upgrade: 0
-
-}
-
 //Objects
 var robot = {
   price: 1,
+  unlock: 0,
   value: 0.01,
   max: 10,
   amount: 0,
@@ -27,6 +21,7 @@ var robot = {
 } 
 var person = {
   price: 2,
+  unlock: 0,
   value: 0.03,
   max: 5,
   amount: 0,
@@ -128,7 +123,7 @@ var usMint = {
   wakeup: 'manageusMint',
   name: 'usMint',
   code:' <img class=" itemimg usMint infinite" src="assets/img/usMint.png">',
-	cardcode: "<div style='opacity:1'class='card'> <p>United States Mint</p> <div class='bar slow' id='usMintbar'></div> <hr class='blu thin'> <div class='container' id='usMintinfo'> <p>Buy out the minting capacity of the United States and convert them into coin flipping facilities.<br>Flip Time: 60 Seconds<br> Money Per Flip: $5</p> </div> <br> <button  onclick='buy(\"usMint\")' class='martophack buy-bot'>Buy one for $12000</button> <p id='usMint-displaymax'>You are using 0/2</p> </div>"
+	cardcode: "<div style='opacity:1'class='card'> <p>Unified States Mint</p> <div class='bar slow' id='usMintbar'></div> <hr class='blu thin'> <div class='container' id='usMintinfo'> <p>Buy out the minting capacity of the Unified States and convert them into coin flipping facilities.<br>Flip Time: 60 Seconds<br> Money Per Flip: $5</p> </div> <br> <button  onclick='buy(\"usMint\")' class='martophack buy-bot'>Buy one for $12000</button> <p id='usMint-displaymax'>You are using 0/2</p> </div>"
 
 } 
 var infinity = {
@@ -179,4 +174,4 @@ var zamazon = {
  cardcode: "<div style='opacity:1'class='card'> <p>Zamazon</p> <div class='bar slow' id='zamazonbar'></div> <hr class='blu thin'> <div class='container' id='zamazoninfo'> <p>Buy the technology company, Zamazon, and drastically expand your capabilities <br>Flip Time: 1 Second<br> Money Per Flip: $1000</p> </div> <br> <button  onclick='buy(\"zamazon\")' class='martophack buy-bot'>Buy one for $200000</button> <p id='zamazon-displaymax'>You are using 0/1</p> </div>"
 
 }
-items.push(ecoflipper,bottleflip,magnetFlipper,superComputer,ufo,antiGravity,usMint,preFlipped,infinity,blockchain,sicromoft,zamazon)
+items.push(robot,person,ecoflipper,bottleflip,magnetFlipper,superComputer,ufo,antiGravity,usMint,preFlipped,infinity,blockchain,sicromoft,zamazon)
