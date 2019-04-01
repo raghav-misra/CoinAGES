@@ -575,43 +575,54 @@ function autoSave(){
   window.localStorage.setItem('p', JSON.stringify(player))
   window.localStorage.setItem('c', customers)
   window.localStorage.setItem('i', JSON.stringify(temp))
-  
+  window.localStorage.setItem("itemz", JSON.stringify(itemLimits));
+  window.localStorage.setItem("s", stage.toString());
 
   
   setTimeout(autoSave, 3000)
 }
 function restore(){
-  
+  var tempSt = parseInt(window.localStorage.getItem("s").trim()) - 1;
+  var marker = 0;
+  while(marker <= tempSt){
+    eval(stageFuncs[marker])
+    marker++
+  }
+  itemLimits = JSON.parse(window.localStorage.getItem('itemz'));
+  for (var propX in itemLimits) {
+    if (itemLimits.hasOwnProperty(propX)) {
+        try{
+          if(itemLimits[propX] >= maxLimits[propX]){
+            deleteShopItem(propX)
+          }
+        }
+        catch(err){
+          console.log(err);
+        }
+    }
+}
   setTimeout(autoSave, 3000)
   fadeOut(saveCard)
   var tempStag = parseInt(window.localStorage.getItem('s')) // Restore stage
-stage = tempStag
-var stagei = 1
-if(stage >= 3){
-  marketingbtn.disabled = false;	
-}
-while(stagei < tempStag){
-  stagei ++
-items.forEach(function(item){
-		if(item.unlock == stagei){
-			itemdivs.innerHTML = itemdivs.innerHTML + item.cardcode
-
-	
-    }})
-    
-}
-
-
+  stage = tempStag
+  var stagei = 1
+  if(stage >= 3){
+    marketingbtn.disabled = false;	
+  }
+  while(stagei < tempStag){
+    stagei++;
+    items.forEach(function(item){
+        if(item.unlock == stagei){
+          itemdivs.innerHTML = itemdivs.innerHTML + item.cardcode
+        }
+    });
+  }
   player = JSON.parse(window.localStorage.getItem('p')) //Restore Player Object
   reset()
   customers = parseInt(window.localStorage.getItem('c')) //Restore customers
-  
-  if(window.localStorage.getItem('i') == null){ //Restore Bought Items
-    return
-  }else{
-   
+  if(window.localStorage.getItem('i') == null) return //Restore Bought Items
+  else{
    var itemsrestore = JSON.parse(window.localStorage.getItem('i'))
-  
     itemsrestore.forEach(function(item){
       if(item.amount >= 1){
         var i = 0
@@ -621,28 +632,17 @@ items.forEach(function(item){
           if(i == 1){
             eval(' document.getElementById("' + item.name + 'info").innerHTML = ""')
           }
-          buy(item.name, true)
-          
+          buy(item.name, true) 
         } 
       }
-
-
-
-
     })
-  
-  
-  
-  
-  
-  
   }
 
-
+  
 
 }
 function resetSave(){
  window.localStorage.clear()
- window.location.href=''
+ window.location.reload(true);
 
 }

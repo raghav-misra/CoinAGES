@@ -10,13 +10,12 @@ html, body{
 	background: -webkit-linear-gradient(to right, #ff9068, #fd746c);  /* Chrome 10-25, Safari 5.1-6 */
 	background: linear-gradient(to right, #ff9068, #fd746c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   text-align: center;
-  overflow: hidden;
   color: white;
 	padding: 10px;
   scroll-behavior: smooth;
 }
 
-html{font-size: 150%;}
+html{font-size: 25px;}
 
 a.standard{
 	padding: 12.5px;
@@ -35,6 +34,29 @@ a.standard:hover{
 	color: #003366;
 }
 
+@-webkit-keyframes fade-in-dank{
+	from{opacity: 0; }
+	to{opacity: 1; }
+}
+
+@keyframes fade-in-dank{
+	from{opacity: 0;}
+	to{opacity: 1;}
+}
+
+@keyframes slide-in{
+	from{ transform: translateY(-50%); }
+	to{ transform: translateY(0); }
+}
+
+.fade-in{
+  animation: 1s fade-in-dank ease-in-out;
+}
+
+.slide-in{
+  animation: 1s slide-in ease-in-out;
+}
+
 #c h3{
 	margin: -10px;
 	margin-top: 25px;
@@ -46,7 +68,7 @@ a.standard:hover{
 	padding: 0;
 }
 
-#c hr{
+hr{
 	margin: 3.75%;
 	height: 0;
   background: none;
@@ -54,17 +76,18 @@ a.standard:hover{
   border-radius: 100px;
 }
 
-#c hr.thin{
+hr.thin{
 	margin: 3.75%;
+	height: 0;
   background: none;
-  border: white 1.25px solid;
+  border: white 2px solid;
   border-radius: 100px;
 }
 
 img{
 
-  width: 40%;
-  height: 40%;
+  width: 150px;
+  height: auto;
 }
 .login{
   margin-top: 100%;

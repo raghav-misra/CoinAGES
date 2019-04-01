@@ -1,5 +1,28 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:300|Roboto+Slab:300');
 
+@-webkit-keyframes fade-in-dank{
+	from{opacity: 0; }
+	to{opacity: 1; }
+}
+
+@keyframes fade-in-dank{
+	from{opacity: 0;}
+	to{opacity: 1;}
+}
+
+@keyframes slide-in{
+	from{ transform: translateY(-50%); }
+	to{ transform: translateY(0); }
+}
+
+.fade-in{
+  animation: 1s fade-in-dank ease-in-out;
+}
+
+.slide-in{
+  animation: 1s slide-in ease-in-out;
+}
+
 /*Classless HTML BODY*/
 body, html{
   text-align: center; 
@@ -35,12 +58,23 @@ body, html{
 	padding: 0;
 }
 .save{
-  position: fixed;
+  padding: 25px;
+  margin: 0;
+  padding-top: calc(50vh - 125px);
   width: 100%;
-  padding: 10%;
   height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
   background-color: white;
+}
 
+.save h1{
+  margin: 12.5px;
+}
+
+.save .reg{
+  margin: 15px;
 }
 
 .campaign-card.normal { height: 355px; }
@@ -414,7 +448,7 @@ color: white;
   
 }
 
-button.buy-bot, button.buy-now{
+button.buy-bot, button.buy-now, button.reg{
   color: #2773be;
   padding: 7.5px;
   font-size: 17.5px;
@@ -425,7 +459,7 @@ button.buy-bot, button.buy-now{
   transition: all ease-in-out 0.5s;
 }
 
-button.buy-bot:hover, button.buy-now:hover{
+button.buy-bot:hover, button.buy-now:hover, button.reg:hover{
   color: white;
   background: #2773be;
 }

@@ -4,49 +4,22 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>CoinAGES</title>
-    <link href="assets/index.css" rel="stylesheet" type="text/css" />
+    <link href="assets/index.css" rel="stylesheet">
   </head>
   <body>
-  <img src="assets/img/coinageslogo.png" id="icon">
-  <br>
-  <p> 
-    "What if I could pay money to have someone flip a coin for me?" 
-		<br><br>
-		You have recently become the C.E.O. of 
-		the startup <i>CoinAGES!</i> It's the only company on the market that 
-		offers truly random coin-flips on demand all online!
-	</p><br>
-  <a href='#login' onclick='login()'class='standard'>Begin</a>
-	<a href='#c'class='standard'>Credits</a>
-	<br><br><br><br><br><br>
-	<div id='c'>
-		<h4>Credits</h4>
-		<hr class="thin">
-  	<p>Little Robot Sound Factory</p>
-		<p>transitking</p>
-		<a href='#login' onclick='login()'class='standard'>Begin</a>
-	</div>
-
-
-
-
-  <div class='login'>
-    Securely logging you in
-		<br>
-    <i id='login'>AdminDASH v2.24</i>
-    <div id='hr'></div>
-		<br><br>
-	
-
-  </div>
-	
+    <iframe class="slide-in" src="./index/frame.html"></iframe>
+    <style>
+      body, html, iframe{
+        overflow: hidden;
+        width: 100vw;
+        border: none;
+        border-bottom: 2px white solid;
+        min-width: 100vw;
+        height: 100vh;
+        padding: 0;
+        margin: 0;
+        min-height: 100vh;
+      }
+    </style>
   </body>
-  <script>
-  function login(){
-    document.getElementById('hr').style.width = '90%';
-		setTimeout(function(){
-			window.location.href = "main.html";
-		}, 5000)
-	}
-  </script>
 </html>
