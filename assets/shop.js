@@ -87,18 +87,8 @@ var shopCode = {
 
 function deleteShopItem(id)
 {
-	var element = document.getElementById(id);
-	element.getElementsByClassName("buy-now")[0].disabled = true;
-	var returnValue = element.outerHTML;
-	var op = 1;  // initial opacity
-	var timer = setInterval(function(){
-		if (op <= 0.1) {
-			clearInterval(timer);
-			element.parentNode.removeChild(element)
-		}
-		element.style.opacity = op;
-		op -= 0.1;
-	}, 50);
+  document.getElementById(id).outerHTML = "";
+  
 }
 
 function buyShopItem(id, price) {	//Not enough money
@@ -178,7 +168,6 @@ setTimeout(function(){
 			itemLimits["nickelupgrade"]++
 			nextstage(0.05);
 			createNickelShop();
-			deleteShopItem(id)
 			return
 		case "eco-max-increase":
 			itemLimits["eco-max-increase"]++
@@ -212,24 +201,20 @@ setTimeout(function(){
       nextstage(0.10);
 			itemLimits["dime-dev"]++
 			createDimeShop()
-			deleteShopItem(id)
 			return
 		case "halfDollar-upgrade":
 			itemLimits["halfDollar-upgrade"]++
 			createHalfDollarShop()
       nextstage(0.50)
-			deleteShopItem(id)
 			return
     case "Dollar-upgrade":
       nextstage(1)
 			itemLimits["Dollar-upgrade"]++
 			createDollarShop()
-			deleteShopItem(id)
 			return
     case "world-upgrade":
 			itemLimits["world-upgrade"]++
 			createWorldShop()
-			deleteShopItem(id)
 			return
 		case "dime-all-max-increase":
 			itemLimits["dime-all-max-increase"]++
@@ -255,7 +240,6 @@ setTimeout(function(){
       nextstage(0.25)
       itemLimits["quarter-upgrade"]++
       createQuarterShop();
-			deleteShopItem(id);
 
 	}
 }
@@ -269,20 +253,25 @@ function createFreeGift() {
 	createShopItem("tutorial-gift", "Your Free Gift", "Great job on finishing", "the tutorial.", "One dollar is", "just a click away!", 0);
 }
 function createWorldShop(){
+  deleteShopItem("world-upgrade");
 	nextstage(100)
 	endGame()
 }
 function createQuarterShop() {
+  deleteShopItem("quarter-upgrade");
 	createShopItem("halfDollar-upgrade", "Half Dollar Exploration", "Expand the capabilities", "and influence of your", " company to quietly grow", "at a rapid pace.", 10000, true);
   deleteShopItem("dime-all-max-increase");
 }
 function createHalfDollarShop() {
+  deleteShopItem("halfDollar-upgrade")
   createShopItem("Dollar-upgrade", "The Golden Age", "Assemble the top executives", "into a single think tank", "to research and develop", "the final innovation.", 100000, true);
 }
 function createDollarShop(){
+  deleteShopItem("Dollar-upgrade")
   createShopItem("world-upgrade", "World Domination", "Use your mass resources", "and take down rival companies", "to seal your fate as the", "world's most powerful company.", 500000, true)
 } 
 function createNickelShop() {
+  deleteShopItem("nickelupgrade");
   nickel_upgrade = true;
 	createShopItem("dime-dev", "Dime Development", "Invest your assets", "in improving efficiency", "and consumer outreach.", "<i>Unlocks Marketing Campaigns.</i>", 250, true);
   createShopItem("bottle-max-increase", "Extra Bottles", "Koka-Kola™ has agreed", "to increase the", "limit on bottles", "you can purchase.", 100);
@@ -291,6 +280,7 @@ function createNickelShop() {
 }
 
 function createDimeShop() {
+  deleteShopItem("dime-dev");
 	createShopItem("dime-all-max-increase", "More of Everything!", "Increase the maximum", "limit of each", "type of purchasable", "auto-flipper by 1.", 650);
   createShopItem("quarter-upgrade", "Quarter Advancement Initiative", "Use the endless power", "of the space indusry", "to help your business", "flip <b>more coins faster.</b>", 3000, true);
 	notify("New Unlock!", "Marketing Campaigns unlocked!")
@@ -310,7 +300,3 @@ createShopItem("robot-max-increase", "Raise Robot Quota", "The upgrade lets you"
 createShopItem("human-max-increase", "More Workers", "This upgrade allows", "you to hire an", "extra human worker", "to flip coins for you.", 3.5);
 createShopItem("nickelupgrade", "Nickel Research Program", "Research the next generation", "of coin-flipping technology.", "Upgrade your coherence", "and cost-effectiveness.", 50, true)
 createShopItem("hover-flip", "HoverFlip™ by Zamazon", "Using the latest in flipping-tech,", "Jeph Besoz has created a way", "to not click, but hover over", "coins to flip them.", 0.5);
-
-
-
-

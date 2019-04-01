@@ -10,6 +10,8 @@ function fadeIn(element) {
 	}, 10);
 }
 
+
+
 function fadeOut(element){
 	var op = 1.1;  // initial opacity
 	var timer = setInterval(function(){
@@ -105,6 +107,17 @@ var investigationstart = new Howl({
 });
 var investigationdone = new Howl({
   src: ['assets/audio/investigationdone.mp3']
+});
+var soundtrack = new Howl({
+  src: ['assets/audio/soundtrack.mp3'],
+  loop: true,
+  volume: 0.125
+});
+
+var investigationMusic = new Howl({
+  src: ['assets/audio/invsoundtrack.mp3'],
+  loop: true,
+  volume: 0.125
 });
 
 
@@ -532,7 +545,7 @@ function managezamazon2(){
 }
 //End game
 function endGame(){
-  notify('Investigation', 'The goverment has begun an investigation on your company', true, false)
+  notify('Investigation', 'The government is getting suspicious...', true, false)
   setTimeout(function(){
 
       investigationstart.play();
@@ -556,11 +569,13 @@ function init(){ // Restore Save
  
   if (save == 0 || save == null){
     setTimeout(autoSave, 3000)
+    soundtrack.play()
     return
   }else{
     closenotify()
     skipTutorial()
     document.getElementById('lastMoney').innerText = "Money: $" + save.money / 100
+    document.body.style.overflow = "hidden";
     saveCard.classList.remove('hide')
     fadeIn(saveCard)
 
@@ -582,6 +597,8 @@ function autoSave(){
   setTimeout(autoSave, 3000)
 }
 function restore(){
+  document.body.style.overflow = "visible";
+  soundtrack.play();
   var tempSt = parseInt(window.localStorage.getItem("s").trim()) - 1;
   var marker = 0;
   while(marker <= tempSt){

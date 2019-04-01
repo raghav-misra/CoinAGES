@@ -8,6 +8,10 @@
 html, body{
 	background: #fd746c;  /* fallback for old browsers */
 	background: -webkit-linear-gradient(to right, #ff9068, #fd746c);  /* Chrome 10-25, Safari 5.1-6 */
+	background: -webkit-gradient(linear, left top, right top, from(#ff9068), to(#fd746c));
+	background: -webkit-linear-gradient(left, #ff9068, #fd746c);
+	background: -moz-linear-gradient(left, #ff9068, #fd746c);
+	background: -o-linear-gradient(left, #ff9068, #fd746c);
 	background: linear-gradient(to right, #ff9068, #fd746c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   text-align: center;
   color: white;
@@ -24,8 +28,13 @@ a.standard{
 	font-size: 17.5px;
 	border: 2px white solid;
 	color: white;
-	border-radius: 15px;
+	-webkit-border-radius: 15px;
+	   -moz-border-radius: 15px;
+	        border-radius: 15px;
 	width: 75px;
+	-webkit-transition: 0.5s all ease-in-out;
+	-o-transition: 0.5s all ease-in-out;
+	-moz-transition: 0.5s all ease-in-out;
 	transition: 0.5s all ease-in-out;
 }
 
@@ -39,22 +48,53 @@ a.standard:hover{
 	to{opacity: 1; }
 }
 
+@-moz-keyframes fade-in-dank{
+	from{opacity: 0;}
+	to{opacity: 1;}
+}
+
+@-o-keyframes fade-in-dank{
+	from{opacity: 0;}
+	to{opacity: 1;}
+}
+
 @keyframes fade-in-dank{
 	from{opacity: 0;}
 	to{opacity: 1;}
 }
 
+@-webkit-keyframes slide-in{
+	from{ -webkit-transform: translateY(-50%); transform: translateY(-50%); }
+	to{ -webkit-transform: translateY(0); transform: translateY(0); }
+}
+
+@-moz-keyframes slide-in{
+	from{ -moz-transform: translateY(-50%); transform: translateY(-50%); }
+	to{ -moz-transform: translateY(0); transform: translateY(0); }
+}
+
+@-o-keyframes slide-in{
+	from{ -o-transform: translateY(-50%); transform: translateY(-50%); }
+	to{ -o-transform: translateY(0); transform: translateY(0); }
+}
+
 @keyframes slide-in{
-	from{ transform: translateY(-50%); }
-	to{ transform: translateY(0); }
+	from{ -webkit-transform: translateY(-50%); -moz-transform: translateY(-50%); -o-transform: translateY(-50%); transform: translateY(-50%); }
+	to{ -webkit-transform: translateY(0); -moz-transform: translateY(0); -o-transform: translateY(0); transform: translateY(0); }
 }
 
 .fade-in{
-  animation: 1s fade-in-dank ease-in-out;
+  -webkit-animation: 1s fade-in-dank ease-in-out;
+     -moz-animation: 1s fade-in-dank ease-in-out;
+       -o-animation: 1s fade-in-dank ease-in-out;
+          animation: 1s fade-in-dank ease-in-out;
 }
 
 .slide-in{
-  animation: 1s slide-in ease-in-out;
+  -webkit-animation: 1s slide-in ease-in-out;
+     -moz-animation: 1s slide-in ease-in-out;
+       -o-animation: 1s slide-in ease-in-out;
+          animation: 1s slide-in ease-in-out;
 }
 
 #c h3{
@@ -73,7 +113,9 @@ hr{
 	height: 0;
   background: none;
   border: white 2px solid;
-  border-radius: 100px;
+  -webkit-border-radius: 100px;
+     -moz-border-radius: 100px;
+          border-radius: 100px;
 }
 
 hr.thin{
@@ -81,7 +123,15 @@ hr.thin{
 	height: 0;
   background: none;
   border: white 2px solid;
-  border-radius: 100px;
+  -webkit-border-radius: 100px;
+     -moz-border-radius: 100px;
+          border-radius: 100px;
+}
+
+iframe{
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 img{
@@ -100,13 +150,21 @@ img{
 }
 #hr{
   border: #55efc4 20px solid;
-	border-radius: 50px;
+	-webkit-border-radius: 50px;
+	   -moz-border-radius: 50px;
+	        border-radius: 50px;
 	background: #55efc4;
 	margin: 10px;
 	margin-top: 17.5px;
 	width: 0%;
   text-align: center;
-	transition-delay: 2s;
+	-webkit-transition-delay: 2s;
+	   -moz-transition-delay: 2s;
+	     -o-transition-delay: 2s;
+	        transition-delay: 2s;
+	-webkit-transition: width 5s ease-in-out;
+	-o-transition: width 5s ease-in-out;
+	-moz-transition: width 5s ease-in-out;
 	transition: width 5s ease-in-out;
   
 }
@@ -117,4 +175,4 @@ img{
 }
 a{
 	font-size: 50%;
-}
+}   
