@@ -28,10 +28,18 @@ var itemLimits = {
 	"human-max-increase": 0, // 5 Max
 	"one-man-army": 0, // 1 Max
 	"nickelupgrade": 0, // 1 Max
-	"eco-max-increase": 0, // 2 Max
-	"eco-mk-2": 0, // 1 Max
-	"bottle-max-increase": 0, // 2 Max
-  "bottle-mk2": 0, // 1 Max
+	"eco_max_increase": 0, // 2 Max
+	"eco_mk2": 0, // 1 Max
+	"bottle_max_increase": 0, // 2 Max
+  "bottle_mk2": 0, // 1 Max
+  "magnetFlipper_mk2" : 0, //Upgrades are all 0 max
+  "superComputer_mk2" : 0,
+  "ufo_mk2" : 0,
+  "antiGravity_mk2" : 0,
+  "preFlipped_mk2" : 0,
+  "usMint_mk2" : 0,
+  "infinity_mk2" : 0,
+  "blockchain_mk2" : 0,
 	"nickel-limit-increase": 0, // 1 Max
 	"dime-dev": 0, // 1 Max
 	"dime-all-max-increase": 0, // Infinite
@@ -49,10 +57,18 @@ var maxLimits = {
 	"human-max-increase": 5, // 5 Max
 	"one-man-army": 1, // 1 Max
 	"nickelupgrade": 1, // 1 Max
-	"eco-max-increase": 2, // 2 Max
-	"eco-mk-2": 1, // 1 Max
-	"bottle-max-increase": 2, // 2 Max
-  "bottle-mk2": 1, // 1 Max
+	"eco_max_increase": 2, // 2 Max
+	"eco_mk2": 1, // 1 Max
+	"bottle_max_increase": 2, // 2 Max
+  "bottle_mk2": 1, // 1 Max
+  "magnetFlipper_mk2" : 1, //Upgrades are all 1 max
+  "superComputer_mk2" : 1,
+  "ufo_mk2" : 1,
+  "antiGravity_mk2" : 1,
+  "preFlipped_mk2" : 1,
+  "usMint_mk2" : 1,
+  "infinity_mk2" : 1,
+  "blockchain_mk2" : 1,
 	"nickel-limit-increase": 1, // 1 Max
 	"dime-dev": 1, // 1 Max
 	"dime-all-max-increase": 90071992547409918, // Infinite
@@ -87,7 +103,8 @@ var shopCode = {
 
 function deleteShopItem(id)
 {
-  document.getElementById(id).outerHTML = "";
+  
+  document.getElementById(id).classList.add('hide')
   
 }
 
@@ -166,49 +183,93 @@ setTimeout(function(){
 			return
 		case "nickelupgrade":
 			itemLimits["nickelupgrade"]++
-			nextstage(0.05);
 			createNickelShop();
 			return
-		case "eco-max-increase":
-			itemLimits["eco-max-increase"]++
-			if (itemLimits["eco-max-increase"] == 2) {
+		case "eco_max_increase":
+			itemLimits["eco_max_increase"]++
+			if (itemLimits["eco_max_increase"] == 2) {
 				deleteShopItem(id);
 			}
 			ecoflipper.max++
 			statusUpdate(ecoflipper)
 			return
-		case "eco-mk-2":
-			itemLimits["eco-mk-2"]++
+		case "eco_mk2":
+			itemLimits["eco_mk2"]++
 			deleteShopItem(id);
-			ecoflipper.value = 0.12;
+			ecoflipper.value = 0.22;
       statusUpdate(ecoflipper)
 			return
-    case "bottle-max-increase":
-			itemLimits["bottle-max-increase"]++
-			if (itemLimits["bottle-max-increase"] == 2) {
+    case "bottle_max_increase":
+			itemLimits["bottle_max_increase"]++
+			if (itemLimits["bottle_max_increase"] == 2) {
 				deleteShopItem(id);
 			}
 			bottleflip.max++
 			statusUpdate(bottleflip)
 			return
-    case "bottle-mk2":
-			itemLimits["bottle-mk2"]++
+    case "bottle_mk2":
+			itemLimits["bottle_mk2"]++
 			deleteShopItem(id);
-			ecoflipper.value = 0.22;
+			bottleflip.value = 0.42;
       statusUpdate(bottleflip)
       return
+    case "magnetFlipper_mk2":
+			itemLimits["magnetFlipper_mk2"]++
+			deleteShopItem(id);
+			magnetFlipper.value = 0.65;
+      statusUpdate(magnetFlipper)
+      return
+    case "superComputer_mk2":
+			itemLimits["superComputer_mk2"]++
+			deleteShopItem(id);
+			superComputer.value = 5;
+      statusUpdate(superComputer)
+      return
+    case "ufo_mk2":
+			itemLimits["ufo_mk2"]++
+			deleteShopItem(id);
+			ufo_mk2.max++
+      statusUpdate(ufo)
+      return
+    case "antiGravity_mk2":
+			itemLimits["antiGravity_mk2"]++
+			deleteShopItem(id);
+			antiGravity.max++
+      statusUpdate(antiGravity)
+      return
+    case "usMint_mk2":
+			itemLimits["usMint_mk2"]++
+			deleteShopItem(id);
+			usMint.max++
+      statusUpdate(usMint)
+      return
+    case "preFlipped_mk2":
+			itemLimits["preFlipped_mk2"]++
+			deleteShopItem(id);
+			preFlipped.value = 3.5;
+      statusUpdate(preFlipped)
+      return
+    case "blockchain_mk2":
+			itemLimits["blockchain_mk2"]++
+			deleteShopItem(id);
+			blockchain.value = 40;
+      statusUpdate(blockchain)
+      return
+    case "infinity_mk2":
+			itemLimits["infinity_mk2"]++
+			deleteShopItem(id);
+			infinity.value = 20;
+      statusUpdate(infinity)
+      return
 		case "dime-dev":
-      nextstage(0.10);
 			itemLimits["dime-dev"]++
 			createDimeShop()
 			return
 		case "halfDollar-upgrade":
 			itemLimits["halfDollar-upgrade"]++
 			createHalfDollarShop()
-      nextstage(0.50)
 			return
     case "Dollar-upgrade":
-      nextstage(1)
 			itemLimits["Dollar-upgrade"]++
 			createDollarShop()
 			return
@@ -237,49 +298,62 @@ setTimeout(function(){
 			document.getElementById(id).getElementsByClassName("buy-now")[0].innerText = "Buy Now! ($" + dimeAllMaxIncreaseCost.toString() + ")";
 			return
     case "quarter-upgrade":
-      nextstage(0.25)
       itemLimits["quarter-upgrade"]++
       createQuarterShop();
 
 	}
 }
 
-var stageFuncs = ["console.log('penny!')", "createNickelShop()", "createDimeShop()", "createQuarterShop()", "createHalfDollarShop()", "createDollarShop()", "createWorldShop()"]; 
-// Functions 4 stage upgrade ^^
+var stageFuncs = ["console.log('Game Restored')", "setTimeout(function(){createNickelShop(false)},500)", "setTimeout(function(){createDimeShop(false)},600)", "setTimeout(function(){createQuarterShop(false)},700)", "setTimeout(function(){createHalfDollarShop(false)},800)", "setTimeout(function(){createDollarShop(false)},900)", "setTimeout(function(){createWorldShop(false)},1000)"]; 
+// Functions for stage upgrade ^^
 
 // Creating Shop Items
 
 function createFreeGift() {
 	createShopItem("tutorial-gift", "Your Free Gift", "Great job on finishing", "the tutorial.", "One dollar is", "just a click away!", 0);
 }
-function createWorldShop(){
+function createWorldShop(headless = true){
   deleteShopItem("world-upgrade");
-	nextstage(100)
+	nextstage(100,headless)
 	endGame()
 }
-function createQuarterShop() {
+function createQuarterShop(headless = true) {
+  nextstage(0.25,headless)
   deleteShopItem("quarter-upgrade");
-	createShopItem("halfDollar-upgrade", "Half Dollar Exploration", "Expand the capabilities", "and influence of your", " company to quietly grow", "at a rapid pace.", 10000, true);
+	createShopItem("halfDollar-upgrade", "Half Dollar Exploration", "Expand the capabilities", "and influence of your", " company to quietly grow", "at a rapid pace.", 9000, true);
   deleteShopItem("dime-all-max-increase");
+  ufo_mk2 = true
+  antiGravity_mk2 = true
+
 }
-function createHalfDollarShop() {
+function createHalfDollarShop(headless = true) {
+  nextstage(0.50,headless)
   deleteShopItem("halfDollar-upgrade")
   createShopItem("Dollar-upgrade", "The Golden Age", "Assemble the top executives", "into a single think tank", "to research and develop", "the final innovation.", 100000, true);
+preFlipped_mk2 = true;
+ usMint_mk2 = true;
 }
-function createDollarShop(){
+function createDollarShop(headless = true){
+  nextstage(1,headless)
   deleteShopItem("Dollar-upgrade")
   createShopItem("world-upgrade", "World Domination", "Use your mass resources", "and take down rival companies", "to seal your fate as the", "world's most powerful company.", 500000, true)
+  infinity_mk2 = true;
+  blockchain_mk2 = true;
 } 
-function createNickelShop() {
+function createNickelShop(headless = true) {
+  nextstage(0.05,headless);
   deleteShopItem("nickelupgrade");
   nickel_upgrade = true;
 	createShopItem("dime-dev", "Dime Development", "Invest your assets", "in improving efficiency", "and consumer outreach.", "<i>Unlocks Marketing Campaigns.</i>", 250, true);
-  createShopItem("bottle-max-increase", "Extra Bottles", "Koka-Kola™ has agreed", "to increase the", "limit on bottles", "you can purchase.", 100);
+  
 	eco_mk2 = true;
   bottle_mk2 = true;
+  bottle_max_increase = true;
+  
 }
 
-function createDimeShop() {
+function createDimeShop(headless = true) {
+  nextstage(0.10,headless);
   deleteShopItem("dime-dev");
 	createShopItem("dime-all-max-increase", "More of Everything!", "Increase the maximum", "limit of each", "type of purchasable", "auto-flipper by 1.", 650);
   createShopItem("quarter-upgrade", "Quarter Advancement Initiative", "Use the endless power", "of the space indusry", "to help your business", "flip <b>more coins faster.</b>", 3000, true);
@@ -289,6 +363,8 @@ function createDimeShop() {
 	setTimeout(function(){
 		notify("New Unlock!", "Go back to see it!")
 	}, 3000)
+  magnetFlipper_mk2 = true
+  superComputer_mk2 = true
 }
 
 function createRobotMk2() {

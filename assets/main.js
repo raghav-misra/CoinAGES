@@ -127,12 +127,21 @@ var investigationMusic = new Howl({
 var deg = 0 //stores amount of\ roation coin flips
 var customers = 0 //Stores amount of clicks / customers
 
-// Other VARS
+// Create Upgrade Shop Item on buy Var
 var buy_mk2 = true;
 var nickel_upgrade = false;
 var buy_workers_mk2 = true;
 var eco_mk2 = false;
 var bottle_mk2 = false;
+var bottle_max_increase = false;
+var magnetFlipper_mk2 = false;
+var superComputer_mk2 = false;
+var ufo_mk2 = false;
+var antiGravity_mk2 = false;
+var preFlipped_mk2 = false;
+var usMint_mk2 = false;
+var infinity_mk2 = false;
+var blockchain_mk2 = false;
 
 //Tutorial============
 var rev_tut_0 = true;
@@ -182,19 +191,19 @@ coin.addEventListener('contextmenu', function(){ coin.click() })
 //FUNCTIONS====
 
 // Next Stage Function
-function nextstage(newMoney){
+function nextstage(newMoney,headless = true){
   stage += 1
   window.localStorage.setItem('s', stage)
 	player.clickvalue = newMoney;
+ 
+  if(headless){
 	items.forEach(function(item){
 		if(item.unlock == stage){
 			itemdivs.innerHTML = itemdivs.innerHTML + item.cardcode
-
-	
-		}
+      
+      }
 	}
-	
-  )
+  )}
 	player.icon = "./assets/img/" + stage + ".png"
 		reset()
 }
@@ -204,7 +213,7 @@ function update(){
   moneydisplay.innerText = '$' + player.money / 100;
   moneydisplayshop.innerText = '$' + player.money / 100;
   clicks.innerText = customers
-  //TUTORIAL 
+  //UNLOCK UPGRADE AS ITEM ARE BOUGHT AND TUTORIAL
 	if(player.money > 99 && rev_tut3 == true){
 		rev_tut3 = false;
 		setTimeout(function(){
@@ -222,22 +231,57 @@ function update(){
 			}, 4000)
 		}, 1000)
 	}
-	if(ecoflipper.amount > 0 && eco_mk2){
+	if(ecoflipper.amount > 0 && eco_mk2 && itemLimits.eco_mk2 !== 1){
 		eco_mk2 = false;
-		createShopItem("eco-mk-2", "Giant Fans", "Buy mega-fans to", "manipulate the wind", "so that eco-flippers", "flip more coins.", 50);
+		createShopItem("eco_mk2", "Giant Fans", "Buy mega-fans to", "manipulate the wind", "so that eco-flippers", "flip more coins.", 50);
 	}
-  if(bottleflip.amount > 0 && bottle_mk2){
+  if(bottleflip.amount > 0 && bottle_mk2 && itemLimits.bottle_mk2 !== 1){
 		bottle_mk2 = false;
-		createShopItem("bottle-mk2", "Bigger Bottles", "Koka-Kola™ bottles are", "bigger, resulting in", "lots of free space", "for +2 coins/second.", 100)
+		createShopItem("bottle_mk2", "Bigger Bottles", "Koka-Kola™ bottles are", "bigger, resulting in", "space for more coins", "adds +2¢/flip.", 100)
+	}
+  if(bottleflip.amount > 0 && itemLimits.bottle_max_increase < 2 && bottle_max_increase){
+    bottle_max_increase = false;
+		createShopItem("bottle_max_increase", "Extra Bottles", "Koka-Kola™ has agreed", "to increase the", "limit on bottles", "you can purchase.", 100);
 	}
 	if(robot.amount > 0 && buy_mk2){
 		buy_mk2 = false;
 		createRobotMk2()
-	}
-
+	} 
 	if(person.amount > 0 && buy_workers_mk2){
 		buy_workers_mk2 = false;
 		createShopItem("one-man-army", "Efficient Workers", "Better salaries lead", "to better workers.", "Workers can flip", "5¢ every second.", 12);
+	}
+  if(magnetFlipper.amount > 0 && magnetFlipper_mk2 && itemLimits.magnetFlipper_mk2 !== 1 ){
+		magnetFlipper_mk2 = false;
+		createShopItem("magnetFlipper_mk2", "Electromagnets", "Create custom", "Electromagnets", "to create stronger magnets", " adds +5¢/flip.", 200)
+	}
+  if(superComputer.amount > 0 && superComputer_mk2 && itemLimits.superComputer_mk2 !== 1){
+	  superComputer_mk2 = false;
+		createShopItem("superComputer_mk2", "Nvidian GPU's", "Equip your supercomputers", "with the latest Nvidian GPU's", "to make them more powerful", " adds +$2/flip.", 100)
+	}
+  if(ufo.amount > 0 && ufo_mk2 && itemLimits.ufo_mk2 !== 1){
+	  ufo_mk2 = false;
+		createShopItem("ufo_mk2", "Alien Negotiations", "Make a deal with the", "Aliens to receive", "more technological aid", "increases limit by 1", 300)
+	}
+  if(antiGravity.amount > 0 && antiGravity_mk2 && itemLimits.antiGravity_mk2 !== 1){
+	  antiGravity_mk2 = false;
+		createShopItem("antiGravity_mk2", "Second Cargo Ship", "Get permission to", "build and launch", "another Anti-Gravity flipper", "increases limit by 1", 250)
+	}
+   if(usMint.amount > 0 && usMint_mk2 && itemLimits.usMint_mk2 !== 1){
+	  usMint_mk2 = false;
+		createShopItem("usMint_mk2", "Build Mints", "Why just buy mints", "when you can also", "build them too? ", "increases limit by 1", 500)
+	}
+   if(preFlipped.amount > 0 && preFlipped_mk2 && itemLimits.preFlipped_mk2 !== 1){
+	  preFlipped_mk2 = false;
+		createShopItem("preFlipped_mk2", "Pre-flipped Breakthrough", "Since the coins only have", "one side, you can serve", "multiple customers at once.", "adds +50¢/flip.", 300)
+	}
+  if(infinity.amount > 0 && infinity_mk2 && itemLimits.infinity_mk2 !== 1){
+	  infinity_mk2 = false;
+		createShopItem("infinity_mk2", "Infinity Stone", "Fuse the already powerful", "infinity coin with an", "infinity stone", "adds +$10/flip.", 1000)
+	}
+   if(blockchain.amount > 0 && blockchain_mk2 && itemLimits.blockchain_mk2 !== 1){
+	  blockchain_mk2 = false;
+		createShopItem("blockchain_mk2", "CryptoCurrency", "Create a CryptoCurrency", "to promote your blockchain", "to more people", "adds +$20/flip.", 1500)
 	}
 
 	if(person.amount > 0 && robot.amount > 0  && rev_tut6){
@@ -596,12 +640,55 @@ function autoSave(){
   
   setTimeout(autoSave, 3000)
 }
+
+
 function restore(){
   document.body.style.overflow = "visible";
   soundtrack.play();
-  var tempSt = parseInt(window.localStorage.getItem("s").trim()) - 1;
+  
+  
+  setTimeout(autoSave, 3000)
+  fadeOut(saveCard)
+  var tempStag = parseInt(window.localStorage.getItem('s')) // Restore stage
+  
+  var stagei = 1
+  if(stage >= 3){
+    marketingbtn.disabled = false;	
+  }
+  while(stagei < tempStag){
+    stagei++;
+    items.forEach(function(item){
+        if(item.unlock == stagei){
+          itemdivs.innerHTML = itemdivs.innerHTML + item.cardcode
+        }
+    });
+  }
+  player = JSON.parse(window.localStorage.getItem('p')) //Restore Player Object
+  reset()
+  customers = parseInt(window.localStorage.getItem('c')) //Restore customers
+  if(window.localStorage.getItem('i') == null){
+    return //Restore Bought Items
+  }else{
+   var itemsrestore = JSON.parse(window.localStorage.getItem('i'))
+    itemsrestore.forEach(function(item){
+      if(item.amount >= 1){
+        var i = 0
+        eval(item.name + '=' + JSON.stringify((item)))
+        while(i < item.amount){
+          i++
+          if(i == 1){
+            eval(' document.getElementById("' + item.name + 'info").innerHTML = ""')
+          }
+          buy(item.name, true) 
+        } 
+      }
+    })
+  }
+  //RESTORE SHOP
+   var tempSt = parseInt(window.localStorage.getItem("s").trim()) - 1;
   var marker = 0;
-  while(marker <= tempSt){
+  setTimeout(function(){
+while(marker <= tempSt){
     eval(stageFuncs[marker])
     marker++
   }
@@ -618,48 +705,23 @@ function restore(){
         }
     }
 }
-  setTimeout(autoSave, 3000)
-  fadeOut(saveCard)
-  var tempStag = parseInt(window.localStorage.getItem('s')) // Restore stage
-  stage = tempStag
-  var stagei = 1
-  if(stage >= 3){
-    marketingbtn.disabled = false;	
-  }
-  while(stagei < tempStag){
-    stagei++;
-    items.forEach(function(item){
-        if(item.unlock == stagei){
-          itemdivs.innerHTML = itemdivs.innerHTML + item.cardcode
-        }
-    });
-  }
-  player = JSON.parse(window.localStorage.getItem('p')) //Restore Player Object
-  reset()
-  customers = parseInt(window.localStorage.getItem('c')) //Restore customers
-  if(window.localStorage.getItem('i') == null) return //Restore Bought Items
-  else{
-   var itemsrestore = JSON.parse(window.localStorage.getItem('i'))
-    itemsrestore.forEach(function(item){
-      if(item.amount >= 1){
-        var i = 0
-        eval(item.name + '=' + JSON.stringify((item)))
-        while(i < item.amount){
-          i++
-          if(i == 1){
-            eval(' document.getElementById("' + item.name + 'info").innerHTML = ""')
-          }
-          buy(item.name, true) 
-        } 
-      }
-    })
-  }
+///stage = tempStag
+	///player.icon = "./assets/img/" + stage + ".png"
+///		reset()
+  }, 1000)
+  
 
   
 
 }
+
+
+
+
+
 function resetSave(){
  window.localStorage.clear()
+ createAlert('Reset','Resetting your save please wait...',alertImages.cancelX)
  window.location.reload(true);
 
 }
