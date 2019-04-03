@@ -586,7 +586,9 @@ function managezamazon2(){
 }
 //End game
 function endGame(){
-  notify('Investigation', 'The government is getting suspicious...', true, false)
+  createAlert("Investigation!", "The government has started an investigation on your company's recent business practices.", alertImages.usoaFlag);
+  soundtrack.stop()
+  investigationMusic.play()
   setTimeout(function(){
 
       investigationstart.play();
