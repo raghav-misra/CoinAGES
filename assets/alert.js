@@ -3,6 +3,9 @@ var alertModal = document.getElementById("alert");
 var alertTitle = document.getElementById("aheader");
 var alertDesc = document.getElementById("adesc");
 var alertImage = document.getElementById("alertpic");
+var alertQueue = []
+var alertTask = 0
+var alertStatus = false
 
 /* CDN Links Object */
 var alertImages = {
@@ -16,7 +19,20 @@ var alertImages = {
 }
 
 /* 'Create' and 'Destroy' functions */
-function createAlert(title, text, image){
+function createAlert(title, text, image, overwrite = false){
+if(alertStatus){
+    if(overwrite){
+alertQueue = []
+ alertTitle.innerText = title.trim();
+  alertDesc.innerText = text.trim();
+  alertImage.src = image;
+  alertModal.style.display = "inline-block";
+    }else{
+var temp = '{"title":"' + title + '","text":"' + text +'","image":"' +image + '","script":"' + overwrite + '"}'
+alertQueue.push(temp)
+    }
+}else{
+    alertStatus = true
   alertTitle.innerText = title.trim();
   alertDesc.innerText = text.trim();
   alertImage.src = image;
@@ -30,8 +46,14 @@ function createAlert(title, text, image){
 		op += 0.1;
 	}, 10);
 }
+}
 
 function destroyAlert(){
+
+
+
+
+    alertStatus = false
   var op = 1.1;  // initial opacity
 	var timer = setInterval(function(){
 		if (op <= 0.1) {
@@ -41,8 +63,16 @@ function destroyAlert(){
 		alertModal.style.opacity = op;
 		op -= 0.1;
 	}, 50);
-}
-destroyAlert()
+    if(alertQueue[0] !== null){
+        var temp = JSON.parse(alertQueue[0])
+       alertQueue.shift()
+       setTimeout(function(){createAlert(temp.title,temp.text,temp.image,temp.overwrite)},1000)
+
+
+    }
+    }
+
+
 
 // createAlert("Investigation!", "The government has started an investigation on your company.", alertImages.usoaFlag);
 

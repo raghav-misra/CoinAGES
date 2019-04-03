@@ -30,7 +30,7 @@ marketingbtn.addEventListener('click', openmarketing)
 
 
 // Update Item Usage display
-function updateusage(name,amount,max,obj){ 
+function updateusage(name,amount,max,obj){
   eval(name +'.innerHTML = "You are using ' + amount + '/' + max + '<br>' +'  Each one is making you $' + obj +'"')
 }
 
@@ -38,12 +38,14 @@ function updateusage(name,amount,max,obj){
 function opencomp(){
   menuSound.play()
   if(rev_tut){
+
 		rev_tut = false;
 		setTimeout(function(){
-			notify('Tutorial', 'To flip a coin, click on it.')
-		}, 2000)
+             createAlert('Secretary', "To flip a coin, click on it.", alertImages.info,true)
+		
+		}, 1000)
 	}
-	
+
 	title.innerText = "Manage Company Revenue";
   locationchoose.style.height = "0%"
   locationchoose.style.width = "0%"
@@ -63,7 +65,7 @@ function openshop(){
 			setTimeout(createFreeGift, 1000)
 		}, 4000)
 	}
-	
+
 	title.innerText = "R&D Laboratory";
   locationchoose.style.height = "0%"
   locationchoose.style.width = "0%"

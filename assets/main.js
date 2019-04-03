@@ -34,7 +34,7 @@ function m(){
 
 
 //VARS====
-var coin = document.getElementById('coin')//The only game play in tis project 
+var coin = document.getElementById('coin')//The only game play in tis project
 var moneydisplay = document.getElementById('money')// Displays the player's current cash
 var moneydisplayshop = document.getElementById('moneyshop')// Displays the player's current cash in the RDC
 var noti = document.getElementById('noti')// notificaion
@@ -181,7 +181,7 @@ coin.addEventListener('click', function(){
 		}, 2000)
 	}
 	addmoney();
-	var temp = Math.floor(Math.random() * 4) + 1  
+	var temp = Math.floor(Math.random() * 4) + 1
 	coinSound.rate(temp)
 	coinSound.play()
 })
@@ -195,12 +195,12 @@ function nextstage(newMoney,headless = true){
   stage += 1
   window.localStorage.setItem('s', stage)
 	player.clickvalue = newMoney;
- 
+
   if(headless){
 	items.forEach(function(item){
 		if(item.unlock == stage){
 			itemdivs.innerHTML = itemdivs.innerHTML + item.cardcode
-      
+
       }
 	}
   )}
@@ -246,7 +246,7 @@ function update(){
 	if(robot.amount > 0 && buy_mk2){
 		buy_mk2 = false;
 		createRobotMk2()
-	} 
+	}
 	if(person.amount > 0 && buy_workers_mk2){
 		buy_workers_mk2 = false;
 		createShopItem("one-man-army", "Efficient Workers", "Better salaries lead", "to better workers.", "Workers can flip", "5¢ every second.", 12);
@@ -330,11 +330,11 @@ function addmoney(){
 	coin.style.transform = "rotateX(" + deg + "deg)"
   setTimeout(reset,2000)
 }
- 
+
 //Reset Coin Styling
-function reset(){ 
+function reset(){
 document.getElementById('coin').src = player.icon;
-   
+
 }
 
 //Buy function
@@ -344,39 +344,39 @@ function buy(obj, headless = false){
   var name = eval( obj + '.name')
   var wakeup = eval( obj + '.wakeup')
   var max = eval(  'parseInt(' +obj + '.max)')
-  var amount = eval(  'parseInt(' +obj + '.amount)') 
+  var amount = eval(  'parseInt(' +obj + '.amount)')
   var code = eval( obj + '.code')
   if(headless){
     document.getElementById("buy-bot").style.display = "inline-block !important";
-    eval(wakeup + "()") 
+    eval(wakeup + "()")
     eval(' document.getElementById("' + obj + 'info").innerHTML =  document.getElementById("' + obj + 'info").innerHTML + ' +"'" + code + "' + '</div>' ")
-        var updatedamount = eval(  'parseInt(' +obj + '.amount)') 
+        var updatedamount = eval(  'parseInt(' +obj + '.amount)')
         updateusage("document.getElementById('" +name +"-displaymax')",updatedamount,max,value)
   }else{
   if( player.money >= price * 100){
     if(amount == max){//Reached Limit
       notify('Cannot Buy','You have reached the limit', true)
       document.getElementById("buy-bot").style.display = "none !important";
-      
+
     }
 		else{
 				document.getElementById("buy-bot").style.display = "inline-block !important"; //Purchase successful
-			eval(wakeup + "()") 
+			eval(wakeup + "()")
 			player.money = player.money - price * 100
-			eval( obj + '.amount += 1') 
+			eval( obj + '.amount += 1')
 			//Init if they never bought it before
 			if(amount == 0){
-				
+
 				eval(' document.getElementById("' + obj + 'info").innerHTML = ""')
 				eval(' document.getElementById("' + obj + 'info").innerHTML =  document.getElementById("' + obj + 'info").innerHTML + ' +"'" + code + "' + '</div>' ")
-        var updatedamount = eval(  'parseInt(' +obj + '.amount)') 
+        var updatedamount = eval(  'parseInt(' +obj + '.amount)')
         updateusage("document.getElementById('" +name +"-displaymax')",updatedamount,max,value)
 				eval(name + 'BuySound.play()')
 
-			} 
+			}
 			else{
 				eval(' document.getElementById("' + obj + 'info").innerHTML =  document.getElementById("' + obj + 'info").innerHTML + ' +"'" + code + "' + '</div>' ")
-        var updatedamount = eval(  'parseInt(' +obj + '.amount)') 
+        var updatedamount = eval(  'parseInt(' +obj + '.amount)')
         updateusage("document.getElementById('" +name +"-displaymax')",updatedamount,max,value)
 				eval(name + 'BuySound.play()')
 
@@ -401,10 +401,10 @@ function buy(obj, headless = false){
 
 //ONJECT WAKE UPS ======
 function managerobot(){
-	
+
    document.getElementById('robotbar').style.animation = "barframes 1s infinite"
   document.getElementById('robotbar').style.display = "inline-block"
-  
+
   setTimeout(managerobot2,900)
 }
 function managerobot2(){
@@ -418,9 +418,9 @@ function managerobot2(){
 function manageecoflipper(){
 	document.getElementById("ecobar").style.animation = "barframes 1s infinite"
   document.getElementById("ecobar").style.display = "inline-block"
-  
+
   setTimeout(manageecoflipper2,900)
-	
+
 }
 function manageecoflipper2(){
     customers +=1
@@ -433,7 +433,7 @@ function manageecoflipper2(){
 function manageperson(){
    document.getElementById('personbar').style.animation = "barframes 1s infinite"
   document.getElementById('personbar').style.display = "inline-block"
-  
+
   setTimeout(manageperson2,900)
 }
 function manageperson2(){
@@ -482,7 +482,7 @@ function managesuperComputer2(){
   document.getElementById('superComputerbar').style.width = "0%"
   setTimeout(managesuperComputer,100)
 }
-//Ufo 
+//Ufo
 function manageUfo(){
    document.getElementById('ufobar').style.animation = "barframes 1s infinite"
   document.getElementById('ufobar').style.display = "inline-block"
@@ -496,7 +496,7 @@ function manageUfo2(){
   setTimeout(manageUfo,100)
 }
 
-//AntiGravity 
+//AntiGravity
 function manageantiGravity(){
    document.getElementById('antiGravitybar').style.animation = "barframes 60s infinite"
   document.getElementById('antiGravitybar').style.display = "inline-block"
@@ -509,7 +509,7 @@ function manageantiGravity2(){
   document.getElementById('antiGravitybar').style.width = "0%"
   setTimeout(manageantiGravity,100)
 }
-//preFlipped 
+//preFlipped
 function managepreFlipped(){
    document.getElementById('preFlippedbar').style.animation = "barframes 1s infinite"
   document.getElementById('preFlippedbar').style.display = "inline-block"
@@ -522,7 +522,7 @@ function managepreFlipped2(){
   document.getElementById('preFlippedbar').style.width = "0%"
   setTimeout(managepreFlipped ,100)
 }
-//usMint 
+//usMint
 function manageusMint(){
    document.getElementById('usMintbar').style.animation = "barframes 60s infinite"
   document.getElementById('usMintbar').style.display = "inline-block"
@@ -535,7 +535,7 @@ function manageusMint2(){
   document.getElementById('usMintbar').style.width = "0%"
   setTimeout(manageusMint,100)
 }
-//infinity 
+//infinity
 function manageinfinity(){
    document.getElementById('infinitybar').style.animation = "barframes 1s infinite"
   document.getElementById('infinitybar').style.display = "inline-block"
@@ -548,7 +548,7 @@ function manageinfinity2(){
   document.getElementById('infinitybar').style.width = "0%"
   setTimeout(manageinfinity,100)
 }
-//blockchain 
+//blockchain
 function manageblockchain(){
   document.getElementById('blockchainbar').style.animation = "barframes 60s infinite"
  document.getElementById('blockchainbar').style.display = "inline-block"
@@ -593,27 +593,30 @@ function endGame(){
   setTimeout(function(){
 
       investigationstart.play();
-    
+
 	},1000)
 }
 
 //Begin Tutorial and INIT
 
-notify('Tutorial', 'Welcome to the CEO Dashboard', true)
-setTimeout(function(){
-	if(rev_tut_0){
-		compbtn.disabled = false
-		compbtn.classList.remove('disabled')
-		notify('Tutorial', 'First, click on Revenue Management')
-	}
-}, 4000)
+//TUTORIAL START
 
+
+
+//INIT AND SAVE/RESTORE
 function init(){ // Restore Save
   var save = JSON.parse(window.localStorage.getItem('p'))
- 
+
   if (save == 0 || save == null){
     setTimeout(autoSave, 3000)
     soundtrack.play()
+    createAlert('Secretary', 'Hello Boss! I am your new secretary and it is my job to help you learn about your role here.', alertImages.info)
+    createAlert('Secretary', 'What you see here is the CEO dashboard. This is the central hub of the company', alertImages.info)
+    createAlert('Secretary', "Let's begin by clicking on Revenue Management", alertImages.info)
+    compbtn.disabled = false
+    compbtn.classList.remove('disabled')
+
+
     return
   }else{
     closenotify()
@@ -624,7 +627,7 @@ function init(){ // Restore Save
     fadeIn(saveCard)
 
   }
-  
+
 }
 
 init()
@@ -637,23 +640,25 @@ function autoSave(){
   window.localStorage.setItem("itemz", JSON.stringify(itemLimits));
   window.localStorage.setItem("s", stage.toString());
 
-  
+
   setTimeout(autoSave, 3000)
 }
 
 
 function restore(){
+
   document.body.style.overflow = "visible";
   soundtrack.play();
-  
-  
+
+
   setTimeout(autoSave, 3000)
   fadeOut(saveCard)
+
   var tempStag = parseInt(window.localStorage.getItem('s')) // Restore stage
-  
+
   var stagei = 1
   if(stage >= 3){
-    marketingbtn.disabled = false;	
+    marketingbtn.disabled = false;
   }
   while(stagei < tempStag){
     stagei++;
@@ -679,8 +684,8 @@ function restore(){
           if(i == 1){
             eval(' document.getElementById("' + item.name + 'info").innerHTML = ""')
           }
-          buy(item.name, true) 
-        } 
+          buy(item.name, true)
+        }
       }
     })
   }
@@ -705,13 +710,10 @@ while(marker <= tempSt){
         }
     }
 }
-///stage = tempStag
-	///player.icon = "./assets/img/" + stage + ".png"
-///		reset()
   }, 1000)
-  
 
-  
+
+
 
 }
 
