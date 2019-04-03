@@ -14,7 +14,7 @@ function clickBooster(boost, cardId, btn, durationMS = 12000){
 		btn.disabled = true 
 		btn.style.opacity = 0 
 		player.clickboost = player.clickboost + boost;
-		boostDisplayp.innerText = 'Marketing Boost: +' + Math.round(player.clickboost)  + "¢";
+		boostDisplayp.innerText = 'Boost: +' + Math.round(player.clickboost)  + "¢";
 		boostDisplay.style.opacity = 1
 		removeBoost(durationMS, card, btn, boost)
 		setTimeout(function(){timeout = true}, 2500)
@@ -30,7 +30,7 @@ function clickBoosterPerma(cardId, boost){
   var id = cardId
   var card = document.getElementById(cardId);
   player.clickboost = player.clickboost + boost;
-  boostDisplayp.innerText = 'Marketing Boost: +' + Math.round(player.clickboost)  + "¢";
+  boostDisplayp.innerText = 'Boost: +' + Math.round(player.clickboost)  + "¢";
   boostDisplay.style.opacity = 1
   fadeOut(card);
 }
@@ -45,7 +45,7 @@ setTimeout(function(){
 		card.style.color = "black";
 		card.style.backgroundColor = "white"
     player.clickboost -=  Math.round(boost * 100) / 100
-		boostDisplayp.innerText = 'Marketing Boost: +' + Math.round(player.clickboost)  + "¢";
+		boostDisplayp.innerText = 'Boost: +' + Math.round(player.clickboost)  + "¢";
 		if(player.clickboost < 0 || player.clickboost == 0){
 			boostDisplay.style.opacity = 0
 		}

@@ -5,7 +5,9 @@ var player = {
   money: 0,
   clickboost: 0.00,
   clickvalue: 0.01,
-	icon: "./assets/img/1.png"
+  icon: "./assets/img/1.png",
+  endStage: false,
+  end: false
   }
 
 //Objects

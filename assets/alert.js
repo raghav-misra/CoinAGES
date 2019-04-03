@@ -18,7 +18,7 @@ var alertImages = {
 }
 
 /* 'Create' and 'Destroy' functions */
-function createAlert(title, text, image, overwrite = false){
+function createAlert(title, text, image, overwrite = false, end = false){
 if(alertStatus){
     if(overwrite){
 alertQueue = []

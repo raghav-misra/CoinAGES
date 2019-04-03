@@ -587,15 +587,40 @@ function managezamazon2(){
 //End game
 function endGame(){
   createAlert("Investigation!", "The government has started an investigation on your company's recent business practices.", alertImages.usoaFlag);
-  soundtrack.stop()
-  investigationMusic.play()
+  soundtrack.fade(0.125, 0, 1000)
   setTimeout(function(){
-
+    investigationMusic.play()
       investigationstart.play();
+      player.endStage = true
 
-	},1000)
+  },1000)
+  setTimeout(function(){
+    player.end = true
+end()
+
+
+  }, 5000)
 }
+function end(){
+  document.getElementById('alertBtn').classList.add('hide')
+  document.getElementById('alert').style.backgroundColor = '#ff7675'
+  investigationMusic.fade(0.125, 0, 200)
+  investigationdone.play()
+  back()
+  document.getElementById('locationchoose').classList.add('hide')
+  createAlert("Investigation!", "The government has uncovered your plans to buy out your rival corporations and your recent business practices that give you an unfair advantage over other potential business. The goverment demands that CoinAGES be dissolved <br><br> <button id='alertBtn'onclick='destroyAlert()' class='reg'>OK</button>", alertImages.usoaFlag, true)
+  createAlert("Investigation!", "The fine/bail for a crime on such a scale is $" + player.money/100 + ". The decision is yours to make. Pay up and..<br><br> <button id='alertBtn'onclick='rebirth()' class='widebutton'>Rebirth The Company (resets company but keeps manual click value)</button><br> <button id='alertBtn'onclick='retire()' class='reg'>Retire</button><br>", alertImages.usoaFlag, true);
 
+}
+function rebirth(){
+  window.localStorage.clear()
+  window.localStorage.setItem('p', '{ "money": 0, "clickboost": 10000, "clickvalue": 0.01, "icon": "./assets/img/1.png", "endStage": false, "end": false }')
+  window.localStorage.setItem('c', 0)
+  window.location.reload()
+}
+function retire(){
+  window.location.href='retire.html'
+}
 //Begin Tutorial and INIT
 
 //TUTORIAL START
@@ -647,7 +672,7 @@ function autoSave(){
 function restore(){
 
   document.body.style.overflow = "visible";
-  soundtrack.play();
+  
 
 
   setTimeout(autoSave, 3000)
@@ -668,6 +693,9 @@ function restore(){
     });
   }
   player = JSON.parse(window.localStorage.getItem('p')) //Restore Player Object
+  if(player.endStage == false){
+    soundtrack.play()
+  }
   reset()
   customers = parseInt(window.localStorage.getItem('c')) //Restore customers
   if(window.localStorage.getItem('i') == null){
