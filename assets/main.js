@@ -177,7 +177,7 @@ coin.addEventListener('click', function(){
 	if(rev_tut2){
 		rev_tut2 = false;
 		setTimeout(function(){
-			notify('Tutorial', 'Keep flipping coins until you reach $1.')
+			createAlert('Secretary', 'There are more people waiting in line for a coin flip! Keep flipping coins until you make $1', alertImages.info, false)
 		}, 2000)
 	}
 	addmoney();
@@ -217,18 +217,15 @@ function update(){
 	if(player.money > 99 && rev_tut3 == true){
 		rev_tut3 = false;
 		setTimeout(function(){
-			notify('Tutorial', 'Now, buy a robot to flip for you!')
+				createAlert('Secretary', 'Now that you have $1, I recommend that you buy a robot to automate this process! You can buy coin flippers at the bottom of this page', alertImages.info, true)
 			fadeIn(document.getElementById('robotcard'))
 		}, 1000)
 	}
 	if(player.money > 199 && rev_tut5 == true){
 		rev_tut5 = false;
 		setTimeout(function(){
-			notify('Tutorial', 'Now, hire a person!')
+			createAlert('Secretary', 'As you grow the company, more coin flippers will become available. Hire a person! ', alertImages.info, true)
 			fadeIn(document.getElementById('personcard'))
-			setTimeout(function(){
-				notify('Tutorial', 'People cost more but are better.')
-			}, 4000)
 		}, 1000)
 	}
 	if(ecoflipper.amount > 0 && eco_mk2 && itemLimits.eco_mk2 !== 1){
@@ -287,11 +284,11 @@ function update(){
 	if(person.amount > 0 && robot.amount > 0  && rev_tut6){
 		rev_tut6 = false;
 		setTimeout(function(){
-			notify('Tutorial', 'Great! You can hire up to 5 workers.')
+			createAlert('Secretary', 'Hiring a person is more expensive but will eventually make more money than a robot. ', alertImages.info, true)
 			setTimeout(function(){
-				notify('Tutorial', 'You\'ve unlocked the R&D Center!')
+				createAlert('Secretary', "It's about time I show you the research and development center", alertImages.info, true)
 				setTimeout(function(){
-					notify('Tutorial', 'Press \'Go Back\' to view it!')
+					createAlert('Secretary', "To go back to the main menu, click the <i class='fas fa-chevron-left'></i> button on the left. ", alertImages.info, false)
 						document.getElementById("skip-tut").style.display = "none";
 					shopbtn.disabled = false
   				shopbtn.classList.remove('disabled')
@@ -390,9 +387,9 @@ function buy(obj, headless = false){
 	if(rev_tut4){
 		rev_tut4 = false;
 		setTimeout(function(){
-			notify('Tutorial', 'Great! 10 robots is the max.')
+			createAlert('Secretary', 'Each flipper has a certain maximum amount. For robots, the max is 10', alertImages.info, true)
 			setTimeout(function(){
-				notify('Tutorial', 'Now, flip until you are at $2.')
+				createAlert('Secretary', 'Keep flipping coins with your robot to reach $2!', alertImages.info, false)
 			}, 1000)
 		}, 1000)
   }

@@ -103,9 +103,9 @@ var shopCode = {
 
 function deleteShopItem(id)
 {
-  
+
   document.getElementById(id).classList.add('hide')
-  
+
 }
 
 function buyShopItem(id, price) {	//Not enough money
@@ -304,13 +304,13 @@ setTimeout(function(){
 	}
 }
 
-var stageFuncs = ["console.log('Game Restored')", "setTimeout(function(){createNickelShop(false)},500)", "setTimeout(function(){createDimeShop(false)},600)", "setTimeout(function(){createQuarterShop(false)},700)", "setTimeout(function(){createHalfDollarShop(false)},800)", "setTimeout(function(){createDollarShop(false)},900)", "setTimeout(function(){createWorldShop(false)},1000)"]; 
+var stageFuncs = ["console.log('Game Restored')", "setTimeout(function(){createNickelShop(false)},500)", "setTimeout(function(){createDimeShop(false)},600)", "setTimeout(function(){createQuarterShop(false)},700)", "setTimeout(function(){createHalfDollarShop(false)},800)", "setTimeout(function(){createDollarShop(false)},900)", "setTimeout(function(){createWorldShop(false)},1000)"];
 // Functions for stage upgrade ^^
 
 // Creating Shop Items
 
 function createFreeGift() {
-	createShopItem("tutorial-gift", "Your Free Gift", "Great job on finishing", "the tutorial.", "One dollar is", "just a click away!", 0);
+	createShopItem("tutorial-gift", "Free Gift", "A free gift from", "the secretary", "To jumpstart the ", "company!", 0);
 }
 function createWorldShop(headless = true){
   deleteShopItem("world-upgrade");
@@ -339,17 +339,17 @@ function createDollarShop(headless = true){
   createShopItem("world-upgrade", "World Domination", "Use your mass resources", "and take down rival companies", "to seal your fate as the", "world's most powerful company.", 500000, true)
   infinity_mk2 = true;
   blockchain_mk2 = true;
-} 
+}
 function createNickelShop(headless = true) {
   nextstage(0.05,headless);
   deleteShopItem("nickelupgrade");
   nickel_upgrade = true;
 	createShopItem("dime-dev", "Dime Development", "Invest your assets", "in improving efficiency", "and consumer outreach.", "<i>Unlocks Marketing Campaigns.</i>", 250, true);
-  
+
 	eco_mk2 = true;
   bottle_mk2 = true;
   bottle_max_increase = true;
-  
+
 }
 
 function createDimeShop(headless = true) {
@@ -358,7 +358,7 @@ function createDimeShop(headless = true) {
 	createShopItem("dime-all-max-increase", "More of Everything!", "Increase the maximum", "limit of each", "type of purchasable", "auto-flipper by 1.", 650);
   createShopItem("quarter-upgrade", "Quarter Advancement Initiative", "Use the endless power", "of the space indusry", "to help your business", "flip <b>more coins faster.</b>", 3000, true);
 	notify("New Unlock!", "Marketing Campaigns unlocked!")
-	marketingbtn.disabled = false;	
+	marketingbtn.disabled = false;
 	loadCampaigns()
 	setTimeout(function(){
 		notify("New Unlock!", "Go back to see it!")

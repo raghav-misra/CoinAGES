@@ -41,8 +41,8 @@ function opencomp(){
 
 		rev_tut = false;
 		setTimeout(function(){
-             createAlert('Secretary', "To flip a coin, click on it.", alertImages.info,true)
-		
+             createAlert('Secretary', "This is where you manage your revenue flow. To make money, flip the coin by clicking on it", alertImages.info,true)
+
 		}, 1000)
 	}
 
@@ -59,9 +59,9 @@ function openshop(){
   menuSound.play()
 	if(rev_tut7){
 		rev_tut7 = false;
-		notify("Tutorial", "You've completed the tutorial!")
+		createAlert('Secretary', "This is where you can upgrade your coin flippers and most importantly, upgrade the entire company to the next technological stage (In this case it is nickel).", alertImages.info, true)
 		setTimeout(function(){
-			notify("Tutorial", "Your free gift is waiting!")
+			createAlert('Secretary', "That should be everything you need to know. You can pick up a free gift from me in the R&D center! I have no doubt that you will bring this company to success. ", alertImages.info, false)
 			setTimeout(createFreeGift, 1000)
 		}, 4000)
 	}

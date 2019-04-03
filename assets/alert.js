@@ -4,7 +4,6 @@ var alertTitle = document.getElementById("aheader");
 var alertDesc = document.getElementById("adesc");
 var alertImage = document.getElementById("alertpic");
 var alertQueue = []
-var alertTask = 0
 var alertStatus = false
 
 /* CDN Links Object */
@@ -24,7 +23,7 @@ if(alertStatus){
     if(overwrite){
 alertQueue = []
  alertTitle.innerText = title.trim();
-  alertDesc.innerText = text.trim();
+  alertDesc.innerHTML = text.trim();
   alertImage.src = image;
   alertModal.style.display = "inline-block";
     }else{
@@ -34,7 +33,7 @@ alertQueue.push(temp)
 }else{
     alertStatus = true
   alertTitle.innerText = title.trim();
-  alertDesc.innerText = text.trim();
+  alertDesc.innerHTML = text.trim();
   alertImage.src = image;
   alertModal.style.display = "inline-block";
   var op = 0.1;  // initial opacity
@@ -75,4 +74,6 @@ function destroyAlert(){
 
 
 // createAlert("Investigation!", "The government has started an investigation on your company.", alertImages.usoaFlag);
+
+
 
