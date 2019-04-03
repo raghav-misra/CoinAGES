@@ -22,7 +22,7 @@
       <button class="standard" onclick="window.localStorage.clear()">DEBUG RESET SAVE</button>
 			<button class="standard" onclick="m()">DEBUG GIVE MONEY</button>
 						<button class="standard" onclick="openmarketing()">DEBUG OPEN MARKEING</button>
-		
+
     <hr>
     <!-- Bottom Notifcaion -->
     <div id='noti' onclick="closenotify()" class='noti'>
@@ -30,7 +30,7 @@
       <p id='ndescription'>PlaceHolder</p>
     </div>
     <!-- Top Alert -->
-    <div id='alert' class='alert'>
+    <div style='display:none;'id='alert' class='alert'>
       <img id="alertpic" ></img>
       <h1 id='aheader'>PlaceHolder</h1>
       <hr class="blu">
@@ -38,20 +38,20 @@
       <button onclick="destroyAlert()" class="reg">OK</button>
     </div>
     <!-- Main Menu -->
-    <div id='locationchoose'class='locationchoose'> 
+    <div id='locationchoose'class='locationchoose'>
       <button id='back'type="button" class="return-btn hide">
 				<i class="fas fa-chevron-left"></i>
 			</button>
       <button disabled id='compbtn' type="button" class="btn widebutton diabled"> <i class="fas fa-money-bill-wave"></i><br>Revenue<br>Management</button>
 <button disabled id='shopbtn' type="button" class="btn disabled widebutton"><i class="fas fa-tools"></i><br>Research &<br>Development<br></button>
       <button title="Unlocked at Dime Development" id='marketingbtn'type="button" class="disabled widebutton" disabled><i class="fas fa-bullhorn"></i><br>Marketing<br>Campaigns</button>
-		
+
     </div>
 
     <!-- MARKETING SCREEN =================================================-->
     <div class='hide' id='marketingpannel'>
       <h3 class="subtitle">Normal Promotions</h3><br><br>
-      
+
       <div id='normalPromoContainer'>
 				<div id="press-release" class="campaign-card normal">
 					<h4 class="ttl">Press Release</h4>
@@ -122,11 +122,11 @@
 <div class='hide' id='shoppannel'>
   <h3 class="subtitle">Welcome to the Laboratory!</h3>
   <br>
- 
+
   <div id='subtractWallet'class='moneydisplay'>
     <p id='confirm'class='item'> PayBud Balance</p> <i id='shopIcon' class=" item fas fa-wallet"></i>
     <h2 id='moneyshop'>0.00</h2>
-   
+
 </div>
   <div id="shop-item-container">
       <br>
@@ -147,12 +147,12 @@
      </div>
     <br>
 		<div class='boost' id='boostDisplay'>
-			<p id='boostDisplayp'>Your not supposed to see this yet..</p>		
+			<p id='boostDisplayp'>Your not supposed to see this yet..</p>
 			</div><br>
       <img oncontextmenu="return false;" id='coin' class='coin'src='assets/img/1.png'>
      <div id='itemdivs'>
       <div id='robotcard' style='opacity:0'class='card'>
-        <p>Robots</p> 
+        <p>Robots</p>
         <div class='bar' id='robotbar'></div>
         <hr class="blu thin">
         <div class='container' id='robotinfo'>
@@ -161,10 +161,10 @@
           <br>
           <button id='buy-bot' onclick="buy('robot')" class="buy-bot">Purchase a Robot for $1.00</button>
            <p id='robot-displaymax'>You are using 0/10</p>
-        
+
     </div>
     <div id='personcard'style='opacity:0'class='card'>
-        <p> People</p> 
+        <p> People</p>
         <div class='bar' id='personbar'></div>
         <hr class="blu thin">
         <div class='container' id='personinfo'>
@@ -173,7 +173,7 @@
           <br>
           <button id='buy-person' onclick="buy('person')" class="buy-bot">Hire someone for $2.00</button>
            <p id='person-displaymax'>You are using 0/5</p>
-        
+
     </div>
      </div>
   <script src="./assets/settings.js"></script>
