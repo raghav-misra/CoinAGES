@@ -21,7 +21,7 @@ var chart = new Chart(ctx, {
                 "#fab1a0",
                 "#74b9ff",
                 "#ffeaa7",
-                "#dfe6e9",
+                "#40739e",
                 "white"
              ]
 

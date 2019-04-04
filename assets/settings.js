@@ -12,7 +12,7 @@ var player = {
 //Industry
 var industry = {
   Zamazon: {
-    value: 220000,
+    value: 250000,
     futurevalue: 0,
     change: '+',
   },
@@ -120,7 +120,7 @@ var superComputer = {
 
 } 
 var ufo = {
-	 price: 5000,
+	 price: 3000,
   value: 1,
   max: 2,
   amount: 0,
@@ -128,11 +128,11 @@ var ufo = {
   wakeup: 'manageUfo',
   name: 'ufo',
   code:' <img class=" itemimg ufo infinite" src="assets/img/ufoFlipper.png">',
-	cardcode: "<div style='opacity:1'class='card'> <p>Alien Technology</p> <div class='bar slow' id='ufobar'></div> <hr class='blu thin'> <div class='container' id='ufoinfo'> <p>Borrow the technology from an intergalactic civilization to flip coins.<br>Flip Time: 1 Second<br> Money Per Flip: $1.00</p> </div> <br> <button  onclick='buy(\"ufo\")' class='martophack buy-bot'>Buy one for $5000</button> <p id='ufo-displaymax'>You are using 0/2</p> </div>"
+	cardcode: "<div style='opacity:1'class='card'> <p>Alien Technology</p> <div class='bar slow' id='ufobar'></div> <hr class='blu thin'> <div class='container' id='ufoinfo'> <p>Borrow the technology from an intergalactic civilization to flip coins.<br>Flip Time: 1 Second<br> Money Per Flip: $1.00</p> </div> <br> <button  onclick='buy(\"ufo\")' class='martophack buy-bot'>Buy one for $3000</button> <p id='ufo-displaymax'>You are using 0/2</p> </div>"
 
 } 
 var antiGravity = {
-	 price: 2000,
+	 price: 1000,
   value: 10,
   max: 1,
   amount: 0,
@@ -140,11 +140,11 @@ var antiGravity = {
   wakeup: 'manageantiGravity',
   name: 'antiGravity',
   code:' <img class=" itemimg antiGravity infinite" src="assets/img/antiGravityFlipper.png">',
-	cardcode: "<div style='opacity:1'class='card'> <p>Anti-Gravity Flipper</p> <div class='bar slow' id='antiGravitybar'></div> <hr class='blu thin'> <div class='container' id='antiGravityinfo'> <p>Launch coins into space and let the nautral anti-gravity properties flip coins for you.<br>Flip Time: 60 Seconds<br> Money Per Flip: $10</p> </div> <br> <button  onclick='buy(\"antiGravity\")' class='martophack buy-bot'>Buy one for $2000 </button> <p id='antiGravity-displaymax'>You are using 0/1</p> </div>"
+	cardcode: "<div style='opacity:1'class='card'> <p>Anti-Gravity Flipper</p> <div class='bar slow' id='antiGravitybar'></div> <hr class='blu thin'> <div class='container' id='antiGravityinfo'> <p>Launch coins into space and let the nautral anti-gravity properties flip coins for you.<br>Flip Time: 60 Seconds<br> Money Per Flip: $10</p> </div> <br> <button  onclick='buy(\"antiGravity\")' class='martophack buy-bot'>Buy one for $1000 </button> <p id='antiGravity-displaymax'>You are using 0/1</p> </div>"
 
 } 
 var preFlipped = {
-	 price: 25000,
+	 price: 20000,
   value: 3,
   max: 1,
   amount: 0,
@@ -152,7 +152,7 @@ var preFlipped = {
   wakeup: 'managepreFlipped',
   name: 'preFlipped',
   code:' <img class=" itemimg preFlipped infinite" src="assets/img/preFlipped.png">',
-	cardcode: "<div style='opacity:1'class='card'> <p>Pre Flipped Coins</p> <div class='bar slow' id='preFlippedbar'></div> <hr class='blu thin'> <div class='container' id='preFlippedinfo'> <p>Create and flip coins with only one side for max efficiency. It's not cheating if you don't get caught<br>Flip Time: 1 Second<br> Money Per Flip: $3</p> </div> <br> <button  onclick='buy(\"preFlipped\")' class='martophack buy-bot'>Buy one for $25000</button> <p id='preFlipped-displaymax'>You are using 0/1</p> </div>"
+	cardcode: "<div style='opacity:1'class='card'> <p>Pre Flipped Coins</p> <div class='bar slow' id='preFlippedbar'></div> <hr class='blu thin'> <div class='container' id='preFlippedinfo'> <p>Create and flip coins with only one side for max efficiency. It's not cheating if you don't get caught<br>Flip Time: 1 Second<br> Money Per Flip: $3</p> </div> <br> <button  onclick='buy(\"preFlipped\")' class='martophack buy-bot'>Buy one for $20000</button> <p id='preFlipped-displaymax'>You are using 0/1</p> </div>"
 
 }
 var usMint = {

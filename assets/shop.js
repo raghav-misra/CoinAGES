@@ -356,7 +356,7 @@ function createDimeShop(headless = true) {
   nextstage(0.10,headless);
   deleteShopItem("dime-dev");
 	createShopItem("dime-all-max-increase", "More of Everything!", "Increase the maximum", "limit of each", "type of purchasable", "auto-flipper by 1.", 650);
-  createShopItem("quarter-upgrade", "Quarter Advancement Initiative", "Use the endless power", "of the space indusry", "to help your business", "flip <b>more coins faster.</b>", 3000, true);
+  createShopItem("quarter-upgrade", "Quarter Advancement Initiative", "Use the endless power", "of the space indusry", "to help your business", "flip <b>more coins faster.</b>", 2000, true);
 	notify("New Unlock!", "Marketing Campaigns unlocked!")
 	marketingbtn.disabled = false;
 	loadCampaigns()
