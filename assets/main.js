@@ -165,7 +165,9 @@ function skipTutorial(){
 	shopbtn.disabled = false
 	shopbtn.classList.remove('disabled')
 	compbtn.disabled = false
-	compbtn.classList.remove('disabled')
+  compbtn.classList.remove('disabled')
+  marketbtn.disabled = false
+  marketbtn.classList.remove('disabled')
 	document.getElementById("skip-tut").style.display = "none";
 	fadeIn(document.getElementById('robotcard'))
 	fadeIn(document.getElementById('personcard'))
@@ -349,6 +351,7 @@ function buy(obj, headless = false){
     eval(' document.getElementById("' + obj + 'info").innerHTML =  document.getElementById("' + obj + 'info").innerHTML + ' +"'" + code + "' + '</div>' ")
         var updatedamount = eval(  'parseInt(' +obj + '.amount)')
         updateusage("document.getElementById('" +name +"-displaymax')",updatedamount,max,value)
+    
   }else{
   if( player.money >= price * 100){
     if(amount == max){//Reached Limit
@@ -368,14 +371,16 @@ function buy(obj, headless = false){
 				eval(' document.getElementById("' + obj + 'info").innerHTML =  document.getElementById("' + obj + 'info").innerHTML + ' +"'" + code + "' + '</div>' ")
         var updatedamount = eval(  'parseInt(' +obj + '.amount)')
         updateusage("document.getElementById('" +name +"-displaymax')",updatedamount,max,value)
-				eval(name + 'BuySound.play()')
+        eval(name + 'BuySound.play()')
+        industry.CoinAGES.futurevalue += price * 100
 
 			}
 			else{
 				eval(' document.getElementById("' + obj + 'info").innerHTML =  document.getElementById("' + obj + 'info").innerHTML + ' +"'" + code + "' + '</div>' ")
         var updatedamount = eval(  'parseInt(' +obj + '.amount)')
         updateusage("document.getElementById('" +name +"-displaymax')",updatedamount,max,value)
-				eval(name + 'BuySound.play()')
+        eval(name + 'BuySound.play()')
+        industry.CoinAGES.futurevalue += price * 100
 
 			}
     }
@@ -608,8 +613,8 @@ function end(){
   investigationdone.play()
   back()
   document.getElementById('locationchoose').classList.add('hide')
-  createAlert("Investigation!", "The government has uncovered your plans to buy out your rival corporations and your recent business practices that give you an unfair advantage over other potential business. The goverment demands that CoinAGES be dissolved <br><br> <button id='alertBtn'onclick='destroyAlert()' class='reg'>OK</button>", alertImages.usoaFlag, true)
-  createAlert("Investigation!", "The fine/bail for a crime on such a scale is $" + player.money/100 + ". The decision is yours to make. Pay up and..<br><br> <button id='alertBtn'onclick='rebirth()' class='widebutton'>Rebirth The Company (resets company but keeps manual click value)</button><br> <button id='alertBtn'onclick='retire()' class='reg'>Retire</button><br>", alertImages.usoaFlag, true);
+  createAlert("Investigation!", "The government has uncovered your plans to buy out your rival corporations and has looked over recent business practices that give you an unfair advantage over other potential business. The goverment demands that CoinAGES be dissolved <br><br> <button id='alertBtn'onclick='destroyAlert()' class='reg'>OK</button>", alertImages.usoaFlag, true)
+  createAlert("Investigation!", "The fine/bail for a crime on such a scale is $" + player.money/100 + ". The decision is yours to make. Pay up and..<br><br> <button id='alertBtn'onclick='rebirth()' class='widebutton'>Rebirth The Company (resets company but keeps manual click value)</button><br> <button id='alertBtn'onclick='retire()' class='reg'>Retire</button><br>", alertImages.usoaFlag, false);
 
 }
 function rebirth(){

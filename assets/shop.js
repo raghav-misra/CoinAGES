@@ -368,11 +368,11 @@ function createDimeShop(headless = true) {
 }
 
 function createRobotMk2() {
-	createShopItem("robo-mk2", "Robots: Mark II", "Sicromoft C.E.O Gill Bates", "has developed a way", " for robots to flip", "3¢ every second.", 10);
+	createShopItem("robo-mk2", "Robots: Mark II", '"Borrow" SicroMoft\'s advanced', "upgrade that allows", " robots to flip", "3¢ every second.", 10);
 }
 //default shop items
 
 createShopItem("robot-max-increase", "Raise Robot Quota", "The upgrade lets you", "increase the maximum", "amount of robo-flippers", "that you can purchase by 1.", 2);
 createShopItem("human-max-increase", "More Workers", "This upgrade allows", "you to hire an", "extra human worker", "to flip coins for you.", 3.5);
 createShopItem("nickelupgrade", "Nickel Research Program", "Research the next generation", "of coin-flipping technology.", "Upgrade your coherence", "and cost-effectiveness.", 50, true)
-createShopItem("hover-flip", "HoverFlip™ by Zamazon", "Using the latest in flipping-tech,", "Jeph Besoz has created a way", "to not click, but hover over", "coins to flip them.", 0.5);
+createShopItem("hover-flip", "HoverFlip™ by Zamazon", '"Borrow" technology from', " Zamazon to not only", " click, but hover over", "coins to flip them.", 0.5);

@@ -8,13 +8,16 @@ var logo = document.getElementById("icon");
 var marketingpannel = document.getElementById('marketingpannel')
 var shoppannel = document.getElementById('shoppannel')
 var comppannel = document.getElementById('comppannel')
+var marketpanne = document.getElementById('marketpannel')
 var locationchoose = document.getElementById('locationchoose')
 var saveCard = document.getElementById('saveCard')
 //  buttons
 var compbtn = document.getElementById('compbtn')
 var marketingbtn = document.getElementById('marketingbtn')
 var shopbtn = document.getElementById('shopbtn')
+var marketbtn = document.getElementById('marketbtn')
 var backbtn = document.getElementById('back')
+
 //  Item usage displays
 var itemsbought = [] //Stores these elements and flags them for update
 //var robotdisplay = document.getElementById('robot-displaymax')
@@ -27,6 +30,7 @@ backbtn.addEventListener('click', back)
 compbtn.addEventListener('click', opencomp)
 shopbtn.addEventListener('click', openshop)
 marketingbtn.addEventListener('click', openmarketing)
+marketbtn.addEventListener('click', openindustry)
 
 
 // Update Item Usage display
@@ -52,8 +56,11 @@ function opencomp(){
   comppannel.classList.remove('hide')
   compbtn.classList.add('hide')
   shopbtn.classList.add('hide')
-	marketingbtn.classList.add('hide')
-	backbtn.classList.remove('hide')
+  marketingbtn.classList.add('hide')
+  marketpannel.classList.add('hide')
+  marketbtn.classList.add('hide')
+  backbtn.classList.remove('hide')
+  
 }
 function openshop(){
   menuSound.play()
@@ -73,18 +80,36 @@ function openshop(){
   shopbtn.classList.add('hide')
   compbtn.classList.add('hide')
   marketingbtn.classList.add('hide')
+  marketpannel.classList.add('hide')
+  marketbtn.classList.add('hide')
   backbtn.classList.remove('hide')
+
+}
+function openindustry(){
+	menuSound.play()
+	title.innerText = "Industry Analysis";
+  locationchoose.style.height = "0%"
+  locationchoose.style.width = "0%"
+  marketingpannel.classList.add('hide')
+  marketingbtn.classList.add('hide')
+  marketpannel.classList.remove('hide')
+	shopbtn.classList.add('hide')
+	compbtn.classList.add('hide')
+  backbtn.classList.remove('hide')
+  marketbtn.classList.add('hide')
 }
 function openmarketing(){
-	menuSound.play()
+  menuSound.play()
 	title.innerText = "Marketing";
   locationchoose.style.height = "0%"
   locationchoose.style.width = "0%"
   marketingpannel.classList.remove('hide')
-	marketingbtn.classList.add('hide')
+  marketingbtn.classList.add('hide')
+  marketpannel.classList.add('hide')
 	shopbtn.classList.add('hide')
 	compbtn.classList.add('hide')
-	backbtn.classList.remove('hide')
+  backbtn.classList.remove('hide')
+  marketbtn.classList.add('hide')
 }
 function back(){
 	menuSound.play()
@@ -97,6 +122,8 @@ function back(){
   shopbtn.classList.remove('hide')
   marketingbtn.classList.remove('hide')
   compbtn.classList.remove('hide')
+  marketpannel.classList.add('hide')
+  marketbtn.classList.remove('hide')
   backbtn.classList.add('hide')
   deg = 0
   coin.style.transform = "rotateX(0deg)"

@@ -44,6 +44,7 @@
 			</button>
       <button disabled id='compbtn' type="button" class="btn widebutton diabled"> <i class="fas fa-money-bill-wave"></i><br>Revenue<br>Management</button>
 <button disabled id='shopbtn' type="button" class="btn disabled widebutton"><i class="fas fa-tools"></i><br>Research &<br>Development<br></button>
+<button disabled id='marketbtn' type="button" class="btn disabled widebutton"><i class="fas fa-building"></i><br>Industry<br>Analysis<br></button>
       <button title="Unlocked at Dime Development" id='marketingbtn'type="button" class="disabled widebutton" disabled><i class="fas fa-bullhorn"></i><br>Marketing<br>Campaigns</button>
 
     </div>
@@ -132,8 +133,42 @@
       <br>
   </div>
 </div>
+   <!-- INDUSTRY SCREEN -===================================================-->
+   <div class='hide' id='marketpannel'>
+     
+      <h3 class="subtitle">View news and other key players in the coin-flipping industry</h3>
+      <h2 style='color:white'>Company Market Shares and Values</h2>
+      <canvas class='canvas' id="chart"></canvas>
+      <br><br>
+      <div class='card'>
+        <div class='container'>
+        <p id='Zamazond'>Zamazon Value: $220000</p>
+        <p id='Sicromoftd'>Sicromoft Value: $200000</p>
+        <p id='Coinhyped'>Coinhype Value: $100000</p>
+        <p id='Randomized'>Randomize Value: $80000</p>
+        <p id='FlippyOnlined'>FlippyOnline Value: $10000</p>
+        <p id='LuxFlipd'>LuxFlip Value: $1000</p>
+        <p id='CoinAGESd'>CoinAGES Value: $22000</p>
+        </div>
+        <div id='leaderboard' class='container'>
+          <p>1. Zamazon </p>
+          <p>2. Sicromoft </p>
+          <p>3. Coinhype </p>
+          <p>4. Randomize </p>
+          <p>5. FlippyOnline </p>
+          <p>6. LuxFlip </p>
+          <p>7. CoinAGES </p>
+         
+
+
+      </div>
+
+     
+     
+  
+    </div>
     <!-- GAME SCREEN ========================================================-->
-    <div class='hide' id='comppannel'>
+    <div style='background-attachment: fixed; background-image: url(https://via.placeholder.com/1000)'class='hide gamediv' id='comppannel'>
       <h3 class="subtitle">Control your company's income and cost.</h3>
       <div class='moneydisplay'>
         PayBud Balance
@@ -178,8 +213,10 @@
      </div>
   <script src="./assets/settings.js"></script>
   <script src="./assets/alert.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.1/howler.core.min.js"></script>
   <script src="./assets/main.js"></script>
+  <script src="./assets/industry.js"></script>
 	<script src="./assets/menu.js"></script>
 	<script src="./assets/marketing.js"></script>
 	<script src="./assets/shop.js"></script>

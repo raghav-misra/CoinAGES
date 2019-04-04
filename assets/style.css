@@ -337,7 +337,6 @@ a, button{
 	to{opacity: 1}
 }
 
-
 .return-btn{
 	-webkit-border-top-right-radius: 5px;
 	   -moz-border-radius-topright: 5px;
@@ -494,16 +493,13 @@ button.standard:hover{
 	   -moz-border-radius-bottomright: 20px;
 	        border-bottom-right-radius: 20px;
 }
-
-
-
 .coin{
   -webkit-animation-duration: 1s;
           -moz-animation-duration: 1s;
             -o-animation-duration: 1s;
        animation-duration: 1s;
-width: 15%;
-height: 15%;
+width: 20%;
+height: 20%;
 -webkit-transition: all 1s ease-in-out;
 -o-transition: all 1s ease-in-out;
 -moz-transition: all 1s ease-in-out;
@@ -518,6 +514,9 @@ transition: all 1s ease-in-out;
   width: 80%;
   margin: 5% auto;
   text-align: left;
+  -webkit-box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+        -moz-box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+     box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 
 }
 .container{
