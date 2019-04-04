@@ -47,6 +47,43 @@ var industry = {
     change: '+',
   }
 }
+const iorignal = {
+  Zamazon: {
+    value: 250000,
+    futurevalue: 0,
+    change: '+',
+  },
+  Sicromoft: {
+    value: 200000,
+    futurevalue: 0,
+    change: '+',
+  },
+  Coinhype: {
+    value: 100000,
+    futurevalue: 0,
+    change: '-',
+  },
+  Randomize: {
+    value: 80000,
+    futurevalue: 0,
+    change: '+',
+  },
+  FlippyOnline: {
+    value: 10000,
+    futurevalue: 0,
+    change: '+',
+  },
+  LuxFlip: {
+    value: 1000,
+    futurevalue: 0,
+    change: '-',
+  },
+  CoinAGES: {
+    value: 0,
+    futurevalue: 0,
+    change: '+',
+  }
+}
 var industryCompanies = ['Zamazon','Sicromoft','Coinhype','Randomize','FlippyOnline','LuxFlip','CoinAGES']
 var leadingCompanies = ['Zamazon','Sicromoft','Coinhype','Randomize','FlippyOnline','LuxFlip','CoinAGES']
 //Objects

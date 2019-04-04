@@ -621,6 +621,7 @@ function rebirth(){
   window.localStorage.clear()
   window.localStorage.setItem('p', '{ "money": 0, "clickboost": 10000, "clickvalue": 0.01, "icon": "./assets/img/1.png", "endStage": false, "end": false }')
   window.localStorage.setItem('c', 0)
+  window.localStorage.setItem('v', '{"Zamazon":{"value":250000,"futurevalue":0,"change":"+"},"Sicromoft":{"value":200000,"futurevalue":0,"change":"+"},"Coinhype":{"value":100000,"futurevalue":0,"change":"-"},"Randomize":{"value":80000,"futurevalue":0,"change":"+"},"FlippyOnline":{"value":10000,"futurevalue":0,"change":"+"},"LuxFlip":{"value":1000,"futurevalue":0,"change":"-"},"CoinAGES":{"value":0,"futurevalue":0,"change":"+"}}')
   window.location.reload()
 }
 function retire(){
@@ -723,7 +724,7 @@ function restore(){
       }
     })
   }
-  runIndustry()
+  setTimeout(runIndustry,1000)
   //RESTORE SHOP
    var tempSt = parseInt(window.localStorage.getItem("s").trim()) - 1;
   var marker = 0;

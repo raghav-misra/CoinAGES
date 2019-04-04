@@ -63,9 +63,14 @@ function destroyAlert(){
 		op -= 0.1;
 	}, 50);
     if(alertQueue[0] !== null){
+      try{
         var temp = JSON.parse(alertQueue[0])
        alertQueue.shift()
        setTimeout(function(){createAlert(temp.title,temp.text,temp.image,temp.overwrite)},1000)
+      }
+      catch(err){
+        
+      }
 
 
     }
