@@ -60,12 +60,14 @@ function opencomp(){
   marketpannel.classList.add('hide')
   marketbtn.classList.add('hide')
   backbtn.classList.remove('hide')
-  
+
 }
 function openshop(){
   menuSound.play()
 	if(rev_tut7){
 		rev_tut7 = false;
+        marketbtn.disabled = false
+  marketbtn.classList.remove('disabled')
 		createAlert('Secretary', "This is where you can upgrade your coin flippers and most importantly, upgrade the entire company to the next technological stage (In this case it is nickel).", alertImages.info, true)
 		setTimeout(function(){
 			createAlert('Secretary', "That should be everything you need to know. You can pick up a free gift from me in the R&D center! I have no doubt that you will bring this company to success. ", alertImages.info, false)

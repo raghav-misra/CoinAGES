@@ -372,7 +372,7 @@ function buy(obj, headless = false){
         var updatedamount = eval(  'parseInt(' +obj + '.amount)')
         updateusage("document.getElementById('" +name +"-displaymax')",updatedamount,max,value)
         eval(name + 'BuySound.play()')
-        industry.CoinAGES.futurevalue += price * 100
+        industry.CoinAGES.futurevalue += price
 
 			}
 			else{
@@ -380,7 +380,7 @@ function buy(obj, headless = false){
         var updatedamount = eval(  'parseInt(' +obj + '.amount)')
         updateusage("document.getElementById('" +name +"-displaymax')",updatedamount,max,value)
         eval(name + 'BuySound.play()')
-        industry.CoinAGES.futurevalue += price * 100
+        industry.CoinAGES.futurevalue += price
 
 			}
     }
