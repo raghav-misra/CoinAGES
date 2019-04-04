@@ -519,6 +519,19 @@ transition: all 1s ease-in-out;
      box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 
 }
+.icard{
+  background-color: white;
+  padding: 5%;
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
+margin: auto 2%;
+  text-align: center;
+  -webkit-box-shadow: 0 19px 38px rgba(10, 9, 9, 0.3), 0 15px 12px rgba(0,0,0,0.22);
+        -moz-box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+     box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+
+}
 .container{
    display: inline-block;
 }

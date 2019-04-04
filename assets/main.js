@@ -351,7 +351,7 @@ function buy(obj, headless = false){
     eval(' document.getElementById("' + obj + 'info").innerHTML =  document.getElementById("' + obj + 'info").innerHTML + ' +"'" + code + "' + '</div>' ")
         var updatedamount = eval(  'parseInt(' +obj + '.amount)')
         updateusage("document.getElementById('" +name +"-displaymax')",updatedamount,max,value)
-    
+
   }else{
   if( player.money >= price * 100){
     if(amount == max){//Reached Limit
@@ -638,6 +638,7 @@ function init(){ // Restore Save
 
   if (save == 0 || save == null){
     setTimeout(autoSave, 3000)
+    runIndustry()
     soundtrack.play()
     createAlert('Secretary', 'Hello Boss! I am your new secretary and it is my job to help you learn about your role here.', alertImages.info)
     createAlert('Secretary', 'What you see here is the CEO dashboard. This is the central hub of the company', alertImages.info)
@@ -677,7 +678,7 @@ function autoSave(){
 function restore(){
 
   document.body.style.overflow = "visible";
-  
+
 
 
   setTimeout(autoSave, 3000)
@@ -698,6 +699,7 @@ function restore(){
     });
   }
   player = JSON.parse(window.localStorage.getItem('p')) //Restore Player Object
+  industry = JSON.parse(window.localStorage.getItem('v')) //Restore industry Object
   if(player.endStage == false){
     soundtrack.play()
   }
@@ -721,6 +723,7 @@ function restore(){
       }
     })
   }
+  runIndustry()
   //RESTORE SHOP
    var tempSt = parseInt(window.localStorage.getItem("s").trim()) - 1;
   var marker = 0;
