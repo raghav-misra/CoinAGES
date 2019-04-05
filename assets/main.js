@@ -12,12 +12,14 @@ function fadeIn(element) {
 
 
 
-function fadeOut(element){
+function fadeOut(element,del = true){
 	var op = 1.1;  // initial opacity
 	var timer = setInterval(function(){
 		if (op <= 0.1) {
 			clearInterval(timer);
+            if(del){
 			element.classList.add('hide')
+            }
 		}
 		element.style.opacity = op;
 		op -= 0.1;
@@ -43,6 +45,7 @@ var nheader = document.getElementById('nheader')
 var itemdivs = document.getElementById('itemdivs')//Rev management items
 var subtractWallet = document.getElementById('subtractWallet') // Shop message under wallet
 var clicks = document.getElementById('clicks') // Displays how many times you clicked/flips
+var resultContainer = document.getElementById('resultContainer')// div for click effect
 //header for notificaion
 //AUDIO VARS ========
 var notifSound = new Howl({
@@ -216,6 +219,7 @@ function nextstage(newMoney,headless = true){
 //Update Function
 window.setInterval(update,200)
 function update(){
+  //UPDATE MONEY
   moneydisplay.innerText = '$' + player.money / 100;
   moneydisplayshop.innerText = '$' + player.money / 100;
   clicks.innerText = customers
@@ -330,12 +334,27 @@ function closenotify(){
 }
 //Player click handler
 function addmoney(){
-  customers += 1
+  
 	var clickHund = Math.round(player.clickvalue * 100)
 	var boostHund = Math.round(player.clickboost)
   player.money = parseFloat(player.money) + parseFloat(clickHund) + parseFloat(boostHund);
 	deg += 360
 	coin.style.transform = "rotateX(" + deg + "deg)"
+    coin.style.filter = "hue-rotate(" + deg+ "deg)"
+    var resultElement = document.createElement("p")
+    if(Math.round(Math.random()) == 1){
+        var resultElementText = document.createTextNode('Heads')
+    }else{
+    var resultElementText = document.createTextNode('Tails')
+    }
+    resultElement.appendChild(resultElementText)
+    resultElement.classList.add('result')
+    resultContainer.appendChild(resultElement)
+    setTimeout(function(){
+    resultContainer.removeChild(resultElement)
+    customers += 1
+    },1000)
+    
   setTimeout(reset,2000)
 }
 
@@ -753,7 +772,7 @@ while(marker <= tempSt){
           }
         }
         catch(err){
-          console.log(err);
+          
         }
     }
 }
