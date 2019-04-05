@@ -11,6 +11,7 @@ var comppannel = document.getElementById('comppannel')
 var marketpanne = document.getElementById('marketpannel')
 var locationchoose = document.getElementById('locationchoose')
 var saveCard = document.getElementById('saveCard')
+var buttonContainer = document.getElementById('buttonContainer') //div with menu btns
 //  buttons
 var compbtn = document.getElementById('compbtn')
 var marketingbtn = document.getElementById('marketingbtn')
@@ -31,8 +32,23 @@ compbtn.addEventListener('click', opencomp)
 shopbtn.addEventListener('click', openshop)
 marketingbtn.addEventListener('click', openmarketing)
 marketbtn.addEventListener('click', openindustry)
+    //For division description
 
+compbtn.addEventListener('mouseenter', showInfo)
+shopbtn.addEventListener('mouseenter', showInfo)
+marketingbtn.addEventListener('mouseenter', showInfo)
+marketbtn.addEventListener('mouseenter', showInfo)
 
+compbtn.addEventListener('mouseleave', closeInfo)
+shopbtn.addEventListener('mouseleave', closeInfo)
+marketingbtn.addEventListener('mouseleave', closeInfo)
+marketbtn.addEventListener('mouseleave', closeInfo)
+//Info function
+function showInfo(){
+  fadeIn(document.getElementById('info'))
+}
+function closeInfo(){
+  fadeOut(document.getElementById('info'), false)}
 // Update Item Usage display
 function updateusage(name,amount,max,obj){
   eval(name +'.innerHTML = "You are using ' + amount + '/' + max + '<br>' +'  Each one is making you $' + obj +'"')
@@ -60,11 +76,13 @@ function opencomp(){
   shopbtn.classList.add('hide')
   marketingbtn.classList.add('hide')
   marketpannel.classList.add('hide')
+  buttonContainer.classList.add('hide')
   marketbtn.classList.add('hide')
   backbtn.classList.remove('hide')
 
 }
 function openshop(){
+  buttonContainer.classList.add('hide')
   menuSound.play()
 	if(rev_tut7){
 		rev_tut7 = false;
@@ -92,6 +110,7 @@ function openshop(){
 
 }
 function openindustry(){
+  buttonContainer.classList.add('hide')
   if(rev_tut9){
     rev_tut9 = false
     createAlert('Secretary', "Here you can view the key players in the coin-flipping industry. As you can tell, it is a growing industry with alot of companies battleling for the top spot", alertImages.info, true)
@@ -114,7 +133,9 @@ function openindustry(){
   marketbtn.classList.add('hide')
 }
 function openmarketing(){
+  if(stage >= 3){
   menuSound.play()
+  buttonContainer.classList.add('hide')
 	title.innerText = "Marketing";
   locationchoose.style.height = "0%"
   locationchoose.style.width = "0%"
@@ -125,8 +146,12 @@ function openmarketing(){
 	compbtn.classList.add('hide')
   backbtn.classList.remove('hide')
   marketbtn.classList.add('hide')
+  }else{
+    createAlert('Secretary', "We don't have the resources to create a marketing division yet. When we have a larger profit margin, I will begin work on creating a marketing team! " , alertImages.info, true)
+  }
 }
 function back(){
+  buttonContainer.classList.remove('hide')
 	menuSound.play()
 	title.innerText = "CEO Dashboard";
   marketingpannel.classList.add('hide')

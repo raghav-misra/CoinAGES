@@ -673,7 +673,7 @@ function init(){ // Restore Save
     clickMe(compbtn)
     createAlert('Secretary', 'Hello Boss! I am your new secretary and it is my job to help you learn about your role here.', alertImages.info)
     createAlert('Secretary', 'What you see here is the CEO dashboard. This is the central hub of the company', alertImages.info)
-    createAlert('Secretary', "Let's begin by <b class='bold'>clicking on Revenue Management</b>", alertImages.info)
+    createAlert('Secretary', "Let's begin by <b class='bold'>clicking on Coin Flipping Facility</b>", alertImages.info)
     compbtn.disabled = false
     compbtn.classList.remove('disabled')
 
