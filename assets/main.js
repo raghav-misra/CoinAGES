@@ -152,6 +152,8 @@ var rev_tut4 = true;
 var rev_tut5 = true;
 var rev_tut6 = true;
 var rev_tut7 = true;
+var rev_tut8 = true;
+var rev_tut9 = true;
 
 function skipTutorial(){
 	rev_tut_0 = false;
@@ -161,7 +163,9 @@ function skipTutorial(){
 	rev_tut4 = false;
 	rev_tut5 = false;
 	rev_tut6 = false;
-	rev_tut7 = false;
+  rev_tut7 = false;
+  rev_tut8 = false;
+  rev_tut9 = false;
 	shopbtn.disabled = false
 	shopbtn.classList.remove('disabled')
 	compbtn.disabled = false
@@ -179,7 +183,7 @@ coin.addEventListener('click', function(){
 	if(rev_tut2){
 		rev_tut2 = false;
 		setTimeout(function(){
-			createAlert('Secretary', 'There are more people waiting in line for a coin flip! Keep flipping coins until you make $1', alertImages.info, false)
+			createAlert('Secretary', 'There are more people waiting in line for a coin flip! <b class="bold">Keep flipping coins until you make $1 </b>', alertImages.info, false)
 		}, 2000)
 	}
 	addmoney();
@@ -219,14 +223,18 @@ function update(){
 	if(player.money > 99 && rev_tut3 == true){
 		rev_tut3 = false;
 		setTimeout(function(){
-				createAlert('Secretary', 'Now that you have $1, I recommend that you buy a robot to automate this process! You can buy coin flippers at the bottom of this page', alertImages.info, true)
+      document.getElementById('robotcard').scrollIntoView()
+        clickMe(document.getElementById('buy-bot'))
+				createAlert('Secretary', 'Now that you have $1, I recommend that you <b class="bold">buy a robot</b> to automate this process! You can buy coin flippers at the bottom of this page ', alertImages.info, true)
 			fadeIn(document.getElementById('robotcard'))
 		}, 1000)
 	}
 	if(player.money > 199 && rev_tut5 == true){
 		rev_tut5 = false;
 		setTimeout(function(){
-			createAlert('Secretary', 'As you grow the company, more coin flippers will become available. Hire a person! ', alertImages.info, true)
+      document.getElementById('personcard').scrollIntoView()
+      clickMe(document.getElementById('buy-person'))
+			createAlert('Secretary', 'As you grow the company, more coin flippers will become available. <b class="bold">Hire a person to flip coins for you! </b> ', alertImages.info, true)
 			fadeIn(document.getElementById('personcard'))
 		}, 1000)
 	}
@@ -288,8 +296,9 @@ function update(){
 		setTimeout(function(){
 			createAlert('Secretary', 'Hiring a person is more expensive but will eventually make more money than a robot. ', alertImages.info, true)
 			setTimeout(function(){
-				createAlert('Secretary', "It's about time I show you the research and development center", alertImages.info, true)
+				createAlert('Secretary', "It's about time I show you the <b class='bold'> research and development center </b>", alertImages.info, true)
 				setTimeout(function(){
+          clickMe(document.getElementById('back'))
 					createAlert('Secretary', "To go back to the main menu, click the <i class='fas fa-chevron-left'></i> button on the left. ", alertImages.info, false)
 						document.getElementById("skip-tut").style.display = "none";
 					shopbtn.disabled = false
@@ -392,8 +401,9 @@ function buy(obj, headless = false){
 	if(rev_tut4){
 		rev_tut4 = false;
 		setTimeout(function(){
-			createAlert('Secretary', 'Each flipper has a certain maximum amount. For robots, the max is 10', alertImages.info, true)
+			createAlert('Secretary', 'Each flipper makes a different amount of money for you. Each flipper also has a maximum. For robots, the max is 10', alertImages.info, true)
 			setTimeout(function(){
+        document.getElementById('money').scrollIntoView()
 				createAlert('Secretary', 'Keep flipping coins with your robot to reach $2!', alertImages.info, false)
 			}, 1000)
 		}, 1000)
@@ -641,9 +651,10 @@ function init(){ // Restore Save
     setTimeout(autoSave, 3000)
     runIndustry()
     soundtrack.play()
+    clickMe(compbtn)
     createAlert('Secretary', 'Hello Boss! I am your new secretary and it is my job to help you learn about your role here.', alertImages.info)
     createAlert('Secretary', 'What you see here is the CEO dashboard. This is the central hub of the company', alertImages.info)
-    createAlert('Secretary', "Let's begin by clicking on Revenue Management", alertImages.info)
+    createAlert('Secretary', "Let's begin by <b class='bold'>clicking on Revenue Management</b>", alertImages.info)
     compbtn.disabled = false
     compbtn.classList.remove('disabled')
 

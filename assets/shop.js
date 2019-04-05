@@ -2,13 +2,16 @@ function statusUpdate(obj){
   updateusage("document.getElementById('" + obj.name + "-displaymax')", obj.amount, obj.max,obj.value)
 }
 
-function createShopItem(name, title, desc1, desc2, desc3, desc4, price, bigUpgrade = false) {
+function createShopItem(name, title, desc1, desc2, desc3, desc4, price, bigUpgrade = false, id = false) {
 	var num1 = shopCode.first + name + shopCode.second + title + shopCode.third;
+	var num3 = shopCode.sixth + desc4 + shopCode.seventh + name + shopCode.eighth;
 	if(bigUpgrade){
 		num1 = shopCode.first + name + shopCode.secondAlt + title + shopCode.third;
 	}
+	if(id !== false){
+		num3 = shopCode.sixth + desc4 + shopCode.seventhalt + shopCode.seventhalt2 + id + shopCode.seventhalt3 + name +shopCode.eighth;
+	}
 	var num2 = desc1 + shopCode.fourth + desc2 + shopCode.fifth + desc3;
-	var num3 = shopCode.sixth + desc4 + shopCode.seventh + name + shopCode.eighth;
 	var num4 = price.toString() + shopCode.nineth + price.toString() + shopCode.tenth;
 	var div = num1 + num2 + num3 + num4;
 	container.innerHTML = container.innerHTML + div;
@@ -93,6 +96,9 @@ var shopCode = {
 	sixth: "<br>",
 	// Description Line 4
 	seventh: "</p><button class=\"buy-now\" onclick=\"buyShopItem(\'",
+	seventhalt: "</p><button class=\"buy-now\" ",
+	seventhalt2:" id='",
+	seventhalt3:"' onclick=\"buyShopItem(\'",
 	// Item Codename
 	eighth: "', ",
 	// Price
@@ -149,14 +155,27 @@ setTimeout(function(){
 			hover_flip2 = true;
 			return
 		case "tutorial-gift":
+		createAlert('Secretary', "With this, buy 'Raise Robot Quota'", alertImages.info, true)
 			deleteShopItem(id)
-			player.money = player.money + 100
+			player.money = player.money + 200
 			itemLimits["tutorial-gift"]++
+			document.getElementById('buyRaiseRobot').classList.add('clickme')
 			return
 		case "robot-max-increase":
 			itemLimits["robot-max-increase"]++
+			document.getElementById('buyRaiseRobot').classList.remove('clickme')
 			if (itemLimits["robot-max-increase"] == 5) {
 				deleteShopItem(id);
+			}
+			if(rev_tut8){
+				rev_tut8 = false
+				createAlert('Secretary', "Yay! We just increased the limit on the amount of robots we can buy! Most upgrades can only be applied once, however some like this one can be bought mutiple times!", alertImages.info, true)
+				createAlert('Secretary', "Now, lets get down to 'business'", alertImages.info, false)
+				createAlert('Secretary', "At CoinAGES, we have a state of the art industry analysis team. You can read their live reports in the tab 'industry analysis'", alertImages.info, false)
+				createAlert('Secretary', "It is in the main menu, so you have to click on <i class='fas fa-chevron-left'></i> again.", alertImages.info, false)
+				clickMe(document.getElementById('back'))
+				marketbtn.disabled = false
+  			marketbtn.classList.remove('disabled')
 			}
 			robot.max++
 			statusUpdate(robot)
@@ -310,7 +329,7 @@ var stageFuncs = ["console.log('Game Restored')", "setTimeout(function(){createN
 // Creating Shop Items
 
 function createFreeGift() {
-	createShopItem("tutorial-gift", "Free Gift", "A free gift from", "the secretary", "To jumpstart the ", "company!", 0);
+	createShopItem("tutorial-gift", "Free Gift", "A free gift from", "the secretary", "use this to buy", "'Raise Robot Quota'!", 0 , false,'buyGift');
 }
 function createWorldShop(headless = true){
   deleteShopItem("world-upgrade");
@@ -372,7 +391,7 @@ function createRobotMk2() {
 }
 //default shop items
 
-createShopItem("robot-max-increase", "Raise Robot Quota", "The upgrade lets you", "increase the maximum", "amount of robo-flippers", "that you can purchase by 1.", 2);
+createShopItem("robot-max-increase", "Raise Robot Quota", "The upgrade lets you", "increase the maximum", "amount of robo-flippers", "that you can purchase by 1.", 2 , false, 'buyRaiseRobot');
 createShopItem("human-max-increase", "More Workers", "This upgrade allows", "you to hire an", "extra human worker", "to flip coins for you.", 3.5);
 createShopItem("nickelupgrade", "Nickel Research Program", "Research the next generation", "of coin-flipping technology.", "Upgrade your coherence", "and cost-effectiveness.", 50, true)
 createShopItem("hover-flip", "HoverFlip™ by Zamazon", '"Borrow" technology from', " Zamazon to not only", " click, but hover over", "coins to flip them.", 0.5);
