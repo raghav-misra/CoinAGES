@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>CoinAGES</title>
+    <link href="../assets/index.css" rel="stylesheet">
+    <style>
+    @import url('https://fonts.googleapis.com/css?family=Parisienne');
+    </style>
+  </head>
+  <body class="fade-in">
+      <audio loop autoplay>
+          <source src="../assets/audio/retire.wav">
+        </audio>
+    <h4 class="jumbo">Welcome to Retirement. 😊</h4>
+    <hr>
+    <p class="normal stats">
+      <span style="font-size: 25px; text-decoration: underline;">Final stats:</span><br>
+      — Total Income: <span id="m"></span><br>
+      — Customer Base: <span id="c"></span><br>
+    </p>
+    <hr>
+    <p class="normal">Thank you for playing CoinAGES!</p><br>
+    <p class="normal">We hope you enjoyed it!<br><br>Votes and feedback on <a href="https://repl.it/talk" class="standard">repl.it</a><br><br>would be greatly appreciated.</p>
+    <i style='font-family: Parisienne'>—— Made with ❤️ by Raghav & Lehuy</i>
+    <style>
+      .jumbo{
+        font-size: 35px;
+      }
+
+      .stats{
+        font-size: 20px;
+      }
+
+      p, i, h4{
+        font-family: 'Parisienne', 'Corsiva', cursive;
+      }
+
+      p.normal{
+        font-family: 'Oxygen', sans-serif !important;
+      }
+      h5{
+        margin: -25px;
+        padding: 0;
+      }
+    </style>
+    <script src="../assets/querystring.js"></script>
+    <script>
+      var data = querystring.parse();
+      var money = data.m;
+      var cust = data.c;
+      document.getElementById("m").innerText = money;
+      document.getElementById("c").innerText = cust;
+    </script>
+  </body>
+</html>
