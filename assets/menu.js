@@ -12,6 +12,7 @@ var marketpanne = document.getElementById('marketpannel')
 var locationchoose = document.getElementById('locationchoose')
 var saveCard = document.getElementById('saveCard')
 var buttonContainer = document.getElementById('buttonContainer') //div with menu btns
+var tooltip = document.getElementById('info') // tooltip
 //  buttons
 var compbtn = document.getElementById('compbtn')
 var marketingbtn = document.getElementById('marketingbtn')
@@ -44,11 +45,15 @@ shopbtn.addEventListener('mouseleave', closeInfo)
 marketingbtn.addEventListener('mouseleave', closeInfo)
 marketbtn.addEventListener('mouseleave', closeInfo)
 //Info function
+var infoOn = false
 function showInfo(){
-  fadeIn(document.getElementById('info'))
+ tooltip.style.opacity = 1
 }
 function closeInfo(){
-  fadeOut(document.getElementById('info'), false)}
+  if(infoOn){
+  tooltip.style.opacity = 0
+  }
+}
 // Update Item Usage display
 function updateusage(name,amount,max,obj){
   eval(name +'.innerHTML = "You are using ' + amount + '/' + max + '<br>' +'  Each one is making you $' + obj +'"')
@@ -112,6 +117,7 @@ function openshop(){
 function openindustry(){
   buttonContainer.classList.add('hide')
   if(rev_tut9){
+    infoOn = true
     rev_tut9 = false
     createAlert('Secretary', "Here you can view the key players in the coin-flipping industry. As you can tell, it is a growing industry with alot of companies battleling for the top spot", alertImages.info, true)
     createAlert('Secretary', "Hey look! We are in 7th place with a value of about $" + industry.CoinAGES.value + "! Not bad for a company that just started!" , alertImages.info, false)

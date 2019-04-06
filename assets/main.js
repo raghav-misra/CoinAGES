@@ -10,8 +10,6 @@ function fadeIn(element) {
 	}, 10);
 }
 
-
-
 function fadeOut(element,del = true){
 	var op = 1.1;  // initial opacity
 	var timer = setInterval(function(){
@@ -159,6 +157,7 @@ var rev_tut8 = true;
 var rev_tut9 = true;
 
 function skipTutorial(){
+  infoOn = true
 	rev_tut_0 = false;
 	rev_tut = false;
 	rev_tut2 = false;
@@ -362,6 +361,12 @@ function addmoney(){
 function reset(){
 document.getElementById('coin').src = player.icon;
 
+}
+
+/* Bug Bounty */
+function bugBounty(){
+  var payBud = document.getElementById("walletBounty");
+  var coinAgesLogo = document.getElementById("icon");
 }
 
 //Buy function
@@ -665,6 +670,7 @@ function retire(){
 //INIT AND SAVE/RESTORE
 function init(){ // Restore Save
   var save = JSON.parse(window.localStorage.getItem('p'))
+  
 
   if (save == 0 || save == null){
     setTimeout(autoSave, 3000)
@@ -676,6 +682,7 @@ function init(){ // Restore Save
     createAlert('Secretary', "Let's begin by <b class='bold'>clicking on Coin Flipping Facility</b>", alertImages.info)
     compbtn.disabled = false
     compbtn.classList.remove('disabled')
+    buttonContainer.classList.remove('hide')
 
 
     return
@@ -707,14 +714,11 @@ function autoSave(){
 
 
 function restore(){
-
+  buttonContainer.classList.remove('hide')
   document.body.style.overflow = "visible";
-
-
-
   setTimeout(autoSave, 3000)
   fadeOut(saveCard)
-
+  infoOn = true
   var tempStag = parseInt(window.localStorage.getItem('s')) // Restore stage
 
   var stagei = 1

@@ -75,10 +75,3 @@ function destroyAlert(){
 
     }
     }
-
-
-
-// createAlert("Investigation!", "The government has started an investigation on your company.", alertImages.usoaFlag);
-
-
-

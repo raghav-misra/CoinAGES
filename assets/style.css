@@ -214,10 +214,11 @@ a, button{
   color:white;
 
 }
-.menu .card{
-  margin: 0px;
+.menu.card{
+  margin: 0 auto;
   box-shadow: none;
   opacity: 0;
+  transition: all 0.5s ease-in-out;
 }
 .widebutton, .widebutton:disabled{
   display:inline-block;
