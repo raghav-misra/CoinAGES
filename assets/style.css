@@ -101,7 +101,7 @@ body, html{
 }
 
 .save{
-
+z-index: 100;
   width: 100%;
   height: 100vh;
   margin: 0;
@@ -576,6 +576,65 @@ margin: auto 2%;
 	          -o-animation: none;
 	     animation: none;
 
+}
+[data-tooltip] {
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+  
+}
+[data-tooltip]:before,
+[data-tooltip]:after {
+  visibility: hidden;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease-in-out;
+}
+
+[data-tooltip]:before {
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  margin-bottom: 5px;
+  margin-left: -80px;
+  padding: 7px;
+  width: 160px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #000;
+  background-color: hsla(0, 0%, 20%, 0.9);
+  color: #fff;
+  content: attr(data-tooltip);
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+[data-tooltip]:after {
+  position: absolute;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -5px;
+  width: 0;
+  border-top: 5px solid #000;
+  border-top: 5px solid hsla(0, 0%, 20%, 0.9);
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
+  content: " ";
+  font-size: 0;
+  line-height: 0;
+}
+
+
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after {
+  visibility: visible;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
 }
 .moneydisplay{
   background: -webkit-linear-gradient(330deg, #89f7fe 0%, #66a6ff 100%);
@@ -2132,6 +2191,119 @@ to {width: 70%;}
   transform-origin: 50% 50%;
   -webkit-animation: resultf ease 1s;
   -webkit-animation-iteration-count: 1;
+  -webkit-transform-origin: 50% 50%;
+  -moz-animation: resultf ease 1s;
+  -moz-animation-iteration-count: 1;
+  -moz-transform-origin: 50% 50%;
+  -o-animation: resultf ease 1s;
+  -o-animation-iteration-count: 1;
+  -o-transform-origin: 50% 50%;
+  -ms-animation: resultf ease 1s;
+  -ms-animation-iteration-count: 1;
+  -ms-transform-origin: 50% 50%;
+  position:absolute;
+  left: 50%;
+  transition: left 0.5s ease-in-out;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  font-family: 'Roboto', sans-serif;;
+
+}
+
+@keyframes resultf{
+  0% {
+    opacity:1;
+    transform:  translate(0px,0px)  ;
+  }
+  50% {
+    opacity:1;
+    transform:  translate(500%,0px)  ;
+  }
+  87% {
+    opacity:1;
+    transform:  translate(500%,-150px)  ;
+  }
+  100% {
+    opacity:0;
+    transform:  translate(500%,-150px)  ;
+  }
+}
+
+@-moz-keyframes resultf{
+  0% {
+    opacity:1;
+    -moz-transform:  translate(0px,0px)  ;
+  }
+  50% {
+    opacity:1;
+    -moz-transform:  translate(500%,0px)  ;
+  }
+  87% {
+    opacity:1;
+    -moz-transform:  translate(500%,-150px)  ;
+  }
+  100% {
+    opacity:0;
+    -moz-transform:  translate(500%,-150px)  ;
+  }
+}
+
+@-webkit-keyframes resultf {
+  0% {
+    opacity:1;
+    -webkit-transform:  translate(0px,0px)  ;
+  }
+  50% {
+    opacity:1;
+    -webkit-transform:  translate(500%,0px)  ;
+  }
+  87% {
+    opacity:1;
+    -webkit-transform:  translate(500%,-150px)  ;
+  }
+  100% {
+    opacity:0;
+    -webkit-transform:  translate(500%,-150px)  ;
+  }
+}
+
+@-o-keyframes resultf {
+  0% {
+    opacity:1;
+    -o-transform:  translate(0px,0px)  ;
+  }
+  50% {
+    opacity:1;
+    -o-transform:  translate(500%,0px)  ;
+  }
+  87% {
+    opacity:1;
+    -o-transform:  translate(500%,-150px)  ;
+  }
+  100% {
+    opacity:0;
+    -o-transform:  translate(500%,-150px)  ;
+  }
+}
+
+@-ms-keyframes resultf {
+  0% {
+    opacity:1;
+    -ms-transform:  translate(0px,0px)  ;
+  }
+  50% {
+    opacity:1;
+    -ms-transform:  translate(500%,0px)  ;
+  }
+  87% {
+    opacity:1;
+    -ms-transform:  translate(500%,-150px)  ;
+  }
+  100% {
+    opacity:0;
+    -ms-transform:  translate(500%,-150px)  ;
+  }
+}-webkit-animation-iteration-count: 1;
   -webkit-transform-origin: 50% 50%;
   -moz-animation: resultf ease 1s;
   -moz-animation-iteration-count: 1;

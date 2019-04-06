@@ -11,8 +11,8 @@ var comppannel = document.getElementById('comppannel')
 var marketpanne = document.getElementById('marketpannel')
 var locationchoose = document.getElementById('locationchoose')
 var saveCard = document.getElementById('saveCard')
-var buttonContainer = document.getElementById('buttonContainer') //div with menu btns
-var tooltip = document.getElementById('info') // tooltip
+var buttonContainer = document.getElementById('buttonContainer') //div w
+var tooltip = document.getElementById('info') // tooltipith menu btns
 //  buttons
 var compbtn = document.getElementById('compbtn')
 var marketingbtn = document.getElementById('marketingbtn')
@@ -27,6 +27,10 @@ var itemsbought = [] //Stores these elements and flags them for update
 
 
 
+function updateusage(name,amount,max,obj){
+  eval(name +'.innerHTML = "You are using ' + amount + '/' + max + '<br>' +'  Each one is making you $' + obj +'"')
+}
+
 //EVENT EARS=========================
 backbtn.addEventListener('click', back)
 compbtn.addEventListener('click', opencomp)
@@ -35,29 +39,6 @@ marketingbtn.addEventListener('click', openmarketing)
 marketbtn.addEventListener('click', openindustry)
     //For division description
 
-compbtn.addEventListener('mouseenter', showInfo)
-shopbtn.addEventListener('mouseenter', showInfo)
-marketingbtn.addEventListener('mouseenter', showInfo)
-marketbtn.addEventListener('mouseenter', showInfo)
-
-compbtn.addEventListener('mouseleave', closeInfo)
-shopbtn.addEventListener('mouseleave', closeInfo)
-marketingbtn.addEventListener('mouseleave', closeInfo)
-marketbtn.addEventListener('mouseleave', closeInfo)
-//Info function
-var infoOn = false
-function showInfo(){
- tooltip.style.opacity = 1
-}
-function closeInfo(){
-  if(infoOn){
-  tooltip.style.opacity = 0
-  }
-}
-// Update Item Usage display
-function updateusage(name,amount,max,obj){
-  eval(name +'.innerHTML = "You are using ' + amount + '/' + max + '<br>' +'  Each one is making you $' + obj +'"')
-}
 
 // MENU WINDOW MANGEMENT=========================
 function opencomp(){
@@ -81,13 +62,13 @@ function opencomp(){
   shopbtn.classList.add('hide')
   marketingbtn.classList.add('hide')
   marketpannel.classList.add('hide')
-  buttonContainer.classList.add('hide')
+  
   marketbtn.classList.add('hide')
   backbtn.classList.remove('hide')
 
 }
 function openshop(){
-  buttonContainer.classList.add('hide')
+  
   menuSound.play()
 	if(rev_tut7){
 		rev_tut7 = false;
@@ -115,9 +96,8 @@ function openshop(){
 
 }
 function openindustry(){
-  buttonContainer.classList.add('hide')
+  
   if(rev_tut9){
-    infoOn = true
     rev_tut9 = false
     createAlert('Secretary', "Here you can view the key players in the coin-flipping industry. As you can tell, it is a growing industry with alot of companies battleling for the top spot", alertImages.info, true)
     createAlert('Secretary', "Hey look! We are in 7th place with a value of about $" + industry.CoinAGES.value + "! Not bad for a company that just started!" , alertImages.info, false)
@@ -141,7 +121,7 @@ function openindustry(){
 function openmarketing(){
   if(stage >= 3){
   menuSound.play()
-  buttonContainer.classList.add('hide')
+  
 	title.innerText = "Marketing";
   locationchoose.style.height = "0%"
   locationchoose.style.width = "0%"
@@ -155,9 +135,15 @@ function openmarketing(){
   }else{
     createAlert('Secretary', "We don't have the resources to create a marketing division yet. When we have a larger profit margin, I will begin work on creating a marketing team! " , alertImages.info, true)
   }
+  if(tutorial){
+    tutorial = false
+    createAlert('Secretary', "Here is the brand new marketing team! Here you can <b class='bold'>launch marketing campaigns to get a manual click boost!</b>" , alertImages.info, true)
+     createAlert('Secretary', "The the campaigns <b class='bold'>last temporarily</b>, but they can be <b class='bold'>re-launched</b> after the time has passed." , alertImages.info, false)
+     createAlert('Secretary', "Even so, the team is constantly coming up with <b class='bold'>new campaign ideas that could benefit us endlessly</b>. Right now, the team claims that they can make a deal with the <b class='bold'>NFA!</b> This could really give us an edge over our competitors!" , alertImages.info, false)
+  }
 }
 function back(){
-  buttonContainer.classList.remove('hide')
+  
 	menuSound.play()
 	title.innerText = "CEO Dashboard";
   marketingpannel.classList.add('hide')

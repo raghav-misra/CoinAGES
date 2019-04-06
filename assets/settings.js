@@ -1,11 +1,13 @@
-  //Settings script
+ //Settings script
 var stage = 1
 var items = []
 var player = {
   money: 0,
   clickboost: 0.00,
+  pclickboost: 0.00,
   clickvalue: 0.01,
   icon: "./assets/img/1.png",
+  purchasedCampaigns: [],
   endStage: false,
   end: false
   }

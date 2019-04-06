@@ -659,7 +659,7 @@ function rebirth(){
   window.location.reload()
 }
 function retire(){
-  window.location.href='retire.html'
+  window.location.href='retire/?m=' + player.money.toString() + "&c=" + customers.toString();
 }
 //Begin Tutorial and INIT
 
@@ -682,7 +682,7 @@ function init(){ // Restore Save
     createAlert('Secretary', "Let's begin by <b class='bold'>clicking on Coin Flipping Facility</b>", alertImages.info)
     compbtn.disabled = false
     compbtn.classList.remove('disabled')
-    buttonContainer.classList.remove('hide')
+    
 
 
     return
@@ -714,7 +714,7 @@ function autoSave(){
 
 
 function restore(){
-  buttonContainer.classList.remove('hide')
+  tutorial = false
   document.body.style.overflow = "visible";
   setTimeout(autoSave, 3000)
   fadeOut(saveCard)
@@ -734,6 +734,12 @@ function restore(){
     });
   }
   player = JSON.parse(window.localStorage.getItem('p')) //Restore Player Object
+  if(player.clickboost !== 0){ // Restore PermBoosts
+    boostDisplayp.innerText = 'Boost: +' + Math.round(player.pclickboost)  + "¢";
+    boostDisplay.style.opacity = 1
+    player.clickboost = player.pclickboost
+   player.purchasedCampaigns.forEach(function(card){fadeOut(document.getElementById(card))})
+  }
   industry = JSON.parse(window.localStorage.getItem('v')) //Restore industry Object
   if(player.endStage == false){
     soundtrack.play()
