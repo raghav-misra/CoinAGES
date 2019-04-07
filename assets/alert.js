@@ -22,7 +22,7 @@ function createAlert(title, text, image, overwrite = false, end = false){
 if(alertStatus){
     if(overwrite){
 alertQueue = []
- alertTitle.innerText = title.trim();
+ alertTitle.innerHTML = title.trim();
   alertDesc.innerHTML = text.trim();
   alertImage.src = image;
   alertModal.style.display = "inline-block";
@@ -37,11 +37,12 @@ alertQueue.push(temp)
   alertImage.src = image;
   alertModal.style.display = "inline-block";
   var op = 0.1;  // initial opacity
+  alertModal.style.opacity = 0.1
 	var timer = setInterval(function () {
 		if (op >= 1) {
 			clearInterval(timer);
 		}
-		alertModal.style.opacity = op;
+		alertModal.style.opacity = Math.floor(op);
 		op += 0.1;
 	}, 10);
 }
@@ -59,7 +60,7 @@ function destroyAlert(){
 			clearInterval(timer);
 			alertModal.style.display = "none";
 		}
-		alertModal.style.opacity = op;
+		alertModal.style.opacity =  Math.floor(op);
 		op -= 0.1;
 	}, 50);
     if(alertQueue[0] !== null){

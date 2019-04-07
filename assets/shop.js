@@ -338,6 +338,13 @@ function createWorldShop(headless = true){
 }
 function createQuarterShop(headless = true) {
   nextstage(0.25,headless)
+  if(tutorialaquire){
+  clickMe(marketbtn)
+  createAlert('Secretary', "Boss! I have just gotten word that <b class='bold'>LuxFlip hasn't been able to keep up with the technological trends in the industry</b>. This means that we could possibly  <b class='bold'>acquire LuxFlip</b>! Go to the Industry Analysis page to make an offer!" , alertImages.info, true)
+  }
+  if(industryCompanies.includes('LuxFlip')){
+  createOfferCard('LuxFlip')
+  }
   deleteShopItem("quarter-upgrade");
 	createShopItem("halfDollar-upgrade", "Half Dollar Exploration", "Expand the capabilities", "and influence of your", " company to quietly grow", "at a rapid pace.", 9000, true);
   deleteShopItem("dime-all-max-increase");
@@ -347,6 +354,15 @@ function createQuarterShop(headless = true) {
 }
 function createHalfDollarShop(headless = true) {
   nextstage(0.50,headless)
+  if(industryCompanies.includes('FlippyOnline')){
+  createOfferCard('FlippyOnline')
+  notify('Industry Analysis', 'We can offer to aquire more companies now!')
+  }
+  if(industryCompanies.includes('Randomize')){
+  createOfferCard('Randomize')
+  notify('Industry Analysis', 'We can offer to aquire more companies now!')
+  }
+
   deleteShopItem("halfDollar-upgrade")
   createShopItem("Dollar-upgrade", "The Golden Age", "Assemble the top executives", "into a single think tank", "to research and develop", "the final innovation.", 100000, true);
 preFlipped_mk2 = true;
@@ -354,6 +370,10 @@ preFlipped_mk2 = true;
 }
 function createDollarShop(headless = true){
   nextstage(1,headless)
+  if(industryCompanies.includes('Coinhype')){
+  createOfferCard('Coinhype')
+  notify('Industry Analysis', 'We can offer to aquire more companies now!')
+  }
   deleteShopItem("Dollar-upgrade")
   createShopItem("world-upgrade", "World Domination", "Use your mass resources", "and take down rival companies", "to seal your fate as the", "world's most powerful company.", 500000, true)
   infinity_mk2 = true;

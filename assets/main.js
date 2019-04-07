@@ -5,7 +5,7 @@ function fadeIn(element) {
 		if (op >= 1) {
 			clearInterval(timer);
 		}
-		element.style.opacity = op;
+		element.style.opacity = Math.floor(op);
 		op += 0.1;
 	}, 10);
 }
@@ -19,7 +19,7 @@ function fadeOut(element,del = true){
 			element.classList.add('hide')
             }
 		}
-		element.style.opacity = op;
+		element.style.opacity = Math.floor(op);
 		op -= 0.1;
 	}, 50);
 }
@@ -240,6 +240,7 @@ function update(){
 			fadeIn(document.getElementById('personcard'))
 		}, 1000)
 	}
+  player.money = Math.round(player.money);
 	if(ecoflipper.amount > 0 && eco_mk2 && itemLimits.eco_mk2 !== 1){
 		eco_mk2 = false;
 		createShopItem("eco_mk2", "Giant Fans", "Buy mega-fans to", "manipulate the wind", "so that eco-flippers", "flip more coins.", 50);
@@ -713,13 +714,17 @@ function autoSave(){
 
 
 function restore(){
-  tutorial = false
   document.body.style.overflow = "visible";
   setTimeout(autoSave, 3000)
   fadeOut(saveCard)
   infoOn = true
-  
   var tempStag = parseInt(window.localStorage.getItem('s')) // Restore stage
+  if(tempStag >= 3){
+    tutorial = false
+  }
+  if(tempStag >= 4){
+    tutorialaquire = false
+  }
 if(window.localStorage.getItem('ch') !== null){
   chart = JSON.parse(window.localStorage.getItem('ch'))
 }

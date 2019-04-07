@@ -21,27 +21,27 @@ var industry = {
   Sicromoft: {
     value: 200000,
     futurevalue: 0,
-    change: '1',
+    change: '0',
   },
   Coinhype: {
     value: 100000,
     futurevalue: 0,
-    change: '2',
+    change: '25',
   },
   Randomize: {
     value: 80000,
     futurevalue: 0,
-    change: '3',
+    change: '20',
   },
   FlippyOnline: {
     value: 10000,
     futurevalue: 0,
-    change: '4',
+    change: '15',
   },
   LuxFlip: {
     value: 1000,
     futurevalue: 0,
-    change: '5',
+    change: '10',
   },
   CoinAGES: {
     value: 0,

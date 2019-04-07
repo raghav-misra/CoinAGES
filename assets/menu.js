@@ -98,16 +98,8 @@ function openshop(){
 
 }
 function openindustry(){
-  
-  if(rev_tut9){
-    rev_tut9 = false
-    createAlert('Secretary', "Here you can view the key players in the coin-flipping industry. As you can tell, it is a growing industry with alot of companies battleling for the top spot", alertImages.info, true)
-    createAlert('Secretary', "Hey look! We are in 7th place with a value of about $" + industry.CoinAGES.value + "! Not bad for a company that just started!" , alertImages.info, false)
-    createAlert('Secretary', "As our company moves up the ranks, other ones will inevitably stop growing or even fail! That's when I advise you to <b class='bold'>buy out their company</b> to give us a boost!  " , alertImages.info, false)
-    createAlert('Secretary', "I have no doubt that you will bring CoinAGES to the top spot one day! For now, we should focus on <b class='bold'>researching the Nickel </b> and overtaking LuxCoin <br><i class='small'>(they have such a stupid management, this will be easy)</i>" , alertImages.info, false)
-    createAlert('Secretary', "Well, that should be everything you need to know! I will see you later!" , alertImages.info, false)
-    document.getElementById('CoinAGESd').scrollIntoView()
-  }
+
+   
 	menuSound.play()
 	title.innerText = "Industry Analysis";
   locationchoose.style.height = "0%"
@@ -119,11 +111,31 @@ function openindustry(){
 	compbtn.classList.add('hide')
   backbtn.classList.remove('hide')
   marketbtn.classList.add('hide')
+  if(tutorialaquire && stage == 4){
+     tutorialaquire = false;
+      createAlert('Secretary', "When you are ready, you can make an offer to aquire LuxCoin. Make your offer carefully, as if you offer something <b class='bold'>too low the recommended price they will reject</b>. You have once chance at this." , alertImages.info, true)
+      setTimeout(function(){
+        document.getElementById('LuxFlipOffer').scrollIntoView()
+      },1000)
+
+
+
+
+   }
+   if(rev_tut9){
+    rev_tut9 = false
+    document.getElementById('CoinAGESd').scrollIntoView()
+    createAlert('Secretary', "Here you can view the key players in the coin-flipping industry. As you can tell, it is a growing industry with alot of companies battleling for the top spot", alertImages.info, true)
+    createAlert('Secretary', "Hey look! We are in 7th place with a value of about $" + industry.CoinAGES.value + "! Not bad for a company that just started!" , alertImages.info, false)
+    createAlert('Secretary', "As our company moves up the ranks, other ones will inevitably stop growing or even fail! That's when I advise you to <b class='bold'>buy out their company</b> to give us a boost!  " , alertImages.info, false)
+    createAlert('Secretary', "I have no doubt that you will bring CoinAGES to the top spot one day! For now, we should focus on <b class='bold'>researching the Nickel </b> and overtaking LuxCoin <br><i class='small'>(they have such a stupid management, this will be easy)</i>" , alertImages.info, false)
+    createAlert('Secretary', "Well, that should be everything you need to know! I will see you later!" , alertImages.info, false)
+    
+  }
 }
 function openmarketing(){
   if(stage >= 3){
   menuSound.play()
-  
 	title.innerText = "Marketing";
   locationchoose.style.height = "0%"
   locationchoose.style.width = "0%"
