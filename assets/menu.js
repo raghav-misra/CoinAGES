@@ -13,6 +13,8 @@ var locationchoose = document.getElementById('locationchoose')
 var saveCard = document.getElementById('saveCard')
 var buttonContainer = document.getElementById('buttonContainer') //div w
 var tooltip = document.getElementById('info') // tooltipith menu btns
+var acquireCard = document.getElementById('acquireCard') // for industry
+var offerQuestion = document.getElementById('offerQuestion') // for industry
 //  buttons
 var compbtn = document.getElementById('compbtn')
 var marketingbtn = document.getElementById('marketingbtn')
@@ -132,15 +134,16 @@ function openmarketing(){
 	compbtn.classList.add('hide')
   backbtn.classList.remove('hide')
   marketbtn.classList.add('hide')
-  }else{
-    createAlert('Secretary', "We don't have the resources to create a marketing division yet. When we have a larger profit margin, I will begin work on creating a marketing team! " , alertImages.info, true)
-  }
   if(tutorial){
     tutorial = false
     createAlert('Secretary', "Here is the brand new marketing team! Here you can <b class='bold'>launch marketing campaigns to get a manual click boost!</b>" , alertImages.info, true)
-     createAlert('Secretary', "The the campaigns <b class='bold'>last temporarily</b>, but they can be <b class='bold'>re-launched</b> after the time has passed." , alertImages.info, false)
-     createAlert('Secretary', "Even so, the team is constantly coming up with <b class='bold'>new campaign ideas that could benefit us endlessly</b>. Right now, the team claims that they can make a deal with the <b class='bold'>NFA!</b> This could really give us an edge over our competitors!" , alertImages.info, false)
+     createAlert('Secretary', "Normal campaigns <b class='bold'>last temporarily</b>, but they can be <b class='bold'>re-launched</b> after the time has passed." , alertImages.info, false)
+     createAlert('Secretary', "Even so, the team is constantly coming up with <b class='bold'>special campaign ideas that could benefit us endlessly</b>. Right now, the team claims that they can make a deal with the <b class='bold'>NFA!</b> This could really give us an edge over our competitors!" , alertImages.info, false)
   }
+  }else{
+    createAlert('Secretary', "We don't have the resources to create a marketing division yet. When we have a larger profit margin, I will begin work on creating a marketing team! " , alertImages.info, true)
+  }
+  
 }
 function back(){
   

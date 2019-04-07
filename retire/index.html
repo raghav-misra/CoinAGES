@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -18,7 +17,7 @@
     <hr>
     <p class="normal stats">
       <span style="font-size: 25px; text-decoration: underline;">Final stats:</span><br>
-      — Total Income: <span id="m"></span><br>
+      — Total Income: $<span id="m"></span><br>
       — Customer Base: <span id="c"></span><br>
     </p>
     <hr>
@@ -47,12 +46,13 @@
       }
     </style>
     <script src="../assets/querystring.js"></script>
+    <script src="../assets/base64.js"></script>
     <script>
       var data = querystring.parse();
-      var money = data.m;
-      var cust = data.c;
-      document.getElementById("m").innerText = money;
-      document.getElementById("c").innerText = cust;
+      var money = parseInt(Base64.decode(data.m)) / 100;
+      var cust = Base64.decode(data.c);
+      document.getElementById("m").innerText = money.toString();
+      document.getElementById("c").innerText = cust.toString();
     </script>
   </body>
 </html>

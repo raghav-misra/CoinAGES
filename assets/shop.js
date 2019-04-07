@@ -363,7 +363,7 @@ function createNickelShop(headless = true) {
   nextstage(0.05,headless);
   deleteShopItem("nickelupgrade");
   nickel_upgrade = true;
-	createShopItem("dime-dev", "Dime Development", "Invest your assets", "in improving efficiency", "and consumer outreach.", "<i>Unlocks Marketing Campaigns.</i>", 250, true);
+	createShopItem("dime-dev", "Dime Development", "Invest your assets", "in improving efficiency", "and consumer outreach.", "<i>Unlocks Marketing Campaigns.</i>", 300, true);
 	eco_mk2 = true;
   bottle_mk2 = true;
   bottle_max_increase = true;
@@ -374,7 +374,7 @@ function createDimeShop(headless = true) {
   nextstage(0.10,headless);
   deleteShopItem("dime-dev");
 	createShopItem("dime-all-max-increase", "More of Everything!", "Increase the maximum", "limit of each", "type of purchasable", "auto-flipper by 1.", 650);
-  createShopItem("quarter-upgrade", "Quarter Advancement Initiative", "Use the endless power", "of the space indusry", "to help your business", "flip <b>more coins faster.</b>", 2000, true);
+  createShopItem("quarter-upgrade", "Quarter Advancement Initiative", "Use the endless power", "of the space indusry", "to help your business", "flip <b>more coins faster.</b>", 1750, true);
 	marketingbtn.classList.remove('disabled')
 	loadCampaigns()
   magnetFlipper_mk2 = true

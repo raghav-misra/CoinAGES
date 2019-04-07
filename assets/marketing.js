@@ -8,10 +8,11 @@ function loadCampaigns(){
     createAlert('Secretary', "Already finished researching the dime? Great! This is the perfect time to show you the marketing team I just assembled.", alertImages.info,true)
     createAlert('Secretary', "I assure you that everyone on the team is very experienced, they will handle everything for you. ", alertImages.info,false)
     createAlert('Secretary', "To launch a campaign, go to the main menu and click 'Marketing Campaigns'", alertImages.info,false)
+    clickMe(marketingbtn)
   }
 }
 
-function clickBooster(boost, cardId, btn, durationMS = 12000){
+function clickBooster(boost, cardId, btn, durationMS = 60000){
   if(timeout){
     timeout = false
 		var id = cardId
@@ -25,7 +26,7 @@ function clickBooster(boost, cardId, btn, durationMS = 12000){
 		boostDisplayp.innerText = 'Boost: +' + Math.round(player.clickboost)  + "¢";
 		boostDisplay.style.opacity = 1
 		removeBoost(durationMS, card, btn, boost)
-		setTimeout(function(){timeout = true}, 2500)
+		setTimeout(function(){timeout = true}, durationMS)
   }
 	else{
     closenotify()
@@ -106,7 +107,7 @@ function buySpecialCampaign(id, price, boostValue){
 
 /* ↓↓↓ Call loadCampaigns() when marketing campaigns is unlocked. ↓↓↓ Special Campaign stuff */
 
-var baseText = "<div id=\"<replace with=id>\" class=\"campaign-card special\"><h4 class=\"ttl\"><replace with=title></h4><hr class=\"blu thin\"><p class=\"desc\"><replace with=desc1><br><replace with=desc2><br> <replace with=desc3><br><replace with=desc4><br><i><replace with=descInfo></i></p><img src=\"./assets<replace with=img>\"><br><button class=\"buy-now\" onclick=\"buySpecialCampaign('<replace with=id>', <replace with=price>, <replace with=boost>)\">Launch Promo ($<replace with=price>)</button></div>"
+var baseText = "<div id=\"<replace with=id>\" class=\"campaign-card special\"><h4 class=\"ttl\"><replace with=title></h4><hr class=\"blu thin\"><p class=\"desc\"><replace with=desc1><br><replace with=desc2><br> <replace with=desc3><br><replace with=desc4><br><i><replace with=descInfo></i></p><img src=\"../assets<replace with=img>\"><br><button class=\"buy-now\" onclick=\"buySpecialCampaign('<replace with=id>', <replace with=price>, <replace with=boost>)\">Launch Promo ($<replace with=price>)</button></div>"
 
 var specialContainer = document.getElementById("specialPromoContainer");
 
@@ -120,10 +121,11 @@ String.prototype.replaceAll = function(search, replacement) {
     return target.replace(new RegExp(search, 'g'), replacement);
 };
 
-createCampaign("nfa-promo", "NFA Sponsorship", "Sponsor the National Football", "Association and run ads during", "games. The NFA will also utilize", "your coin-flipping app for games.", "Permanent: +0.03 per manual flip", "/img/nfalogo.png", 50, 3);
+createCampaign("nfa-promo", "NFA Sponsorship", "Sponsor the National Football", "Association and run ads during", "games. The NFA will also utilize", "your coin-flipping app for games.", "Permanent: +0.10 per manual flip", "/img/nfalogo.png", 500, 10);
 
-createCampaign("amusment-park", "Build A Theme Park", "Create your very own", "coin-themed wonderland for", "games. The NFA will also utilize", "your coin-flipping app for games.", "Permanent: +0.03 per manual flip", "/img/nfalogo.png", 50, 3);
+createCampaign("amusement-park", "Build A Theme Park", "Create your very own", "coin-themed wonderland for", "visitors, money, and most", "importantly free marketing!", "Permanent: +0.15 per manual flip", "/img/amusementPark.png", 750, 15);
 
+createCampaign("world-partner", "Worldwide Outreach", "Partner with companies", "that have power in other", "countries to gain", "good reputations there.", "Permanent: +0.20 per manual flip", "/img/worldPartners.png", 1000, 20);
 
-
+createCampaign("coffee-partner", "MeteorBucks Partnership", "Partner with MeteorBucks,", "Coffee LLC. to provide", "free coffee to customers", "when they use your services.", "Permanent: +0.25 per manual flip", "/img/meteorbuckPartner.png", 1250, 25);
 

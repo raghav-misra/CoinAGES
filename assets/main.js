@@ -32,7 +32,6 @@ function m(){
 }
 
 
-
 //VARS====
 var coin = document.getElementById('coin')//The only game play in tis project
 var moneydisplay = document.getElementById('money')// Displays the player's current cash
@@ -47,76 +46,76 @@ var resultContainer = document.getElementById('resultContainer')// div for click
 //header for notificaion
 //AUDIO VARS ========
 var notifSound = new Howl({
-  src: ['assets/audio/notif.mp3'],
+  src: ['../assets/audio/notif.mp3'],
   volume: 0.3
 });
 var coinSound = new Howl({
-  src: ['assets/audio/coin.wav']
+  src: ['../assets/audio/coin.wav']
 });
 var robotBuySound = new Howl({
-  src: ['assets/audio/robot.wav'],
+  src: ['../assets/audio/robot.wav'],
   volume: 0.3
 });
 var personBuySound = new Howl({
-  src: ['assets/audio/people.mp3']
+  src: ['../assets/audio/people.mp3']
 });
 var bottleflipBuySound = new Howl({
-  src: ['assets/audio/bottleflip.mp3']
+  src: ['../assets/audio/bottleflip.mp3']
 });
 var ecoflipperBuySound = new Howl({
-  src: ['assets/audio/ecoflipper.mp3']
+  src: ['../assets/audio/ecoflipper.mp3']
 });
 var upgradeBuySound = new Howl({
-  src: ['assets/audio/purchased.wav'],
+  src: ['../assets/audio/purchased.wav'],
     volume: 0.2
 });
 var menuSound = new Howl({
-  src: ['assets/audio/slide.mp3']
+  src: ['../assets/audio/slide.mp3']
 });
 var magnetFlipperBuySound = new Howl({
-  src: ['assets/audio/magnet.wav']
+  src: ['../assets/audio/magnet.wav']
 });
 var superComputerBuySound = new Howl({
-  src: ['assets/audio/superpc.mp3']
+  src: ['../assets/audio/superpc.mp3']
 });
 var ufoBuySound = new Howl({
-  src: ['assets/audio/ufo.wav']
+  src: ['../assets/audio/ufo.wav']
 });
 var antiGravityBuySound = new Howl({
-  src: ['assets/audio/antigravity.wav']
+  src: ['../assets/audio/antigravity.wav']
 });
 var preFlippedBuySound = new Howl({
-  src: ['assets/audio/preFlipped.mp3']
+  src: ['../assets/audio/preFlipped.mp3']
 });
 var usMintBuySound = new Howl({
-  src: ['assets/audio/usMint.mp3']
+  src: ['../assets/audio/usMint.mp3']
 });
 var infinityBuySound = new Howl({
-  src: ['assets/audio/infinity.wav']
+  src: ['../assets/audio/infinity.wav']
 });
 var blockchainBuySound = new Howl({
-  src: ['assets/audio/blockchain.wav']
+  src: ['../assets/audio/blockchain.wav']
 });
 var sicromoftBuySound = new Howl({
-  src: ['assets/audio/buycomp.wav']
+  src: ['../assets/audio/buycomp.wav']
 });
 var zamazonBuySound = new Howl({
-  src: ['assets/audio/buycomp.wav']
+  src: ['../assets/audio/buycomp.wav']
 });
 var investigationstart = new Howl({
-  src: ['assets/audio/investigationstart.mp3']
+  src: ['../assets/audio/investigationstart.mp3']
 });
 var investigationdone = new Howl({
-  src: ['assets/audio/investigationdone.mp3']
+  src: ['../assets/audio/investigationdone.mp3']
 });
 var soundtrack = new Howl({
-  src: ['assets/audio/soundtrack.mp3'],
+  src: ['../assets/audio/soundtrack.mp3'],
   loop: true,
   volume: 0.125
 });
 
 var investigationMusic = new Howl({
-  src: ['assets/audio/invsoundtrack.mp3'],
+  src: ['../assets/audio/invsoundtrack.mp3'],
   loop: true,
   volume: 0.125
 });
@@ -212,7 +211,7 @@ function nextstage(newMoney,headless = true){
       }
 	}
   )}
-	player.icon = "./assets/img/" + stage + ".png"
+	player.icon = "../assets/img/" + stage + ".png"
 		reset()
 }
 //Update Function
@@ -339,7 +338,6 @@ function addmoney(){
   player.money = parseFloat(player.money) + parseFloat(clickHund) + parseFloat(boostHund);
 	deg += 360
 	coin.style.transform = "rotateX(" + deg + "deg)"
-    coin.style.filter = "hue-rotate(" + deg+ "deg)"
     var resultElement = document.createElement("p")
     if(Math.round(Math.random()) == 1){
         var resultElementText = document.createTextNode('Heads')
@@ -648,18 +646,19 @@ function end(){
   back()
   document.getElementById('locationchoose').classList.add('hide')
   createAlert("Investigation!", "The government has uncovered your plans to buy out your rival corporations and has looked over recent business practices that give you an unfair advantage over other potential business. The goverment demands that CoinAGES be dissolved <br><br> <button id='alertBtn'onclick='destroyAlert()' class='reg'>OK</button>", alertImages.usoaFlag, true)
-  createAlert("Investigation!", "The fine/bail for a crime on such a scale is $" + player.money/100 + ". The decision is yours to make. Pay up and..<br><br> <button id='alertBtn'onclick='rebirth()' class='widebutton'>Rebirth The Company (resets company but keeps manual click value)</button><br> <button id='alertBtn'onclick='retire()' class='reg'>Retire</button><br>", alertImages.usoaFlag, false);
+  createAlert("Investigation!", "The fine/bail for a crime on such a scale is $" + player.money/100 + ". The decision is yours to make. Pay up and..<br><br> <button id='alertBtn'onclick='rebirth()' class='reg'>Rebirth The Company (resets company but keeps manual click value)</button><br> <button id='alertBtn'onclick='retire()' class='reg'>Retire</button><br>", alertImages.usoaFlag, false);
 
 }
 function rebirth(){
   window.localStorage.clear()
-  window.localStorage.setItem('p', '{ "money": 0, "clickboost": 10000, "clickvalue": 0.01, "icon": "./assets/img/1.png", "endStage": false, "end": false }')
+  window.localStorage.setItem('p', '{"money":0,"clickboost":0,"pclickboost":1000,"clickvalue":1,"icon":"../assets/img/1.png","purchasedCampaigns":[],"endStage":false,"end":false}')
   window.localStorage.setItem('c', 0)
   window.localStorage.setItem('v', '{"Zamazon":{"value":250000,"futurevalue":0,"change":"+"},"Sicromoft":{"value":200000,"futurevalue":0,"change":"+"},"Coinhype":{"value":100000,"futurevalue":0,"change":"-"},"Randomize":{"value":80000,"futurevalue":0,"change":"+"},"FlippyOnline":{"value":10000,"futurevalue":0,"change":"+"},"LuxFlip":{"value":1000,"futurevalue":0,"change":"-"},"CoinAGES":{"value":0,"futurevalue":0,"change":"+"}}')
   window.location.reload()
 }
 function retire(){
-  window.location.href='retire/?m=' + player.money.toString() + "&c=" + customers.toString();
+  window.localStorage.clear()
+  window.location.href='retire/?m=' + Base64.encode(player.money.toString()) + "&c=" + Base64.encode(customers.toString());
 }
 //Begin Tutorial and INIT
 
@@ -719,8 +718,11 @@ function restore(){
   setTimeout(autoSave, 3000)
   fadeOut(saveCard)
   infoOn = true
+  
   var tempStag = parseInt(window.localStorage.getItem('s')) // Restore stage
-
+if(window.localStorage.getItem('ch') !== null){
+  chart = JSON.parse(window.localStorage.getItem('ch'))
+}
   var stagei = 1
   if(stage >= 3){
     marketingbtn.disabled = false;
@@ -734,13 +736,19 @@ function restore(){
     });
   }
   player = JSON.parse(window.localStorage.getItem('p')) //Restore Player Object
-  if(player.clickboost !== 0){ // Restore PermBoosts
+  if(player.pclickboost !== 0){ // Restore PermBoosts
     boostDisplayp.innerText = 'Boost: +' + Math.round(player.pclickboost)  + "¢";
     boostDisplay.style.opacity = 1
     player.clickboost = player.pclickboost
    player.purchasedCampaigns.forEach(function(card){fadeOut(document.getElementById(card))})
   }
   industry = JSON.parse(window.localStorage.getItem('v')) //Restore industry Object
+  if(window.localStorage.getItem('cbc') !== null){
+  chart.data.datasets[0].backgroundColor = JSON.parse(window.localStorage.getItem('cbc'))
+  chart.data.datasets[0].data = JSON.parse(window.localStorage.getItem('cd'))
+  chart.data.labels = JSON.parse(window.localStorage.getItem('cdl'))
+  industryCompanies = JSON.parse(window.localStorage.getItem('ic'))
+  }
   if(player.endStage == false){
     soundtrack.play()
   }

@@ -66,6 +66,22 @@ body, html{
   scroll-behavior: smooth;
 }
 
+#attackCard .reg{
+  width: 250px;
+  margin: 20px;
+}
+
+#attackCard{
+  margin: 0;
+  position: fixed;
+  padding-top: calc(50vh - 250px);
+  height: 100vh;
+}
+
+#attackCard p{
+  padding: 10px;
+}
+
 .campaign-card{
   display: inline-block;
   background: white;
@@ -135,7 +151,7 @@ z-index: 100;
 	color: white;
 	display: inline-block;
 	margin: 1% auto;
-	padding: 0.5%;
+	padding: 5px;
 	-webkit-animation: color-change-2x 1s linear infinite alternate both;
 	        -moz-animation: color-change-2x 1s linear infinite alternate both;
 	          -o-animation: color-change-2x 1s linear infinite alternate both;
