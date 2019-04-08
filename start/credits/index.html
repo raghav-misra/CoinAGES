@@ -7,8 +7,7 @@
     <link href="../../assets/index.css" rel="stylesheet">
   </head>
   <body class="fade-in">
-    <h4 class="jumbo">Credits</h4>
-    <hr>
+    <h4 style="display:inline-block" class="jumbo">Credits</h4>   <a style="display:inline-block" href='../' class='standard'>Back</a>
     <p><b>Little Robot Sound Factory</b> - Audio</p>
     <p><b>transitking</b> - Audio</p>
     <p><b>NenadSimic</b> - Audio</p>
@@ -17,12 +16,23 @@
     <p><b>Howler.js</b> - Library</p>
     <p><b>Font Awesome</b> - Library</p>
     <p><b>querystring</b> - Library</p>
-    <hr>
-    <a href='../load-game' class='standard'>Start Now!</a>
-    <a href='../' class='standard'>Go Back</a>
+    <p><b>base64</b> - Library</p>
+
     <style>
       .jumbo{
         font-size: 35px;
+        margin: 0px;
+      }
+      body, html{
+        height: 100%;
+        text-align: left;
+        animation: movel 1s ease-in-out;
+        animation-fill-mode: both;
+        overflow: hidden;
+      }
+      @keyframes movel{
+        from{width: 100%}
+        to{width: 50%;}
       }
     </style>
   </body>

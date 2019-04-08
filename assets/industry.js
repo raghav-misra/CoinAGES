@@ -257,13 +257,22 @@ return calc
 /* BRUV ITS TIME FOR POKEMON!!!! COMPANY USED ATTACK! INVALID CAUSE IT DONT EXIST YET */
 
 function ignoreAttack(comp, attackCard){
-  var situations = [getHacked];
+  var situations = [getHacked, manualNegative];
   fadeOut(attackCard);
   createAlert("Decision Made!", "You have chosen to ignore this situation. However, unwanted consequences may still occur.", alertImages.checkBox, true);
-  var situation = randomFromArray(situations)
+  var situation = randomFromArray(situations, getHacked)
   setTimeout(function(){
     situation();
-  }, 5000)
+  }, 7500)
+}
+
+function attackBack(comp, attackCard){
+  fadeOut(attackCard);
+  createAlert("Decision Made!", "You have chosen to attack them back. There is a promotion waiting for you in <b>Marketing Campaigns</b>. Go to the main menu to see it!", alertImages.checkBox, true);
+  var tester = document.getElementById("revenge-promo");
+  if(tester == null){
+    createCampaign("revenge-promo", "Negative Marketing", "They defamed your company,", "you defame their company.", "Create propaganda about rivals", "to destroy their reputation.", "Permanent: +0.25 per manual flip", "/img/meteorbuckPartner.png", 1250, 25);
+  }
 }
 
 function attackComp(){
@@ -274,37 +283,27 @@ function attackComp(){
   attackCard.classList.remove("hide");
   fadeIn(attackCard);
   document.getElementById("attackIgnore").onclick = function(){ignoreAttack(comp, attackCard)};
+  document.getElementById("attackBack").onclick = function(){attackBack(comp, attackCard)};
 }
 
 
-/* Possible Methods (if bad stuff happens) */
+/* Possible Methods */
 function getHacked(){
-  var hackerNames = ["Eppla", "Tintendo", "Mallmart", "repl.gg", "Spride Kranberry"]
+  var hackerNames = ["Eppla", "Tintendo", "Mallmart", "repl.gg", "Spride Kranberry", "L3G3ND1337", "WillHackForHappyMeals"]
   var hacker = randomFromArray(hackerNames);
   var percentage = getRandomInt(5, 10) / 100;
   var perc = percentage * 100;
-  var removeAmount =  percentage * player.money;
+  var removeAmount =  Math.round(percentage * player.money);
   player.money = player.money - removeAmount;
-  createAlert("Hacked?", "A mysterious group of hackers known only as " + hacker + " has found their way into your PayBud account. Normally they would inform you of this security flaw, but they (along with society) dislike your company so they stole $" + removeAmount + " from you. (" + perc + "%)", alertImages.cancelX);
+  createAlert("Hacked?", "A mysterious group of hackers known only as <i>" + hacker + "</i> has found their way into your PayBud account. Normally they would inform you of this security flaw, but they (along with society) dislike your company so they stole $" + removeAmount + " from you. (" + perc + "%)", alertImages.cancelX);
 
 }
 function manualNegative(){
-  createAlert("CoinAGES Marketing Division", "Your company's outreach is going down. ")
-  boostDisplayp.innerText = 'Boost: +' + Math.round(player.clickboost)  + "¢";
-  boostDisplay.style.opacity = 1
+  tempHide("coin", Math.floor(getRandomInt(10000, 20000)), function(){ createAlert("CoinAGES Marketing Division", "Things seem to be returning to where they were before, or are getting there, anyways. The point is, you can manually flip coins again. Note to self: Let's try to stay on top of things next time.", alertImages.checkBox); });
+  createAlert("CoinAGES Marketing Division", "Your company is losing customers and reputation, etc. We suggest that you start launching new promos, fast. However, this sudden revenue drop comes with a price, you can no longer manually flip coins until further notice.", alertImages.cancelX);
 }
 
 
-function takeLoan(amount, company){
-  if(player.money >= amount){
-    createAlert("PayBud Loans", "You have enough money to pay back the loan that you took from " + company + " LLC.", alertImages.checkBox, true)
-    player.money = player.money - amount;
-    return true;
-  }
-  else{
-    setTimeout(function(){takeLoan(amount, company);}, 2000);
-  }
-}
 
 /* Other Useful Stuff */
 function randomFromArray(list, filter = null){
@@ -317,4 +316,26 @@ function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+}
+
+function takeLoan(amount, company){
+  if(player.money >= amount){
+    createAlert("PayBud Loans", "You have enough money to pay back the loan that you took from " + company + " LLC.", alertImages.checkBox, true)
+    player.money = player.money - amount;
+    return true;
+  }
+  else{
+    setTimeout(function(){takeLoan(amount, company);}, 2000);
+  }
+}
+
+
+function tempHide(id, durationMS, onComplete){
+  alert(durationMS);
+  var elem = document.getElementById(id);
+  elem.classList.add("hide");
+  setTimeout(function(){
+    elem.classList.remove("hide");
+    onComplete();
+  }, durationMS)
 }
