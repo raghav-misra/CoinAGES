@@ -558,7 +558,7 @@ transition: all 1s ease-in-out;
 }
 .bold{
   font-weight: bold !important;
-  
+
 }
 .icard{
   background-color: white;
@@ -598,7 +598,7 @@ margin: auto 2%;
   position: relative;
   z-index: 2;
   cursor: pointer;
-  
+
 }
 [data-tooltip]:before,
 [data-tooltip]:after {
@@ -733,10 +733,23 @@ color: white;
   height: 30%;
 
 }
-
+.alert:after {
+  position: absolute;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -5px;
+  width: 0;
+  border-top: 5px solid #000;
+  border-top: 5px solid hsla(0, 0%, 20%, 0.9);
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
+  content: " ";
+  font-size: 0;
+  line-height: 0;
+}
 .alert{
   position: fixed;
-  top: 500px;
+  top: 25px;
   transition: top 0.5s ease-in-out;
   padding-top: 15px;
   padding-bottom: 15px;
@@ -754,8 +767,66 @@ color: white;
 
 }
 .alertin {
+    display:inline-block !important;
 	-webkit-animation: alertin 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 	        animation: alertin 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+@-webkit-keyframes alertin {
+  0% {
+      display:inline-block;
+    -webkit-transform: translateZ(-1400px);
+            transform: translateZ(-1400px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    opacity: 1;
+  }
+}
+.alertout {
+    display:none !important;
+	-webkit-animation: alertout 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+	        animation: alertout 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+@keyframes alertin {
+  0% {
+
+    -webkit-transform: translateZ(-1400px);
+            transform: translateZ(-1400px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes alertout {
+  0% {
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    opacity: 1;
+  }
+  100% {
+
+    -webkit-transform: translateZ(-1100px);
+            transform: translateZ(-1100px);
+    opacity: 0;
+  }
+}
+@keyframes alertout {
+  0% {
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    opacity: 1;
+  }
+  100% {
+
+    -webkit-transform: translateZ(-1100px);
+            transform: translateZ(-1100px);
+    opacity: 0;
+  }
 }
 .alert #adesc{
   padding-left: 10px;
@@ -773,6 +844,7 @@ color: white;
 .alert .reg{
   margin-bottom: 10px;
   width: 100px;
+7
 }
 
 .noti{
