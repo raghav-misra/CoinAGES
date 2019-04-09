@@ -7,7 +7,7 @@
     <link href="../../assets/index.css" rel="stylesheet">
   </head>
   <body class="fade-in">
-    <h4 style="display:inline-block" class="jumbo">Credits</h4>   <a style="display:inline-block" href='../' class='standard'>Back</a>
+    <h4 style="display:inline-block" class="jumbo">Credits</h4>   <a style="display:inline-block; text-align: center;" href='../' class='standard'>Back</a>
     <p><b>Little Robot Sound Factory</b> - Audio</p>
     <p><b>transitking</b> - Audio</p>
     <p><b>NenadSimic</b> - Audio</p>
@@ -26,9 +26,11 @@
       body, html{
         height: 100%;
         text-align: left;
+        overflow: hidden;
+      }
+      body{
         animation: movel 1s ease-in-out;
         animation-fill-mode: both;
-        overflow: hidden;
       }
       @keyframes movel{
         from{width: 100%}

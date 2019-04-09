@@ -347,6 +347,8 @@ function addmoney(){
     }
     resultElement.appendChild(resultElementText)
     resultElement.classList.add('result')
+    resultElement.style.left = Math.floor(Math.random()* 100) + 10 + "%"
+    resultElement.style.top = Math.floor(Math.random() * 80) + 70 + "%"
     resultContainer.appendChild(resultElement)
     setTimeout(function(){
     resultContainer.removeChild(resultElement)

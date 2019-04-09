@@ -52,7 +52,7 @@
          <p id='ndescription'>PlaceHolder</p>
       </div>
       <!-- Top Alert -->
-      <div style='display:none;'id='alert' class='alert'>
+      <div style='display:none;'id='alert' class='alert alertout'>
          <img id="alertpic" ></img>
          <h1 id='aheader'>PlaceHolder</h1>
          <hr class="blu">
@@ -136,9 +136,24 @@
                Launch Promo ($250)
                </button>
             </div>
+            <div id="promote-more" style="display:none;" class="campaign-card normal">
+               <h4 class="ttl">Positive Marketing</h4>
+               <hr class="blu thin">
+               <p class="desc">
+                  Since other companies have<br>
+                  spread false propaganda<br>
+                  regarding CoinAGES, make<br>
+                  a comeback to get back up.<br>
+                  <i>Temporary:+0.50 per manual flip.</i>
+               </p>
+               <img src="../assets/img/positiveMarketing.png"><br>
+               <button id='promoMore' class="buy-now" onclick="buyCampaign('promote-more', 1000, 50, document.getElementById('promoMore'))">
+               Launch Promo ($1000)
+               </button>
+            </div>
          </div>
          <br><br>
-         <h3 class="subtitle">Special Promotions </h3>
+         <h3 class="subtitle">Special Promotions</h3>
          <br><br>
          <div id='specialPromoContainer'>
          </div>
@@ -187,7 +202,7 @@
          <div style='text-align:center' class='card'>
             <h1>Offers</h1>
             <div id='buyCompanyContainer'>
-              
+
             </div>
          </div>
       </div>
@@ -209,13 +224,12 @@
             <p id='boostDisplayp'>Your not supposed to see this yet..</p>
          </div>
          <br>
-         
-         <div>
-            <div id='resultContainer'>
+         <div id='resultContainer'>
             </div>
             <img oncontextmenu="return false;" id='coin' class='coin'src='../assets/img/1.png' >
-         </div>
-        
+
+
+
          <div id='itemdivs'>
             <div id='robotcard' style='opacity:0'class='card'>
                <p>Robots</p>

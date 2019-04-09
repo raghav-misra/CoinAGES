@@ -260,7 +260,8 @@ function ignoreAttack(comp, attackCard){
   var situations = [getHacked, manualNegative];
   fadeOut(attackCard);
   createAlert("Decision Made!", "You have chosen to ignore this situation. However, unwanted consequences may still occur.", alertImages.checkBox, true);
-  var situation = randomFromArray(situations, getHacked)
+  var situation = situations[getRandomInt(0, 1)];
+  alert(situation);
   setTimeout(function(){
     situation();
   }, 7500)
@@ -271,7 +272,18 @@ function attackBack(comp, attackCard){
   createAlert("Decision Made!", "You have chosen to attack them back. There is a promotion waiting for you in <b>Marketing Campaigns</b>. Go to the main menu to see it!", alertImages.checkBox, true);
   var tester = document.getElementById("revenge-promo");
   if(tester == null){
-    createCampaign("revenge-promo", "Negative Marketing", "They defamed your company,", "you defame their company.", "Create propaganda about rivals", "to destroy their reputation.", "Permanent: +0.25 per manual flip", "/img/meteorbuckPartner.png", 1250, 25);
+    createCampaign("revenge-promo", "Negative Marketing", "They defamed your company,", "you defame their company.", "Create propaganda about rivals", "to destroy their reputation.", "Permanent: +0.38 per manual flip", "/img/negativeMarketing.png", 1550, 38);
+  }
+}
+
+function attackSelf(comp, attackCard){
+  fadeOut(attackCard);
+  createAlert("Decision Made!", "You have chosen to promote your company more. Go to <b>Marketing Campaigns</b> to launch some promos. New ones will be added shortly.", alertImages.checkBox, true);
+  var tempCampaign = document.getElementById("promote-more");
+  tempCampaign.style.display = "inline-block";
+  var tester2 = document.getElementById("event-booths");
+  if(tester2 == null){
+    createCampaign("event-booths", "Event Sponsorship", "Sponsor events all around", "the country to get", "booths for your company.", "It's good advertising.", "Permanent: +0.25 per manual flip", "/img/meteorbuckPartner.png", 1250, 25);
   }
 }
 
@@ -284,6 +296,7 @@ function attackComp(){
   fadeIn(attackCard);
   document.getElementById("attackIgnore").onclick = function(){ignoreAttack(comp, attackCard)};
   document.getElementById("attackBack").onclick = function(){attackBack(comp, attackCard)};
+  document.getElementById("attackSelf").onclick = function(){attackSelf(comp, attackCard)};
 }
 
 
@@ -296,8 +309,8 @@ function getHacked(){
   var removeAmount =  Math.round(percentage * player.money);
   player.money = player.money - removeAmount;
   createAlert("Hacked?", "A mysterious group of hackers known only as <i>" + hacker + "</i> has found their way into your PayBud account. Normally they would inform you of this security flaw, but they (along with society) dislike your company so they stole $" + removeAmount + " from you. (" + perc + "%)", alertImages.cancelX);
-
 }
+
 function manualNegative(){
   tempHide("coin", Math.floor(getRandomInt(10000, 20000)), function(){ createAlert("CoinAGES Marketing Division", "Things seem to be returning to where they were before, or are getting there, anyways. The point is, you can manually flip coins again. Note to self: Let's try to stay on top of things next time.", alertImages.checkBox); });
   createAlert("CoinAGES Marketing Division", "Your company is losing customers and reputation, etc. We suggest that you start launching new promos, fast. However, this sudden revenue drop comes with a price, you can no longer manually flip coins until further notice.", alertImages.cancelX);
@@ -313,9 +326,9 @@ function randomFromArray(list, filter = null){
 }
 
 function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 function takeLoan(amount, company){
@@ -331,11 +344,10 @@ function takeLoan(amount, company){
 
 
 function tempHide(id, durationMS, onComplete){
-  alert(durationMS);
   var elem = document.getElementById(id);
   elem.classList.add("hide");
   setTimeout(function(){
     elem.classList.remove("hide");
     onComplete();
-  }, durationMS)
+  }, durationMS);
 }
