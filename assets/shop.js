@@ -345,6 +345,7 @@ function createQuarterShop(headless = true) {
   if(industryCompanies.includes('LuxFlip')){
   createOfferCard('LuxFlip')
   }
+  industryChoice();
   deleteShopItem("quarter-upgrade");
 	createShopItem("halfDollar-upgrade", "Half Dollar Exploration", "Expand the capabilities", "and influence of your", " company to quietly grow", "at a rapid pace.", 9000, true);
   deleteShopItem("dime-all-max-increase");

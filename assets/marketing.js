@@ -7,7 +7,7 @@ function loadCampaigns(){
   if(tutorial){
     createAlert('Secretary', "Already finished researching the dime? Great! This is the perfect time to show you the marketing team I just assembled.", alertImages.info,true)
     createAlert('Secretary', "I assure you that everyone on the team is very experienced, they will handle everything for you. ", alertImages.info,false)
-    createAlert('Secretary', "To launch a campaign, go to the main menu and click 'Marketing Campaigns'", alertImages.info,false)
+    createAlert('Secretary', "To launch a campaign, <b class='bold'> go to the main menu and click 'Marketing Campaigns</b>'", alertImages.info,false)
     clickMe(marketingbtn)
   }
 }

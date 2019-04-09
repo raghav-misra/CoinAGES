@@ -256,6 +256,17 @@ return calc
 
 /* BRUV ITS TIME FOR POKEMON!!!! COMPANY USED ATTACK! INVALID CAUSE IT DONT EXIST YET */
 
+var industryChoices = [attackComp, createCriminal]
+
+function industryChoice(){
+  
+}
+
+
+function createCriminal(){
+  
+}
+
 function ignoreAttack(comp, attackCard){
   var situations = [getHacked, manualNegative];
   fadeOut(attackCard);
@@ -276,6 +287,21 @@ function attackBack(comp, attackCard){
   }
 }
 
+function attackAgree(comp, attackCard){
+  fadeOut(attackCard);
+  createAlert("Decision Made!", "You reach out to " + comp + " LLC. to sign a deal with them. You now await their decision. You should get it shortly.", alertImages.checkBox, true);
+  var verdict = getRandomInt(1, 2);
+  setTimeout(function(){
+    if(verdict == 1){
+      player.partners.push(comp);
+      createAlert("Success!", comp + " has accepted the term of your agreement. They respect you as a very powerful competitor in the industry, and 'would like to have you on their side' of the battle.", alertImages.checkBox);
+    }
+    else{
+      createAlert("Rejection.", comp + " has rejected your offer to make an agreement. They say that your company is not yet as capable as they would expect in a 'ally'. However, they do see you as a rapidly growing establishment that could indeed become very powerful.", alertImages.cancelX);      
+    }
+  }, 5000)
+}
+
 function attackSelf(comp, attackCard){
   fadeOut(attackCard);
   createAlert("Decision Made!", "You have chosen to promote your company more. Go to <b>Marketing Campaigns</b> to launch some promos. New ones will be added shortly.", alertImages.checkBox, true);
@@ -290,6 +316,9 @@ function attackSelf(comp, attackCard){
 function attackComp(){
   var attackCard = document.getElementById("attackCard");
   var comp = randomFromArray(industryCompanies, "CoinAGES");
+  if(isInArray(comp, player.partners)){
+    return attackComp()
+  }
   var compDisplay = document.getElementById("attackComp");
   compDisplay.innerHTML = "<b><strong><i>" + comp + "</i></strong></b>";
   attackCard.classList.remove("hide");
@@ -297,6 +326,7 @@ function attackComp(){
   document.getElementById("attackIgnore").onclick = function(){ignoreAttack(comp, attackCard)};
   document.getElementById("attackBack").onclick = function(){attackBack(comp, attackCard)};
   document.getElementById("attackSelf").onclick = function(){attackSelf(comp, attackCard)};
+  document.getElementById("attackAgree").onclick = function(){attackAgree(comp, attackCard)};
 }
 
 
@@ -329,6 +359,17 @@ function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function isInArray(obj, list) {
+    var i;
+    for (i = 0; i < list.length; i++) {
+        if (list[i] === obj) {
+            return true;
+        }
+    }
+
+    return false;
 }
 
 function takeLoan(amount, company){

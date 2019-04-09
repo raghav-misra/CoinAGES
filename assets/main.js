@@ -43,6 +43,7 @@ var itemdivs = document.getElementById('itemdivs')//Rev management items
 var subtractWallet = document.getElementById('subtractWallet') // Shop message under wallet
 var clicks = document.getElementById('clicks') // Displays how many times you clicked/flips
 var resultContainer = document.getElementById('resultContainer')// div for click effect
+var endtime = 60000
 //header for notificaion
 //AUDIO VARS ========
 var notifSound = new Howl({
@@ -348,7 +349,7 @@ function addmoney(){
     resultElement.appendChild(resultElementText)
     resultElement.classList.add('result')
     resultElement.style.left = Math.floor(Math.random()* 100) + 10 + "%"
-    resultElement.style.top = Math.floor(Math.random() * 80) + 70 + "%"
+    resultElement.style.top = Math.floor(Math.random() * 90) + 80 + "%"
     resultContainer.appendChild(resultElement)
     setTimeout(function(){
     resultContainer.removeChild(resultElement)
@@ -639,17 +640,17 @@ function endGame(){
 end()
 
 
-  }, 5000)
+  }, endtime)
 }
 function end(){
   document.getElementById('alertBtn').classList.add('hide')
-  document.getElementById('alert').style.backgroundColor = '#ff7675'
+  document.getElementById('alert').classList.add('end')
   investigationMusic.fade(0.125, 0, 200)
   investigationdone.play()
   back()
   document.getElementById('locationchoose').classList.add('hide')
   createAlert("Investigation!", "The government has uncovered your plans to buy out your rival corporations and has looked over recent business practices that give you an unfair advantage over other potential business. The goverment demands that CoinAGES be dissolved <br><br> <button id='alertBtn'onclick='destroyAlert()' class='reg'>OK</button>", alertImages.usoaFlag, true)
-  createAlert("Investigation!", "The fine/bail for a crime on such a scale is $" + player.money/100 + ". The decision is yours to make. Pay up and..<br><br> <button id='alertBtn'onclick='rebirth()' class='reg'>Rebirth The Company (resets company but keeps manual click value)</button><br> <button id='alertBtn'onclick='retire()' class='reg'>Retire</button><br>", alertImages.usoaFlag, false);
+  createAlert("Investigation!", "The fine/bail for a crime on such a scale is $" + player.money/100 + ". The decision is yours to make. Pay up and..<br><br> <button id='alertBtn'onclick='rebirth()' class='reg'>Rebirth The Company (+100 Boost)</button><br> <button id='alertBtn'onclick='retire()' class='reg'>Retire</button><br>", alertImages.usoaFlag, false);
 
 }
 function rebirth(){
@@ -660,8 +661,8 @@ function rebirth(){
   window.location.reload()
 }
 function retire(){
-  window.localStorage.clear()
-  window.location.href='retire/?m=' + Base64.encode(player.money.toString()) + "&c=" + Base64.encode(customers.toString());
+ // window.localStorage.clear()
+  window.location.href='../../retire/?m=' + Base64.encode(player.money.toString()) + "&c=" + Base64.encode(customers.toString());
 }
 //Begin Tutorial and INIT
 
@@ -684,6 +685,7 @@ function init(){ // Restore Save
     createAlert('Secretary', "Let's begin by <b class='bold'>clicking on Coin Flipping Facility</b>", alertImages.info)
     compbtn.disabled = false
     compbtn.classList.remove('disabled')
+    endtime = 60000
     
 
 
@@ -748,6 +750,11 @@ if(window.localStorage.getItem('ch') !== null){
     boostDisplay.style.opacity = 1
     player.clickboost = player.pclickboost
    player.purchasedCampaigns.forEach(function(card){fadeOut(document.getElementById(card))})
+  }
+  if(player.end){
+     endtime = 100
+  }else{
+     endtime = 5000
   }
   industry = JSON.parse(window.localStorage.getItem('v')) //Restore industry Object
   if(window.localStorage.getItem('cbc') !== null){

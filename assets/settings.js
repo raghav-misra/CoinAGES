@@ -8,6 +8,7 @@ var player = {
   clickvalue: 0.01,
   icon: "../assets/img/1.png",
   purchasedCampaigns: [],
+  partners: [],
   endStage: false,
   end: false
   }
