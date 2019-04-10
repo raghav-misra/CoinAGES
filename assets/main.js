@@ -661,9 +661,19 @@ function rebirth(){
   window.location.reload()
 }
 function retire(){
- // window.localStorage.clear()
   window.location.href='../../retire/?m=' + Base64.encode(player.money.toString()) + "&c=" + Base64.encode(customers.toString());
 }
+
+function setRandomPosition(element) {
+	var x = document.body.offsetHeight-element.clientHeight;
+	var y = document.body.offsetWidth-element.clientWidth;
+	var randomX = Math.floor(Math.random()*x);
+	var randomY = Math.floor(Math.random()*y);
+	element.style.top = randomX + 'px';
+	element.style.left = randomY + 'px';
+  element.style.zIndex = "99999";
+}
+
 //Begin Tutorial and INIT
 
 //TUTORIAL START
@@ -754,7 +764,7 @@ if(window.localStorage.getItem('ch') !== null){
   if(player.end){
      endtime = 100
   }else{
-     endtime = 5000
+     endtime = 60000
   }
   industry = JSON.parse(window.localStorage.getItem('v')) //Restore industry Object
   if(window.localStorage.getItem('cbc') !== null){

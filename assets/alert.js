@@ -14,48 +14,49 @@ var alertImages = {
   help: "https://res.cloudinary.com/obliv-cf/image/upload/v1554146073/CoinAGES/help.png",
   usoaFlag: "https://res.cloudinary.com/obliv-cf/image/upload/v1554146112/CoinAGES/usoa_flag.png",
   worldGlobe: "https://res.cloudinary.com/obliv-cf/image/upload/v1554146149/CoinAGES/world_dom.png",
-  marketing: "https://res.cloudinary.com/obliv-cf/image/upload/v1554146187/CoinAGES/marketing.png"
+  marketing: "https://res.cloudinary.com/obliv-cf/image/upload/v1554146187/CoinAGES/marketing.png",
+  criminal: "https://res.cloudinary.com/obliv-cf/image/upload/v1554855556/CoinAGES/criminal-icon.png"
 }
 
 /* 'Create' and 'Destroy' functions */
-function createAlert(title, text, image, overwrite = false, end = false){
-if(alertStatus){
-    if(overwrite){
-alertQueue = []
- alertTitle.innerHTML = title.trim();
-  alertDesc.innerHTML = text.trim();
-  alertImage.src = image;
-  alertModal.style.display = "inline-block";
-    }else{
-var temp = '{"title":"' + title + '","text":"' + text +'","image":"' +image + '","script":"' + overwrite + '"}'
-alertQueue.push(temp)
+function createAlert(title, text, image, overwrite = false) {
+  if (alertStatus) {
+    if (overwrite) {
+      alertQueue = []
+      alertTitle.innerHTML = title.trim();
+      alertDesc.innerHTML = text.trim();
+      alertImage.src = image;
+      alertModal.style.display = "inline-block";
+    } else {
+      var temp = '{"title":"' + title + '","text":"' + text + '","image":"' + image + '","script":"' + overwrite + '"}'
+      alertQueue.push(temp)
     }
-}else{
+  } else {
     alertStatus = true
-  alertTitle.innerText = title.trim();
-  alertDesc.innerHTML = text.trim();
-  alertImage.src = image;
-  alertModal.classList.remove('alertout')
-  alertModal.classList.add('alertin')
-}
+    alertTitle.innerText = title.trim();
+    alertDesc.innerHTML = text.trim();
+    alertImage.src = image;
+    alertModal.classList.remove('alertout')
+    alertModal.classList.add('alertin')
+  }
 }
 
 function destroyAlert() {
-    alertStatus = false
-    alertModal.classList.remove('alertin')
-    alertModal.classList.add('alertout')
-    if (alertQueue[0] !== undefined) {
-        try {
-            var temp = JSON.parse(alertQueue[0])
-            alertQueue.shift()
-            setTimeout(function() {
-                createAlert(temp.title, temp.text, temp.image, temp.overwrite)
-            }, 200)
-        } catch (err) {
-
-        }
+  alertStatus = false
+  alertModal.classList.remove('alertin')
+  alertModal.classList.add('alertout')
+  if (alertQueue[0] !== undefined) {
+    try {
+      var temp = JSON.parse(alertQueue[0])
+      alertQueue.shift()
+      setTimeout(function () {
+        createAlert(temp.title, temp.text, temp.image, temp.overwrite)
+      }, 200)
+    } catch (err) {
 
     }
+
+  }
 
 
 }

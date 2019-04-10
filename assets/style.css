@@ -67,6 +67,10 @@ body, html{
   overflow-x: hidden;
 }
 
+body{
+  overflow-y: auto;
+}
+
 #attackCard .reg{
   width: 250px;
   margin: 20px;
@@ -413,18 +417,18 @@ a, button{
 	font-family: 'Raleway', sans-serif;
 	left: 10px;
 	opacity: 0;
-	-webkit-animation: fade-out 1.5s ease-in-out;
-	        -moz-animation: fade-out 1.5s ease-in-out;
-	          -o-animation: fade-out 1.5s ease-in-out;
-	     animation: fade-out 1.5s ease-in-out;
+	-webkit-animation: fade-out 1s ease-in-out;
+	        -moz-animation: fade-out 1s ease-in-out;
+	          -o-animation: fade-out 1s ease-in-out;
+	     animation: fade-out 1s ease-in-out;
 }
 
 .return-btn:hover i::after{
 	opacity: 1;
-	-webkit-animation: fade-in 1.5s ease-in-out;
-	        -moz-animation: fade-in 1.5s ease-in-out;
-	          -o-animation: fade-in 1.5s ease-in-out;
-	     animation: fade-in 1.5s ease-in-out;
+	-webkit-animation: fade-in 1s ease-in-out;
+	        -moz-animation: fade-in 1s ease-in-out;
+	          -o-animation: fade-in 1s ease-in-out;
+	     animation: fade-in 1s ease-in-out;
 }
 
 button.standard{
@@ -2284,14 +2288,18 @@ to {width: 70%;}
 }
 .result{
   position: absolute;
-  animation: resultanim 1s ease-in-out;
-  transform: scaleX(1) scaleY(1) rotateZ(0deg);
+  -webkit-animation: resultanim 1s ease-in-out;
+          animation: resultanim 1s ease-in-out;
+  -webkit-transform: scaleX(1) scaleY(1) rotateZ(0deg);
+      -ms-transform: scaleX(1) scaleY(1) rotate(0deg);
+          transform: scaleX(1) scaleY(1) rotateZ(0deg);
   opacity: 1;
   color: #003366;
 }
-@keyframes resultanim{
+@-webkit-keyframes resultanim{
   0%{
-    transform: scaleX(1) scaleY(1);
+    -webkit-transform: scaleX(1) scaleY(1);
+            transform: scaleX(1) scaleY(1);
 
 
   }
@@ -2299,7 +2307,77 @@ to {width: 70%;}
     opacity: 1;
   }
   100%{
-    transform: scaleX(1.5) scaleY(1.5) rotateZ(360deg);
+    -webkit-transform: scaleX(1.5) scaleY(1.5) rotateZ(360deg);
+            transform: scaleX(1.5) scaleY(1.5) rotateZ(360deg);
     opacity: 0;
   }
+}
+@keyframes resultanim{
+  0%{
+    -webkit-transform: scaleX(1) scaleY(1);
+            transform: scaleX(1) scaleY(1);
+
+
+  }
+  70%{
+    opacity: 1;
+  }
+  100%{
+    -webkit-transform: scaleX(1.5) scaleY(1.5) rotateZ(360deg);
+            transform: scaleX(1.5) scaleY(1.5) rotateZ(360deg);
+    opacity: 0;
+  }
+}
+.fade-out{
+  -webkit-animation: fade-out 1s ease-in-out;
+          animation: fade-out 1s ease-in-out;
+  animation-fill-mode: both;
+}
+@-webkit-keyframes fade-out{
+  from{
+    opacity: 1;
+  }
+  to{
+    opacity: 0;
+  }
+}
+@keyframes fade-out{
+  from{
+    opacity: 1;
+  }
+  to{
+    opacity: 0;
+  }
+}
+
+@keyframes criminal-flicker{
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.5);
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1.25);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+#criminal{
+  margin: 50px;
+  position: fixed;
+  background-color: #003366;
+  animation: criminal-flicker 2s infinite ease-out;
+  border-radius: 15px;
+  box-shadow: 0 0 5px white;
+}
+
+#criminal img{
+  width: 50px;
+  height: 50px;
 }

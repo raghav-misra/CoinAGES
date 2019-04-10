@@ -256,15 +256,70 @@ return calc
 
 /* BRUV ITS TIME FOR POKEMON!!!! COMPANY USED ATTACK! INVALID CAUSE IT DONT EXIST YET */
 
-var industryChoices = [attackComp, createCriminal]
+var industryFuncs = [attackComp, createCriminal]
+var criminalMining = false;
+var choiceRunning = false;
+var stolenMoney = 0;
+var industryOverride = false;
 
-function industryChoice(){
-  
+function industryChoice(durationMS = 10000){
+  setTimeout(function(){
+    if(choiceRunning) return industryChoice(1);
+    if(player.end == false && industryOverride == false){
+      var funky = randomFromArray(industryFuncs, "buv");
+      funky();
+      choiceRunning = true;
+    }
+    return industryChoice();
+  }, durationMS)
 }
 
-
+// Criminal YEET
 function createCriminal(){
-  
+  var criminal = document.getElementById("criminal");
+  setRandomPosition(criminal);
+  criminal.classList.remove("hide");
+  criminal.onclick = catchCriminal;
+  criminalMining = true;
+  stealCriminal();
+}
+
+function stealCriminal(){
+  if(criminalMining == true && player.end == false){
+    var totalBoost = player.clickvalue + player.clickboost;
+    var clickHund = totalBoost * 200;
+    player.money = player.money - clickHund;
+    stolenMoney = stolenMoney + clickHund;
+    setTimeout(stealCriminal, 1500);
+  }
+  else return
+}
+
+function catchCriminal(){
+  var criminal = document.getElementById("criminal");
+  criminalMining = false;
+  criminal.classList.add("hide");
+  var percentage = getRandomInt(0, 50) / 100;
+  var perc = Math.floor(percentage * 100);
+  var steal = stolenMoney / 100;
+  var addAmount =  Math.round(percentage * stolenMoney);
+  var heshe = ["He", "She"];
+  var gender = heshe[getRandomInt(1, 2) - 1];
+  if(perc <= 5){
+    createAlert(
+    "Escaped!", 
+    "You were too late! The criminal has escaped! " + gender + " stole " + steal + " from your PayBud Wallet. The police was unable to recover any money.", 
+    alertImages.criminal, true);
+  }
+  else{
+    createAlert(
+    "Criminal Caught!", 
+    "The police successfully caught the criminal! However, they were not able to recover all of the money. Only " + perc + "% of it ($" + steal + ")", 
+    alertImages.criminal, true);
+    player.money = player.money + addAmount;
+  }
+  stolenMoney = 0;
+  choiceRunning = false;
 }
 
 function ignoreAttack(comp, attackCard){
@@ -272,7 +327,7 @@ function ignoreAttack(comp, attackCard){
   fadeOut(attackCard);
   createAlert("Decision Made!", "You have chosen to ignore this situation. However, unwanted consequences may still occur.", alertImages.checkBox, true);
   var situation = situations[getRandomInt(0, 1)];
-  alert(situation);
+  choiceRunning = false;
   setTimeout(function(){
     situation();
   }, 7500)
@@ -285,12 +340,14 @@ function attackBack(comp, attackCard){
   if(tester == null){
     createCampaign("revenge-promo", "Negative Marketing", "They defamed your company,", "you defame their company.", "Create propaganda about rivals", "to destroy their reputation.", "Permanent: +0.38 per manual flip", "/img/negativeMarketing.png", 1550, 38);
   }
+  choiceRunning = false;
 }
 
 function attackAgree(comp, attackCard){
   fadeOut(attackCard);
   createAlert("Decision Made!", "You reach out to " + comp + " LLC. to sign a deal with them. You now await their decision. You should get it shortly.", alertImages.checkBox, true);
   var verdict = getRandomInt(1, 2);
+  choiceRunning = false;
   setTimeout(function(){
     if(verdict == 1){
       player.partners.push(comp);
@@ -310,6 +367,7 @@ function attackSelf(comp, attackCard){
   var tester2 = document.getElementById("event-booths");
   if(tester2 == null){
     createCampaign("event-booths", "Event Sponsorship", "Sponsor events all around", "the country to get", "booths for your company.", "It's good advertising.", "Permanent: +0.25 per manual flip", "/img/meteorbuckPartner.png", 1250, 25);
+  choiceRunning = false;
   }
 }
 
@@ -337,8 +395,9 @@ function getHacked(){
   var percentage = getRandomInt(5, 10) / 100;
   var perc = percentage * 100;
   var removeAmount =  Math.round(percentage * player.money);
+  var removeDisp = Math.round(removeAmount / 100);
   player.money = player.money - removeAmount;
-  createAlert("Hacked?", "A mysterious group of hackers known only as <i>" + hacker + "</i> has found their way into your PayBud account. Normally they would inform you of this security flaw, but they (along with society) dislike your company so they stole $" + removeAmount + " from you. (" + perc + "%)", alertImages.cancelX);
+  createAlert("Hacked?", "A mysterious group of hackers known only as <i>" + hacker + "</i> has found their way into your PayBud account. Normally they would inform you of this security flaw, but they (along with society) dislike your company so they stole $" + removeDisp + " from you. (" + perc + "%)", alertImages.cancelX);
 }
 
 function manualNegative(){

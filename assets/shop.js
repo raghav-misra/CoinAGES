@@ -110,7 +110,8 @@ var shopCode = {
 function deleteShopItem(id)
 {
 
-  document.getElementById(id).classList.add('hide')
+  document.getElementById(id).classList.add('fade-out')
+  setTimeout(function(){document.getElementById(id).classList.add('hide')}, 1500)
 
 }
 
@@ -333,6 +334,7 @@ function createFreeGift() {
 }
 function createWorldShop(headless = true){
   deleteShopItem("world-upgrade");
+  industryOverride = true;
 	nextstage(100,headless)
 	endGame()
 }
