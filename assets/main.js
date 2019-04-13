@@ -23,15 +23,6 @@ function fadeOut(element,del = true){
 		op -= 0.1;
 	}, 50);
 }
-
-//DEBUG
-function m(){
-	skipTutorial()
-	player.money = 99999999;
-	return 'no u'
-}
-
-
 //VARS====
 var coin = document.getElementById('coin')//The only game play in tis project
 var moneydisplay = document.getElementById('money')// Displays the player's current cash
