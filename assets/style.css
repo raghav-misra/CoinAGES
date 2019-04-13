@@ -67,10 +67,6 @@ body, html{
   overflow-x: hidden;
 }
 
-body{
-  overflow-y: auto;
-}
-
 #attackCard .reg{
   width: 250px;
   margin: 20px;
@@ -259,11 +255,14 @@ a, button{
 }
 @media (max-width :900px){
   .widebutton{
-    width: 90%;
+    width:90%;
   }
   .menu .card{
   display:none !important;
   }
+  .disabled{
+  width:90% !important;
+}
 }
 .disabled{
   opacity: 0.2;
@@ -763,6 +762,7 @@ color: white;
   -moz-box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
   z-index: 9999;
+  
 }
 
 .alert::after {
@@ -776,8 +776,8 @@ color: white;
 }
 .alertin {
     display:inline-block !important;
-	-webkit-animation: alertin 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-	        animation: alertin 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	-webkit-animation: alertf 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: alertf 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 @-webkit-keyframes alertin {
   0% {
@@ -965,6 +965,50 @@ color: white;
   }
 }
 
+@keyframes alertf{
+  0% {
+    transform:  translate(-49px,45px)  rotate(-34deg) ;
+  }
+  100% {
+    transform:  translate(0px,0px)  rotate(0deg) ;
+  }
+}
+
+@-moz-keyframes alertf{
+  0% {
+    -moz-transform:  translate(-49px,45px)  rotate(-34deg) ;
+  }
+  100% {
+    -moz-transform:  translate(0px,0px)  rotate(0deg) ;
+  }
+}
+
+@-webkit-keyframes alertf {
+  0% {
+    -webkit-transform:  translate(-49px,45px)  rotate(-34deg) ;
+  }
+  100% {
+    -webkit-transform:  translate(0px,0px)  rotate(0deg) ;
+  }
+}
+
+@-o-keyframes alertf {
+  0% {
+    -o-transform:  translate(-49px,45px)  rotate(-34deg) ;
+  }
+  100% {
+    -o-transform:  translate(0px,0px)  rotate(0deg) ;
+  }
+}
+
+@-ms-keyframes alertf {
+  0% {
+    -ms-transform:  translate(-49px,45px)  rotate(-34deg) ;
+  }
+  100% {
+    -ms-transform:  translate(0px,0px)  rotate(0deg) ;
+  }
+}
 /*Animate.css */
 @-webkit-keyframes jello {
   from,
@@ -2380,4 +2424,32 @@ to {width: 70%;}
 #criminal img{
   width: 50px;
   height: 50px;
+}
+.respond {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  position: relative;
+}
+.respond:before {
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+  content: '';
+  border-style: solid;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  left: calc(50% - 10px);
+  bottom: 0;
+  border-width: 10px 10px 0 10px;
+  border-color: white transparent transparent transparent;
+}
+.respond:hover:before, .respond:focus:before, .respond:active:before {
+  border-color: #2773BE transparent transparent transparent;
+  -webkit-transform: translateY(10px);
+  transform: translateY(10px);
 }

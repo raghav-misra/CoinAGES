@@ -248,7 +248,7 @@ setTimeout(function(){
     case "ufo_mk2":
 			itemLimits["ufo_mk2"]++
 			deleteShopItem(id);
-			ufo_mk2.max++
+			ufo.max++
       statusUpdate(ufo)
       return
     case "antiGravity_mk2":
@@ -320,11 +320,11 @@ setTimeout(function(){
     case "quarter-upgrade":
       itemLimits["quarter-upgrade"]++
       createQuarterShop();
-
+      thiefTutorial();
 	}
 }
 
-var stageFuncs = ["console.log('Game Restored')", "setTimeout(function(){createNickelShop(false)},500)", "setTimeout(function(){createDimeShop(false)},600)", "setTimeout(function(){createQuarterShop(false)},700)", "setTimeout(function(){createHalfDollarShop(false)},800)", "setTimeout(function(){createDollarShop(false)},900)", "setTimeout(function(){createWorldShop(false)},1000)"];
+var stageFuncs = ["console.log('Game Restored')", "setTimeout(function(){createNickelShop(false)},50)", "setTimeout(function(){createDimeShop(false)},60)", "setTimeout(function(){createQuarterShop(false)},70)", "setTimeout(function(){createHalfDollarShop(false)},80)", "setTimeout(function(){createDollarShop(false)},90)", "setTimeout(function(){createWorldShop(false)},100)"];
 // Functions for stage upgrade ^^
 
 // Creating Shop Items
@@ -348,6 +348,7 @@ function createQuarterShop(headless = true) {
   createOfferCard('LuxFlip')
   }
   industryChoice();
+  createCampaign("hire-promo", "Start Hiring", "CoinAGES is recuiting! Hire", "the best candidates to ", "work for your", "public marketing team.", "Permanent: +0.30 per manual flip", "/img/hiringIcon.png", 1500, 29);
   deleteShopItem("quarter-upgrade");
 	createShopItem("halfDollar-upgrade", "Half Dollar Exploration", "Expand the capabilities", "and influence of your", " company to quietly grow", "at a rapid pace.", 9000, true);
   deleteShopItem("dime-all-max-increase");
@@ -359,15 +360,15 @@ function createHalfDollarShop(headless = true) {
   nextstage(0.50,headless)
   if(industryCompanies.includes('FlippyOnline')){
   createOfferCard('FlippyOnline')
-  notify('Industry Analysis', 'We can offer to aquire more companies now!')
+  notify('Industry Analysis', 'We can offer to acquire more companies now!')
   }
   if(industryCompanies.includes('Randomize')){
   createOfferCard('Randomize')
-  notify('Industry Analysis', 'We can offer to aquire more companies now!')
+  notify('Industry Analysis', 'We can offer to acquire more companies now!')
   }
-
+  createCampaign("greenwashing-promo", "Greenwashing", "Make the public believe", "that your coins are", "more environmentally-friendly", "(although it may not be true).", "Permanent: +0.31 per manual flip", "/img/greenWashingIcon.png", 3000, 40);
   deleteShopItem("halfDollar-upgrade")
-  createShopItem("Dollar-upgrade", "The Golden Age", "Assemble the top executives", "into a single think tank", "to research and develop", "the final innovation.", 100000, true);
+  createShopItem("Dollar-upgrade", "The Golden Age", "Assemble the top executives", "into a single think tank", "to research and develop", "the final innovation.", 75000, true);
 preFlipped_mk2 = true;
  usMint_mk2 = true;
 }
@@ -375,8 +376,9 @@ function createDollarShop(headless = true){
   nextstage(1,headless)
   if(industryCompanies.includes('Coinhype')){
   createOfferCard('Coinhype')
-  notify('Industry Analysis', 'We can offer to aquire more companies now!')
+  notify('Industry Analysis', 'We can offer to acquire more companies now!')
   }
+  createCampaign("magazine-promo", "Magazine Advertising", "Pay popular magazine companies", "such as TIMES & Phorbes", "for advertisments on certain pages.", "Over 100M people read magazines.", "Permanent: +1.00 per manual flip", "/img/magazinePromo.png", 6500, 100);
   deleteShopItem("Dollar-upgrade")
   createShopItem("world-upgrade", "World Domination", "Use your mass resources", "and take down rival companies", "to seal your fate as the", "world's most powerful company.", 500000, true)
   infinity_mk2 = true;
@@ -396,7 +398,7 @@ function createNickelShop(headless = true) {
 function createDimeShop(headless = true) {
   nextstage(0.10,headless);
   deleteShopItem("dime-dev");
-	createShopItem("dime-all-max-increase", "More of Everything!", "Increase the maximum", "limit of each", "type of purchasable", "auto-flipper by 1.", 650);
+	createShopItem("dime-all-max-increase", "More of Everything!", "Increase the maximum", "limit of each", "type of purchasable", "auto-flipper by 1.", 1500);
   createShopItem("quarter-upgrade", "Quarter Advancement Initiative", "Use the endless power", "of the space indusry", "to help your business", "flip <b>more coins faster.</b>", 1750, true);
 	marketingbtn.classList.remove('disabled')
 	loadCampaigns()

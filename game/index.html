@@ -34,7 +34,7 @@
          <br><br>
          <i>You will not be able to aquire this company in the future after if they reject the offer or you cancel</i><br><br>
          <button onclick='cancel()'class='reg'>Cancel</button>
-         <button onclick='offer(document.getElementById("offerInput").value)' class='reg'>Offer</button>
+         <button onclick='offer(document.getElementById("offerInput").value)' class='reg respond'>Offer</button>
       </div>
       <!-- COMPANY ATTACK SCREEN ===========================================-->
       <div id='attackCard' style='opacity: 1;'class='save hide'>
@@ -42,16 +42,15 @@
          <h1>You Have Been Publicly Attacked!</h1>
          <p id='attackDesc'>The company <span id="attackComp"><!--CompanyNameHerePls--></span> has publicly denounced your company's reputation. This can affect many things such your stock market value, customers, money, etc. How will you respond to this action?</p>
          <hr class="blu">
-         <button id="attackBack" class="reg">Do the same to them (and others).</button>
-         <button id="attackSelf" class="reg">Positively market yourself even more.</button>
-         <button id="attackAgree" class="reg">Come to an agreement with them.</button>
-         <button id="attackIgnore" class="reg">Do nothing and ignore them instead.</button>
+         <button id="attackBack" class="reg respond">Do the same to them (and others).</button>
+         <button id="attackSelf" class="reg respond">Positively market yourself even more.</button>
+         <button id="attackAgree" class="reg respond">Come to an agreement with them.</button>
+         <button id="attackIgnore" class="reg respond">Do nothing and ignore them instead.</button>
       </div>
       <!-- TOP BAR SCREEN =================================================-->
       <img src="../assets/img/coinageslogo.png" id="icon">
       <h1 id="logo" class='logo'>CEO Dashboard</h1>
       <button id="skip-tut" class="standard" onclick="skipTutorial()">Skip Tutorial</button>
-      <button class="standard" onclick="m()">DEBUG GIVE MONEY</button>
       <hr>
       <!-- Bottom Notifcaion -->
       <div id='noti' onclick="closenotify()" class='noti'>
@@ -60,10 +59,10 @@
       </div>
       <!-- Top Alert -->
       <div style='display:none;'id='alert' class='alert alertout'>
-         <img id="alertpic" ></img>
-         <h1 id='aheader'>PlaceHolder</h1>
-         <hr class="blu">
-         <p id='adesc'>PlaceHolder</p>
+         <img style='animation-fill-mode: both;'id="alertpic" ></img>
+         <h1 style='animation-fill-mode: both;'id='aheader'>PlaceHolder</h1>
+         <hr style='animation-fill-mode: both;' class="blu">
+         <p style='animation-fill-mode: both;' id='adesc'>PlaceHolder</p>
          <button id='alertBtn'onclick="destroyAlert()" class="reg">OK</button>
       </div>
       <!-- Main Menu -->
@@ -79,7 +78,7 @@
          </div>
       </div>
       <!-- MARKETING SCREEN =================================================-->
-      <div class='hide' id='marketingpannel'>
+      <div style='background-attachment: fixed; background-repeat: no-repeat; background-size:cover; background-image: url(https://images.unsplash.com/photo-1541537103745-ea3429c65dc4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80)' class='hide' id='marketingpannel'>
          <h3 class="subtitle">Normal Promotions</h3>
          <br><br>
          <div id='normalPromoContainer'>
@@ -166,7 +165,7 @@
          </div>
       </div>
       <!-- SHOP SCREEN -===================================================-->
-      <div class='hide' id='shoppannel'>
+      <div style='background-attachment: fixed; background-image: url(https://images.unsplash.com/photo-1501880622860-e1be39410ac1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80)' class='hide' id='shoppannel'>
          <h3 class="subtitle">Welcome to the Laboratory!</h3>
          <br>
          <div id='subtractWallet'class='moneydisplay'>
@@ -179,7 +178,7 @@
          </div>
       </div>
       <!-- INDUSTRY SCREEN -===================================================-->
-      <div class='hide' id='marketpannel'>
+      <div style='background-attachment: fixed; background-image: url(https://images.unsplash.com/photo-1518186285589-2f7649de83e0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80)' class='hide' id='marketpannel'>
          <h3 class="subtitle">View news and other key players in the new and unstable coin-flipping industry. Refreshed every 5 seconds</h3>
          <h2 style='color:white'>Company Market Shares and Values</h2>
          <canvas class='canvas' id="chart"></canvas>
@@ -214,7 +213,7 @@
          </div>
       </div>
       <!-- GAME SCREEN ========================================================-->
-      <div style='background-attachment: fixed; background-image: url(https://via.placeholder.com/1000)'class='hide gamediv' id='comppannel'>
+      <div style='background-attachment: fixed; background-image: url(https://images.unsplash.com/photo-1478186014654-5a7e3898daa5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80)'class='hide gamediv' id='comppannel'>
          <h3 class="subtitle">Control your company's income and cost.</h3>
          <div class='moneydisplay'>
             PayBud Balance

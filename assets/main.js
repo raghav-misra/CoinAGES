@@ -114,12 +114,15 @@ var soundtrack = new Howl({
   loop: true,
   volume: 0.125
 });
-
 var investigationMusic = new Howl({
   src: ['../assets/audio/invsoundtrack.mp3'],
   loop: true,
   volume: 0.125
 });
+var okSound = new Howl({
+  src: ['../assets/audio/ok.wav'],
+});
+
 
 
 
@@ -348,8 +351,8 @@ function addmoney(){
     }
     resultElement.appendChild(resultElementText)
     resultElement.classList.add('result')
-    resultElement.style.left = Math.floor(Math.random()* 100) + 10 + "%"
-    resultElement.style.top = Math.floor(Math.random() * 90) + 80 + "%"
+    resultElement.style.left = Math.floor(Math.random()* 80) + 10 + "%"
+    resultElement.style.top = Math.floor(Math.random() * 70) + 10 + "%"
     resultContainer.appendChild(resultElement)
     setTimeout(function(){
     resultContainer.removeChild(resultElement)
@@ -408,6 +411,38 @@ function buy(obj, headless = false){
         updateusage("document.getElementById('" +name +"-displaymax')",updatedamount,max,value)
         eval(name + 'BuySound.play()')
         industry.CoinAGES.futurevalue += price
+        if(obj == "zamazon"){
+          var arrayPos
+        industryCompanies.forEach(function(c){
+          if(c == 'zamazon'){
+            arrayPos = industryCompanies.lastIndexOf(c)
+            }
+         })
+          chart.data.datasets[0].backgroundColor.splice(arrayPos,1)
+          chart.data.datasets[0].data.splice(arrayPos,1)
+          industryCompanies.splice(arrayPos,1) 
+          chart.data.labels.splice(arrayPos,1)
+          window.localStorage.setItem('cbc', JSON.stringify(chart.data.datasets[0].backgroundColor))
+          window.localStorage.setItem('cd', JSON.stringify(chart.data.datasets[0].data))
+          window.localStorage.setItem('cdl', JSON.stringify(chart.data.labels))
+          window.localStorage.setItem('ic', JSON.stringify(industryCompanies))
+        }
+        if(obj == "sicromoft"){
+          var arrayPos
+        industryCompanies.forEach(function(c){
+          if(c == 'sicromoft'){
+            arrayPos = industryCompanies.lastIndexOf(c)
+            }
+         })
+          chart.data.datasets[0].backgroundColor.splice(arrayPos,1)
+          chart.data.datasets[0].data.splice(arrayPos,1)
+          industryCompanies.splice(arrayPos,1) 
+          chart.data.labels.splice(arrayPos,1)
+          window.localStorage.setItem('cbc', JSON.stringify(chart.data.datasets[0].backgroundColor))
+          window.localStorage.setItem('cd', JSON.stringify(chart.data.datasets[0].data))
+          window.localStorage.setItem('cdl', JSON.stringify(chart.data.labels))
+          window.localStorage.setItem('ic', JSON.stringify(industryCompanies))
+        }
 
 			}
 			else{
@@ -649,13 +684,13 @@ function end(){
   investigationdone.play()
   back()
   document.getElementById('locationchoose').classList.add('hide')
-  createAlert("Investigation!", "The government has uncovered your plans to buy out your rival corporations and has looked over recent business practices that give you an unfair advantage over other potential business. The goverment demands that CoinAGES be dissolved <br><br> <button id='alertBtn'onclick='destroyAlert()' class='reg'>OK</button>", alertImages.usoaFlag, true)
-  createAlert("Investigation!", "The fine/bail for a crime on such a scale is $" + player.money/100 + ". The decision is yours to make. Pay up and..<br><br> <button id='alertBtn'onclick='rebirth()' class='reg'>Rebirth The Company (+100 Boost)</button><br> <button id='alertBtn'onclick='retire()' class='reg'>Retire</button><br>", alertImages.usoaFlag, false);
+  createAlert("Investigation!", "The government has uncovered your plans to buy out your rival corporations and has looked over recent business practices that give you an unfair advantage over other potential business. The goverment demands that CoinAGES be dissolved <br><br> <button id='alertBtn'onclick='destroyAlert()' class='reg respond'>OK</button>", alertImages.usoaFlag, true)
+  createAlert("Investigation!", "The fine/bail for a crime on such a scale is $" + player.money/100 + ". The decision is yours to make. Pay up and..<br><br> <button id='alertBtn'onclick='rebirth()' class='reg respond'>Rebirth The Company (+1000 Boost)</button><br> <button id='alertBtn'onclick='retire()' class='reg'>Retire</button><br>", alertImages.usoaFlag, false);
 
 }
 function rebirth(){
   window.localStorage.clear()
-  window.localStorage.setItem('p', '{"money":0,"clickboost":0,"pclickboost":1000,"clickvalue":1,"icon":"../assets/img/1.png","purchasedCampaigns":[],"endStage":false,"end":false}')
+  window.localStorage.setItem('p', '{"money":0,"clickboost":0,"pclickboost":1000,"clickvalue":0.01,"icon":"../assets/img/1.png","purchasedCampaigns":[],"endStage":false,"end":false}')
   window.localStorage.setItem('c', 0)
   window.localStorage.setItem('v', '{"Zamazon":{"value":250000,"futurevalue":0,"change":"+"},"Sicromoft":{"value":200000,"futurevalue":0,"change":"+"},"Coinhype":{"value":100000,"futurevalue":0,"change":"-"},"Randomize":{"value":80000,"futurevalue":0,"change":"+"},"FlippyOnline":{"value":10000,"futurevalue":0,"change":"+"},"LuxFlip":{"value":1000,"futurevalue":0,"change":"-"},"CoinAGES":{"value":0,"futurevalue":0,"change":"+"}}')
   window.location.reload()

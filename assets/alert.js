@@ -42,20 +42,39 @@ function createAlert(title, text, image, overwrite = false) {
 }
 
 function destroyAlert() {
+    okSound.play()
   alertStatus = false
-  alertModal.classList.remove('alertin')
-  alertModal.classList.add('alertout')
+  alertTitle.classList.remove('fade-in')
+  alertDesc.classList.remove('fade-in')
+  alertImage.classList.remove('fade-in')
   if (alertQueue[0] !== undefined) {
     try {
       var temp = JSON.parse(alertQueue[0])
+      console.log(temp)
       alertQueue.shift()
-      setTimeout(function () {
-        createAlert(temp.title, temp.text, temp.image, temp.overwrite)
-      }, 200)
+      alertTitle.style.opacity = '0'
+  alertDesc.style.opacity = '0'
+  alertImage.style.opacity = '0'
+      alertTitle.innerText = temp.title
+      alertDesc.innerHTML = temp.text
+      alertImage.src = temp.image
+      setTimeout(function(){
+      alertTitle.classList.add('fade-in')
+      alertDesc.classList.add('fade-in')
+      alertImage.classList.add('fade-in')
+     },100)
+   
+    
     } catch (err) {
 
     }
 
+  }else{
+    alertModal.classList.remove('alertin')
+  alertModal.classList.add('alertout')
+  alertTitle.style.opacity = '1'
+  alertDesc.style.opacity = '1'
+  alertImage.style.opacity = '1'
   }
 
 

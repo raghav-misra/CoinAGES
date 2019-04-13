@@ -262,7 +262,7 @@ var choiceRunning = false;
 var stolenMoney = 0;
 var industryOverride = false;
 
-function industryChoice(durationMS = 10000){
+function industryChoice(durationMS = 150000){
   setTimeout(function(){
     if(choiceRunning) return industryChoice(1);
     if(player.end == false && industryOverride == false){
@@ -275,6 +275,11 @@ function industryChoice(durationMS = 10000){
 }
 
 // Criminal YEET
+function thiefTutorial(){
+  createAlert("Secretary", "Now that you own a well-known company, you might want to watch out for some potential issues...", alertImages.info);
+  createAlert("Secretary", "The icon above represents a criminal trying to steal your money. Criminals are dangerous and if you see one on your screen, click on it to get rid of it.", alertImages.criminal);
+}
+
 function createCriminal(){
   var criminal = document.getElementById("criminal");
   setRandomPosition(criminal);
@@ -286,7 +291,8 @@ function createCriminal(){
 
 function stealCriminal(){
   if(criminalMining == true && player.end == false){
-    var totalBoost = player.clickvalue + player.clickboost;
+    var bst100 = player.clickboost / 100;
+    var totalBoost = player.clickvalue + bst100;
     var clickHund = totalBoost * 200;
     player.money = player.money - clickHund;
     stolenMoney = stolenMoney + clickHund;
@@ -361,12 +367,12 @@ function attackAgree(comp, attackCard){
 
 function attackSelf(comp, attackCard){
   fadeOut(attackCard);
-  createAlert("Decision Made!", "You have chosen to promote your company more. Go to <b>Marketing Campaigns</b> to launch some promos. New ones will be added shortly.", alertImages.checkBox, true);
+  createAlert("Decision Made!", "You have chosen to promote your company more. Go to <b>Marketing Campaigns</b> to launch some promos. The marketing team has developed new campaigns to better our image.", alertImages.checkBox, true);
   var tempCampaign = document.getElementById("promote-more");
   tempCampaign.style.display = "inline-block";
   var tester2 = document.getElementById("event-booths");
   if(tester2 == null){
-    createCampaign("event-booths", "Event Sponsorship", "Sponsor events all around", "the country to get", "booths for your company.", "It's good advertising.", "Permanent: +0.25 per manual flip", "/img/meteorbuckPartner.png", 1250, 25);
+    createCampaign("event-booths", "Event Sponsorship", "Sponsor events all around", "the country to get", "booths for your company.", "It's good advertising.", "Permanent: +0.25 per manual flip", "/img/eventSponsor.png", 1250, 25);
   choiceRunning = false;
   }
 }
