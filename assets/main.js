@@ -354,9 +354,9 @@ function addmoney(){
     resultElement.style.left = Math.floor(Math.random()* 80) + 10 + "%"
     resultElement.style.top = Math.floor(Math.random() * 70) + 10 + "%"
     resultContainer.appendChild(resultElement)
+    customers += 1
     setTimeout(function(){
     resultContainer.removeChild(resultElement)
-    customers += 1
     },1000)
     
   setTimeout(reset,2000)

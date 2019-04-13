@@ -82,6 +82,10 @@ function openshop() {
     createAlert('Secretary', "I will lend you some money to upgrade our robot flipper capacity!", alertImages.info, false)
     createFreeGift()
     clickMe(document.getElementById('buyGift'))
+    setTimeout(function(){
+      document.getElementById('buyGift').scrollIntoView();
+    }, 1000)
+    
 
   }
 
