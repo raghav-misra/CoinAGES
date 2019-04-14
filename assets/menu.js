@@ -73,6 +73,7 @@ function openshop() {
 
   menuSound.play()
   if (rev_tut7) {
+    shopbtn.classList.remove('clickme')
     rev_tut7 = false;
     marketbtn.disabled = false
     marketbtn.classList.remove('disabled')
@@ -128,6 +129,7 @@ function openindustry() {
   }
   if (rev_tut9) {
     rev_tut9 = false
+    marketbtn.classList.remove('clickme')
     document.getElementById('CoinAGESd').scrollIntoView()
     createAlert('Secretary', "Here you can view the key players in the coin-flipping industry. As you can tell, it is a growing industry with alot of companies battleling for the top spot", alertImages.info, true)
     createAlert('Secretary', "Hey look! We are in 7th place with a value of about $" + industry.CoinAGES.value + "! Not bad for a company that just started!", alertImages.info, false)

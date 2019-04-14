@@ -293,16 +293,15 @@ function update(){
 		rev_tut6 = false;
 		setTimeout(function(){
 			createAlert('Secretary', 'Hiring a person is more expensive but will eventually make more money than a robot. ', alertImages.info, true)
-			setTimeout(function(){
-				createAlert('Secretary', "It's about time I show you the <b class='bold'> research and development center </b>", alertImages.info, true)
-				setTimeout(function(){
+		
+        createAlert('Secretary', "It's about time I show you the <b class='bold'> research and development center </b>", alertImages.info, true)
+        shopbtn.classList.add('clickme')
           clickMe(document.getElementById('back'))
 					createAlert('Secretary', "To go back to the main menu, click the <i class='fas fa-chevron-left'></i> button on the left. ", alertImages.info, false)
 						document.getElementById("skip-tut").style.display = "none";
 					shopbtn.disabled = false
   				shopbtn.classList.remove('disabled')
-				}, 3000)
-			}, 5000)
+				
 		}, 3000)
 	}
 
@@ -417,6 +416,7 @@ function buy(obj, headless = false){
           window.localStorage.setItem('cd', JSON.stringify(chart.data.datasets[0].data))
           window.localStorage.setItem('cdl', JSON.stringify(chart.data.labels))
           window.localStorage.setItem('ic', JSON.stringify(industryCompanies))
+          document.getElementById("Zamazond").classList.add("hide")
         }
         if(obj == "sicromoft"){
           var arrayPos
@@ -433,6 +433,7 @@ function buy(obj, headless = false){
           window.localStorage.setItem('cd', JSON.stringify(chart.data.datasets[0].data))
           window.localStorage.setItem('cdl', JSON.stringify(chart.data.labels))
           window.localStorage.setItem('ic', JSON.stringify(industryCompanies))
+          document.getElementById("Sicromoftd").classList.add("hide")
         }
 
 			}

@@ -172,6 +172,7 @@ setTimeout(function(){
 				rev_tut8 = false
 				createAlert('Secretary', "Yay! We just increased the limit on the amount of robots we can buy! Most upgrades can only be applied once, however some like this one can be bought mutiple times!", alertImages.info, true)
 				createAlert('Secretary', "Now, lets get down to 'business'", alertImages.info, false)
+				marketbtn.classList.add('clickme')
 				createAlert('Secretary', "At CoinAGES, we have a state of the art industry analysis team. You can read their live reports in the tab 'industry analysis'", alertImages.info, false)
 				createAlert('Secretary', "It is in the main menu, so you have to click on <i class='fas fa-chevron-left'></i> again.", alertImages.info, false)
 				clickMe(document.getElementById('back'))
