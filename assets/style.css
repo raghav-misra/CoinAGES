@@ -54,7 +54,7 @@
           animation: 1s slide-in ease-in-out;
 }
 
-/*Classless HTML BODY*/
+
 body, html{
   text-align: center;
   padding: 0;
@@ -167,7 +167,7 @@ z-index: 100;
 hr{
   margin: 3.75%;
   background: none;
-  border: white 2px solid;
+  border: #646880 0.5px solid;
   -webkit-border-radius: 100%;
      -moz-border-radius: 100%;
           border-radius: 100%;
@@ -206,7 +206,7 @@ a, button{
   text-decoration: none;
 }
 
-/*Generic*/
+
 .inline{
   display: inline-block;
 }
@@ -215,12 +215,12 @@ a, button{
   display: none !important;
 }
 
-/* Alignments */
+
 .center{
   text-align: center;
 }
 
-/*  Special  */
+
 .logo{
   margin: 5%;
   color: white;
@@ -245,9 +245,11 @@ a, button{
 	-webkit-border-radius: 5px;
 	   -moz-border-radius: 5px;
 	        border-radius: 5px;
-	background-color: transparent;
-	border: white 2px solid;
+	background-color: #1F2424;
+    -webkit-box-shadow: 0px 0px 10px #646880;
+           box-shadow: 0px 0px 10px #646880;
 	font-size: 25px;
+  border: none;
 	-webkit-transition: all 0.5s ease-in-out;
 	-o-transition: all 0.5s ease-in-out;
 	-moz-transition: all 0.5s ease-in-out;
@@ -273,14 +275,24 @@ a, button{
 	background: white;
 	color: #2773be;
 }
-
+.widebutton:hover i{
+  -webkit-animation: antiGravity 0.5s infinite alternate;
+        -moz-animation: antiGravity 0.5s infinite alternate;
+          -o-animation: antiGravity 0.5s infinite alternate;
+       animation: antiGravity 0.5s infinite alternate;
+        -webkit-animation-timing-function: ease-in-out;
+        -moz-animation-timing-function: ease-in-out;
+          -o-animation-timing-function: ease-in-out;
+             animation-timing-function: ease-in-out;
+        -webkit-animation-iteration-count: infinite;
+        -moz-animation-iteration-count: infinite;
+          -o-animation-iteration-count: infinite;
+             animation-iteration-count: infinite;
+}
 .disabled:hover{
 	background: rgb(231, 80, 80);
 	color: white;
-	/*-webkit-animation: skew-no 1s;
-	        -moz-animation: skew-no 1s;
-	          -o-animation: skew-no 1s;
-	     animation: skew-no 1s;*/
+	
 }
 
 @-webkit-keyframes skew-no{
@@ -852,7 +864,7 @@ color: white;
 .alert .reg{
   margin-bottom: 10px;
   width: 100px;
-7
+
 }
 
 .noti{
@@ -887,7 +899,7 @@ color: white;
 .noti p{
   font-size: 70%;
 }
-/* Animations*/
+
 @-webkit-keyframes ease-width-fs{
   0%{width: 0;}
   100%{
@@ -1009,7 +1021,7 @@ color: white;
     -ms-transform:  translate(0px,0px)  rotate(0deg) ;
   }
 }
-/*Animate.css */
+
 @-webkit-keyframes jello {
   from,
   11.1%,

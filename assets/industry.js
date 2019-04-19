@@ -81,7 +81,7 @@ function runIndustry(){
         eval('document.getElementById("' + company + 'd").style.color = "red"')
 
        }
-       var newValue = Math.floor(Math.random() * companyobject.value/4) + companyobject.value / 100
+       var newValue = Math.floor(Math.random() * companyobject.value/50) + companyobject.value / 100
        eval('industry.' + company + '.value' + changetype + '=' + newValue )
     } else{
          eval('document.getElementById("' + company + 'd").style.color = "green"')
@@ -179,6 +179,7 @@ function offer(offer){
   }
   else if(offer >= recommendedOffer) { createAlert('CEO of ' + companyOffer, "After reviewing your proposed offer, we have decided to accept it! All of our assets will be transferred to you shortly (Boost: + " + boost + "¢)" , alertImages.checkBox,true) 
   player.pclickboost += boost
+  zamazonBuySound.play()
   player.clickboost = player.clickboost + boost;
   boostDisplayp.innerText = 'Boost: +' + Math.round(player.clickboost)  + "¢";
   boostDisplay.style.opacity = 1
@@ -186,6 +187,7 @@ function offer(offer){
   }
   else if(percentageOf(offer,recommendedOffer) >= rand) { createAlert('CEO of ' + companyOffer, "After reviewing your proposed offer, we have decided to accept it due to our current condition. All of our assets will be transferred to you shortly.  (Boost: + " + boost + "¢)" , alertImages.checkBox,true)
   player.pclickboost += boost
+  zamazonBuySound.play();
   player.clickboost = player.clickboost + boost;
   boostDisplayp.innerText = 'Boost: +' + Math.round(player.clickboost)  + "¢";
   boostDisplay.style.opacity = 1
@@ -276,8 +278,9 @@ function industryChoice(durationMS = 150000){
 
 // Criminal YEET
 function thiefTutorial(){
-  createAlert("Secretary", "Now that you own a well-known company, you might want to watch out for some potential issues...", alertImages.info);
+  createAlert("Secretary", "Now that you the company has begun receiving attention, you might want to watch out for some potential issues...", alertImages.info);
   createAlert("Secretary", "The icon above represents a criminal trying to steal your money. Criminals are dangerous and if you see one on your screen, click on it to get rid of it.", alertImages.criminal);
+  createAlert('Secretary', "On the flipside, I have just gotten word that <b class='bold'>LuxFlip hasn't been able to keep up with the technological trends in the industry</b>. This means that we could possibly  <b class='bold'>acquire LuxFlip</b>! Go to the Industry Analysis page to make an offer!" , alertImages.info, false)
 }
 
 function createCriminal(){

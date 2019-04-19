@@ -343,7 +343,6 @@ function createQuarterShop(headless = true) {
   nextstage(0.25,headless)
   if(tutorialaquire){
   clickMe(marketbtn)
-  createAlert('Secretary', "Boss! I have just gotten word that <b class='bold'>LuxFlip hasn't been able to keep up with the technological trends in the industry</b>. This means that we could possibly  <b class='bold'>acquire LuxFlip</b>! Go to the Industry Analysis page to make an offer!" , alertImages.info, true)
   }
   if(industryCompanies.includes('LuxFlip')){
   createOfferCard('LuxFlip')

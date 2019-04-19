@@ -457,7 +457,7 @@ function buy(obj, headless = false){
 			createAlert('Secretary', 'Each flipper makes a different amount of money for you. Each flipper also has a maximum. For robots, the max is 10', alertImages.info, true)
 			setTimeout(function(){
         document.getElementById('money').scrollIntoView()
-				createAlert('Secretary', 'Keep flipping coins with your robot to reach $2!', alertImages.info, false)
+				createAlert('Secretary', 'Keep flipping coins with your robot to <b class="bold">reach $2!</b>', alertImages.info, false)
 			}, 1000)
 		}, 1000)
   }
@@ -677,7 +677,7 @@ function end(){
   back()
   document.getElementById('locationchoose').classList.add('hide')
   createAlert("Investigation!", "The government has uncovered your plans to buy out your rival corporations and has looked over recent business practices that give you an unfair advantage over other potential business. The goverment demands that CoinAGES be dissolved <br><br> <button id='alertBtn'onclick='destroyAlert()' class='reg respond'>OK</button>", alertImages.usoaFlag, true)
-  createAlert("Investigation!", "The fine/bail for a crime on such a scale is $" + player.money/100 + ". The decision is yours to make. Pay up and..<br><br> <button id='alertBtn'onclick='rebirth()' class='reg respond'>Rebirth The Company (+1000 Boost)</button><br> <button id='alertBtn'onclick='retire()' class='reg'>Retire</button><br>", alertImages.usoaFlag, false);
+  createAlert("Investigation!", "The fine/bail for a crime on such a scale is $" + player.money/100 + ". The decision is yours to make. Pay up and..<br><br> <button id='alertBtn'onclick='retire()' style='width:auto;' class='reg'>Retire (Ends Game but keeps save)</button><br><button id='alertBtn'onclick='rebirth()' style='width:auto;' class='reg respond'>Rebirth The Company (+1000 Boost)</button><br><br>", alertImages.usoaFlag, false);
 
 }
 function rebirth(){

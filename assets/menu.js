@@ -49,7 +49,7 @@ function opencomp() {
 
     rev_tut = false;
     setTimeout(function () {
-      document.getElementById('coin').scrollIntoView()
+      document.getElementById('money').scrollIntoView()
       clickMe(document.getElementById('coin'))
       createAlert('Secretary', "This is where you manage your revenue flow. To make money, <b class='bold'>flip the coin by clicking on it </b>", alertImages.info, true)
 
@@ -80,7 +80,7 @@ function openshop() {
     createAlert('Secretary', "This is where you can upgrade the performance of your coin flippers.", alertImages.info, true)
     createAlert('Secretary', "<b class='bold'>However, the most important thing you can do here is new research coin types!</b> If you do this, more types of coin flippers and features will become available", alertImages.info, false)
     createAlert('Secretary', "We should make <b class='bold'>researching the nickel </b> our priority, but we should also look into upgrading our coin flippers to get the resources to do so. ", alertImages.info, false)
-    createAlert('Secretary', "I will lend you some money to upgrade our robot flipper capacity!", alertImages.info, false)
+    createAlert('Secretary', "I will lend you some money to upgrade our robot flipper capacity! <b class='bold'>Scroll to the bottom, and click 'Buy Now' under free gift.</b>", alertImages.info, false)
     createFreeGift()
     clickMe(document.getElementById('buyGift'))
     setTimeout(function(){

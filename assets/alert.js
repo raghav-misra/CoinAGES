@@ -50,7 +50,6 @@ function destroyAlert() {
   if (alertQueue[0] !== undefined) {
     try {
       var temp = JSON.parse(alertQueue[0])
-      console.log(temp)
       alertQueue.shift()
       alertTitle.style.opacity = '0'
   alertDesc.style.opacity = '0'
