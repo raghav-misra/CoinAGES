@@ -17,7 +17,7 @@ body {
 body{
   width: 100;
   margin: 0;
-  padding: 15px;
+  padding: 50px;
   background-image: linear-gradient(
 		rgba(0, 0, 0, 0.7), 
 		rgba(0, 0, 0, 0.7)
@@ -30,8 +30,7 @@ html {
 	font-size: 25px;
   padding: 0;
 	margin: 0;
-	background-color: #003366;
-	background-image: url('https://res.cloudinary.com/obliv-cf/image/upload/v1554767005/CoinAGES/game-start-bg.png');
+	background-color: #2B2E3D;
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
 }
@@ -39,7 +38,21 @@ html {
 *{
   position: relative;
 }
-
+.movescreen{
+  position: absolute;
+  transform: rotateZ(-30deg);
+  animation: movescreen linear 40s infinite;
+  filter: brightness(0.1);
+  z-index: -9;
+  }
+@keyframes movescreen{
+  0%{
+    left: -30%;
+  }
+  100%{
+    left: 120%;
+  }
+}
 .logobox{
   text-align: center;
 }

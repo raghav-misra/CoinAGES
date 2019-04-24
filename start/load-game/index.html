@@ -9,16 +9,24 @@
   <body class="fade-in">
     <div id="container">
       <img class="loader-spin" src="../../assets/img/6.png"/>
-      <p>Loading Game Data<span id="ellipse"></span></p>
+      <p>Welcome!<span id="ellipse"></span></p>
       <div></div>
       <p class="tiny">Tip: Explore every page by scrolling up/down</p>
+       <p id='sec'class="tiny"> </p>
     </div>
     <script>
+      var i = 0
       var ell = document.getElementById("ellipse");
       function ellipse(){
         ell.innerText = ".";
         setTimeout(function(){ell.innerText = ".."}, 500)
         setTimeout(function(){ell.innerText = "..."}, 1000)
+        if(i == 1){
+          document.getElementById('sec').innerHTML = 'Tip2: Read EVERYTHING your secretary tells you.'
+        }else{
+          i++
+          
+        }
         setTimeout(ellipse, 1500)
       }
       ellipse();

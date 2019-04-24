@@ -179,7 +179,7 @@ coin.addEventListener('click', function(){
 	if(rev_tut2){
 		rev_tut2 = false;
 		setTimeout(function(){
-			createAlert('Secretary', 'There are more people waiting in line for a coin flip! <b class="bold">Keep flipping coins until you make $1 </b>', alertImages.info, false)
+			createAlert('Secretary', 'There are more people waiting in line for a coin flip! Keep flipping coins until you make $1', alertImages.info, false)
 		}, 2000)
 	}
 	addmoney();
@@ -457,7 +457,7 @@ function buy(obj, headless = false){
 			createAlert('Secretary', 'Each flipper makes a different amount of money for you. Each flipper also has a maximum. For robots, the max is 10', alertImages.info, true)
 			setTimeout(function(){
         document.getElementById('money').scrollIntoView()
-				createAlert('Secretary', 'Keep flipping coins with your robot to <b class="bold">reach $2!</b>', alertImages.info, false)
+				createAlert('Secretary', 'Keep flipping coins with your robot to reach $2!</b>', alertImages.info, false)
 			}, 1000)
 		}, 1000)
   }
@@ -748,6 +748,7 @@ function autoSave(){
   window.localStorage.setItem('i', JSON.stringify(temp))
   window.localStorage.setItem("itemz", JSON.stringify(itemLimits));
   window.localStorage.setItem("s", stage.toString());
+  window.localStorage.setItem("ts", Date.now())
 
 
   setTimeout(autoSave, 3000)
@@ -755,6 +756,7 @@ function autoSave(){
 
 
 function restore(){
+  
   document.body.style.overflow = "visible";
   setTimeout(autoSave, 3000)
   fadeOut(saveCard)
@@ -782,6 +784,18 @@ if(window.localStorage.getItem('ch') !== null){
     });
   }
   player = JSON.parse(window.localStorage.getItem('p')) //Restore Player Object
+   var ts = window.localStorage.getItem("ts", Date.now())//away money
+  if(ts !== undefined || ts !== null){
+  var give = Math.round(Date.now() - ts)
+    give = give * 0.00001
+    give = give * 100
+    if(give > 1000){
+    give = 1000
+  }
+  player.money += Math.round(give)
+  notify('CoinAGES', 'Your company made $' + Math.round(give)/100 + ' while you were away!')
+  }
+
   if(player.pclickboost !== 0){ // Restore PermBoosts
     boostDisplayp.innerText = 'Boost: +' + Math.round(player.pclickboost)  + "¢";
     boostDisplay.style.opacity = 1
@@ -793,6 +807,7 @@ if(window.localStorage.getItem('ch') !== null){
   }else{
      endtime = 60000
   }
+
   industry = JSON.parse(window.localStorage.getItem('v')) //Restore industry Object
   if(window.localStorage.getItem('cbc') !== null){
   chart.data.datasets[0].backgroundColor = JSON.parse(window.localStorage.getItem('cbc'))
