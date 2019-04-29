@@ -1,5 +1,6 @@
 # CoinAGES 
 By:   [Raghav](https://repl.it/@mrcool4000)  & [Lehuy](https://repl.it/@LehuyH)
+If you would like to clone this repo and add your own content, please create an issue requesting us to post the instructions on how to do so!
 ***
 [Play Now!](https://coinages--lehuyh.repl.co/)
 [How to play](https://repl.it/talk/challenge/CoinAGES-or-100-ethical-and-legal-company-management-game/13105#how-to-play)
