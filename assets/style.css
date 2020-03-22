@@ -67,6 +67,10 @@ body, html{
   overflow-x: hidden;
 }
 
+* {
+	overflow-x: hidden !important;	
+}
+
 #attackCard .reg{
   width: 250px;
   margin: 20px;
